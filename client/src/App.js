@@ -1,12 +1,17 @@
+import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import './App.css';
-import Login from './components/UserAuthentication/Login';
+import Login from './components/UserAuthentication/SignIn/Login';
+import Register from './components/UserAuthentication/SignUp/Register';
 
 function App() {
   return (
     <center>
       <div className="App">
-        {/* <h1>Home Page</h1> */}
-        <Login />
+        <Switch>
+          <Route path="/" component={Login} exact />
+          <Route path="/register" component={Register} exact />
+          {/* <Route path="*" component={NotFound} exact /> */}
+        </Switch>
       </div>
     </center>
   );
