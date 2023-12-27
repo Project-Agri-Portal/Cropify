@@ -9,6 +9,7 @@ function Login() {
   const [bgColor, setBgColor] = useState("#bde3ff");
   const [btnOnFocus, setBtnOnFocus] = useState("customer");
 
+  // Method to change the color of the form div and respective tab that is clicked
   const ChangeBgColor = (key) => {
     if (key === "customer") {
       setBgColor("#bde3ff");
@@ -36,6 +37,7 @@ function Login() {
           onSelect={(key) => { ChangeBgColor(key) }}
           justify
         >
+          {/* Customer tab and it's content */}
           <Tab eventKey='customer' title='Customer' 
             tabClassName={'customer-btn ' + (btnOnFocus === "customer" ? 'customer-active' : '')}>
             <InputGroup size='lg' className='mb-5 w-50'>
@@ -67,6 +69,7 @@ function Login() {
             <p>New Customer? <Link to="/register" className='create-span'>Create account</Link></p>
           </Tab>
 
+          {/* Farmer tab and it's content */}
           <Tab eventKey='farmer' title='Farmer' 
             tabClassName={'farmer-btn ' + (btnOnFocus === "farmer" ? 'farmer-active' : '')}>
             <InputGroup size='lg' className='mb-5 w-50'>
@@ -98,6 +101,7 @@ function Login() {
             <p>New Farmer? <Link to="/register" className='create-span'>Create account</Link></p>
           </Tab>
 
+          {/* Seller tab and it's content */}
           <Tab eventKey='seller' title='Seller'
             tabClassName={'seller-btn ' + (btnOnFocus === "seller" ? 'seller-active' : '')}>
             <InputGroup size='lg' className='mb-5 w-50'>
