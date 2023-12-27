@@ -17,7 +17,8 @@ function CommonHome() {
             />
             <span className="fs-3">CROPIFY</span>
           </Navbar.Brand>
-
+          
+          {/* Login and Register links */}
           <Nav className="d-flex gap-3">
             <Nav.Link href="/login" className="nav-link fs-4">
               Login

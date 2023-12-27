@@ -11,6 +11,7 @@ function Login() {
   const [bgColor, setBgColor] = useState("#bde3ff");
   const [btnOnFocus, setBtnOnFocus] = useState("customer");
 
+  // Method to change the color of the form div and the respective tab
   const ChangeBgColor = (key) => {
     if (key === "customer") {
       setBgColor("#bde3ff");
@@ -38,16 +39,19 @@ function Login() {
           onSelect={(key) => { ChangeBgColor(key) }}
           justify
         >
+          {/* Customer tab and it's content */}
           <Tab eventKey='customer' title='Customer'
             tabClassName={'customer-btn ' + (btnOnFocus === "customer" ? 'customer-active' : '')}>
             <CustomerFields />
           </Tab>
 
+          {/* Farmer tab and it's content */}
           <Tab eventKey='farmer' title='Farmer'
             tabClassName={'farmer-btn ' + (btnOnFocus === "farmer" ? 'farmer-active' : '')}>
             <FarmerFields />
           </Tab>
 
+          {/* Seller tab and it's content */}
           <Tab eventKey='seller' title='Seller'
             tabClassName={'seller-btn ' + (btnOnFocus === "seller" ? 'seller-active' : '')}>
             <SellerFields />
