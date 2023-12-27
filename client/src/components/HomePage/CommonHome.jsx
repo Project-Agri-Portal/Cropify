@@ -1,6 +1,7 @@
 // import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import logo from '../../logo.svg';
+import heroBg from '../../assets/hero-section-bg.jpg';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import './CommonHome.css';
@@ -29,6 +30,18 @@ function CommonHome() {
           </Nav>
         </Container>
       </Navbar>
+
+      <div className="main-hero-div">
+        <img className="hero-img" 
+          src={heroBg}
+          alt="hero section"
+        />
+        <div className="hero-text">
+          <h2>Welcome</h2>
+          <h2>To</h2>
+          <h2>Cropify</h2>
+        </div>
+      </div>
     </>
   );
 }
