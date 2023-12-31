@@ -4,6 +4,7 @@ import Login from "./components/UserAuthentication/SignIn/Login";
 import Register from "./components/UserAuthentication/SignUp/Register";
 import CommonHome from "./components/HomePage/CommonHome";
 import FarmerHome from "./components/HomePage/FarmerHome/FarmerHome";
+import BlogPage from "./components/ComponentsFarmer/FarmerBlog/BlogPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/home" component={CommonHome} exact />
           <Route path="/login" component={Login} exact />
           <Route path="/register" component={Register} exact />
+          <Route path="/blog" component={BlogPage} exact />
           <Route path="/home/farmer" component={FarmerHome} exact />
           {/* <Route path="*" component={NotFound} exact /> */}
         </Switch>
