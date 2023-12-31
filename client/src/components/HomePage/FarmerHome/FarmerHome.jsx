@@ -29,6 +29,9 @@ function FarmerHome() {
             <Nav.Link href="/crop/wheat" className="nav-link fs-4">
               Crop Info
             </Nav.Link>
+            <Nav.Link href="/blog" className="nav-link fs-4">
+              Blog
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
