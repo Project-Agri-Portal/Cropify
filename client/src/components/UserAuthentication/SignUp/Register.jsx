@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../../../../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import './Register.css';
 import CustomerFields from './CustomerFields/CustomerFields';
 import FarmerFields from './FarmerFields/FarmerFields';
