@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
-import "./App.css";
+// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
 import Login from "./components/UserAuthentication/SignIn/Login";
 import Register from "./components/UserAuthentication/SignUp/Register";
 import CommonHome from "./components/HomePage/CommonHome";
