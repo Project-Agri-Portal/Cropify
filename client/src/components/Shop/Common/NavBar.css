@@ -1,0 +1,97 @@
+body {
+  background-color: #ffff;
+}
+
+.login-button {
+  background-color: rgb(58, 182, 63);
+  color: #fff;
+  font-size: 14px;
+  margin-right: 30px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: 0.3s background-color;
+}
+
+.navbar {
+  background-color: #fff;
+  height: 80px;
+  margin: 20px;
+  border-radius: 16px;
+  padding: 0.5rem;
+}
+
+.navbar-brand {
+  font-weight: 500;
+  color: aqua;
+  font-size: 24px;
+  transition: 0.3s color;
+}
+
+.login-button:hover {
+  background-color: rgb(5, 137, 11);
+}
+
+.navbar-togger {
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-togger:focus,
+.btn-close:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.nav-link {
+  color: rgba(138, 142, 115, 0.821);
+  font-weight: 500;
+}
+
+@media (min-width: 991px) {
+  .nav-link:hover,
+  .nav-link.active {
+    /* this active will change the color when click */
+    color: black;
+    font-weight: 600;
+  }
+
+  .nav-link.active {
+    /* this active will change the color when click */
+    color: black;
+    font-weight: 600;
+  }
+
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: rgb(58, 182, 63);
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+  }
+
+  .nav-link:hover::before,
+  .nav-link:active::before {
+    width: 100%;
+    visibility: visible;
+  }
+}
+
+.navbar-toggler-icon {
+  margin-right: 12px;
+}
+
+#logo {
+  height: 100px;
+  width: 100px;
+}
+
+#icon {
+  height: 25px;
+  margin-bottom: 5px;
+}

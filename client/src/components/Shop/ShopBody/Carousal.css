@@ -1,0 +1,30 @@
+.carousel-item {
+  height: 42rem;
+  background-color: #777;
+  color: white;
+  position: relative;
+  background-image: calc();
+}
+
+@media (max-width: 900px) {
+  .carousalimg,
+  .carousel-item {
+    height: 15rem;
+    background-color: #777;
+    color: white;
+    position: relative;
+    background-image: center;
+  }
+}
+
+#carousalimg {
+  box-shadow: -12px 29px 135px -2px rgba(0, 0, 0, 0.62) inset;
+  -webkit-box-shadow: -12px 29px 135px -2px rgba(0, 0, 0, 0.62) inset;
+  -moz-box-shadow: -12px 29px 135px -2px rgba(0, 0, 0, 0.62) inset;
+}
+
+#cfont {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode";
+  font-size: larger;
+}

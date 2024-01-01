@@ -1,0 +1,22 @@
+
+
+.banner {
+  background-image: url("../../../assets/ShopImages/bg_3.jpg"); /* Add your banner image URL */
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  padding: 140px 20px; /* Adjust padding for height */
+}
+
+.countdown {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(51, 77, 13);
+}
+
+#service {
+  font-size: 41px;
+  font-weight: 700;
+  color: rgb(51, 77, 13);
+}

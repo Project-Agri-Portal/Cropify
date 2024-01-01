@@ -1,0 +1,34 @@
+.welcome {
+  background: rgb(20, 219, 20);
+  border: 1px solid;
+}
+
+.line2 {
+  height: 6px;
+  width: 30%;
+  background-color: white;
+  display: inline-block;
+}
+
+.welcome h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.welcome .card {
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.welcome .icon {
+  font-size: 45px;
+  color: rgb(20, 219, 20);
+  height: 40px;
+  width: 40px;
+}
+
+.welcome h2 {
+  font-weight: lighter;
+  padding: 10px 0px;
+}

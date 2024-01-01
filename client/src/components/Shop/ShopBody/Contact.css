@@ -1,0 +1,57 @@
+.bi {
+  font-size: 50px !important;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+}
+
+.bi:hover {
+  color: rgb(75, 195, 87);
+}
+
+.card {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 17px;
+}
+
+.card-row {
+  position: relative;
+  top: 110px;
+}
+
+.b-colors {
+  color: white;
+  top: -142px;
+  height: 80vh;
+  background-color: rgb(20, 219, 20);
+}
+
+@media (max-width: 900px) {
+  .b-colors {
+    color: white;
+    top: -142px;
+    height: 130vh;
+  }
+}
+
+.black-container {
+  position: relative;
+  top: 110px;
+}
+
+.btn-primary {
+  background-color: white;
+  color: black !important;
+  padding: 10px;
+  width: 100px;
+}
+
+.form-control {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 17px;
+  border: none;
+  border-radius: 0;
+}
+
+.text-contact {
+  font-size: 40px;
+}

@@ -1,0 +1,67 @@
+.line2 {
+  height: 6px;
+  width: 30%;
+  background-color: rgb(20, 219, 20);
+  display: inline-block;
+}
+
+.product h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.product p:nth-child(1) {
+  font-size: 18px;
+  font-weight: 500;
+  padding-top: 100px;
+}
+
+.product p:nth-child(2) {
+  font-size: 18px;
+  color: grey;
+}
+
+.starid {
+  text-align: end;
+  color: orange;
+}
+
+.product .card-body {
+  border: 1px dashed rgb(205, 195, 195);
+}
+
+.product .card {
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.head1 {
+  font-weight: 400;
+  margin: 0;
+}
+
+.per1 {
+  color: rgb(168, 162, 162);
+}
+
+.btnc {
+  height: 50px;
+  width: 50%;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 50px;
+  background: rgb(20, 219, 20);
+  margin: 0 auto;
+  display: block;
+  transition: all 0.4s;
+}
+
+.btnc:hover {
+  outline: none;
+  border: 1px solid rgb(20, 219, 20);
+  background: transparent;
+  border-radius: 50px;
+  color: rgb(20, 219, 20);
+}
