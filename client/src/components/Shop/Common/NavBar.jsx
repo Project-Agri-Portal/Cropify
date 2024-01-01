@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap/dist/js/bootstrap.bundle"
+import "../../../../node_modules/bootstrap/dist/js/bootstrap.bundle"
 import "./NavBar.css"
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -53,6 +53,12 @@ const Navbar = () => {
                   Contact
                 </a> */}
                 <Link to="/contact" className="nav-link mx-lg-2">Contact</Link>
+              </li>
+              <li className="nav-item">
+                {/* <a className="nav-link mx-lg-2" href="#">
+                  Contact
+                </a> */}
+                <Link to="/blog" className="nav-link mx-lg-2">Blog</Link>
               </li>
               
             </ul>
