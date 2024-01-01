@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import blogBg from '../../../assets/home-bg.jpg';
-import './BlogPage.css';
-// import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// import './BlogPage.css';
+import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function BlogPage() {
   return (
