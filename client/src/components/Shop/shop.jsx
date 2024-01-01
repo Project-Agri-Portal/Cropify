@@ -16,7 +16,7 @@ function Shop(){
             <Welcome></Welcome>
             <HomeProduct></HomeProduct>
             <SpecialOffer></SpecialOffer>
-            {/* <MyService></MyService> */}
+            <MyService></MyService>
             <TeamSection></TeamSection>
             <Footer></Footer>
         </div>

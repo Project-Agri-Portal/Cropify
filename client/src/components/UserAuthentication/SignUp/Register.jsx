@@ -7,7 +7,7 @@ import CustomerFields from './CustomerFields/CustomerFields';
 import FarmerFields from './FarmerFields/FarmerFields';
 import SellerFields from './SellerFields/SellerFields';
 
-function Login() {
+function Register() {
   const [bgColor, setBgColor] = useState("#bde3ff");
   const [btnOnFocus, setBtnOnFocus] = useState("customer");
 
@@ -63,4 +63,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

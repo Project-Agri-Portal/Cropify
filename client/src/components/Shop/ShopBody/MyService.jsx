@@ -8,6 +8,7 @@ import "./MyService.css"
 const MyService = () =>{
     return(
         <div class="container">
+          <div style={{height:"80px"}}></div>
         <h2 class="text-center">Our Service</h2>
         {/* <!-- <hr class="mx-auto mb-5 wb-25" /> --> */}
         <hr class="hrteam" />
@@ -16,7 +17,7 @@ const MyService = () =>{
         <div class="row mb-5">
           <div class="col-12 col-sm-6 col-md-4 m-auto">
             {/* <!-- Card Start --> */}
-            <div class="card shadow">
+            <div class="card shadow cardid">
               <img src={Pulses} alt="" class="card-img-top" />
               <div class="card-body">
                 <h3 class="text-center">Quality</h3>
@@ -31,7 +32,7 @@ const MyService = () =>{
 
           <div class="col-12 col-sm-6 col-md-4 m-auto">
             {/* <!-- Card Start --> */}
-            <div class="card shadow">
+            <div class="card shadow cardid">
               <img
                 src={Delivery}
                 alt=""
@@ -51,7 +52,7 @@ const MyService = () =>{
 
           <div class="col-12 col-sm-6 col-md-4 m-auto">
             {/* <!-- Card Start --> */}
-            <div class="card shadow">
+            <div class="card shadow cardid">
               <img src={Healthy} alt="" class="card-img-top" />
               <div class="card-body">
                 <h3 class="text-center">Healthy</h3>

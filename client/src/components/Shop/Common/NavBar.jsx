@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import "./NavBar.css"
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Navbar = () => {
 
@@ -30,9 +31,12 @@ const Navbar = () => {
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-center flex-grow-1 pe-3">
               <li className="nav-item">
-                <a className="nav-link mx-lg-2 active" aria-current="page" href="#">
+                {/* <a className="nav-link mx-lg-2 active" aria-current="page" href="#">
                   Home
-                </a>
+                </a> */}
+                <Link to="/shop/home" className="nav-link mx-lg-2 active">
+                  Home
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link mx-lg-2" href="#">
@@ -45,9 +49,10 @@ const Navbar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link mx-lg-2" href="#">
+                {/* <a className="nav-link mx-lg-2" href="#">
                   Contact
-                </a>
+                </a> */}
+                <Link to="/contact" className="nav-link mx-lg-2">Contact</Link>
               </li>
               
             </ul>
