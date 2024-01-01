@@ -21,6 +21,9 @@ function CommonHome() {
           
           {/* Login and Register links */}
           <Nav className="d-flex gap-3">
+            <Nav.Link href="/shop" className="nav-link fs-4">
+              Shop
+            </Nav.Link>
             <Nav.Link href="/login" className="nav-link fs-4">
               Login
             </Nav.Link>

@@ -1,0 +1,89 @@
+.team .member {
+  position: relative;
+  padding: 30px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background-color: #ffff;
+}
+
+.team .member .teampic {
+  overflow: hidden;
+  width: 180px;
+  border-radius: 50%;
+}
+
+.team .member .member-info {
+  padding-left: 30px;
+}
+
+.team .member .membername {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: tomato;
+}
+
+.team .member .spanname {
+  display: block;
+  font-size: 15px;
+  padding-bottom: 10px;
+  position: relative;
+  font-weight: 500;
+}
+
+.team .member .spanname::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: black;
+  bottom: 0;
+  left: 0;
+}
+
+.team .member .paraname {
+  margin: 10px 0 0 0;
+  font-size: 14px;
+}
+
+.team .member .social {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.team .member .social .aname {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: rgb(206, 212, 209);
+  border-radius: 50px;
+}
+
+.team .member .social .aname .nameicon {
+  color: black;
+}
+
+.team .member .social .aname:hover {
+  background-color: rgb(112, 214, 112);
+}
+
+.team-section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.hrteam {
+  width: 110px;
+  margin: auto;
+}
