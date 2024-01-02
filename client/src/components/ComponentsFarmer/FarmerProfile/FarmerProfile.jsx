@@ -1,6 +1,7 @@
 import logo from "../../../logo.svg";
 import { Container, Navbar, Nav, Tab, Tabs } from "react-bootstrap";
 import farmer from "../../../assets/farmer.png";
+import Footer from "../../Shop/Common/Footer";
 
 function FarmerProfile() {
   return (
@@ -18,7 +19,7 @@ function FarmerProfile() {
               height="50"
               alt="cropify logo"
             />
-            <span className="fs-3">CROPIFY</span>
+            <span className="fs-3 text-black">CROPIFY</span>
           </Navbar.Brand>
 
           {/* Login and Register links */}
@@ -36,8 +37,8 @@ function FarmerProfile() {
         </Container>
       </Navbar>
 
-      <header style={{ height: "100vh" }}>
-        <div className="container d-flex justify-content-around align-items-center">
+      <header className="mx-5" style={{ height: "100vh" }}>
+        <div className="container d-flex align-items-center bg-primary-subtle">
           <div className="w-auto" style={{ height: "400px" }}>
             <img src={farmer} alt="farmer" className="w-100 h-100" />
           </div>
@@ -53,22 +54,22 @@ function FarmerProfile() {
         <Tabs
           defaultActiveKey="profile"
           id="justify-tab-example"
-          className="mb-3"
+          className="mb-3 mx-5 bg-success-subtle"
           justify
         >
-          <Tab eventKey="home" title="About Me">
+          <Tab eventKey="home" title="About Me" tabClassName="px-5">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia,
             animi? Sed, delectus officiis. Accusantium quasi saepe nostrum,
             eaque architecto asperiores facilis eum alias, totam dolores unde
             fugiat atque, dolor reprehenderit.
           </Tab>
-          <Tab eventKey="profile" title="Farm Info">
+          <Tab eventKey="profile" title="Farm Info" tabClassName="px-5">
             Tab content for Farm Info
           </Tab>
-          <Tab eventKey="longer-tab" title="Settings">
+          <Tab eventKey="longer-tab" title="Settings" tabClassName="px-5">
             <h3>Tab for Settings</h3>
           </Tab>
-          <Tab eventKey="contact" title="Contact">
+          <Tab eventKey="contact" title="Contact" tabClassName="px-5">
             <h3>Tab content for Contact</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -80,7 +81,8 @@ function FarmerProfile() {
           </Tab>
         </Tabs>
       </header>
-      <footer className="w-100 bg-primary" style={{ height: "100px" }}></footer>
+      
+      <Footer></Footer>
     </>
   );
 }

@@ -34,19 +34,19 @@ const Navbar = () => {
                 {/* <a className="nav-link mx-lg-2 active" aria-current="page" href="#">
                   Home
                 </a> */}
-                <Link to="/shop/home" className="nav-link mx-lg-2 active">
+                <Link to="/home/customer" className="nav-link mx-lg-2 active">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link mx-lg-2" href="#">
+                <Link className="nav-link mx-lg-2" to="#">
                   Shop
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link mx-lg-2" href="#">
+                <Link className="nav-link mx-lg-2" to="#">
                   About Us
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 {/* <a className="nav-link mx-lg-2" href="#">
@@ -64,9 +64,9 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <a href="#" className="login-button">
+        <Link to="/login" className="login-button">
           Log In
-        </a>
+        </Link>
         <button
           className="navbar-toggler pe-0"
           type="button"

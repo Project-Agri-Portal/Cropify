@@ -17,16 +17,16 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/" component={CommonHome} exact />
-          <Route path="/home" component={CommonHome} exact />
           <Route path="/login" component={Login} exact />
           <Route path="/register" component={Register} exact />
-          <Route path="/Shop" component={Shop} exact />
-          <Route path="/blog" component={BlogPage} exact />
+          <Route path="/home" component={CommonHome} exact />
+          <Route path="/home/customer" component={Shop} exact />
           <Route path="/home/farmer" component={FarmerHome} exact />
+          <Route path="/blog" component={BlogPage} exact />
           <Route path="/farmer/profile" component={FarmerProfile} exact />
           <Route path="/farmer/cropinfo" component={FarmerCrop} exact />
           <Route path="/contact" component={Contact} exact />
-          <Route path="/shop/home" component={Shop} exact />
+          {/* <Route path="/shop" component={Shop} exact /> */}
           {/* <Route path="*" component={NotFound} exact /> */}
         </Switch>
       </div>
