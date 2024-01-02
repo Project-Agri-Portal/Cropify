@@ -15,6 +15,7 @@ import SellerProfile from "./components/ComponentsSeller/SellerProfile.jsx";
 import SellerEdit from "./components/ComponentsSeller/SellerProfileEdit.jsx";
 import OrderList from "./components/ComponentsSeller/SellerOrderList.jsx";
 import ProductList from "./components/ComponentsSeller/SellerProducts.jsx";
+import PageNotFound from "./components/NotFound/PageNotFound.jsx";
 
 function App() {
   return (
@@ -27,19 +28,19 @@ function App() {
           <Route path="/home" component={CommonHome} exact />
           <Route path="/home/customer" component={Shop} exact />
           <Route path="/home/farmer" component={FarmerHome} exact />
+          <Route path="/home/seller" component={Seller} exact />
           <Route path="/blog" component={BlogPage} exact />
+          <Route path="/contact" component={Contact} exact />
           <Route path="/farmer/profile" component={FarmerProfile} exact />
           <Route path="/farmer/cropinfo" component={FarmerCrop} exact />
-          <Route path="/contact" component={Contact} exact />
-          {/* <Route path="/shop" component={Shop} exact /> */}
-          <Route path="/shop/home" component={Shop} exact />
-          <Route path="/home/seller" component={Seller} exact />
           <Route path="/seller/profile" component={SellerProfile} exact />
           <Route path="/seller/profileEdit" component={SellerEdit} exact />
           <Route path="/seller/orderlist" component={OrderList} exact />
           <Route path="/seller/productlist" component={ProductList} exact />
           
-          {/* <Route path="*" component={NotFound} exact /> */}
+          {/* <Route path="/shop/home" component={Shop} exact /> */}
+          {/* <Route path="/shop" component={Shop} exact /> */}
+          <Route path="*" component={PageNotFound} />
         </Switch>
       </div>
     </center>

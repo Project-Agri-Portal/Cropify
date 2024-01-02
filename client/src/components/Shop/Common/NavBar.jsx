@@ -8,9 +8,9 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg fixed-top">
       <div className="container-fluid">
-        <a className={`navbar-brand me-auto`} href="#">
-          Logo
-        </a>
+        <Link className={`navbar-brand me-auto`} to="/">
+          CROPIFY
+        </Link>
         <div
           className={`offcanvas offcanvas-end }`}
           tabIndex="-1"

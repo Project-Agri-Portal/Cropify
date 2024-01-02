@@ -1,4 +1,5 @@
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./SellerProfile.css";
 
 function SellerEdit() {
@@ -7,64 +8,68 @@ function SellerEdit() {
       <div className="d-flex" id="wrapper">
         {/* <!-- Sidebar --> */}
         <div className="bg-white" id="sidebar-wrapper">
-          <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-            <box-icon type="solid" name="leaf"></box-icon> Cropify
+          <div className="sidebar-heading text-center py-4 border-bottom">
+            <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
+              <i className="bx bxs-leaf"></i>
+              {" "}
+              Cropify
+            </Link>
           </div>
           <div className="list-group list-group-flush my-3">
-            <a
-              href="/home/seller"
+            <Link
+              to="/home/seller"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-tachometer-alt me-2"></i>Dashboard
-            </a>
-            <a
-              href="/seller/productlist"
+            </Link>
+            <Link
+              to="/seller/productlist"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-project-diagram me-2"></i>Products
-            </a>
-            <a
-              href="/seller/orderlist"
+            </Link>
+            <Link
+              to="/seller/orderlist"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-chart-line me-2"></i>Order List
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-paperclip me-2"></i>Available Stock
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-shopping-cart me-2"></i>Store Mng
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-gift me-2"></i>Products
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-comment-dots me-2"></i>Chat
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-map-marker-alt me-2"></i>Outlet
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/"
               className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
             >
               <i className="fas fa-power-off me-2"></i>Logout
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -96,9 +101,9 @@ function SellerEdit() {
             >
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item dropdown">
-                  <a
+                  <Link
                     className="nav-link dropdown-toggle second-text fw-bold"
-                    href="#"
+                    to="#"
                     id="navbarDropdown"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -106,25 +111,25 @@ function SellerEdit() {
                     style={{ color: "rgb(11, 11, 10)" }}
                   >
                     <i className="fas fa-user me-2"></i>Seller Name
-                  </a>
+                  </Link>
                   <ul
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="#">
                         My Profile
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="#">
                         Settings
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="#">
                         Logout
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -347,11 +352,13 @@ function SellerEdit() {
                       <div className="row">
                         <div className="col-sm-3"></div>
                         <div className="col-sm-9 text-secondary">
-                          <input
+                          {/* <input
                             type="button"
-                            className="btn btn-primary px-4"
-                            value="Save Changes"
-                          />
+                            className="btn btn-primary"
+                            value="Update"
+                            to="/seller/profile"
+                          />*/}
+                           <Link to="/seller/profile" className="btn btn-primary">Update</Link>
                         </div>
                       </div>
                     </div>
