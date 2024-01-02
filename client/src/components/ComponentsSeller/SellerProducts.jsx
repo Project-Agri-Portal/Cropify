@@ -1,4 +1,5 @@
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./SellerProducts.css";
 
 function ProductList() {
@@ -7,65 +8,68 @@ function ProductList() {
       <div className="d-flex" id="wrapper">
         {/* <!-- Sidebar --> */}
         <div className="bg-white" id="sidebar-wrapper">
-          <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-            {" "}
-            <i className="bx bxs-leaf"></i> Cropify
+          <div className="sidebar-heading text-center py-4 border-bottom">
+            <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
+              <i className="bx bxs-leaf"></i>
+              {" "}
+              Cropify
+            </Link>
           </div>
           <div className="list-group list-group-flush my-3">
-            <a
-              href="/home/seller"
+            <Link
+              to="/home/seller"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-tachometer-alt me-2"></i>Dashboard
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text active"
             >
               <i className="fas fa-project-diagram me-2"></i>Products
-            </a>
-            <a
-              href="/seller/orderlist"
+            </Link>
+            <Link
+              to="/seller/orderlist"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-chart-line me-2"></i>Order List
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-paperclip me-2"></i>Available Stock
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-shopping-cart me-2"></i>Store Mng
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-gift me-2"></i>Products
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-comment-dots me-2"></i>Chat
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-map-marker-alt me-2"></i>Outlet
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/"
               className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
             >
               <i className="fas fa-power-off me-2"></i>Logout
-            </a>
+            </Link>
           </div>
         </div>
         {/* <!-- /#sidebar-wrapper --> */}
@@ -96,9 +100,9 @@ function ProductList() {
             >
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item dropdown">
-                  <a
+                  <Link
                     className="nav-link dropdown-toggle second-text fw-bold"
-                    href="#"
+                    to="#"
                     id="navbarDropdown"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -106,25 +110,25 @@ function ProductList() {
                     style={{ color: "rgb(11, 11, 10)" }}
                   >
                     <i className="fas fa-user me-2"></i>Seller Name
-                  </a>
+                  </Link>
                   <ul
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
                     <li>
-                      <a className="dropdown-item" href="/seller/profile">
+                      <Link className="dropdown-item" to="/seller/profile">
                         My Profile
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="#">
                         Settings
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="#">
                         Logout
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -135,13 +139,13 @@ function ProductList() {
           {/* <!-- Product List Here--> */}
           <link
             rel="stylesheet"
-            href="SellerProducts.css"
+            to="SellerProducts.css"
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
           />
           <link
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
+            to="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
             integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc="
             crossorigin="anonymous"
           />
@@ -161,9 +165,9 @@ function ProductList() {
                   <div>
                     <ul className="nav nav-pills">
                       <li className="nav-item">
-                        <a
+                        <Link
                           aria-current="page"
-                          href="#"
+                          to="#"
                           className="router-link-active router-link-exact-active nav-link active"
                           data-bs-toggle="tooltip"
                           data-bs-placement="top"
@@ -172,11 +176,11 @@ function ProductList() {
                           aria-label="List"
                         >
                           <i className="bx bx-list-ul"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li className="nav-item">
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           className="nav-link"
                           data-bs-toggle="tooltip"
                           data-bs-placement="top"
@@ -185,45 +189,45 @@ function ProductList() {
                           aria-label="Grid"
                         >
                           <i className="bx bx-grid-alt"></i>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
                   <div>
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       data-bs-toggle="modal"
                       data-bs-target=".add-new"
                       className="btn btn-primary"
                     >
                       <i className="bx bx-plus me-1"></i> Add New Products
-                    </a>
+                    </Link>
                   </div>
                   {/* <div className="dropdown">
-                    <a
+                    <Link
                       className="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle"
-                      href="#"
+                      to="#"
                       role="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
                       <i className="bx bx-dots-horizontal-rounded"></i>
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dropdown-menu-end">
                       <li>
-                        <a className="dropdown-item" href="SellerProfile.html">
+                        <Link className="dropdown-item" to="SellerProfile.html">
                           Go To Profile
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           Settings
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           Log Out
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div> */}
@@ -257,31 +261,31 @@ function ProductList() {
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Edit"
                                   className="px-2 text-primary"
                                 >
                                   <i className="bx bx-pencil font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Delete"
                                   className="px-2 text-danger"
                                 >
                                   <i className="bx bx-trash-alt font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               {/* <li className="list-inline-item dropdown">
-                                                        <a className="text-muted dropdown-toggle font-size-18 px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></a>
+                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
                                                         <div className="dropdown-menu dropdown-menu-end">
-                                                            <a className="dropdown-item" href="#">Action</a><a className="dropdown-item" href="#">Another action</a><a className="dropdown-item" href="#">Something else here</a>
+                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
                                                         </div>
                                                     </li>  */}
                             </ul>
@@ -297,32 +301,32 @@ function ProductList() {
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Edit"
                                   className="px-2 text-primary"
                                 >
                                   <i className="bx bx-pencil font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
 
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Delete"
                                   className="px-2 text-danger"
                                 >
                                   <i className="bx bx-trash-alt font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               {/* <li className="list-inline-item dropdown">
-                                                        <a className="text-muted dropdown-toggle font-size-18 px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></a>
+                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
                                                         <div className="dropdown-menu dropdown-menu-end">
-                                                            <a className="dropdown-item" href="#">Action</a><a className="dropdown-item" href="#">Another action</a><a className="dropdown-item" href="#">Something else here</a>
+                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
                                                         </div>
                                                     </li>  */}
                             </ul>
@@ -339,31 +343,31 @@ function ProductList() {
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Edit"
                                   className="px-2 text-primary"
                                 >
                                   <i className="bx bx-pencil font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Delete"
                                   className="px-2 text-danger"
                                 >
                                   <i className="bx bx-trash-alt font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               {/* <!-- <li className="list-inline-item dropdown">
-                                                        <a className="text-muted dropdown-toggle font-size-18 px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></a>
+                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
                                                         <div className="dropdown-menu dropdown-menu-end">
-                                                            <a className="dropdown-item" href="#">Action</a><a className="dropdown-item" href="#">Another action</a><a className="dropdown-item" href="#">Something else here</a>
+                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
                                                         </div>
                                                     </li> --> */}
                             </ul>
@@ -379,31 +383,31 @@ function ProductList() {
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Edit"
                                   className="px-2 text-primary"
                                 >
                                   <i className="bx bx-pencil font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Delete"
                                   className="px-2 text-danger"
                                 >
                                   <i className="bx bx-trash-alt font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               {/* <!-- <li className="list-inline-item dropdown">
-                                                        <a className="text-muted dropdown-toggle font-size-18 px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></a>
+                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
                                                         <div className="dropdown-menu dropdown-menu-end">
-                                                            <a className="dropdown-item" href="#">Action</a><a className="dropdown-item" href="#">Another action</a><a className="dropdown-item" href="#">Something else here</a>
+                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
                                                         </div>
                                                     </li> --> */}
                             </ul>
@@ -419,30 +423,30 @@ function ProductList() {
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Edit"
                                   className="px-2 text-primary"
                                 >
                                   <i className="bx bx-pencil font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Delete"
                                   className="px-2 text-danger"
                                 >
                                   <i className="bx bx-trash-alt font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               {/* <!-- <li className="list-inline-item dropdown">
-                                                        <a className="text-muted dropdown-toggle font-size-18 px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></a>
-                                                        <div className="dropdown-menu dropdown-menu-end"><a className="dropdown-item" href="#">Edit</a><a className="dropdown-item" href="#">Action</a><a className="dropdown-item" href="#">Remove</a></div>
+                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
+                                                        <div className="dropdown-menu dropdown-menu-end"><Link className="dropdown-item" to="#">Edit</Link><Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Remove</Link></div>
                                                     </li> --> */}
                             </ul>
                           </td>
@@ -457,31 +461,31 @@ function ProductList() {
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Edit"
                                   className="px-2 text-primary"
                                 >
                                   <i className="bx bx-pencil font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Delete"
                                   className="px-2 text-danger"
                                 >
                                   <i className="bx bx-trash-alt font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               {/* <!-- <li className="list-inline-item dropdown">
-                                                        <a className="text-muted dropdown-toggle font-size-18 px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></a>
+                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
                                                         <div className="dropdown-menu dropdown-menu-end">
-                                                            <a className="dropdown-item" href="#">Action</a><a className="dropdown-item" href="#">Another action</a><a className="dropdown-item" href="#">Something else here</a>
+                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
                                                         </div>
                                                     </li> --> */}
                             </ul>
@@ -497,31 +501,31 @@ function ProductList() {
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Edit"
                                   className="px-2 text-primary"
                                 >
                                   <i className="bx bx-pencil font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Delete"
                                   className="px-2 text-danger"
                                 >
                                   <i className="bx bx-trash-alt font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               {/* <!-- <li className="list-inline-item dropdown">
-                                                        <a className="text-muted dropdown-toggle font-size-18 px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></a>
+                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
                                                         <div className="dropdown-menu dropdown-menu-end">
-                                                            <a className="dropdown-item" href="#">Action</a><a className="dropdown-item" href="#">Another action</a><a className="dropdown-item" href="#">Something else here</a>
+                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
                                                         </div>
                                                     </li> --> */}
                             </ul>
@@ -537,31 +541,31 @@ function ProductList() {
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Edit"
                                   className="px-2 text-primary"
                                 >
                                   <i className="bx bx-pencil font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Delete"
                                   className="px-2 text-danger"
                                 >
                                   <i className="bx bx-trash-alt font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               {/* <!-- <li className="list-inline-item dropdown">
-                                                        <a className="text-muted dropdown-toggle font-size-18 px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></a>
+                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
                                                         <div className="dropdown-menu dropdown-menu-end">
-                                                            <a className="dropdown-item" href="#">Action</a><a className="dropdown-item" href="#">Another action</a><a className="dropdown-item" href="#">Something else here</a>
+                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
                                                         </div>
                                                     </li> --> */}
                             </ul>
@@ -577,31 +581,31 @@ function ProductList() {
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Edit"
                                   className="px-2 text-primary"
                                 >
                                   <i className="bx bx-pencil font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               <li className="list-inline-item">
-                                <a
-                                  href="javascript:void(0);"
+                                <Link
+                                  to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
                                   title="Delete"
                                   className="px-2 text-danger"
                                 >
                                   <i className="bx bx-trash-alt font-size-18"></i>
-                                </a>
+                                </Link>
                               </li>
                               {/* <!-- <li className="list-inline-item dropdown">
-                                                        <a className="text-muted dropdown-toggle font-size-18 px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></a>
+                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
                                                         <div className="dropdown-menu dropdown-menu-end">
-                                                            <a className="dropdown-item" href="#">Action</a><a className="dropdown-item" href="#">Another action</a><a className="dropdown-item" href="#">Something else here</a>
+                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
                                                         </div>
                                                     </li> --> */}
                             </ul>
@@ -623,27 +627,27 @@ function ProductList() {
                 <div className="float-sm-end">
                   <ul className="pagination mb-sm-0">
                     <li className="page-item disabled">
-                      <a href="#" className="page-link">
+                      <Link to="#" className="page-link">
                         <i className="mdi mdi-chevron-left"></i>
-                      </a>
+                      </Link>
                     </li>
                     <li className="page-item active">
-                      <a href="#" className="page-link">
+                      <Link to="#" className="page-link">
                         1
-                      </a>
+                      </Link>
                     </li>
                     <li className="page-item">
-                      <a href="#" className="page-link">
+                      <Link to="#" className="page-link">
                         2
-                      </a>
+                      </Link>
                     </li>
-                    {/* <!-- <li className="page-item"><a href="#" className="page-link">3</a></li>
-                                <li className="page-item"><a href="#" className="page-link">4</a></li>
-                                <li className="page-item"><a href="#" className="page-link">5</a></li> --> */}
+                    {/* <!-- <li className="page-item"><Link to="#" className="page-link">3</Link></li>
+                                <li className="page-item"><Link to="#" className="page-link">4</Link></li>
+                                <li className="page-item"><Link to="#" className="page-link">5</Link></li> --> */}
                     <li className="page-item">
-                      <a href="#" className="page-link">
+                      <Link to="#" className="page-link">
                         <i className="mdi mdi-chevron-right"></i>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>

@@ -5,6 +5,8 @@ import heroBg from '../../assets/hero-section-bg.jpg';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import './CommonHome.css';
+import TeamSection from "../Shop/ShopBody/TeamSection";
+import Footer from "../Shop/Common/Footer";
 
 function CommonHome() {
   return (
@@ -16,12 +18,12 @@ function CommonHome() {
               src={logo} width="50" height="50"
               alt="cropify logo"
             />
-            <span className="fs-3">CROPIFY</span>
+            <span className="fs-3 text-black">CROPIFY</span>
           </Navbar.Brand>
-          
+
           {/* Login and Register links */}
           <Nav className="d-flex gap-3">
-            <Nav.Link href="/shop" className="nav-link fs-4">
+            <Nav.Link href="/home/customer" className="nav-link fs-4">
               Shop
             </Nav.Link>
             <Nav.Link href="/login" className="nav-link fs-4">
@@ -35,7 +37,7 @@ function CommonHome() {
       </Navbar>
 
       <div className="main-hero-div">
-        <img className="hero-img" 
+        <img className="hero-img"
           src={heroBg}
           alt="hero section"
         />
@@ -45,6 +47,9 @@ function CommonHome() {
           <h2>Cropify</h2>
         </div>
       </div>
+
+      <TeamSection></TeamSection>
+      <Footer></Footer>
     </>
   );
 }

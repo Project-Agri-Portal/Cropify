@@ -1,6 +1,7 @@
 import { Container, Navbar, Nav, Breadcrumb, ListGroup } from "react-bootstrap";
 import logo from "../../../logo.svg";
 import wheat from "../../../assets/wheat.png";
+import Footer from "../../Shop/Common/Footer";
 
 function FarmerCrop() {
   const alertClicked = () => {
@@ -22,7 +23,7 @@ function FarmerCrop() {
               height="50"
               alt="cropify logo"
             />
-            <span className="fs-3">CROPIFY</span>
+            <span className="fs-3 text-black">CROPIFY</span>
           </Navbar.Brand>
 
           {/* Login and Register links */}
@@ -70,7 +71,7 @@ function FarmerCrop() {
                 <ListGroup.Item action href="#link3" onClick={alertClicked}>
                   Link 3
                 </ListGroup.Item>
-                <ListGroup.Item action href="link4">
+                <ListGroup.Item action href="#link4">
                   Link 4
                 </ListGroup.Item>
               </ListGroup>
@@ -91,7 +92,7 @@ function FarmerCrop() {
         </div>
       </header>
 
-      <footer className="w-100 bg-primary" style={{ height: "100px" }}></footer>
+      <Footer></Footer>
     </>
   );
 }

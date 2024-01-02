@@ -38,7 +38,7 @@ function Login() {
           justify
         >
           {/* Customer tab and it's content */}
-          <Tab eventKey='customer' title='Customer' 
+          <Tab eventKey='customer' title='Customer'
             tabClassName={'customer-btn ' + (btnOnFocus === "customer" ? 'customer-active' : '')}>
             <InputGroup size='lg' className='mb-5 w-50'>
               <InputGroup.Text className='w-25' id='username'>
@@ -63,14 +63,14 @@ function Login() {
             </InputGroup>
 
             <button className='btn btn-dark btn-lg mb-3'>
-              Login
+              <Link to="/home/customer" className="text-decoration-none text-white">Login</Link>
             </button>
 
             <p>New Customer? <Link to="/register" className='create-span'>Create account</Link></p>
           </Tab>
 
           {/* Farmer tab and it's content */}
-          <Tab eventKey='farmer' title='Farmer' 
+          <Tab eventKey='farmer' title='Farmer'
             tabClassName={'farmer-btn ' + (btnOnFocus === "farmer" ? 'farmer-active' : '')}>
             <InputGroup size='lg' className='mb-5 w-50'>
               <InputGroup.Text className='w-25' id='username'>
@@ -95,7 +95,7 @@ function Login() {
             </InputGroup>
 
             <button className='btn btn-dark btn-lg mb-3'>
-              Login
+              <Link to="/home/farmer" className="text-decoration-none text-white">Login</Link>
             </button>
 
             <p>New Farmer? <Link to="/register" className='create-span'>Create account</Link></p>
@@ -127,7 +127,7 @@ function Login() {
             </InputGroup>
 
             <button className='btn btn-dark btn-lg mb-3'>
-              Login
+              <Link to="/home/seller" className="text-decoration-none text-white">Login</Link>
             </button>
 
             <p>New Seller? <Link to="/register" className='create-span'>Create account</Link></p>

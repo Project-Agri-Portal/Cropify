@@ -1,4 +1,5 @@
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./Seller.css";
 
 function Seller() {
@@ -8,65 +9,68 @@ function Seller() {
         {/* <!-- Sidebar --> */}
 
         <div className="bg-white" id="sidebar-wrapper">
-          <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-            {" "}
-            Cropify
+          <div className="sidebar-heading text-center py-4 border-bottom">
+            <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
+              <i className="bx bxs-leaf"></i>
+              {" "}
+              Cropify
+            </Link>
           </div>
           <div className="list-group list-group-flush my-3">
-            <a
-              href="#"
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text active"
             >
               <i className="fas fa-tachometer-alt me-2"></i>Dashboard
-            </a>
-            <a
-              href="/seller/productlist"
+            </Link>
+            <Link
+              to="/seller/productlist"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-project-diagram me-2"></i>Products
-            </a>
-            <a
-              href="/seller/orderlist"
+            </Link>
+            <Link
+              to="/seller/orderlist"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-chart-line me-2"></i>Order List
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-paperclip me-2"></i>Available Stock
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-shopping-cart me-2"></i>Store Mng
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-gift me-2"></i>Products
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-comment-dots me-2"></i>Chat
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-map-marker-alt me-2"></i>Outlet
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/"
               className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
             >
               <i className="fas fa-power-off me-2"></i>Logout
-            </a>
+            </Link>
           </div>
         </div>
         {/* <!-- /#sidebar-wrapper --> */}
@@ -102,9 +106,9 @@ function Seller() {
             >
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item dropdown">
-                  <a
+                  <Link
                     className="nav-link dropdown-toggle second-text fw-bold"
-                    href="#"
+                    to="#"
                     id="navbarDropdown"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -112,25 +116,25 @@ function Seller() {
                     style={{ color: "rgb(11, 11, 10)" }}
                   >
                     <i className="fas fa-user me-2"></i>Seller Name
-                  </a>
+                  </Link>
                   <ul
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
                     <li>
-                      <a className="dropdown-item" href="/seller/profile">
+                      <Link className="dropdown-item" to="/seller/profile">
                         My Profile
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="#">
                         Settings
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="#">
                         Logout
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
