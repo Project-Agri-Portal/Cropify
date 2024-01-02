@@ -10,6 +10,11 @@ import BlogPage from "./components/ComponentsFarmer/FarmerBlog/BlogPage";
 import FarmerProfile from "./components/ComponentsFarmer/FarmerProfile/FarmerProfile";
 import FarmerCrop from "./components/ComponentsFarmer/FarmerCrops/FarmerCrop";
 import Contact from "./components/Shop/ShopBody/Contact.jsx";
+import Seller from "./components/ComponentsSeller/Seller.jsx";
+import SellerProfile from "./components/ComponentsSeller/SellerProfile.jsx";
+import SellerEdit from "./components/ComponentsSeller/SellerProfileEdit.jsx";
+import OrderList from "./components/ComponentsSeller/SellerOrderList.jsx";
+import ProductList from "./components/ComponentsSeller/SellerProducts.jsx";
 
 function App() {
   return (
@@ -27,6 +32,12 @@ function App() {
           <Route path="/farmer/cropinfo" component={FarmerCrop} exact />
           <Route path="/contact" component={Contact} exact />
           <Route path="/shop/home" component={Shop} exact />
+          <Route path="/home/seller" component={Seller} exact />
+          <Route path="/seller/profile" component={SellerProfile} exact />
+          <Route path="/seller/profileEdit" component={SellerEdit} exact />
+          <Route path="/seller/orderlist" component={OrderList} exact />
+          <Route path="/seller/productlist" component={ProductList} exact />
+          
           {/* <Route path="*" component={NotFound} exact /> */}
         </Switch>
       </div>
