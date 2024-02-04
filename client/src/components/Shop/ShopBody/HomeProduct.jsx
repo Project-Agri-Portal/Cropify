@@ -107,6 +107,7 @@ const HomeProduct = () => {
                   </div>
                   <img
                     src={Orange}
+                    id='productid'
                     className="img-fluid pb-3"
                     alt=""
                   />
