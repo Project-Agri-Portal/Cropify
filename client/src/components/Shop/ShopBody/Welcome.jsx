@@ -6,7 +6,7 @@ import "./Welcome.css"
 const Welcome = () => {
     return(
       <>
-      <div style={{height:"110px"}}></div>
+      <div style={{height:"50px"}}></div>
         <section className="welcome text-center pb-5">
         <div className="container py-5">
           <div className="row py-5 text-white">
@@ -25,7 +25,7 @@ const Welcome = () => {
           </div>
           <div className="row">
             <div className="col-lg-4">
-              <div className="card py-3">
+              <div className="card py-3" id='welcomeid'>
                 <div className="card-body">
                   <span
                     ><svg
@@ -48,7 +48,7 @@ const Welcome = () => {
             </div>
 
             <div className="col-lg-4">
-              <div className="card py-3">
+              <div className="card py-3" id='welcomeid'>
                 <div className="card-body">
                   <span>
                     <svg
@@ -71,7 +71,7 @@ const Welcome = () => {
             </div>
 
             <div className="col-lg-4">
-              <div className="card py-3">
+              <div className="card py-3" id='welcomeid'>
                 <div className="card-body">
                   <span>
                     <svg

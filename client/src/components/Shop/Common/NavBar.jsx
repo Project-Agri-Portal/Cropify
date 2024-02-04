@@ -43,7 +43,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-lg-2" to="#">
+                <Link className="nav-link mx-lg-2" to="shop/about">
                   About Us
                 </Link>
               </li>

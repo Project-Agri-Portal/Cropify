@@ -35,7 +35,7 @@ const Footer = () => {
               </Link>
             </p>
             <p>
-              <Link to="#" className="text-dark" style={{ textdecoration: "none" }}>
+              <Link to="/shop/about" className="text-dark" style={{ textdecoration: "none" }}>
                 About Us
               </Link>
             </p>

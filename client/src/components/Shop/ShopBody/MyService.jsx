@@ -17,7 +17,7 @@ const MyService = () =>{
         <div class="row mb-5">
           <div class="col-12 col-sm-6 col-md-4 m-auto">
             {/* <!-- Card Start --> */}
-            <div class="card shadow cardid">
+            <div class="card shadow cardid" id="serviceid">
               <img src={Pulses} alt="" class="card-img-top" />
               <div class="card-body">
                 <h3 class="text-center">Quality</h3>
@@ -32,7 +32,7 @@ const MyService = () =>{
 
           <div class="col-12 col-sm-6 col-md-4 m-auto">
             {/* <!-- Card Start --> */}
-            <div class="card shadow cardid">
+            <div class="card shadow cardid" id="serviceid">
               <img
                 src={Delivery}
                 alt=""
@@ -52,7 +52,7 @@ const MyService = () =>{
 
           <div class="col-12 col-sm-6 col-md-4 m-auto">
             {/* <!-- Card Start --> */}
-            <div class="card shadow cardid">
+            <div class="card shadow cardid" id="serviceid">
               <img src={Healthy} alt="" class="card-img-top" />
               <div class="card-body">
                 <h3 class="text-center">Healthy</h3>

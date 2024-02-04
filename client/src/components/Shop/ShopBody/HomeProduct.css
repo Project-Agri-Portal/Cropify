@@ -26,7 +26,8 @@
 }
 
 .starid {
-  text-align: end;
+  display: flex;
+  text-align: right;
   color: orange;
 }
 
