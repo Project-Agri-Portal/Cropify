@@ -38,12 +38,12 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-lg-2" to="#">
+                <Link className="nav-link mx-lg-2" to="/shop/productsall">
                   Shop
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-lg-2" to="#">
+                <Link className="nav-link mx-lg-2" to="shop/about">
                   About Us
                 </Link>
               </li>
@@ -67,10 +67,10 @@ const Navbar = () => {
           </div>
         </div>
         <Link to="/login" className="login-button">
-          Log In
+          Profile
         </Link>
         <button
-          className="navbar-toggler pe-0"
+          className="navbar-toggler pe-0 "
           type="button"
           aria-label="Toggle navigation"
         >

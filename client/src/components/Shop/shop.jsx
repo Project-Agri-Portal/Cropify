@@ -10,7 +10,8 @@ import MyService from "./ShopBody/MyService";
 
 function Shop(){
     return(
-        <div className="container-fluid">
+        // <div className="container-fluid">
+        <>
             <NavBar></NavBar>
             <Carousal></Carousal>
             <Welcome></Welcome>
@@ -19,7 +20,8 @@ function Shop(){
             <MyService></MyService>
             {/* <TeamSection></TeamSection> */}
             <Footer></Footer>
-        </div>
+            </>
+        // </div>
     );
 }
 

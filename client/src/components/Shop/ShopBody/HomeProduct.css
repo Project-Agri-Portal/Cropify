@@ -26,7 +26,8 @@
 }
 
 .starid {
-  text-align: end;
+  display: flex;
+  text-align: right;
   color: orange;
 }
 
@@ -68,4 +69,13 @@
   background: transparent;
   border-radius: 50px;
   color: rgb(20, 219, 20);
+}
+
+#productid:hover{
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+
+#productid{
+  transition: 0.5s;
 }
