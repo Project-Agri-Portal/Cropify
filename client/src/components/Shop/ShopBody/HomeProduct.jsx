@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle"
-import Orange from "../../../assets/ShopImages/orange.jpg"
-import Lemon from "../../../assets/ShopImages/lemon.jpg"
-import Pomogrenate from "../../../assets/ShopImages/Pom.jpg"
+import Orange from "../../../assets/ShopImages/orange.png"
+import Lemon from "../../../assets/ShopImages/lemon.png"
+import Pomogrenate from "../../../assets/ShopImages/Pom.png"
 import "./HomeProduct.css"
 
 const HomeProduct = () => {
@@ -203,6 +203,7 @@ const HomeProduct = () => {
                   <img
                     src={Lemon}
                     className="img-fluid pb-3"
+                    id='productid'
                     alt=""
                   />
                   <h4 className="head1">Lemon</h4>
@@ -294,6 +295,7 @@ const HomeProduct = () => {
                   <img
                     src={Pomogrenate}
                     className="img-fluid pb-3"
+                    id='productid'
                     alt=""
                   />
                   <h4 className="head1">Pomegranate</h4>

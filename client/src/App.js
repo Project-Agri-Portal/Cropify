@@ -17,7 +17,7 @@ import OrderList from "./components/ComponentsSeller/SellerOrderList.jsx";
 import ProductList from "./components/ComponentsSeller/SellerProducts.jsx";
 import PageNotFound from "./components/NotFound/PageNotFound.jsx";
 import ShopAboutUs from "./components/Shop/ShopBody/AboutUs.jsx"
-import SingleProductDetails from "./components/Shop/ShopBody/SingleProduct.jsx";
+import ProductListAll from "./components/Shop/ShopBody/ProductList.jsx"
 
 function App() {
   return (
@@ -40,6 +40,7 @@ function App() {
           <Route path="/seller/orderlist" component={OrderList} exact />
           <Route path="/seller/productlist" component={ProductList} exact />
           <Route path="/shop/about" component={ShopAboutUs} exact />
+          <Route path="/shop/productsall" component={ProductListAll} exact />
 
           {/* <Route path="/shop/productdetails" component={SingleProductDetails} exact /> */}
           

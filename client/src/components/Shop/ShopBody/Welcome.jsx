@@ -23,8 +23,9 @@ const Welcome = () => {
               </p>
             </div>
           </div>
+
           <div className="row">
-            <div className="col-lg-4">
+            <div className="col-lg-4 rotate-scale-up">
               <div className="card py-3" id='welcomeid'>
                 <div className="card-body">
                   <span
@@ -34,6 +35,7 @@ const Welcome = () => {
                       height="16"
                       fill="currentColor"
                       className="bi bi-shop-window icon"
+                      id='welcomeimgid'
                       viewBox="0 0 16 16"
                     >
                       <path
@@ -47,7 +49,7 @@ const Welcome = () => {
               </div>
             </div>
 
-            <div className="col-lg-4">
+            <div className="col-lg-4 rotate-scale-up">
               <div className="card py-3" id='welcomeid'>
                 <div className="card-body">
                   <span>
@@ -57,6 +59,7 @@ const Welcome = () => {
                       height="16"
                       fill="currentColor"
                       className="bi bi-flower2 icon"
+                      id='welcomeimgid'
                       viewBox="0 0 16 16"
                     >
                       <path
@@ -70,7 +73,7 @@ const Welcome = () => {
               </div>
             </div>
 
-            <div className="col-lg-4">
+            <div className="col-lg-4 rotate-scale-up">
               <div className="card py-3" id='welcomeid'>
                 <div className="card-body">
                   <span>
@@ -80,6 +83,7 @@ const Welcome = () => {
                       height="16"
                       fill="currentColor"
                       className="bi bi-gift icon"
+                      id='welcomeimgid'
                       viewBox="0 0 16 16"
                     >
                       <path
