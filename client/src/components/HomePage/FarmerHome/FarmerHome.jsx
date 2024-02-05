@@ -30,7 +30,7 @@ function FarmerHome() {
             <Nav.Link href="/farmer/profile" className="nav-link fs-4">
               Profile
             </Nav.Link>
-            <Nav.Link href="/crop/wheat" className="nav-link fs-4">
+            <Nav.Link href="/farmer/cropinfo" className="nav-link fs-4">
               Crop Info
             </Nav.Link>
             <Nav.Link href="/blog" className="nav-link fs-4">
