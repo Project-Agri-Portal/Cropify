@@ -10,6 +10,10 @@
   font-weight: bold;
 }
 
+#productbc{
+  background-color: white;
+}
+
 .product p:nth-child(1) {
   font-size: 18px;
   font-weight: 500;
