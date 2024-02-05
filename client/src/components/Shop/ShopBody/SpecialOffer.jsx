@@ -28,8 +28,8 @@ var x = setInterval(function () {
 
   // If the countdown is over, display a message
   if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("countdown").innerHTML = "EXPIRED";
+    // clearInterval(x);
+    // document.getElementById("countdown").innerHTML = "EXPIRED";
   }
 }, 1000);
 

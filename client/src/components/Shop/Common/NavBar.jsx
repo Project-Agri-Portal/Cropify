@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import "../../../../node_modules/bootstrap/dist/js/bootstrap.bundle"
-import "./NavBar.css"
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import React, { useState } from "react";
+import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../../../node_modules/bootstrap/dist/js/bootstrap.bundle";
+import "./NavBar.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Navbar = () => {
-
   return (
     <nav className="navbar navbar-expand-lg fixed-top">
       <div className="container-fluid">
-        <a className={`navbar-brand me-auto`} href="#">
-          Logo
-        </a>
+        <Link className={`navbar-brand me-auto`} to="/">
+          CROPIFY
+        </Link>
         <div
           className={`offcanvas offcanvas-end }`}
           tabIndex="-1"
@@ -34,41 +33,44 @@ const Navbar = () => {
                 {/* <a className="nav-link mx-lg-2 active" aria-current="page" href="#">
                   Home
                 </a> */}
-                <Link to="/shop/home" className="nav-link mx-lg-2 active">
+                <Link to="/home/customer" className="nav-link mx-lg-2 active">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link mx-lg-2" href="#">
+                <Link className="nav-link mx-lg-2" to="/shop/productsall">
                   Shop
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link mx-lg-2" href="#">
+                <Link className="nav-link mx-lg-2" to="shop/about">
                   About Us
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 {/* <a className="nav-link mx-lg-2" href="#">
                   Contact
                 </a> */}
-                <Link to="/contact" className="nav-link mx-lg-2">Contact</Link>
+                <Link to="/contact" className="nav-link mx-lg-2">
+                  Contact
+                </Link>
               </li>
               <li className="nav-item">
                 {/* <a className="nav-link mx-lg-2" href="#">
                   Contact
                 </a> */}
-                <Link to="/blog" className="nav-link mx-lg-2">Blog</Link>
+                <Link to="/blog" className="nav-link mx-lg-2">
+                  Blog
+                </Link>
               </li>
-              
             </ul>
           </div>
         </div>
-        <a href="#" className="login-button">
-          Log In
-        </a>
+        <Link to="/login" className="login-button">
+          Profile
+        </Link>
         <button
-          className="navbar-toggler pe-0"
+          className="navbar-toggler pe-0 "
           type="button"
           aria-label="Toggle navigation"
         >
@@ -77,7 +79,6 @@ const Navbar = () => {
       </div>
     </nav>
   );
-
 };
 
 export default Navbar;

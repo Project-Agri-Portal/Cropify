@@ -1,8 +1,12 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
 import logo from "../../../logo.svg";
 import map from "../../../assets/Map.png";
+import Footer from "../../Shop/Common/Footer";
 
 function FarmerHome() {
+
+  var paramArr = ["Temperature", "Soil Index", "Rainfall meter", "Humidity", "Wind Speed", "", "", "", "", "","",""];
+
   return (
     <>
       <Navbar className="bg-warning-subtle">
@@ -26,7 +30,7 @@ function FarmerHome() {
             <Nav.Link href="/farmer/profile" className="nav-link fs-4">
               Profile
             </Nav.Link>
-            <Nav.Link href="/crop/wheat" className="nav-link fs-4">
+            <Nav.Link href="/farmer/cropinfo" className="nav-link fs-4">
               Crop Info
             </Nav.Link>
             <Nav.Link href="/blog" className="nav-link fs-4">
@@ -37,15 +41,37 @@ function FarmerHome() {
       </Navbar>
 
       <header className="container" style={{ height: "100vh" }}>
-        <div className="d-flex" style={{ paddingTop: "10em" }}>
+        <div className="d-flex" style={{ paddingTop: "5em" }}>
           <div className="">
             <img className="w-100" src={map} alt="india map" />
           </div>
-          <div className="w-50 bg-secondary"></div>
+          <div className="w-50 bg-secondary table-responsive">
+            <table className="table table-bordered table-success table-striped fs-4">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {paramArr.map((param, i) => {
+                  return (
+                    <tr>
+                      {param !== "" ?
+                        <td>{param}</td> :
+                        <td>Parameter-{i + 1}</td>
+                      }
+                      <td>Value-{i + 1}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </header>
 
-      <footer className="w-100 bg-primary" style={{ height: "100px" }}></footer>
+      <Footer></Footer>
     </>
   );
 }
