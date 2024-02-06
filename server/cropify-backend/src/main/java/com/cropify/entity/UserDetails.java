@@ -228,10 +228,11 @@ public class UserDetails {
 	// -------------- 1) farmer product details ---------
 	public void addFarmerProductDetails(FarmerProductDetails productDetails) {
 		farmerProductDetails.add(productDetails);
-		
+		productDetails.setFarmerId(this);
 	}
 	public void removeFarmerProductDetails(FarmerProductDetails productDetails) {
 		farmerProductDetails.remove(productDetails);
+//		productDetails.setFarmerId(null);
 	}
 	
 	// -------------- 2) seller machinery details ---------
