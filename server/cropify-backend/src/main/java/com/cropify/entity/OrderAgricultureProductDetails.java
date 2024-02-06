@@ -5,17 +5,22 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class OrderAgricultureProductDetails extends OrderBaseClass {
 	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
 	
+	/*
 	@JoinColumn(name = "seller_id", nullable = false)
 	private UserDetails sellerId;
-	
 	@JoinColumn(name = "agri_prod_id", nullable = false)
 	private AgricultureProducts agricultureProductId;
+	*/
+	@ManyToOne	// owning
+	@JoinColumn(name = "seller_agri_product_id", nullable = false)
+	private SellerAgricultureProductDetails sellerAgricultureProductId;
 	
 	@Column(name = "order_date")
 	private LocalDate orderDate;
@@ -39,25 +44,32 @@ public class OrderAgricultureProductDetails extends OrderBaseClass {
 		this.farmerId = farmerId;
 	}
 
+	/*
 	public UserDetails getSellerId() {
 		return sellerId;
 	}
-
 	public void setSellerId(UserDetails sellerId) {
 		this.sellerId = sellerId;
 	}
-
 	public AgricultureProducts getAgricultureProductId() {
 		return agricultureProductId;
 	}
-
 	public void setAgricultureProductId(AgricultureProducts agricultureProductId) {
 		this.agricultureProductId = agricultureProductId;
 	}
-
+	*/
+	public SellerAgricultureProductDetails getSellerAgricultureProductId() {
+		return sellerAgricultureProductId;
+	}
+	
+	public void setSellerAgricultureProductId(SellerAgricultureProductDetails sellerAgricultureProductId) {
+		this.sellerAgricultureProductId = sellerAgricultureProductId;
+	}
+	
 	public LocalDate getOrderDate() {
 		return orderDate;
 	}
+
 
 	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;

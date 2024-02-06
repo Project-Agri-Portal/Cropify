@@ -55,6 +55,13 @@ public class AgricultureProducts {
 	}
 	
 	
-	
-	
+	// ---------------------- Helper Methods ---------------------------------
+	public void addSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
+		sellerAgricultureProductDetails.add(productDetails);
+		productDetails.setAgriProductId(this);
+	}
+	public void removeSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
+		sellerAgricultureProductDetails.remove(productDetails);
+		productDetails.setAgriProductId(null);
+	}
 }
