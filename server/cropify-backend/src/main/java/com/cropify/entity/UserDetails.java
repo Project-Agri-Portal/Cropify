@@ -228,6 +228,7 @@ public class UserDetails {
 	// -------------- 1) farmer product details ---------
 	public void addFarmerProductDetails(FarmerProductDetails productDetails) {
 		farmerProductDetails.add(productDetails);
+		
 	}
 	public void removeFarmerProductDetails(FarmerProductDetails productDetails) {
 		farmerProductDetails.remove(productDetails);
