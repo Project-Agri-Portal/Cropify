@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
-@Table
+//@Table
 public class UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
