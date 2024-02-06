@@ -3,14 +3,17 @@ package com.cropify.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class SellerMachineryDetails {
 
-	@Column(name = "machine_id", nullable = false)
+	@JoinColumn(name = "machine_id", nullable = false)
 	private Machinery machineryId;
 
-	@Column(name = "seller_id")
+	@ManyToOne	// owning
+	@JoinColumn(name = "seller_id", nullable = false)
 	private UserDetails sellerId;
 	
 	@Column(nullable = false)

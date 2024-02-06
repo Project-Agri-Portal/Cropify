@@ -8,13 +8,13 @@ import javax.persistence.JoinColumn;
 
 @Entity
 public class OrderAgricultureProductDetails extends OrderBaseClass {
-	@Column(name = "farmer_id")
+	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
 	
-	@Column(name = "seller_id")
+	@JoinColumn(name = "seller_id", nullable = false)
 	private UserDetails sellerId;
 	
-	@Column(name = "agri_prod_id")
+	@JoinColumn(name = "agri_prod_id", nullable = false)
 	private AgricultureProducts agricultureProductId;
 	
 	@Column(name = "order_date")

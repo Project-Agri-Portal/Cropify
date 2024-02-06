@@ -7,17 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class OrderMachineDetails extends OrderBaseClass{
 	
-	@Column(name = "farmer_id")
+	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
 	
-	@Column(name = "seller_id")
+	@JoinColumn(name = "seller_id", nullable = false)
 	private UserDetails sellerId;
 	
-	@Column(name = "machine_id")
+	@JoinColumn(name = "machine_id", nullable = false)
 	private Machinery machineId;
 	
 	@Column(name = "rent_duration")
