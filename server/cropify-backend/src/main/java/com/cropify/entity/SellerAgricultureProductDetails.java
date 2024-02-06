@@ -23,6 +23,7 @@ public class SellerAgricultureProductDetails {
 	@Column(name = "seller_agri_product_id")
 	private Long sellerAgricultureProductId;
 	
+	@ManyToOne
 	@JoinColumn(name = "seller_prod_id", nullable = false)
 	private AgricultureProducts agriProductId;
 	

@@ -25,8 +25,8 @@ public class AgricultureProducts {
 	@Enumerated(EnumType.STRING)
 	private AgriProductType agriProductType;
 	
-	@OneToMany(mappedBy = "sellerAgriProductId", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<SellerAgricultureProductDetails>();
+	@OneToMany(mappedBy = "agriProductId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
 	
 	//-----------------------------Getter and Setters--------------------
 

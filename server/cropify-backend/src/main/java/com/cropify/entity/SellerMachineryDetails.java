@@ -21,6 +21,7 @@ public class SellerMachineryDetails {
 	@Column(name = "seller_machine_id")
 	private Long sellerMachineryId;
 
+	@ManyToOne
 	@JoinColumn(name = "machine_id", nullable = false)
 	private Machinery machineryId;
 

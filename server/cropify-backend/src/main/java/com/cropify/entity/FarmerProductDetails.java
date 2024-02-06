@@ -24,6 +24,7 @@ public class FarmerProductDetails {
 	@Column(name = "farmer_product_details_id")
 	private Long farmerProductDetailsId;
 
+	@ManyToOne
 	@JoinColumn(name = "farm_prod_id", nullable = false)
 	private FarmProducts farmProductId;
 

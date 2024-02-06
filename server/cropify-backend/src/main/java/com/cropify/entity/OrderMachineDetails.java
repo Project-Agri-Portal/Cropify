@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class OrderMachineDetails extends OrderBaseClass{
-	
+	@ManyToOne
 	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
 	
