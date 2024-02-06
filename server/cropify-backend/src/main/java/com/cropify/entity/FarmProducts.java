@@ -29,6 +29,20 @@ public class FarmProducts {
 	
 	//-----------------------------Getter and Setters--------------------
 
+	/**
+	 * @return the farmerProductDetails
+	 */
+	public List<FarmerProductDetails> getFarmerProductDetails() {
+		return farmerProductDetails;
+	}
+
+	/**
+	 * @param farmerProductDetails the farmerProductDetails to set
+	 */
+	public void setFarmerProductDetails(List<FarmerProductDetails> farmerProductDetails) {
+		this.farmerProductDetails = farmerProductDetails;
+	}
+
 	public String getFarmProductId() {
 		return farmProductId;
 	}
@@ -53,13 +67,6 @@ public class FarmProducts {
 		this.farmProductType = farmProductType;
 	}
 	
-	// ------------------------ Helper Methods ----------------------------------
-	public void addFarmerProductDetails(FarmerProductDetails productDetails) {
-		farmerProductDetails.add(productDetails);
-		productDetails.setFarmProductId(this);
-	}
-	public void removeFarmerProductDetails(FarmerProductDetails productDetails) {
-		farmerProductDetails.remove(productDetails);
-		productDetails.setFarmProductId(null);
-	}
+	
+	
 }
