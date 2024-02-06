@@ -1,0 +1,55 @@
+.billing-form label {
+    font-weight: bold;
+}
+
+.billing-form input,
+.billing-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.billing-form .select-wrap {
+    position: relative;
+}
+
+.billing-form .select-wrap select {
+    padding-right: 30px;
+}
+
+.billing-form .select-wrap .icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.cart-detail .total-price {
+    font-weight: bold;
+}
+
+.billing-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
+}
+
+.cart-detail {
+    background-color: #ffffff;
+    border-radius: 10px;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
+}
+
+.billing-heading {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.billing-form .btn-primary {
+    width: 100%;
+}

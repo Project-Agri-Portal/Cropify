@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import carousalImage from "../../../assets/ShopImages/fruit.jpg"
+// import carousalImage1 from "../../../assets/ShopImages/in"
 import "./Carousal.css"
 
 const Carousal = () => {
