@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
-@Table
 public class UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +51,7 @@ public class UserDetails {
 	
 //	if value is 0 then user/seller is not verify
 //	if value is +ve then user/seller is verify
-@Column(nullable = false)
+	@Column(nullable = false)
 	private byte verify;
 
 	@Column(nullable = false,unique = true)

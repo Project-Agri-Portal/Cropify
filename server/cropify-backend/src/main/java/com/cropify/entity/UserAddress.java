@@ -6,15 +6,15 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class UserAddress {
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 50)
 	private String city;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 50)
 	private String state;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 80)
 	private String pincode;
 	
-	@Column(nullable = false)
+	@Column(name = "full_address", nullable = false)
 	private String fullAddress;
 }

@@ -27,7 +27,7 @@ const Checkout = () => {
                                 <div className="w-100"></div>
                                 <div className="col-md-12">
                                     <div className="form-group">
-                                        <label for="country">State / Country</label>
+                                        <label for="country">State</label>
                                         <div className="select-wrap">
                                             <div className="icon"><span className="ion-ios-arrow-down"></span></div>
                                             <select name="" id="" className="form-control">
@@ -83,8 +83,8 @@ const Checkout = () => {
                                 <div className="col-md-12">
                                     <div className="form-group mt-4">
                                         <div className="radio">
-                                            <label className="mr-3"><input type="radio" name="optradio"/> Create an Account? </label>
-                                            <label><input type="radio" name="optradio"/> Ship to a different address</label>
+                                            {/* <label className="mr-3"><input type="radio" name="optradio"/> Create an Account? </label> */}
+                                            <label>Ship to a different address { }<a href="" className="address-link">Click here</a></label>
                                         </div>
                                     </div>
                                 </div>
@@ -115,6 +115,7 @@ const Checkout = () => {
                                     </p>
                                 </div>
                                 <div className="cart-detail p-3 p-md-4 mt-5 pt-3 mb-5">
+                                    
                                     <h3 className="billing-heading mb-4">Payment Method</h3>
                                     <div className="form-group">
                                         <div className="col-md-12">
@@ -133,18 +134,18 @@ const Checkout = () => {
                                     <div className="form-group">
                                         <div className="col-md-12">
                                             <div className="radio">
-                                                <label><input type="radio" name="optradio" className="mr-2"/> Paypal</label>
+                                                <label><input type="radio" name="optradio" className="mr-2 mb-3"/> Paypal</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <div className="col-md-12">
                                             <div className="checkbox">
-                                                <label><input type="checkbox" value="" className="mr-2"/> I have read and accept the terms and conditions</label>
+                                                <label><input type="checkbox" value="" className="mr-2 mb-3"/> I have read and accept the terms and conditions</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <p><a href="#" className="btn btn-primary py-3 px-4">Place an order</a></p>
+                                    <p><a href="#" className="btn btn-primary">ordered</a></p>
                                 </div>
                             </div>
                         </div>

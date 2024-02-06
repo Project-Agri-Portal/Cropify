@@ -1,5 +1,5 @@
 package com.cropify.entity;
 
-public enum FarmProduct {
+public enum FarmProductType {
 	P,Q,R,S
 }
