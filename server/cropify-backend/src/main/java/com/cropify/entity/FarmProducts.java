@@ -18,4 +18,33 @@ public class FarmProducts {
 	@Column(name = "farm_prod_type")
 	@Enumerated(EnumType.STRING)
 	private FarmProductType farmProductType;
+	
+	//-----------------------------Getter and Setters--------------------
+
+	public String getFarmProductId() {
+		return farmProductId;
+	}
+
+	public void setFarmProductId(String farmProductId) {
+		this.farmProductId = farmProductId;
+	}
+
+	public String getFarmProductName() {
+		return farmProductName;
+	}
+
+	public void setFarmProductName(String farmProductName) {
+		this.farmProductName = farmProductName;
+	}
+
+	public FarmProductType getFarmProductType() {
+		return farmProductType;
+	}
+
+	public void setFarmProductType(FarmProductType farmProductType) {
+		this.farmProductType = farmProductType;
+	}
+	
+	
+	
 }

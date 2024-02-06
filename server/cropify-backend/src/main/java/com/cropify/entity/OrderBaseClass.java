@@ -12,4 +12,16 @@ public class OrderBaseClass {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id")
 	private Long orderId;
+	
+	//-----------------------------Getter and Setters--------------------
+
+	public Long getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+	
+	
 }
