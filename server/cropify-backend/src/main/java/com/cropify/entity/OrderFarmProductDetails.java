@@ -11,9 +11,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class OrderFarmProductDetails extends OrderBaseClass {
-//	@JoinColumn(name = "farmer_id", nullable = false)
-//	private UserDetails farmerId;
-	
+	@ManyToOne
 	@JoinColumn(name = "customer_id", nullable = false)
 	private UserDetails customerId;
 	
@@ -21,6 +19,8 @@ public class OrderFarmProductDetails extends OrderBaseClass {
 	@JoinColumn(name="farmer_product_details_id", nullable = false)
 	private FarmerProductDetails farmerProductDetails;
 	
+//	@JoinColumn(name = "farmer_id", nullable = false)
+//	private UserDetails farmerId;	
 //	@JoinColumn(name = "farm_prod_id", nullable = false)
 //	private FarmProducts farmProductId;
 	
