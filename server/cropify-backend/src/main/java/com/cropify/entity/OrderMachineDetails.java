@@ -8,18 +8,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class OrderMachineDetails extends OrderBaseClass{
-	
+	@ManyToOne
 	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
 	
-	@JoinColumn(name = "seller_id", nullable = false)
-	private UserDetails sellerId;
-	
+/*	Substituting the following with a single ID
+ * @JoinColumn(name = "seller_id", nullable = false)
+	private UserDetails sellerId;	
 	@JoinColumn(name = "machine_id", nullable = false)
 	private Machinery machineId;
+*/
+	@ManyToOne	// owning
+	@JoinColumn(name = "seller_machine_id", nullable = false)
+	private SellerMachineryDetails sellerMachineryId;
 	
 	@Column(name = "rent_duration")
 	private int rentDuration;
@@ -29,7 +34,7 @@ public class OrderMachineDetails extends OrderBaseClass{
 	
 	@Column(name = "delivery_date")
 	private LocalDate deliveryDate;
-	
+
 	@Column
 	private int quantity;
 	
@@ -46,22 +51,28 @@ public class OrderMachineDetails extends OrderBaseClass{
 		this.farmerId = farmerId;
 	}
 
+	/*
 	public UserDetails getSellerId() {
 		return sellerId;
 	}
-
 	public void setSellerId(UserDetails sellerId) {
 		this.sellerId = sellerId;
 	}
-
 	public Machinery getMachineId() {
 		return machineId;
 	}
-
 	public void setMachineId(Machinery machineId) {
 		this.machineId = machineId;
 	}
+	*/
+	public SellerMachineryDetails getSellerMachineryId() {
+		return sellerMachineryId;
+	}
 
+	public void setSellerMachineryId(SellerMachineryDetails sellerMachineryId) {
+		this.sellerMachineryId = sellerMachineryId;
+	}
+	
 	public int getRentDuration() {
 		return rentDuration;
 	}

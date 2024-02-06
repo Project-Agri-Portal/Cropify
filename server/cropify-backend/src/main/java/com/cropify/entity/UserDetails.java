@@ -13,7 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Range;
 
@@ -79,6 +78,15 @@ public class UserDetails {
 	
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "customerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderFarmProductDetails> orderFarmProductDetails = new ArrayList<>();
+
+	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
 
 	/**
 	 * @return the farmerProductDetails
@@ -126,6 +134,30 @@ public class UserDetails {
 	
 	//-----------------------------Getter and Setters--------------------
 
+	public List<OrderFarmProductDetails> getOrderFarmProductDetails() {
+		return orderFarmProductDetails;
+	}
+
+	public void setOrderFarmProductDetails(List<OrderFarmProductDetails> orderFarmProductDetails) {
+		this.orderFarmProductDetails = orderFarmProductDetails;
+	}
+
+	public List<OrderMachineDetails> getOrderMachineDetails() {
+		return orderMachineDetails;
+	}
+
+	public void setOrderMachineDetails(List<OrderMachineDetails> orderMachineDetails) {
+		this.orderMachineDetails = orderMachineDetails;
+	}
+
+	public List<OrderAgricultureProductDetails> getOrderAgricultureProductDetails() {
+		return orderAgricultureProductDetails;
+	}
+
+	public void setOrderAgricultureProductDetails(List<OrderAgricultureProductDetails> orderAgricultureProductDetails) {
+		this.orderAgricultureProductDetails = orderAgricultureProductDetails;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -238,16 +270,48 @@ public class UserDetails {
 	// -------------- 2) seller machinery details ---------
 	public void addSellerMachineryDetails(SellerMachineryDetails productDetails) {
 		sellerMachineryDetails.add(productDetails);
+		productDetails.setSellerId(this);
 	}
 	public void removeSellerMachineryDetails(SellerMachineryDetails productDetails) {
 		sellerMachineryDetails.remove(productDetails);
+		productDetails.setSellerId(null);
 	}
 	
 	// -------------- 3) seller agri product details ---------
 	public void addSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
 		sellerAgricultureProductDetails.add(productDetails);
+		productDetails.setSellerId(this);
 	}
 	public void removeSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
 		sellerAgricultureProductDetails.remove(productDetails);
+		productDetails.setSellerId(null);
+	}
+	
+	// -------------- 4) order table details ---------
+	public void addOrderAgricultureProductDetails(OrderAgricultureProductDetails productDetails) {
+		orderAgricultureProductDetails.add(productDetails);
+		productDetails.setFarmerId(this);
+	}
+	public void removeOrderAgricultureProductDetails(OrderAgricultureProductDetails productDetails) {
+		orderAgricultureProductDetails.remove(productDetails);
+		productDetails.setFarmerId(null);
+	}
+	
+	public void addOrderFarmProductDetails(OrderFarmProductDetails productDetails) {
+		orderFarmProductDetails.add(productDetails);
+		productDetails.setCustomerId(this);
+	}
+	public void removeOrderFarmProductDetails(OrderFarmProductDetails productDetails) {
+		orderFarmProductDetails.remove(productDetails);
+		productDetails.setCustomerId(null);
+	}
+	
+	public void addOrderMachineDetails(OrderMachineDetails machineDetails) {
+		orderMachineDetails.add(machineDetails);
+		machineDetails.setFarmerId(this);
+	}
+	public void removeOrderMachineDetails(OrderMachineDetails machineDetails) {
+		orderMachineDetails.remove(machineDetails);
+		machineDetails.setFarmerId(null);
 	}
 }

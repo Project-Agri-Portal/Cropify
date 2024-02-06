@@ -1,10 +1,15 @@
 package com.cropify.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Machinery {
@@ -19,6 +24,9 @@ public class Machinery {
 	@Column(name = "machine_type", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private MachineType machineType;
+	
+	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<SellerMachineryDetails>();
 	
 	//-----------------------------Getter and Setters--------------------
 
@@ -46,5 +54,13 @@ public class Machinery {
 		this.machineType = machineType;
 	}
 	
-	
+	// ---------------------- Helper Methods ---------------------------------
+	public void addSellerMachineryDetails(SellerMachineryDetails machineDetails) {
+		sellerMachineryDetails.add(machineDetails);
+		machineDetails.setMachineryId(this);
+	}
+	public void removeSellerMachineryDetails(SellerMachineryDetails machineDetails) {
+		sellerMachineryDetails.remove(machineDetails);
+		machineDetails.setMachineryId(null);
+	}
 }

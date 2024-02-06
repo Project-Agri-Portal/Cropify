@@ -1,22 +1,35 @@
 package com.cropify.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class SellerAgricultureProductDetails {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "seller_agri_product_id")
+	private Long sellerAgricultureProductId;
+	
+	@ManyToOne
+	@JoinColumn(name = "seller_prod_id", nullable = false)
+	private AgricultureProducts agriProductId;
+	
 	@ManyToOne	// owning
 	@JoinColumn(name = "seller_id", nullable = false)
-	private UserDetails sellerId;
-	
-	@JoinColumn(name = "seller_prod_id", nullable = false)
-	private AgricultureProducts sellerAgriProductId;
+	private UserDetails sellerId;	
 	
 	@Column
 	private int quantity;
@@ -34,6 +47,9 @@ public class SellerAgricultureProductDetails {
 	@Enumerated(EnumType.STRING)
 	private FarmProductsStatus sellerProductStatus;
 	
+	@OneToMany(mappedBy = "sellerAgricultureProductId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
+	
 	//-----------------------------Getter and Setters--------------------
 
 	public UserDetails getSellerId() {
@@ -44,12 +60,28 @@ public class SellerAgricultureProductDetails {
 		this.sellerId = sellerId;
 	}
 
-	public AgricultureProducts getSellerAgriProductId() {
-		return sellerAgriProductId;
+	public Long getSellerAgricultureProductId() {
+		return sellerAgricultureProductId;
 	}
 
-	public void setSellerAgriProductId(AgricultureProducts sellerAgriProductId) {
-		this.sellerAgriProductId = sellerAgriProductId;
+	public void setSellerAgricultureProductId(Long sellerAgricultureProductId) {
+		this.sellerAgricultureProductId = sellerAgricultureProductId;
+	}
+
+	public AgricultureProducts getAgriProductId() {
+		return agriProductId;
+	}
+
+	public void setAgriProductId(AgricultureProducts agriProductId) {
+		this.agriProductId = agriProductId;
+	}
+
+	public List<OrderAgricultureProductDetails> getOrderAgricultureProductDetails() {
+		return orderAgricultureProductDetails;
+	}
+
+	public void setOrderAgricultureProductDetails(List<OrderAgricultureProductDetails> orderAgricultureProductDetails) {
+		this.orderAgricultureProductDetails = orderAgricultureProductDetails;
 	}
 
 	public int getQuantity() {
@@ -92,6 +124,13 @@ public class SellerAgricultureProductDetails {
 		this.sellerProductStatus = sellerProductStatus;
 	}
 	
-	
-	
+	// -------------- Helper Methods for: --------------------
+	public void addOrderAgricultureProductDetails(OrderAgricultureProductDetails productDetails) {
+		orderAgricultureProductDetails.add(productDetails);
+		productDetails.setSellerAgricultureProductId(this);
+	}
+	public void removeOrderAgricultureProductDetails(OrderAgricultureProductDetails productDetails) {
+		orderAgricultureProductDetails.remove(productDetails);
+		productDetails.setSellerAgricultureProductId(null);
+	}
 }

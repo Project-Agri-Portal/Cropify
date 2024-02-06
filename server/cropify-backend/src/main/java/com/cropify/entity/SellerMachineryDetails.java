@@ -1,14 +1,27 @@
 package com.cropify.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class SellerMachineryDetails {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "seller_machine_id")
+	private Long sellerMachineryId;
 
+	@ManyToOne
 	@JoinColumn(name = "machine_id", nullable = false)
 	private Machinery machineryId;
 
@@ -27,6 +40,9 @@ public class SellerMachineryDetails {
 	
 	@Column(nullable = false)
 	private boolean isAvailable;
+	
+	@OneToMany(mappedBy = "sellerMachineryId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
 	
 	//-----------------------------Getter and Setters--------------------
 
@@ -78,6 +94,30 @@ public class SellerMachineryDetails {
 		this.isAvailable = isAvailable;
 	}
 	
-	
+	public Long getSellerMachineryId() {
+		return sellerMachineryId;
+	}
+
+	public void setSellerMachineryId(Long sellerMachineryId) {
+		this.sellerMachineryId = sellerMachineryId;
+	}
+
+	public List<OrderMachineDetails> getOrderMachineDetails() {
+		return orderMachineDetails;
+	}
+
+	public void setOrderMachineDetails(List<OrderMachineDetails> orderMachineDetails) {
+		this.orderMachineDetails = orderMachineDetails;
+	}
+
+	// -------------- Helper Methods for: --------------------
+	public void addOrderMachineDetails(OrderMachineDetails machineDetails) {
+		orderMachineDetails.add(machineDetails);
+		machineDetails.setSellerMachineryId(this);
+	}
+	public void removeOrderMachineDetails(OrderMachineDetails machineDetails) {
+		orderMachineDetails.remove(machineDetails);
+		machineDetails.setSellerMachineryId(null);
+	}
 	
 }

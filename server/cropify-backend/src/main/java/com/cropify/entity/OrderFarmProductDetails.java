@@ -7,17 +7,22 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class OrderFarmProductDetails extends OrderBaseClass {
-	@JoinColumn(name = "farmer_id", nullable = false)
-	private UserDetails farmerId;
-	
+	@ManyToOne
 	@JoinColumn(name = "customer_id", nullable = false)
 	private UserDetails customerId;
 	
-	@JoinColumn(name = "farm_prod_id", nullable = false)
-	private FarmProducts farmProductId;
+	@ManyToOne
+	@JoinColumn(name="farmer_product_details_id", nullable = false)
+	private FarmerProductDetails farmerProductDetails;
+	
+//	@JoinColumn(name = "farmer_id", nullable = false)
+//	private UserDetails farmerId;	
+//	@JoinColumn(name = "farm_prod_id", nullable = false)
+//	private FarmProducts farmProductId;
 	
 	@Column(name = "order_date")
 	private LocalDate orderDate;
@@ -37,13 +42,13 @@ public class OrderFarmProductDetails extends OrderBaseClass {
 	
 	//-----------------------------Getter and Setters--------------------
 
-	public UserDetails getFarmerId() {
-		return farmerId;
-	}
-
-	public void setFarmerId(UserDetails farmerId) {
-		this.farmerId = farmerId;
-	}
+//	public UserDetails getFarmerId() {
+//		return farmerId;
+//	}
+//
+//	public void setFarmerId(UserDetails farmerId) {
+//		this.farmerId = farmerId;
+//	}
 
 	public UserDetails getCustomerId() {
 		return customerId;
@@ -53,13 +58,13 @@ public class OrderFarmProductDetails extends OrderBaseClass {
 		this.customerId = customerId;
 	}
 
-	public FarmProducts getFarmProductId() {
-		return farmProductId;
-	}
-
-	public void setFarmProductId(FarmProducts farmProductId) {
-		this.farmProductId = farmProductId;
-	}
+//	public FarmProducts getFarmProductId() {
+//		return farmProductId;
+//	}
+//
+//	public void setFarmProductId(FarmProducts farmProductId) {
+//		this.farmProductId = farmProductId;
+//	}
 
 	public LocalDate getOrderDate() {
 		return orderDate;
@@ -99,6 +104,14 @@ public class OrderFarmProductDetails extends OrderBaseClass {
 
 	public void setFarmOrderStatus(FarmOrderStatus farmOrderStatus) {
 		this.farmOrderStatus = farmOrderStatus;
+	}
+
+	public FarmerProductDetails getFarmerProductDetails() {
+		return farmerProductDetails;
+	}
+
+	public void setFarmerProductDetails(FarmerProductDetails farmerProductDetails) {
+		this.farmerProductDetails = farmerProductDetails;
 	}
 	
 	
