@@ -238,16 +238,20 @@ public class UserDetails {
 	// -------------- 2) seller machinery details ---------
 	public void addSellerMachineryDetails(SellerMachineryDetails productDetails) {
 		sellerMachineryDetails.add(productDetails);
+		productDetails.setSellerId(this);
 	}
 	public void removeSellerMachineryDetails(SellerMachineryDetails productDetails) {
 		sellerMachineryDetails.remove(productDetails);
+		productDetails.setMachineryId(null);
 	}
 	
 	// -------------- 3) seller agri product details ---------
 	public void addSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
 		sellerAgricultureProductDetails.add(productDetails);
+		productDetails.setSellerId(this);
 	}
 	public void removeSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
 		sellerAgricultureProductDetails.remove(productDetails);
+		productDetails.setSellerId(null);
 	}
 }
