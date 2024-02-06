@@ -4,18 +4,24 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-public class OrderAgricultureProductDetails extends OrderBaseClass {
+public class OrderMachineDetails extends OrderBaseClass{
+	
 	@Column(name = "farmer_id")
 	private UserDetails farmerId;
 	
 	@Column(name = "seller_id")
 	private UserDetails sellerId;
 	
-	@Column(name = "agri_prod_id")
-	private AgricultureProducts agricultureProductId;
+	@Column(name = "machine_id")
+	private Machinery machineId;
+	
+	@Column(name = "rent_duration")
+	private int rentDuration;
 	
 	@Column(name = "order_date")
 	private LocalDate orderDate;
