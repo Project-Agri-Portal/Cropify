@@ -1,5 +1,9 @@
 package com.cropify.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -8,6 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Range;
@@ -64,4 +69,61 @@ public class UserDetails {
 //	if status is "block" then seller cannot sell any products
 	@Column()
 	private String status;
+	
+	// ------- Assigning various lists ------
+	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<FarmerProductDetails> farmerProductDetails = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
+
+	/**
+	 * @return the farmerProductDetails
+	 */
+	public List<FarmerProductDetails> getFarmerProductDetails() {
+		return farmerProductDetails;
+	}
+
+	/**
+	 * @param farmerProductDetails the farmerProductDetails to set
+	 */
+	public void setFarmerProductDetails(List<FarmerProductDetails> farmerProductDetails) {
+		this.farmerProductDetails = farmerProductDetails;
+	}
+
+	// ---------- Setters for Lists -------------
+
+	/**
+	 * @return the sellerMachineryDetails
+	 */
+	public List<SellerMachineryDetails> getSellerMachineryDetails() {
+		return sellerMachineryDetails;
+	}
+
+	/**
+	 * @param sellerMachineryDetails the sellerMachineryDetails to set
+	 */
+	public void setSellerMachineryDetails(List<SellerMachineryDetails> sellerMachineryDetails) {
+		this.sellerMachineryDetails = sellerMachineryDetails;
+	}
+
+	/**
+	 * @return the sellerAgricultureProductDetails
+	 */
+	public List<SellerAgricultureProductDetails> getSellerAgricultureProductDetails() {
+		return sellerAgricultureProductDetails;
+	}
+
+	/**
+	 * @param sellerAgricultureProductDetails the sellerAgricultureProductDetails to set
+	 */
+	public void setSellerAgricultureProductDetails(List<SellerAgricultureProductDetails> sellerAgricultureProductDetails) {
+		this.sellerAgricultureProductDetails = sellerAgricultureProductDetails;
+	}
+	
+	// -------------- Helper Methods --------------------
+	
 }

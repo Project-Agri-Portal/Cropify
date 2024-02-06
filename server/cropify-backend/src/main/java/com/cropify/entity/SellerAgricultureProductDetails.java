@@ -6,13 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class SellerAgricultureProductDetails {
-	@Column(name = "seller_id")
+	@ManyToOne	// owning
+	@JoinColumn(name = "seller_id", nullable = false)
 	private UserDetails sellerId;
 	
-	@Column(name = "seller_prod_id")
+	@JoinColumn(name = "seller_prod_id", nullable = false)
 	private AgricultureProducts sellerAgriProductId;
 	
 	@Column

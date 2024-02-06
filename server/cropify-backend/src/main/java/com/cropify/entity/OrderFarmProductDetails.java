@@ -6,16 +6,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class OrderFarmProductDetails extends OrderBaseClass {
-	@Column(name = "farmer_id")
+	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
 	
-	@Column(name = "customer_id")
+	@JoinColumn(name = "customer_id", nullable = false)
 	private UserDetails customerId;
 	
-	@Column(name = "farm_prod_id")
+	@JoinColumn(name = "farm_prod_id", nullable = false)
 	private FarmProducts farmProductId;
 	
 	@Column(name = "order_date")
