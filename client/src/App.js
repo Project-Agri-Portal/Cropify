@@ -18,6 +18,8 @@ import ProductList from "./components/ComponentsSeller/SellerProducts.jsx";
 import PageNotFound from "./components/NotFound/PageNotFound.jsx";
 import ShopAboutUs from "./components/Shop/ShopBody/AboutUs.jsx"
 import ProductListAll from "./components/Shop/ShopBody/ProductList.jsx"
+import Cart from "./components/Shop/ShopBody/Cart.jsx"
+import Checkout from "./components/Shop/ShopBody/Checkout.jsx";
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
           <Route path="/seller/productlist" component={ProductList} exact />
           <Route path="/shop/about" component={ShopAboutUs} exact />
           <Route path="/shop/productsall" component={ProductListAll} exact />
+          <Route path="/shop/cart" component={Cart} exact />
+          <Route path="/shop/cart/checkout" component={Checkout} exact />
 
           {/* <Route path="/shop/productdetails" component={SingleProductDetails} exact /> */}
           

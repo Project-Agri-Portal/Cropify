@@ -59,6 +59,14 @@ const Navbar = () => {
                 {/* <a className="nav-link mx-lg-2" href="#">
                   Contact
                 </a> */}
+                <Link to="/shop/cart" className="nav-link mx-lg-2">
+                  Cart
+                </Link>
+              </li>
+              <li className="nav-item">
+                {/* <a className="nav-link mx-lg-2" href="#">
+                  Contact
+                </a> */}
                 <Link to="/blog" className="nav-link mx-lg-2">
                   Blog
                 </Link>
