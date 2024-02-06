@@ -232,7 +232,7 @@ public class UserDetails {
 	}
 	public void removeFarmerProductDetails(FarmerProductDetails productDetails) {
 		farmerProductDetails.remove(productDetails);
-//		productDetails.setFarmerId(null);
+		productDetails.setFarmerId(null);
 	}
 	
 	// -------------- 2) seller machinery details ---------
