@@ -54,5 +54,13 @@ public class Machinery {
 		this.machineType = machineType;
 	}
 	
-	
+	// ---------------------- Helper Methods ---------------------------------
+	public void addSellerMachineryDetails(SellerMachineryDetails machineDetails) {
+		sellerMachineryDetails.add(machineDetails);
+		machineDetails.setMachineryId(this);
+	}
+	public void removeSellerMachineryDetails(SellerMachineryDetails machineDetails) {
+		sellerMachineryDetails.remove(machineDetails);
+		machineDetails.setMachineryId(null);
+	}
 }

@@ -53,6 +53,13 @@ public class FarmProducts {
 		this.farmProductType = farmProductType;
 	}
 	
-	
-	
+	// ------------------------ Helper Methods ----------------------------------
+	public void addFarmerProductDetails(FarmerProductDetails productDetails) {
+		farmerProductDetails.add(productDetails);
+		productDetails.setFarmProductId(this);
+	}
+	public void removeFarmerProductDetails(FarmerProductDetails productDetails) {
+		farmerProductDetails.remove(productDetails);
+		productDetails.setFarmProductId(null);
+	}
 }
