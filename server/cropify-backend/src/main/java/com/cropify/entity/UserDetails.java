@@ -124,6 +124,28 @@ public class UserDetails {
 		this.sellerAgricultureProductDetails = sellerAgricultureProductDetails;
 	}
 	
-	// -------------- Helper Methods --------------------
+	// -------------- Helper Methods for: --------------------
+	// -------------- 1) farmer product details ---------
+	public void addFarmerProductDetails(FarmerProductDetails productDetails) {
+		farmerProductDetails.add(productDetails);
+	}
+	public void removeFarmerProductDetails(FarmerProductDetails productDetails) {
+		farmerProductDetails.remove(productDetails);
+	}
 	
+	// -------------- 2) seller machinery details ---------
+	public void addSellerMachineryDetails(SellerMachineryDetails productDetails) {
+		sellerMachineryDetails.add(productDetails);
+	}
+	public void removeSellerMachineryDetails(SellerMachineryDetails productDetails) {
+		sellerMachineryDetails.remove(productDetails);
+	}
+	
+	// -------------- 3) seller agri product details ---------
+	public void addSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
+		sellerAgricultureProductDetails.add(productDetails);
+	}
+	public void removeSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
+		sellerAgricultureProductDetails.remove(productDetails);
+	}
 }
