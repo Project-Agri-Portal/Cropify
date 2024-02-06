@@ -1,16 +1,28 @@
 package com.cropify.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class FarmerProductDetails {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "farmer_product_details_id")
+	private Long farmerProductDetailsId;
 
 	@JoinColumn(name = "farm_prod_id", nullable = false)
 	private FarmProducts farmProductId;
@@ -36,6 +48,9 @@ public class FarmerProductDetails {
 	@Column(name = "farm_prod_status")
 	@Enumerated(EnumType.STRING)
 	private FarmProductsStatus farmProductStatus;
+	
+	@OneToMany(mappedBy = "farmerProductDetails" ,cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<OrderFarmProductDetails> orderFarmProductDetails= new ArrayList<OrderFarmProductDetails>();
 	
 	//-----------------------------Getter and Setters--------------------
 
@@ -102,8 +117,34 @@ public class FarmerProductDetails {
 	public void setFarmProductStatus(FarmProductsStatus farmProductStatus) {
 		this.farmProductStatus = farmProductStatus;
 	}
+
+	public Long getFarmerProductDetailsId() {
+		return farmerProductDetailsId;
+	}
+
+	public void setFarmerProductDetailsId(Long farmerProductDetailsId) {
+		this.farmerProductDetailsId = farmerProductDetailsId;
+	}
+
+	public List<OrderFarmProductDetails> getOrderFarmProductDetails() {
+		return orderFarmProductDetails;
+	}
+
+	public void setOrderFarmProductDetails(List<OrderFarmProductDetails> orderFarmProductDetails) {
+		this.orderFarmProductDetails = orderFarmProductDetails;
+	}
 	
-	//-----------------------------Getter and Setters--------------------
 	
+	//-----------------------------Helper Methods--------------------
+	
+	public void addOrderFarmProductDetails(OrderFarmProductDetails orderDetails) {
+		orderFarmProductDetails.add(orderDetails);
+		orderDetails.setFarmerProductDetails(this);
+	}
+	
+	public void removeOrderFarmProductDetails(OrderFarmProductDetails orderDetails) {
+		orderFarmProductDetails.remove(orderDetails);
+		orderDetails.setFarmerProductDetails(null);
+	}
 	
 }

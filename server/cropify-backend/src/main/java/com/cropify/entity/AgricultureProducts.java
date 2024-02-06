@@ -58,10 +58,10 @@ public class AgricultureProducts {
 	// ---------------------- Helper Methods ---------------------------------
 	public void addSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
 		sellerAgricultureProductDetails.add(productDetails);
-		productDetails.setSellerAgriProductId(this);
+		productDetails.setAgriProductId(this);
 	}
 	public void removeSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
 		sellerAgricultureProductDetails.remove(productDetails);
-		productDetails.setSellerAgriProductId(null);
+		productDetails.setAgriProductId(null);
 	}
 }
