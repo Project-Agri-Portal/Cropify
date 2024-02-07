@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class SellerMachineryDetails {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "seller_machine_id")
@@ -44,6 +43,20 @@ public class SellerMachineryDetails {
 	@OneToMany(mappedBy = "sellerMachineryId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
 	
+	// ------------ Constructors ------------------------
+	public SellerMachineryDetails() {}
+	
+	public SellerMachineryDetails(Long sellerMachineryId, Machinery machineryId, UserDetails sellerId, int quantity,
+			double price, String description, boolean isAvailable) {
+		this.sellerMachineryId = sellerMachineryId;
+		this.machineryId = machineryId;
+		this.sellerId = sellerId;
+		this.quantity = quantity;
+		this.price = price;
+		this.description = description;
+		this.isAvailable = isAvailable;
+	}
+
 	//-----------------------------Getter and Setters--------------------
 
 	public Machinery getMachineryId() {
