@@ -40,6 +40,26 @@ public class OrderFarmProductDetails extends OrderBaseClass {
 	@Enumerated(EnumType.STRING)
 	private FarmOrderStatus farmOrderStatus;
 	
+	//---------------Constructos---------------
+
+	
+	public OrderFarmProductDetails() {
+		super();
+	}
+
+	public OrderFarmProductDetails(UserDetails customerId, FarmerProductDetails farmerProductDetails,
+			LocalDate orderDate, LocalDate deliveryDate, int quantity, double totalPrice,
+			FarmOrderStatus farmOrderStatus) {
+		super();
+		this.customerId = customerId;
+		this.farmerProductDetails = farmerProductDetails;
+		this.orderDate = orderDate;
+		this.deliveryDate = deliveryDate;
+		this.quantity = quantity;
+		this.totalPrice = totalPrice;
+		this.farmOrderStatus = farmOrderStatus;
+	}
+
 	//-----------------------------Getter and Setters--------------------
 
 //	public UserDetails getFarmerId() {
