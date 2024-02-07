@@ -130,8 +130,27 @@ public class UserDetails {
 		this.sellerAgricultureProductDetails = sellerAgricultureProductDetails;
 	}
 	
+	//--------- Constructors -------------------------	
+	public UserDetails() {}
+	
+	public UserDetails(Long id, String firstName, String lastName, String email, String password, long mobileNo,
+			UserType userType, UserAddress userAddress, byte verify, long aadharNo, String panNo, String status) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.mobileNo = mobileNo;
+		this.userType = userType;
+		this.userAddress = userAddress;
+		this.verify = verify;
+		this.aadharNo = aadharNo;
+		this.panNo = panNo;
+		this.status = status;
+	}
+	
 	//-----------------------------Getter and Setters--------------------
-
 	public List<OrderFarmProductDetails> getOrderFarmProductDetails() {
 		return orderFarmProductDetails;
 	}
@@ -251,8 +270,6 @@ public class UserDetails {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
 
 	// -------------- Helper Methods for: --------------------
 	// -------------- 1) farmer product details ---------

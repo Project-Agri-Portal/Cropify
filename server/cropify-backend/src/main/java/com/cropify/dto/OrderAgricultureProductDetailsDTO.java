@@ -6,23 +6,20 @@ import com.cropify.entity.SellerAgricultureProductDetails;
 import com.cropify.entity.UserDetails;
 
 public class OrderAgricultureProductDetailsDTO {
-	
-private UserDetails farmerId;
-	
-	
-	private SellerAgricultureProductDetails sellerAgricultureProductId;
-	
-	
-	private LocalDate orderDate;
-	
-	private LocalDate deliveryDate;
-	
-	private int quantity;
-	
-	private double totalPrice;
-	
-	//-------------Getters and Setters--------------------
 
+	private UserDetails farmerId;
+
+	private SellerAgricultureProductDetails sellerAgricultureProductId;
+
+	private LocalDate orderDate;
+
+	private LocalDate deliveryDate;
+
+	private int quantity;
+
+	private double totalPrice;
+
+	// -------------Getters and Setters--------------------
 
 	public UserDetails getFarmerId() {
 		return farmerId;
@@ -78,7 +75,5 @@ private UserDetails farmerId;
 				+ sellerAgricultureProductId + ", orderDate=" + orderDate + ", deliveryDate=" + deliveryDate
 				+ ", quantity=" + quantity + ", totalPrice=" + totalPrice + "]";
 	}
-	
-	
 
 }

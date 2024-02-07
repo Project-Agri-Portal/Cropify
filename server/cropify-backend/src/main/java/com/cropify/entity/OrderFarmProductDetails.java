@@ -60,7 +60,6 @@ public class OrderFarmProductDetails extends OrderBaseClass {
 	private FarmOrderStatus farmOrderStatus;
 
 	// -----------------------------Getter and Setters--------------------
-
 //	public UserDetails getFarmerId() {
 //		return farmerId;
 //	}

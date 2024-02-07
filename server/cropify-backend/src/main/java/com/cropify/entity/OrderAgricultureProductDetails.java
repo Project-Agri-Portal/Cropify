@@ -55,7 +55,6 @@ public class OrderAgricultureProductDetails extends OrderBaseClass {
 	private double totalPrice;
 
 	// -----------------------------Getter and Setters--------------------
-
 	public UserDetails getFarmerId() {
 		return farmerId;
 	}
