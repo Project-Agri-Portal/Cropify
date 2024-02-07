@@ -35,6 +35,25 @@ public class OrderAgricultureProductDetails extends OrderBaseClass {
 	@Column(name = "total_amount")
 	private double totalPrice;
 	
+	//---------------Constructos---------------
+
+	
+	public OrderAgricultureProductDetails() {
+		super();
+	}
+
+	public OrderAgricultureProductDetails(UserDetails farmerId,
+			SellerAgricultureProductDetails sellerAgricultureProductId, LocalDate orderDate, LocalDate deliveryDate,
+			int quantity, double totalPrice) {
+		super();
+		this.farmerId = farmerId;
+		this.sellerAgricultureProductId = sellerAgricultureProductId;
+		this.orderDate = orderDate;
+		this.deliveryDate = deliveryDate;
+		this.quantity = quantity;
+		this.totalPrice = totalPrice;
+	}
+
 	//-----------------------------Getter and Setters--------------------
 
 	public UserDetails getFarmerId() {

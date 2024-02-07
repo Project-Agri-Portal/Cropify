@@ -28,11 +28,21 @@ public class Machinery {
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<SellerMachineryDetails>();
 
+	//---------------Constructos---------------
 	
-	
+	public Machinery() {
+//		super();
+	}
+
+	public Machinery(String machineId, String machineName, MachineType machineType) {
+//		super();
+		this.machineId = machineId;
+		this.machineName = machineName;
+		this.machineType = machineType;
+	}
 
 	//-----------------------------Getter and Setters--------------------
-
+	
 	public String getMachineId() {
 		return machineId;
 	}
