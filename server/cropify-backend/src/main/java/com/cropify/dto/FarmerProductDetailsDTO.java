@@ -25,6 +25,9 @@ public class FarmerProductDetailsDTO {
 	private LocalDate expiryDate;
 	
 	private FarmProductsStatus farmProductStatus;
+	
+	
+	//-----------------------------Getter and Setters--------------------
 
 	/**
 	 * @return the farmerProductDetailsId

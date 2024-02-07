@@ -11,6 +11,9 @@ public class AgricultureProductsDTO {
 	
 	private AgriProductType agriProductType;
 	
+	
+	//-----------------------------Getter and Setters--------------------
+	
 	/**
 	 * @return the agriProductId
 	 */
