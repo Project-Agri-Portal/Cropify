@@ -6,6 +6,9 @@
 /.pnp
 .pnp.js
 
+# property files
+*.properties
+
 # testing
 /coverage
 
