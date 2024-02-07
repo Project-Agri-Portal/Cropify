@@ -27,7 +27,10 @@ public class Machinery {
 	
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<SellerMachineryDetails>();
+
 	
+	
+
 	//-----------------------------Getter and Setters--------------------
 
 	public String getMachineId() {
