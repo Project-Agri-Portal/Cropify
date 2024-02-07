@@ -13,11 +13,15 @@ import javax.persistence.ManyToOne;
 @Entity
 public class OrderMachineDetails extends OrderBaseClass {
 
+
+
 	public OrderMachineDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
 	public OrderMachineDetails(UserDetails farmerId, SellerMachineryDetails sellerMachineryId, int rentDuration,
 			LocalDate orderDate, LocalDate deliveryDate, int quantity, double totalPrice) {
 		super();
@@ -29,6 +33,8 @@ public class OrderMachineDetails extends OrderBaseClass {
 		this.quantity = quantity;
 		this.totalPrice = totalPrice;
 	}
+
+
 
 	@ManyToOne
 	@JoinColumn(name = "farmer_id", nullable = false)

@@ -10,14 +10,13 @@ import com.cropify.entity.SellerAgricultureProductDetails;
 
 public interface SellerAgricultureProductDetailsRepository
 		extends JpaRepository<SellerAgricultureProductDetails, Long> {
-	@Query
-	public Optional<SellerAgricultureProductDetails> findById(Long sellerAgricultureProductId);
+
+	public Optional<SellerAgricultureProductDetails> findBySellerAgricultureProductId(Long sellerAgricultureProductId);
 
 	public List<SellerAgricultureProductDetails> findAllById(Long sellerAgricultureProductId);
 
-	@Query
-	public void deleteById(Long sellerAgricultureProductId);
-	
+	public void deleteBySellerAgricultureProductId(Long sellerAgricultureProductId);
+
 	public List<SellerAgricultureProductDetails> findAll();
 
 }
