@@ -11,40 +11,10 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class OrderFarmProductDetails extends OrderBaseClass {
-	@ManyToOne
-	@JoinColumn(name = "customer_id", nullable = false)
-	private UserDetails customerId;
-	
-	@ManyToOne
-	@JoinColumn(name="farmer_product_details_id", nullable = false)
-	private FarmerProductDetails farmerProductDetails;
-	
-//	@JoinColumn(name = "farmer_id", nullable = false)
-//	private UserDetails farmerId;	
-//	@JoinColumn(name = "farm_prod_id", nullable = false)
-//	private FarmProducts farmProductId;
-	
-	@Column(name = "order_date")
-	private LocalDate orderDate;
-	
-	@Column(name = "delivery_date")
-	private LocalDate deliveryDate;
-	
-	@Column
-	private int quantity;
-	
-	@Column(name = "total_amount")
-	private double totalPrice;
-	
-	@Column(name = "farm_order_status")
-	@Enumerated(EnumType.STRING)
-	private FarmOrderStatus farmOrderStatus;
-	
-	//---------------Constructos---------------
 
-	
 	public OrderFarmProductDetails() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public OrderFarmProductDetails(UserDetails customerId, FarmerProductDetails farmerProductDetails,
@@ -60,8 +30,36 @@ public class OrderFarmProductDetails extends OrderBaseClass {
 		this.farmOrderStatus = farmOrderStatus;
 	}
 
-	//-----------------------------Getter and Setters--------------------
+	@ManyToOne
+	@JoinColumn(name = "customer_id", nullable = false)
+	private UserDetails customerId;
 
+	@ManyToOne
+	@JoinColumn(name = "farmer_product_details_id", nullable = false)
+	private FarmerProductDetails farmerProductDetails;
+
+//	@JoinColumn(name = "farmer_id", nullable = false)
+//	private UserDetails farmerId;	
+//	@JoinColumn(name = "farm_prod_id", nullable = false)
+//	private FarmProducts farmProductId;
+
+	@Column(name = "order_date")
+	private LocalDate orderDate;
+
+	@Column(name = "delivery_date")
+	private LocalDate deliveryDate;
+
+	@Column
+	private int quantity;
+
+	@Column(name = "total_amount")
+	private double totalPrice;
+
+	@Column(name = "farm_order_status")
+	@Enumerated(EnumType.STRING)
+	private FarmOrderStatus farmOrderStatus;
+
+	// -----------------------------Getter and Setters--------------------
 //	public UserDetails getFarmerId() {
 //		return farmerId;
 //	}
@@ -133,6 +131,5 @@ public class OrderFarmProductDetails extends OrderBaseClass {
 	public void setFarmerProductDetails(FarmerProductDetails farmerProductDetails) {
 		this.farmerProductDetails = farmerProductDetails;
 	}
-	
-	
+
 }

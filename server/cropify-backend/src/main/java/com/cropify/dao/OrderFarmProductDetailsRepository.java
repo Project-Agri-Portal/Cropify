@@ -8,8 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.cropify.entity.OrderFarmProductDetails;
 
-public interface OrderFarmProductDetailsRepository extends JpaRepository<OrderFarmProductDetails, Long>{
-
+public interface OrderFarmProductDetailsRepository extends JpaRepository<OrderFarmProductDetails, Long> {
 	
 	public Optional<OrderFarmProductDetails> findByOrderId(Long orderId);
 
