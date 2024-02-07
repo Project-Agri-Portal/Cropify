@@ -53,6 +53,28 @@ public class FarmerProductDetails {
 	@OneToMany(mappedBy = "farmerProductDetails" ,cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<OrderFarmProductDetails> orderFarmProductDetails= new ArrayList<OrderFarmProductDetails>();
 	
+	
+	//-----------------------------Constructors--------------------
+	
+	public FarmerProductDetails(Long farmerProductDetailsId, FarmProducts farmProductId, UserDetails farmerId,
+			int quantity, double price, String description, LocalDate harvestDate, LocalDate expiryDate,
+			FarmProductsStatus farmProductStatus) {
+		this.farmerProductDetailsId = farmerProductDetailsId;
+		this.farmProductId = farmProductId;
+		this.farmerId = farmerId;
+		this.quantity = quantity;
+		this.price = price;
+		this.description = description;
+		this.harvestDate = harvestDate;
+		this.expiryDate = expiryDate;
+		this.farmProductStatus = farmProductStatus;
+	}
+	
+	public FarmerProductDetails() {
+		super();
+	}
+	
+	
 	//-----------------------------Getter and Setters--------------------
 
 	public FarmProducts getFarmProductId() {
