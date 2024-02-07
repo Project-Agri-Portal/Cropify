@@ -6,6 +6,8 @@
 /.pnp
 .pnp.js
 
+/server/cropify-backend/src/main/resources/application.properties
+
 # testing
 /coverage
 
