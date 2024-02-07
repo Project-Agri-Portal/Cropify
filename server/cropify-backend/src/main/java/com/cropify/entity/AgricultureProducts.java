@@ -28,6 +28,18 @@ public class AgricultureProducts {
 	@OneToMany(mappedBy = "agriProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
 	
+	//-----------------------------Constructors--------------------
+	
+	public AgricultureProducts(String agriProductId, String agriProductName, AgriProductType agriProductType) {
+		this.agriProductId = agriProductId;
+		this.agriProductName = agriProductName;
+		this.agriProductType = agriProductType;
+	}
+	
+	public AgricultureProducts() {
+		
+	}
+	
 	//-----------------------------Getter and Setters--------------------
 
 	public String getAgriProductId() {

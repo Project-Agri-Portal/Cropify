@@ -27,6 +27,20 @@ public class FarmProducts {
 	@OneToMany(mappedBy = "farmProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FarmerProductDetails> farmerProductDetails = new ArrayList<FarmerProductDetails>();
 	
+	//-----------------------------Constructors--------------------
+		
+	public FarmProducts(String farmProductId, String farmProductName, FarmProductType farmProductType,
+			List<FarmerProductDetails> farmerProductDetails) {
+		this.farmProductId = farmProductId;
+		this.farmProductName = farmProductName;
+		this.farmProductType = farmProductType;
+		this.farmerProductDetails = farmerProductDetails;
+	}
+	
+	public FarmProducts() {
+		super();
+	}
+	
 	//-----------------------------Getter and Setters--------------------
 
 	/**
