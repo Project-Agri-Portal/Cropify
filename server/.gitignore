@@ -1,2 +1,4 @@
 /.metadata/
-/server/cropify-backend/src/main/resources/
+
+# property files
+*.properties

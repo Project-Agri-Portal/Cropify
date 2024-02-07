@@ -6,7 +6,8 @@
 /.pnp
 .pnp.js
 
-/server/cropify-backend/src/main/resources/application.properties
+# property files
+*.properties
 
 # testing
 /coverage
