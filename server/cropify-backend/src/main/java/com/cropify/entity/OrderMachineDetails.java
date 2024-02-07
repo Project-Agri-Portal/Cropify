@@ -11,37 +11,58 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class OrderMachineDetails extends OrderBaseClass{
+public class OrderMachineDetails extends OrderBaseClass {
+
+	public OrderMachineDetails() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public OrderMachineDetails(UserDetails farmerId, SellerMachineryDetails sellerMachineryId, int rentDuration,
+			LocalDate orderDate, LocalDate deliveryDate, int quantity, double totalPrice) {
+		super();
+		this.farmerId = farmerId;
+		this.sellerMachineryId = sellerMachineryId;
+		this.rentDuration = rentDuration;
+		this.orderDate = orderDate;
+		this.deliveryDate = deliveryDate;
+		this.quantity = quantity;
+		this.totalPrice = totalPrice;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
-	
-/*	Substituting the following with a single ID
- * @JoinColumn(name = "seller_id", nullable = false)
-	private UserDetails sellerId;	
-	@JoinColumn(name = "machine_id", nullable = false)
-	private Machinery machineId;
-*/
-	@ManyToOne	// owning
+
+	/*
+	 * Substituting the following with a single ID
+	 * 
+	 * @JoinColumn(name = "seller_id", nullable = false) private UserDetails
+	 * sellerId;
+	 * 
+	 * @JoinColumn(name = "machine_id", nullable = false) private Machinery
+	 * machineId;
+	 */
+	@ManyToOne // owning
 	@JoinColumn(name = "seller_machine_id", nullable = false)
 	private SellerMachineryDetails sellerMachineryId;
-	
+
 	@Column(name = "rent_duration")
 	private int rentDuration;
-	
+
 	@Column(name = "order_date")
 	private LocalDate orderDate;
-	
+
 	@Column(name = "delivery_date")
 	private LocalDate deliveryDate;
 
 	@Column
 	private int quantity;
-	
+
 	@Column(name = "total_amount")
 	private double totalPrice;
-	
-	//-----------------------------Getter and Setters--------------------
+
+	// -----------------------------Getter and Setters--------------------
 
 	public UserDetails getFarmerId() {
 		return farmerId;
@@ -52,19 +73,11 @@ public class OrderMachineDetails extends OrderBaseClass{
 	}
 
 	/*
-	public UserDetails getSellerId() {
-		return sellerId;
-	}
-	public void setSellerId(UserDetails sellerId) {
-		this.sellerId = sellerId;
-	}
-	public Machinery getMachineId() {
-		return machineId;
-	}
-	public void setMachineId(Machinery machineId) {
-		this.machineId = machineId;
-	}
-	*/
+	 * public UserDetails getSellerId() { return sellerId; } public void
+	 * setSellerId(UserDetails sellerId) { this.sellerId = sellerId; } public
+	 * Machinery getMachineId() { return machineId; } public void
+	 * setMachineId(Machinery machineId) { this.machineId = machineId; }
+	 */
 	public SellerMachineryDetails getSellerMachineryId() {
 		return sellerMachineryId;
 	}
@@ -72,7 +85,7 @@ public class OrderMachineDetails extends OrderBaseClass{
 	public void setSellerMachineryId(SellerMachineryDetails sellerMachineryId) {
 		this.sellerMachineryId = sellerMachineryId;
 	}
-	
+
 	public int getRentDuration() {
 		return rentDuration;
 	}
@@ -112,6 +125,5 @@ public class OrderMachineDetails extends OrderBaseClass{
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	
-	
+
 }
