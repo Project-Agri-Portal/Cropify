@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class UserDetails {
@@ -32,7 +31,6 @@ public class UserDetails {
 	private String email;
 	
 	@Column(nullable = false)
-	@Range(min = 8)
 	private String password;
 	
 	@Column(name = "mobile_no", length = 10, nullable = false, unique = true)
