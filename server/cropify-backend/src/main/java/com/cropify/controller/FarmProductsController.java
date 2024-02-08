@@ -55,14 +55,14 @@ public class FarmProductsController {
 //	with ResponseEntity
 	@GetMapping("/{pid}")
 	public ResponseEntity<?> getFarmProduct(@PathVariable String pid) {
-		try {
+//		try {
 			return new ResponseEntity<>(farmProductsService.fetchFarmProductDetails(pid), HttpStatus.OK);
-		}
-		catch(RuntimeException e) {
-//			you generate status code using HttpStatus
-			System.out.println("Error in controller getFarmProduct() " + e);
-			return new ResponseEntity<>("Error in controller getFarmProduct() " + e, HttpStatus.NOT_FOUND);
-		}
+//		}
+//		catch(RuntimeException e) {
+////			you generate status code using HttpStatus
+//			System.out.println("Error in controller getFarmProduct() " + e);
+//			return new ResponseEntity<>("Error in controller getFarmProduct() " + e, HttpStatus.NOT_FOUND);
+//		}
 	}
 	
 	@PostMapping
