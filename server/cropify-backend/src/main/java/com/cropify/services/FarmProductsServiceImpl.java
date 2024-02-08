@@ -1,16 +1,13 @@
 package com.cropify.services;
 
-import java.lang.module.ResolutionException;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import com.cropify.customexception.ResourceNotFoundException;
 import com.cropify.dao.FarmProductsRepository;

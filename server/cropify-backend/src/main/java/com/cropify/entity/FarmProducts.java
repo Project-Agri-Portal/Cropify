@@ -25,7 +25,7 @@ public class FarmProducts {
 	@Enumerated(EnumType.STRING)
 	private FarmProductType farmProductType;
 	
-	@OneToMany(mappedBy = "farmProductId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "farmProductId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<FarmerProductDetails> farmerProductDetails = new ArrayList<FarmerProductDetails>();
 	
 	//-----------------------------Constructors--------------------
