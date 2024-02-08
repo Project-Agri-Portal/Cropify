@@ -38,7 +38,8 @@ public class FarmProductsController {
 //	with ResponseEntity
 	@GetMapping("/all")
 	public ResponseEntity<?> getFarmProducts(){
-		return new ResponseEntity<>(farmProductsService.getAllFarmProducts(), HttpStatus.OK);
+//		return new ResponseEntity<>(farmProductsService.getAllFarmProducts(), HttpStatus.OK);
+		return ResponseEntity.ok(farmProductsService.getAllFarmProducts());
 	}
 	
 	@DeleteMapping("/{pid}")
@@ -68,4 +69,6 @@ public class FarmProductsController {
 	public FarmProducts addFarmProduct(@RequestBody FarmProducts farmProducts) {
 		return farmProductsService.addFarmProduct(farmProducts);
 	}
+	
+//	@GetMapping("/")
 }
