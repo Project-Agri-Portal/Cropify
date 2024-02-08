@@ -9,9 +9,9 @@ import com.cropify.entity.SellerMachineryDetails;
 
 public interface SellerMachineryDetailsRepository extends JpaRepository<SellerMachineryDetails, Long>{
 	// --- Find entity methods ---
-	List<SellerMachineryDetails> findAll();
-	Optional<SellerMachineryDetails> findBySellerMachineryId(Long sellerMachineryId);
-	
-	// --- Delete entity by ID ---
-	void deleteBySellerMachineryId(Long sellerMachineryId);
+//	List<SellerMachineryDetails> findAll();
+//	Optional<SellerMachineryDetails> findBySellerMachineryId(Long sellerMachineryId);
+//	
+//	// --- Delete entity by ID ---
+//	void deleteBySellerMachineryId(Long sellerMachineryId);
 }

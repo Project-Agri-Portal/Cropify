@@ -10,12 +10,12 @@ import com.cropify.entity.Machinery;
 
 public interface MachineryRepository extends JpaRepository<Machinery, String>{
 	
-	public Optional<Machinery> findByMachineId(String machineId);
-	
-	public List<Machinery> findAll();
-	
-//	public Machinery save(Machinery mech);
-	
-//	@Query // used to specify a custom SQL or HQL  query that should be executed by the associated method.
-	public void deleteByMachineId(String machineId);
+//	public Optional<Machinery> findByMachineId(String machineId);
+//	
+//	public List<Machinery> findAll();
+//	
+////	public Machinery save(Machinery mech);
+//	
+////	@Query // used to specify a custom SQL or HQL  query that should be executed by the associated method.
+//	public void deleteByMachineId(String machineId);
 }
