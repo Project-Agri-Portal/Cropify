@@ -1,6 +1,5 @@
 package com.cropify.services.impl;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private ModelMapper mapper;
 	
 	// ---------------- Service Interface Methods ---------------------------
+	// Get operations
 	@Override
 	public List<UserDetailsDTO> getAllUsers() {
 		List<UserDetails> users = userRepo.findAll();
@@ -36,6 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return null;
 	}
 
+	// Create operations
 	@Override
 	public UserDetailsDTO createUser(UserDetailsDTO userDto) {
 		UserDetails user = mapper.map(userDto, UserDetails.class);
@@ -43,12 +44,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return mapper.map(savedUser, UserDetailsDTO.class);
 	}
 
+	// Update operations
 	@Override
 	public UserDetailsDTO updateUser(UserDetailsDTO userDto, Long userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	// Delete operations
 	@Override
 	public void deleteUser(Long userId) {
 		// TODO Auto-generated method stub
