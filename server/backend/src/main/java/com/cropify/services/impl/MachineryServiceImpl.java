@@ -2,19 +2,15 @@ package com.cropify.services.impl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
 import javax.transaction.Transactional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 import org.springframework.stereotype.Service;
 
 import com.cropify.dao.MachineryRepository;
+import com.cropify.dto.MachineryDTO;
 import com.cropify.entity.Machinery;
 import com.cropify.services.MachineryService;
 
@@ -25,20 +21,37 @@ public class MachineryServiceImpl implements MachineryService {
 	@Autowired
 	private MachineryRepository machineryRepository;
 	
+	@Autowired
+	private ModelMapper mapper;
+	
 	@Override
 	public List<Machinery> getAllMachine() {
 		return machineryRepository.findAll();
 	}
 
 	@Override
-	public void addMachine(Machinery machinery) {
-		System.out.println(machinery);
+	public MachineryDTO addMachine(MachineryDTO machineryDTO) {
+		System.out.println(machineryDTO);
+		Machinery machinery = mapper.map(machineryDTO, Machinery.class);
 		machineryRepository.save(machinery);
+		return mapper.map(machinery, MachineryDTO.class);
+	}
+
+	@Override
+	public Machinery getMachineById(String id) {
+		Optional<Machinery> optional = machineryRepository.findByMachineId(id);
+		return optional.orElseThrow(() -> new RuntimeException("MachineNotFound"));
 	}
 	
-//	@Override
-//	public void updateMachine(String name, String id) {
-//		machineryRepository.UpdateMachine(name, id);
-//	}
+	@Override
+	public void deleteMachineById(String id) { 
+		Optional<Machinery> machinery = machineryRepository.findByMachineId(id);
+		if(!machinery.isEmpty()) {
+			machineryRepository.delete(machinery.get());
+		}
+		else {
+			throw new RuntimeException("MachineNotFound");
+		}
+	}
 	
 }

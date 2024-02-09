@@ -1,6 +1,7 @@
 package com.cropify.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,4 +14,6 @@ public interface FarmProductsRepository extends JpaRepository<FarmProducts, Stri
 //	void deleteByFarmProductId(String id);
 //	
 //	List<FarmProducts> findAll();
+	
+	Optional<FarmProducts> findByfarmProductId(String id);
 }
