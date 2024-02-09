@@ -8,9 +8,9 @@ import com.cropify.entity.FarmProducts;
 
 public interface FarmProductsRepository extends JpaRepository<FarmProducts, String> {
 	
-	FarmProducts findByFarmProductId(String id);
-	
-	void deleteByFarmProductId(String id);
-	
-	List<FarmProducts> findAll();
+//	FarmProducts findByFarmProductId(String id);
+//	
+//	void deleteByFarmProductId(String id);
+//	
+//	List<FarmProducts> findAll();
 }

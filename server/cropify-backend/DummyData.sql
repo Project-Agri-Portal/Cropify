@@ -1,5 +1,5 @@
 --- Users data
-INSERT INTO UserDetails (id, lastname, firstname, email, password, mobilenumber, address, pancardnumber)
+INSERT INTO UserDetails (id, last_name, first_name, email, password, mobile_no, full_address, pan_no)
 VALUES
 (1, 'Sharma', 'Rahul', 'rahul.sharma@example.com', 'password123', '9876543210', '123 Street, City, State', 'ABCDE1234F'),
 (2, 'Patel', 'Neha', 'neha.patel@example.com', 'securepass', '8765432109', '456 Lane, City, State', 'FGHIJ5678K'),
@@ -54,10 +54,10 @@ VALUES
 
 
 -- products
-INSERT INTO FarmProducts (id, productname, type)
+INSERT INTO FarmProducts (farm_prod_id, farm_prod_name, farm_prod_type)
 VALUES
-(1, 'Tomato', 'Vegetable'),
-(2, 'Apple', 'Fruit'),
+(1, 'Tomato', 'P'),
+(2, 'Apple', 'q'),
 (3, 'Lentils', 'Pulse'),
 (4, 'Spinach', 'Vegetable'),
 (5, 'Banana', 'Fruit'),
