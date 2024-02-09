@@ -28,7 +28,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		// send details error message regarding validation
 //		ex.getBindingResult().getFieldErrors().forEach(fielderr -> sb.append(fielderr.getDefaultMessage()));
 		List<String> sb = new ArrayList<String>();
-		ex.getBindingResult().getFieldErrors().forEach(fielderr -> sb.setMessage(fielderr.getDefaultMessage()));
+		ex.getBindingResult().getFieldErrors().forEach(fielderr -> sb.add(fielderr.getDefaultMessage()));
 		System.out.println(sb); // error messages
 		ErrorResponse errorResponse = new ErrorResponse(sb, LocalDateTime.now());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
