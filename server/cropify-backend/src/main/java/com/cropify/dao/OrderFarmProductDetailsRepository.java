@@ -10,11 +10,11 @@ import com.cropify.entity.OrderFarmProductDetails;
 
 public interface OrderFarmProductDetailsRepository extends JpaRepository<OrderFarmProductDetails, Long> {
 	
-	public Optional<OrderFarmProductDetails> findByOrderId(Long orderId);
-
-	public List<OrderFarmProductDetails> findAll();
-
-//	@Query // used to specify a custom SQL or HQL query that should be executed by the
-			// associated method.
-	public void deleteByOrderId(Long orderId);
+//	public Optional<OrderFarmProductDetails> findByOrderId(Long orderId);
+//
+//	public List<OrderFarmProductDetails> findAll();
+//
+////	@Query // used to specify a custom SQL or HQL query that should be executed by the
+//			// associated method.
+//	public void deleteByOrderId(Long orderId);
 }

@@ -76,4 +76,12 @@ public class Machinery {
 		sellerMachineryDetails.remove(machineDetails);
 		machineDetails.setMachineryId(null);
 	}
+
+	@Override
+	public String toString() {
+		return "Machinery [machineId=" + machineId + ", machineName=" + machineName + ", machineType=" + machineType
+				+ ", sellerMachineryDetails=" + sellerMachineryDetails + "]";
+	}
+	
 }
+
