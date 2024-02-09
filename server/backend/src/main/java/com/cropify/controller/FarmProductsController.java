@@ -65,10 +65,10 @@ public class FarmProductsController {
 //		}
 	}
 	
-	@PostMapping
+	@PostMapping("/add")
 	public FarmProducts addFarmProduct(@RequestBody FarmProducts farmProducts) {
+		System.out.println(farmProducts);
 		return farmProductsService.addFarmProduct(farmProducts);
 	}
 	
-//	@GetMapping("/")
 }

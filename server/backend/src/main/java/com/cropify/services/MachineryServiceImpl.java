@@ -31,6 +31,7 @@ public class MachineryServiceImpl implements MachineryService {
 
 	@Override
 	public void addMachine(Machinery machinery) {
+		System.out.println(machinery);
 		machineryRepository.save(machinery);
 	}
 	
