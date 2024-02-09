@@ -9,6 +9,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -68,22 +69,22 @@ public class UserDetails {
 	private String status;
 	
 	// ------- Assigning various lists ------
-	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<FarmerProductDetails> farmerProductDetails = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "customerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "customerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderFarmProductDetails> orderFarmProductDetails = new ArrayList<>();
 
-	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
 
 	/**
