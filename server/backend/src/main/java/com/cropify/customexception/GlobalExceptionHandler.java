@@ -37,10 +37,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	// for all exception handling method you need @ExceptionHandler
 	@ExceptionHandler(RuntimeException.class)
 	public ResponseEntity<?> handleRuntimeException(RuntimeException e){  // this is name convention for method name
-		System.out.println("In handleRuntimeException method");
+		System.out.println("In custom handleRuntimeException method");
 		// send error response wrapper in ResponseEntity
 		List<String> str = new ArrayList<String>();
-		str.add("Error message");
+		str.add("custom Error message");
 		ErrorResponse errorResponse = new ErrorResponse(str, LocalDateTime.now());  // class in DTO
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
 	}

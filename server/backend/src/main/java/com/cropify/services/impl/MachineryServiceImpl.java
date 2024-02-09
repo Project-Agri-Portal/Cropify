@@ -1,4 +1,4 @@
-package com.cropify.services;
+package com.cropify.services.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.cropify.dao.MachineryRepository;
 import com.cropify.entity.Machinery;
+import com.cropify.services.MachineryService;
 
 @Service
 @Transactional
