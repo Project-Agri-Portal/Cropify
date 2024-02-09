@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class FarmProducts {
 	@Id
@@ -25,17 +27,16 @@ public class FarmProducts {
 	@Enumerated(EnumType.STRING)
 	private FarmProductType farmProductType;
 	
-	@OneToMany(mappedBy = "farmProductId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@JsonIgnore
+	@OneToMany(mappedBy = "farmProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FarmerProductDetails> farmerProductDetails = new ArrayList<FarmerProductDetails>();
 	
 	//-----------------------------Constructors--------------------
 		
-	public FarmProducts(String farmProductId, String farmProductName, FarmProductType farmProductType,
-			List<FarmerProductDetails> farmerProductDetails) {
+	public FarmProducts(String farmProductId, String farmProductName, FarmProductType farmProductType) {
 		this.farmProductId = farmProductId;
 		this.farmProductName = farmProductName;
 		this.farmProductType = farmProductType;
-		this.farmerProductDetails = farmerProductDetails;
 	}
 	
 	public FarmProducts() {
@@ -81,7 +82,12 @@ public class FarmProducts {
 	public void setFarmProductType(FarmProductType farmProductType) {
 		this.farmProductType = farmProductType;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "FarmProducts [farmProductId=" + farmProductId + ", farmProductName=" + farmProductName
+				+ ", farmProductType=" + farmProductType + ", farmerProductDetails=" + farmerProductDetails + "]";
+	}
 	
 	
 }
