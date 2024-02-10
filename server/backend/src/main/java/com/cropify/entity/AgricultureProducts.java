@@ -8,13 +8,24 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import com.cropify.util.Prefixable;
 
 @Entity
-public class AgricultureProducts {
+public class AgricultureProducts implements Prefixable {
+	@Transient
+	private String prefix = "p";
 	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "customId")
+	@GenericGenerator(name = "customId", strategy = "com.cropify.util.CustomIdGenerator")
 	@Column(name = "agri_prod_id")
 	private String agriProductId;
 	
@@ -75,5 +86,18 @@ public class AgricultureProducts {
 	public void removeSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
 		sellerAgricultureProductDetails.remove(productDetails);
 		productDetails.setAgriProductId(null);
+	}
+
+	@Override
+	public String getPrefix() {
+		return prefix;
+	}
+	@Override
+	public String getTableName() {
+		return "agriculture_products";
+	}
+	@Override
+	public String getIdColName() {
+		return "agri_prod_id";
 	}
 }
