@@ -34,12 +34,13 @@ public class SellerMachineryDetails {
 	@Column(nullable = false)
 	private double price;
 	
-	@Column(columnDefinition = "TEXT")
+	@Column
 	private String description;
 	
 	@Column(nullable = false)
 	private boolean isAvailable;
 	
+	// ------------ Relationship Mapping ------------------------------
 	@OneToMany(mappedBy = "sellerMachineryId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
 	
@@ -58,7 +59,6 @@ public class SellerMachineryDetails {
 	}
 
 	//-----------------------------Getter and Setters--------------------
-
 	public Machinery getMachineryId() {
 		return machineryId;
 	}

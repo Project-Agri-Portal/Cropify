@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.cropify.entity.enums.UserType;
+
 
 @Entity
 public class UserDetails {
@@ -35,7 +37,7 @@ public class UserDetails {
 	private String password;
 	
 	@Column(name = "mobile_no", length = 10, nullable = false, unique = true)
-	private long mobileNo;
+	private String mobileNo;
 	
 	@Column(name = "user_type", nullable = false)
 	@Enumerated(EnumType.STRING)
@@ -55,20 +57,20 @@ public class UserDetails {
 //	if value is 0 then user/seller is not verify
 //	if value is +ve then user/seller is verify
 	@Column(nullable = false)
-	private byte verify;
+	private boolean verify;
 
-	@Column(nullable = false,unique = true)
-	private long aadharNo;
-	@Column(nullable = false,unique = true)
+	@Column(columnDefinition = "CHAR(12)", unique = true)
+	private String aadharNo;
+	@Column(columnDefinition = "CHAR(10)", unique = true)
 	private String panNo;
 	
 //	if seller has poor review or if seller is fraud
 //	in such cases Admin can/has ability to block seller
 //	if status is "block" then seller cannot sell any products
-	@Column()
+	@Column
 	private String status;
 	
-	// ------- Assigning various lists ------
+	// ------------ Relationship Mapping ------------------------------
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<FarmerProductDetails> farmerProductDetails = new ArrayList<>();
 	
@@ -134,8 +136,8 @@ public class UserDetails {
 	//--------- Constructors -------------------------	
 	public UserDetails() {}
 	
-	public UserDetails(Long id, String firstName, String lastName, String email, String password, long mobileNo,
-			UserType userType, UserAddress userAddress, byte verify, long aadharNo, String panNo, String status) {
+	public UserDetails(Long id, String firstName, String lastName, String email, String password, String mobileNo,
+			UserType userType, UserAddress userAddress, boolean verify, String aadharNo, String panNo, String status) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -216,11 +218,11 @@ public class UserDetails {
 		this.password = password;
 	}
 
-	public long getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
 
-	public void setMobileNo(long mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 
@@ -240,19 +242,19 @@ public class UserDetails {
 		this.userAddress = userAddress;
 	}
 
-	public byte getVerify() {
+	public boolean getVerify() {
 		return verify;
 	}
 
-	public void setVerify(byte verify) {
+	public void setVerify(boolean verify) {
 		this.verify = verify;
 	}
 
-	public long getAadharNo() {
+	public String getAadharNo() {
 		return aadharNo;
 	}
 
-	public void setAadharNo(long aadharNo) {
+	public void setAadharNo(String aadharNo) {
 		this.aadharNo = aadharNo;
 	}
 

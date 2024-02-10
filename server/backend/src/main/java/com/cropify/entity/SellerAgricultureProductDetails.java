@@ -16,27 +16,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.cropify.entity.enums.FarmProductsStatus;
+
 @Entity
 public class SellerAgricultureProductDetails {
-
-	public SellerAgricultureProductDetails() {
-//		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public SellerAgricultureProductDetails(Long sellerAgricultureProductId, AgricultureProducts agriProductId,
-			UserDetails sellerId, int quantity, double price, String description, LocalDate expiryDate,
-			FarmProductsStatus sellerProductStatus) {
-//		super();
-		this.sellerAgricultureProductId = sellerAgricultureProductId;
-		this.agriProductId = agriProductId;
-		this.sellerId = sellerId;
-		this.quantity = quantity;
-		this.price = price;
-		this.description = description;
-		this.expiryDate = expiryDate;
-		this.sellerProductStatus = sellerProductStatus;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,24 +37,40 @@ public class SellerAgricultureProductDetails {
 	@Column
 	private int quantity;
 
-	@Column
+	@Column(nullable = false)
 	private double price;
 
-	@Column(columnDefinition = "TEXT")
+	@Column
 	private String description;
 
-	@Column(name = "expiry_date")
+	@Column(name = "expiry_date", nullable = false)
 	private LocalDate expiryDate;
 
-	@Column(name = "seller_prod_status")
+	@Column(name = "seller_prod_status", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private FarmProductsStatus sellerProductStatus;
 
+	// ------------ Relationship Mapping ------------------------------
 	@OneToMany(mappedBy = "sellerAgricultureProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
 
-	// -----------------------------Getter and Setters--------------------
+	// -------------------------- Constructors ---------------------------
+	public SellerAgricultureProductDetails() {}
 
+	public SellerAgricultureProductDetails(Long sellerAgricultureProductId, AgricultureProducts agriProductId,
+			UserDetails sellerId, int quantity, double price, String description, LocalDate expiryDate,
+			FarmProductsStatus sellerProductStatus) {
+		this.sellerAgricultureProductId = sellerAgricultureProductId;
+		this.agriProductId = agriProductId;
+		this.sellerId = sellerId;
+		this.quantity = quantity;
+		this.price = price;
+		this.description = description;
+		this.expiryDate = expiryDate;
+		this.sellerProductStatus = sellerProductStatus;
+	}
+	
+	// -----------------------------Getter and Setters--------------------
 	public UserDetails getSellerId() {
 		return sellerId;
 	}

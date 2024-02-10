@@ -1,7 +1,7 @@
 package com.cropify.dto;
 
 
-import com.cropify.entity.MachineType;
+import com.cropify.entity.enums.MachineType;
 
 public class MachineryDTO {
 	

@@ -10,23 +10,6 @@ import javax.persistence.ManyToOne;
 @Entity
 public class OrderAgricultureProductDetails extends OrderBaseClass {
 
-	public OrderAgricultureProductDetails() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public OrderAgricultureProductDetails(UserDetails farmerId,
-			SellerAgricultureProductDetails sellerAgricultureProductId, LocalDate orderDate, LocalDate deliveryDate,
-			int quantity, double totalPrice) {
-		super();
-		this.farmerId = farmerId;
-		this.sellerAgricultureProductId = sellerAgricultureProductId;
-		this.orderDate = orderDate;
-		this.deliveryDate = deliveryDate;
-		this.quantity = quantity;
-		this.totalPrice = totalPrice;
-	}
-
 	@ManyToOne
 	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
@@ -42,18 +25,35 @@ public class OrderAgricultureProductDetails extends OrderBaseClass {
 	@JoinColumn(name = "seller_agri_product_id", nullable = false)
 	private SellerAgricultureProductDetails sellerAgricultureProductId;
 
-	@Column(name = "order_date")
+	@Column(name = "order_date", nullable = false)
 	private LocalDate orderDate;
 
-	@Column(name = "delivery_date")
+	@Column(name = "delivery_date", nullable = false)
 	private LocalDate deliveryDate;
 
 	@Column
 	private int quantity;
 
-	@Column(name = "total_amount")
+	@Column(name = "total_amount", nullable = false)
 	private double totalPrice;
 
+	// ------------------ Constructors ----------------------------------
+	public OrderAgricultureProductDetails() {
+		super();
+	}
+
+	public OrderAgricultureProductDetails(UserDetails farmerId,
+			SellerAgricultureProductDetails sellerAgricultureProductId, LocalDate orderDate, LocalDate deliveryDate,
+			int quantity, double totalPrice) {
+		super();
+		this.farmerId = farmerId;
+		this.sellerAgricultureProductId = sellerAgricultureProductId;
+		this.orderDate = orderDate;
+		this.deliveryDate = deliveryDate;
+		this.quantity = quantity;
+		this.totalPrice = totalPrice;
+	}
+	
 	// -----------------------------Getter and Setters--------------------
 	public UserDetails getFarmerId() {
 		return farmerId;
