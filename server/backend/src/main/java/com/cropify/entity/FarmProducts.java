@@ -9,15 +9,25 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.cropify.entity.enums.FarmProductType;
+import com.cropify.util.Prefixable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class FarmProducts {
+public class FarmProducts implements Prefixable {
+	@Transient
+	private String prefix = "f";
+	
 	@Id
+	@GeneratedValue(generator = "customId")
+	@GenericGenerator(name = "customId", strategy = "com.cropify.util.CustomIdGenerator")
 	@Column(name = "farm_prod_id")
 	private String farmProductId;
 	
@@ -41,7 +51,7 @@ public class FarmProducts {
 	}
 	
 	public FarmProducts() {
-		super();
+//		super();
 	}
 	
 	//-----------------------------Getter and Setters--------------------
@@ -89,6 +99,18 @@ public class FarmProducts {
 		return "FarmProducts [farmProductId=" + farmProductId + ", farmProductName=" + farmProductName
 				+ ", farmProductType=" + farmProductType + ", farmerProductDetails=" + farmerProductDetails + "]";
 	}
-	
-	
+
+	// ------------ Inherited methods of Prefixable interface ---------------------
+	@Override
+	public String getPrefix() {
+		return prefix;
+	}
+	@Override
+	public String getTableName() {
+		return "farm_products";
+	}
+	@Override
+	public String getIdColName() {
+		return "farm_prod_id";
+	}
 }
