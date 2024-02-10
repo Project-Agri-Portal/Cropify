@@ -34,24 +34,25 @@ public class FarmerProductDetails {
 	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
 	
-	@Column
+	@Column(nullable = false)
 	private int quantity;
-	@Column
+	@Column(nullable = false)
 	private double price;
 	
-	@Column(columnDefinition = "TEXT")
+	@Column
 	private String description;
 	
-	@Column(name = "harvest_date")
+	@Column(name = "harvest_date", nullable = false)
 	private LocalDate harvestDate;
 	
-	@Column(name = "expiry_date")
+	@Column(name = "expiry_date", nullable = false)
 	private LocalDate expiryDate;
 	
-	@Column(name = "farm_prod_status")
+	@Column(name = "farm_prod_status", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private FarmProductsStatus farmProductStatus;
 	
+	// ------------ Relationship Mapping ------------------------------
 	@OneToMany(mappedBy = "farmerProductDetails" ,cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<OrderFarmProductDetails> orderFarmProductDetails= new ArrayList<OrderFarmProductDetails>();
 	

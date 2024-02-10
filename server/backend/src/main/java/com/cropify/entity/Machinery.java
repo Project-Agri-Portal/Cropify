@@ -38,24 +38,20 @@ public class Machinery implements Prefixable {
 	@Enumerated(EnumType.STRING)
 	private MachineType machineType;
 	
+	// ------------ Relationship Mapping ------------------------------
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<SellerMachineryDetails>();
 
-	//---------------Constructos---------------
-	
-	public Machinery() {
-//		super();
-	}
+	// -------------------------- Constructors ------------------------------
+	public Machinery() {}
 
 	public Machinery(String machineId, String machineName, MachineType machineType) {
-//		super();
 		this.machineId = machineId;
 		this.machineName = machineName;
 		this.machineType = machineType;
 	}
 
 	//-----------------------------Getter and Setters--------------------
-	
 	public String getMachineId() {
 		return machineId;
 	}
