@@ -9,13 +9,23 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import com.cropify.util.Prefixable;
 
 @Entity
-public class Machinery {
+public class Machinery implements Prefixable {
+	@Transient
+	private String prefix = "m";
 	
 	@Id
+	@GeneratedValue(generator = "customId")
+	@GenericGenerator(name = "customId", strategy = "com.cropify.util.CustomIdGenerator")
 	@Column(name = "machine_id")
 	private String machineId;
 	
@@ -83,6 +93,18 @@ public class Machinery {
 		return "Machinery [machineId=" + machineId + ", machineName=" + machineName + ", machineType=" + machineType
 				+ ", sellerMachineryDetails=" + sellerMachineryDetails + "]";
 	}
-	
+
+	@Override
+	public String getPrefix() {
+		return prefix;
+	}
+	@Override
+	public String getTableName() {
+		return "machinery";
+	}
+	@Override
+	public String getIdColName() {
+		return "machine_id";
+	}
 }
 
