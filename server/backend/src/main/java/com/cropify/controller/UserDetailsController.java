@@ -53,14 +53,14 @@ public class UserDetailsController {
 	}
 	
 	// ------- UPDATE methods ----------------
-//	@PutMapping("/{userId}")
-//	public ResponseEntity<UserDetailsDTO> updateUser(
-//			@PathVariable @NotNull Long userId,
-//			@RequestBody @Valid UserDetailsDTO userDto)
-//	{
-//		UserDetailsDTO updatedUserDto = userService.updateUser(userDto, userId);
-//		return ResponseEntity.status(HttpStatus.CREATED).body(updatedUserDto);
-//	}
+	@PutMapping("/{userId}")
+	public ResponseEntity<UserDetailsDTO> updateUser(
+			@PathVariable @NotNull Long userId,
+			@RequestBody @Valid UserDetailsDTO userDto)
+	{
+		UserDetailsDTO updatedUserDto = userService.updateUser(userDto, userId);
+		return ResponseEntity.status(HttpStatus.CREATED).body(updatedUserDto);
+	}
 	
 	// ------- DELETE methods ----------------
 	@DeleteMapping("/{userId}")
