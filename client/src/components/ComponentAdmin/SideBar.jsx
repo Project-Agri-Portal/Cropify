@@ -10,7 +10,7 @@ function SideBar({openSidebarToggle, OpenSidebar}) {
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
         <div className='sidebar-title'>
             <div className='sidebar-brand'>
-                <BsCart3  className='icon_header'/> SHOP
+                <BsCart3  className='icon_header'/> Cropify
             </div>
             <span className='icon close_icon' onClick={OpenSidebar}>X</span>
         </div>
@@ -28,7 +28,7 @@ function SideBar({openSidebarToggle, OpenSidebar}) {
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
-                    <BsFillGrid3X3GapFill className='icon'/> Categories
+                    <BsFillGrid3X3GapFill className='icon'/> Seller
                 </a>
             </li>
             <li className='sidebar-list-item'>
@@ -38,17 +38,17 @@ function SideBar({openSidebarToggle, OpenSidebar}) {
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
-                    <BsListCheck className='icon'/> Inventory
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsMenuButtonWideFill className='icon'/> Reports
+                    <BsListCheck className='icon'/> Admins
                 </a>
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
                     <BsFillGearFill className='icon'/> Setting
+                </a>
+            </li>
+            <li className='sidebar-list-item'>
+                <a href="">
+                <BsListCheck className='icon'/> Log Out
                 </a>
             </li>
         </ul>
