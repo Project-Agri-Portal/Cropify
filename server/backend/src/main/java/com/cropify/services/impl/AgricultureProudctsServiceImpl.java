@@ -49,8 +49,11 @@ public class AgricultureProudctsServiceImpl implements AgricultureProductsServic
 
 	@Override
 	public void deleteAgricultureProductById(String productId) {
-		// TODO Auto-generated method stub
-
+		boolean productExists = productRepo.existsById(productId);
+		if (productExists)
+			productRepo.deleteById(productId);
+		else
+			throw new ResourceNotFoundException("product not found");
 	}
 
 }

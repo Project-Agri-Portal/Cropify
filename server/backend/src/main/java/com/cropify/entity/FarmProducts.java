@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.cropify.entity.enums.FarmProductType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
