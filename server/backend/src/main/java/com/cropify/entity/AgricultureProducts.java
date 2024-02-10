@@ -31,13 +31,14 @@ public class AgricultureProducts implements Prefixable {
 	@Column(name = "agri_prod_id")
 	private String agriProductId;
 	
-	@Column(name = "agri_prod_name")
+	@Column(name = "agri_prod_name", nullable = false)
 	private String agriProductName;
 	
-	@Column(name = "agri_prod_type")
+	@Column(name = "agri_prod_type", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private AgriProductType agriProductType;
 	
+	// ------------ Relationship Mapping ------------------------------
 	@OneToMany(mappedBy = "agriProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
 	

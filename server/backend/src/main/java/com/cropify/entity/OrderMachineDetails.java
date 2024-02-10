@@ -13,29 +13,6 @@ import javax.persistence.ManyToOne;
 @Entity
 public class OrderMachineDetails extends OrderBaseClass {
 
-
-
-	public OrderMachineDetails() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	
-	
-	public OrderMachineDetails(UserDetails farmerId, SellerMachineryDetails sellerMachineryId, int rentDuration,
-			LocalDate orderDate, LocalDate deliveryDate, int quantity, double totalPrice) {
-		super();
-		this.farmerId = farmerId;
-		this.sellerMachineryId = sellerMachineryId;
-		this.rentDuration = rentDuration;
-		this.orderDate = orderDate;
-		this.deliveryDate = deliveryDate;
-		this.quantity = quantity;
-		this.totalPrice = totalPrice;
-	}
-
-
-
 	@ManyToOne
 	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
@@ -53,23 +30,39 @@ public class OrderMachineDetails extends OrderBaseClass {
 	@JoinColumn(name = "seller_machine_id", nullable = false)
 	private SellerMachineryDetails sellerMachineryId;
 
-	@Column(name = "rent_duration")
+	@Column(name = "rent_duration", nullable = false)
 	private int rentDuration;
 
-	@Column(name = "order_date")
+	@Column(name = "order_date", nullable = false)
 	private LocalDate orderDate;
 
-	@Column(name = "delivery_date")
+	@Column(name = "delivery_date", nullable = false)
 	private LocalDate deliveryDate;
 
 	@Column
 	private int quantity;
 
-	@Column(name = "total_amount")
+	@Column(name = "total_amount", nullable = false)
 	private double totalPrice;
 
+	// ---------- Constructors --------------------------
+	public OrderMachineDetails() {
+		super();
+	}
+	
+	public OrderMachineDetails(UserDetails farmerId, SellerMachineryDetails sellerMachineryId, int rentDuration,
+			LocalDate orderDate, LocalDate deliveryDate, int quantity, double totalPrice) {
+		super();
+		this.farmerId = farmerId;
+		this.sellerMachineryId = sellerMachineryId;
+		this.rentDuration = rentDuration;
+		this.orderDate = orderDate;
+		this.deliveryDate = deliveryDate;
+		this.quantity = quantity;
+		this.totalPrice = totalPrice;
+	}
+	
 	// -----------------------------Getter and Setters--------------------
-
 	public UserDetails getFarmerId() {
 		return farmerId;
 	}

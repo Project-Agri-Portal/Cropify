@@ -13,14 +13,8 @@ public class OrderBaseClass {
 	@Column(name = "order_id")
 	private Long orderId;
 	
-	
-	
 	//-----------------------------Getter and Setters--------------------
-
-	public OrderBaseClass() {
-//		super();
-		// TODO Auto-generated constructor stub
-	}
+	public OrderBaseClass() {}
 
 	public Long getOrderId() {
 		return orderId;
