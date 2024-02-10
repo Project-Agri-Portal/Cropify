@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.cropify.entity.enums.FarmProductsStatus;
+
 @Entity
 public class SellerAgricultureProductDetails {
 

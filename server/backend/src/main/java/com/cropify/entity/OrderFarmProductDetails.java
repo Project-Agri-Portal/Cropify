@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.cropify.entity.enums.FarmOrderStatus;
+
 @Entity
 public class OrderFarmProductDetails extends OrderBaseClass {
 

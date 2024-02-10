@@ -3,7 +3,7 @@ package com.cropify.dto;
 import javax.validation.constraints.Size;
 
 import com.cropify.entity.UserAddress;
-import com.cropify.entity.UserType;
+import com.cropify.entity.enums.UserType;
 
 public class UserDetailsDTO {
 	private Long id;

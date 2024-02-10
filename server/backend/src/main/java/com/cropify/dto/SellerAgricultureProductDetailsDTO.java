@@ -3,8 +3,8 @@ package com.cropify.dto;
 import java.time.LocalDate;
 
 import com.cropify.entity.AgricultureProducts;
-import com.cropify.entity.FarmProductsStatus;
 import com.cropify.entity.UserDetails;
+import com.cropify.entity.enums.FarmProductsStatus;
 
 public class SellerAgricultureProductDetailsDTO {
 

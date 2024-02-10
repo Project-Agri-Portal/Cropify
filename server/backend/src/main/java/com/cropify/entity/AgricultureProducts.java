@@ -16,6 +16,7 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.cropify.entity.enums.AgriProductType;
 import com.cropify.util.Prefixable;
 
 @Entity
