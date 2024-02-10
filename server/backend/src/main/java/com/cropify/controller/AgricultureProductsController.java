@@ -46,4 +46,11 @@ public class AgricultureProductsController {
 	{
 		return ResponseEntity.status(HttpStatus.CREATED).body(productService.addAgricultureProduct(productDto));
 	}
+	
+	// ------- DELETE methods ----------------
+	public ResponseEntity<String> deleteProductById(@PathVariable @NotNull String productId)
+	{
+		productService.deleteAgricultureProductById(productId);
+		return ResponseEntity.ok("Product deleted successfully");
+	}
 }
