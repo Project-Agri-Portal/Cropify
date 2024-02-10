@@ -6,18 +6,13 @@ import com.cropify.entity.UserDetails;
 public class SellerMachineryDetailsDTO {
 
 	private Long sellerMachineryId;
-
 	private Machinery machineryId;
-
 	private UserDetails sellerId;
-	
 	private int quantity;
-	
 	private double price;
-	
 	private String description;
-	
 	private boolean isAvailable;
+	private boolean verified;
 	
 	//-----------------------------Getter and Setters--------------------
 
@@ -77,5 +72,12 @@ public class SellerMachineryDetailsDTO {
 		this.isAvailable = isAvailable;
 	}
 
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
 
 }
