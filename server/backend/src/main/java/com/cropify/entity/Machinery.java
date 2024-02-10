@@ -20,6 +20,7 @@ import com.cropify.util.Prefixable;
 
 @Entity
 public class Machinery implements Prefixable {
+	// This annotation specifies the respective field is not to be persisted
 	@Transient
 	private String prefix = "m";
 	
@@ -94,6 +95,7 @@ public class Machinery implements Prefixable {
 				+ ", sellerMachineryDetails=" + sellerMachineryDetails + "]";
 	}
 
+	// ------------ Inherited methods of Prefixable interface ---------------------
 	@Override
 	public String getPrefix() {
 		return prefix;

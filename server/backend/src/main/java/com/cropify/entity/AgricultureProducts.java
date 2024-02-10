@@ -20,6 +20,7 @@ import com.cropify.util.Prefixable;
 
 @Entity
 public class AgricultureProducts implements Prefixable {
+	// This annotation specifies the respective field is not to be persisted
 	@Transient
 	private String prefix = "p";
 	@Id
@@ -88,6 +89,7 @@ public class AgricultureProducts implements Prefixable {
 		productDetails.setAgriProductId(null);
 	}
 
+	// ------------ Inherited methods of Prefixable interface ---------------------
 	@Override
 	public String getPrefix() {
 		return prefix;
