@@ -6,8 +6,9 @@ import com.cropify.entity.UserDetails;
 public class SellerMachineryDetailsDTO {
 
 	private Long sellerMachineryId;
-	private Machinery machineryId;
-	private UserDetails sellerId;
+//	private Machinery machineryId;
+	private Long sellerId;
+	private String machineryId;
 	private int quantity;
 	private double price;
 	private String description;
@@ -24,24 +25,42 @@ public class SellerMachineryDetailsDTO {
 		this.sellerMachineryId = sellerMachineryId;
 	}
 
-	public Machinery getMachineryId() {
-		return machineryId;
-	}
-
-	public void setMachineryId(Machinery machineryId) {
-		this.machineryId = machineryId;
-	}
-
-	public UserDetails getSellerId() {
-		return sellerId;
-	}
-
-	public void setSellerId(UserDetails sellerId) {
-		this.sellerId = sellerId;
-	}
+//	public Machinery getMachineryId() {
+//		return machineryId;
+//	}
+//
+//	public void setMachineryId(Machinery machineryId) {
+//		this.machineryId = machineryId;
+//	}
+//
+//	public UserDetails getSellerId() {
+//		return sellerId;
+//	}
+//
+//	public void setSellerId(UserDetails sellerId) {
+//		this.sellerId = sellerId;
+//	}
+	
+	
 
 	public int getQuantity() {
 		return quantity;
+	}
+
+	public Long getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(Long sellerId) {
+		this.sellerId = sellerId;
+	}
+
+	public String getMachineryId() {
+		return machineryId;
+	}
+
+	public void setMachineryId(String machineryId) {
+		this.machineryId = machineryId;
 	}
 
 	public void setQuantity(int quantity) {

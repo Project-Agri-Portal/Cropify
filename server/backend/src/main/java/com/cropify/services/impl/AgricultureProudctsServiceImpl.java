@@ -34,7 +34,6 @@ public class AgricultureProudctsServiceImpl implements AgricultureProductsServic
 	public List<AgricultureProductsDTO> getAllAgricultureProducts() {
 		
 		List<AgricultureProducts> agricultureProducts = productRepo.findAll();
-		System.out.println(agricultureProducts);
 		List<AgricultureProductsDTO> agricultureProductsDTOs = agricultureProducts.stream()
 																.map(agriprod -> mapper.map(agriprod, AgricultureProductsDTO.class))
 																.collect(Collectors.toList());

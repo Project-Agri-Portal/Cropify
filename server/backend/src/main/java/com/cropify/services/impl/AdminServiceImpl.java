@@ -57,20 +57,20 @@ public class AdminServiceImpl implements AdminService {
 		return adminDtos;
 	}
 
-	@Override
-	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
-		Admin admin = this.adminRepository.findById(adminId)
-				.orElseThrow(() -> new ResourceNotFoundException(errorMessage.append(adminId).toString()));
-		admin.setAdminMobile(adminDto.getAdminMobile());
-		admin.setEmail(adminDto.getAdminMobile());
-		admin.setFirstName(adminDto.getFirstName());
-		admin.setJoinDate(adminDto.getJoinDate());
-		admin.setLastName(adminDto.getLastName());
-		admin.setPassword(adminDto.getPassword());
-		admin.setRootAdmin(adminDto.isRootAdmin());
-		Admin updatedAdmin = this.adminRepository.save(admin);
-
-		return this.modelMapper.map(updatedAdmin, AdminDTO.class);
-	}
+//	@Override
+//	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
+//		Admin admin = this.adminRepository.findById(adminId)
+//				.orElseThrow(() -> new ResourceNotFoundException(errorMessage.append(adminId).toString()));
+////		admin.setAdminMobile(adminDto.getAdminMobile());
+////		admin.setEmail(adminDto.getAdminMobile());
+////		admin.setFirstName(adminDto.getFirstName());
+////		admin.setJoinDate(adminDto.getJoinDate());
+////		admin.setLastName(adminDto.getLastName());
+////		admin.setPassword(adminDto.getPassword());
+////		admin.setRootAdmin(adminDto.isRootAdmin());
+////		Admin updatedAdmin = this.adminRepository.save(admin);
+//
+//		return this.modelMapper.map(updatedAdmin, AdminDTO.class);
+//	}
 
 }
