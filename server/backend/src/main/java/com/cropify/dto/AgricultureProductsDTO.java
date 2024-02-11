@@ -8,6 +8,7 @@ public class AgricultureProductsDTO {
 	private String agriProductId;
 	private String agriProductName;
 	private AgriProductType agriProductType;
+	private String imgPath;
 	
 	//-----------------------------Getter and Setters--------------------
 	

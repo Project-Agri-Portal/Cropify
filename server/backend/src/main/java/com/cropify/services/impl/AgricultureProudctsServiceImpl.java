@@ -1,6 +1,6 @@
 package com.cropify.services.impl;
 
-import java.util.List;
+import java.util.List;import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -32,11 +32,13 @@ public class AgricultureProudctsServiceImpl implements AgricultureProductsServic
 
 	@Override
 	public List<AgricultureProductsDTO> getAllAgricultureProducts() {
-		List<AgricultureProductsDTO> productList = productRepo.findAll()
-				.stream()
-				.map(product -> mapper.map(product, AgricultureProductsDTO.class))
-				.collect(Collectors.toList());
-		return productList;
+		
+		List<AgricultureProducts> agricultureProducts = productRepo.findAll();
+		System.out.println(agricultureProducts);
+		List<AgricultureProductsDTO> agricultureProductsDTOs = agricultureProducts.stream()
+																.map(agriprod -> mapper.map(agriprod, AgricultureProductsDTO.class))
+																.collect(Collectors.toList());
+		return agricultureProductsDTOs;
 	}
 
 	@Override

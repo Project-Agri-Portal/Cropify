@@ -10,6 +10,8 @@ public interface AgricultureProductsService {
 	
 	// Read operations
 	List<AgricultureProductsDTO> getAllAgricultureProducts();
+	
+	
 	AgricultureProductsDTO getAgricultureProductById(String productId);
 	
 	// Delete operations
