@@ -5,13 +5,16 @@ import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 
+import com.cropify.dto.FarmProductsDTO;
 import com.cropify.entity.FarmProducts;
 
 public interface FarmProductsService {
-	List<FarmProducts> getAllFarmProducts();
+	List<FarmProductsDTO> getAllFarmProducts();
 	
-	FarmProducts getFarmProductById(String pid); 
+	FarmProductsDTO getFarmProductById(String farmProductId); 
+	
+	FarmProductsDTO addFarmProduct(FarmProductsDTO farmProductsDTO);
+	
 	String deleteFarmProduct(String pid);
 	FarmProducts fetchFarmProductDetails(String pid);
-	FarmProducts addFarmProduct(FarmProducts farmProducts);
 }

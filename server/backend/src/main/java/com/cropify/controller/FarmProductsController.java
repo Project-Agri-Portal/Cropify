@@ -3,6 +3,9 @@ package com.cropify.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,15 +17,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cropify.dto.FarmProductsDTO;
 import com.cropify.entity.FarmProducts;
 import com.cropify.services.FarmProductsService;
 
 @RestController
-@RequestMapping("/farmproducts")
+@RequestMapping("/api/farmproducts")
 public class FarmProductsController {
 
 	@Autowired
 	private FarmProductsService farmProductsService;
+	
+	@Autowired
+	private ModelMapper mapper;
 	
 	public FarmProductsController() {
 		super();
@@ -37,9 +44,18 @@ public class FarmProductsController {
 //	}
 //	with ResponseEntity
 	@GetMapping("/all")
-	public ResponseEntity<List<FarmProducts>> getFarmProducts(){
-//		return new ResponseEntity<>(farmProductsService.getAllFarmProducts(), HttpStatus.OK);
-		return ResponseEntity.ok(farmProductsService.getAllFarmProducts());
+	public ResponseEntity<List<FarmProductsDTO>> getAllFarmProducts(){
+		return ResponseEntity.status(HttpStatus.OK).body(farmProductsService.getAllFarmProducts());
+	}
+	
+	@GetMapping("/{farmProductId}")
+	public ResponseEntity<?> getFarmProduct(@PathVariable String farmProductId){
+		return ResponseEntity.ok(farmProductsService.getFarmProductById(farmProductId));
+	}
+	
+	@PostMapping("/add")
+	public ResponseEntity<FarmProductsDTO> addFarmProduct(@RequestBody @Valid FarmProductsDTO farmProductsDTO){
+		return new ResponseEntity<>(farmProductsService.addFarmProduct(farmProductsDTO), HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/{pid}")
@@ -52,24 +68,5 @@ public class FarmProductsController {
 //	public FarmProducts getFarmProduct(@PathVariable String pid) {
 //		return farmProductsService.fetchFarmProductDetails(pid);
 //	}
-//	with ResponseEntity
-	@GetMapping("/{pid}")
-	public ResponseEntity<?> getFarmProduct(@PathVariable String pid) {
-//		try {
-//			return new ResponseEntity<>(farmProductsService.fetchFarmProductDetails(pid), HttpStatus.OK);
-			return ResponseEntity.status(HttpStatus.OK).body(farmProductsService.fetchFarmProductDetails(pid));
-//		}
-//		catch(RuntimeException e) {
-////			you generate status code using HttpStatus
-//			System.out.println("Error in controller getFarmProduct() " + e);
-//			return new ResponseEntity<>("Error in controller getFarmProduct() " + e, HttpStatus.NOT_FOUND);
-//		}
-	}
-	
-	@PostMapping("/add")
-	public ResponseEntity<?> addFarmProduct(@RequestBody FarmProducts farmProducts) {
-		System.out.println(farmProducts);
-		return ResponseEntity.ok(farmProductsService.addFarmProduct(farmProducts));
-	}
 	
 }
