@@ -10,7 +10,6 @@ public class UserDetailsDTO {
 	private Long id;
 	private String firstName;
 	private String lastName;
-	@Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
 	private String email;
 	
 	@Pattern(regexp="((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{5,20})", message = "Invalid Password")
