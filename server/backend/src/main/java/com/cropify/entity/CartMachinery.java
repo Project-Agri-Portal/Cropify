@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.boot.autoconfigure.security.reactive.ReactiveUserDetailsServiceAutoConfiguration;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,4 +39,5 @@ public class CartMachinery {
 	
 	@Column(name = "total_amount")
 	private double totalAmount;
+
 }
