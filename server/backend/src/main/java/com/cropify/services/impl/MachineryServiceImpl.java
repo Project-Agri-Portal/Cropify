@@ -2,6 +2,7 @@ package com.cropify.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -9,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cropify.customexception.ResourceNotFoundException;
 import com.cropify.dao.MachineryRepository;
 import com.cropify.dto.MachineryDTO;
 import com.cropify.entity.Machinery;
@@ -25,8 +27,12 @@ public class MachineryServiceImpl implements MachineryService {
 	private ModelMapper mapper;
 	
 	@Override
-	public List<Machinery> getAllMachine() {
-		return machineryRepository.findAll();
+	public List<MachineryDTO> getAllMachine() {
+		List<MachineryDTO> list = machineryRepository.findAll()
+				.stream()
+				.map(machine -> mapper.map(machine, MachineryDTO.class))
+				.collect(Collectors.toList());
+		return list;
 	}
 
 	@Override
@@ -38,20 +44,19 @@ public class MachineryServiceImpl implements MachineryService {
 	}
 
 	@Override
-	public Machinery getMachineById(String id) {
-		Optional<Machinery> optional = machineryRepository.findByMachineId(id);
-		return optional.orElseThrow(() -> new RuntimeException("MachineNotFound"));
+	public MachineryDTO getMachineById(String id) {
+		Machinery machine = machineryRepository.findById(id).orElseThrow(
+				() -> new ResourceNotFoundException("machine not found"));
+		return mapper.map(machine, MachineryDTO.class);
 	}
 	
 	@Override
 	public void deleteMachineById(String id) { 
-		Optional<Machinery> machinery = machineryRepository.findByMachineId(id);
-		if(!machinery.isEmpty()) {
-			machineryRepository.delete(machinery.get());
-		}
-		else {
-			throw new RuntimeException("MachineNotFound");
-		}
+		boolean machineExists = machineryRepository.existsById(id);
+		if (machineExists)
+			machineryRepository.deleteById(id);
+		else
+			throw new RuntimeException("machine with id = " + id + " not found");
 	}
 	
 }

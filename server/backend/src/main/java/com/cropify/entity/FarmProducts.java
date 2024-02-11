@@ -46,9 +46,11 @@ public class FarmProducts implements Prefixable {
 	@OneToMany(mappedBy = "farmProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FarmerProductDetails> farmerProductDetails = new ArrayList<FarmerProductDetails>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmProdId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartFarmProduct> cartFarmProductList = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmProdId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderFarmProductDetails> orderFarmProductDetails = new ArrayList<>();
 	
