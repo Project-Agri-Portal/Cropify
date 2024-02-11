@@ -18,6 +18,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.cropify.entity.enums.MachineType;
 import com.cropify.util.Prefixable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Machinery implements Prefixable {
@@ -42,12 +43,15 @@ public class Machinery implements Prefixable {
 	private String imgPath;
 	
 	// ------------ Relationship Mapping ------------------------------
-	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
+	@OneToMany(mappedBy = "machineryId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<SellerMachineryDetails>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartMachinery> cartMachinery = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
 
