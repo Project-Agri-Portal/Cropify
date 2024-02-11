@@ -6,13 +6,13 @@ import com.cropify.entity.UserDetails;
 public class SellerMachineryDetailsDTO {
 
 	private Long sellerMachineryId;
-	private Machinery machineryId;
-	private UserDetails sellerId;
+	private String machineryId;
+	private Long sellerId;
 	private int quantity;
 	private double price;
 	private String description;
-	private boolean isAvailable;
-	private boolean verified;
+	private int isAvailable;
+	private int verified;
 	
 	//-----------------------------Getter and Setters--------------------
 
@@ -24,25 +24,42 @@ public class SellerMachineryDetailsDTO {
 		this.sellerMachineryId = sellerMachineryId;
 	}
 
-	public Machinery getMachineryId() {
+	public String getMachineryId() {
 		return machineryId;
 	}
 
-	public void setMachineryId(Machinery machineryId) {
+	public void setMachineryId(String machineryId) {
 		this.machineryId = machineryId;
 	}
 
-	public UserDetails getSellerId() {
+	public Long getSellerId() {
 		return sellerId;
 	}
 
-	public void setSellerId(UserDetails sellerId) {
+	public void setSellerId(Long sellerId) {
 		this.sellerId = sellerId;
 	}
+	
 
 	public int getQuantity() {
 		return quantity;
 	}
+
+//	public String getMachineryId() {
+//		return machineryId;
+//	}
+//
+//	public void setMachineryId(String machineryId) {
+//		this.machineryId = machineryId;
+//	}
+//
+//	public Long getSellerId() {
+//		return sellerId;
+//	}
+//
+//	public void setSellerId(Long sellerId) {
+//		this.sellerId = sellerId;
+//	}
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
@@ -64,19 +81,19 @@ public class SellerMachineryDetailsDTO {
 		this.description = description;
 	}
 
-	public boolean isAvailable() {
+	public int isAvailable() {
 		return isAvailable;
 	}
 
-	public void setAvailable(boolean isAvailable) {
+	public void setAvailable(int isAvailable) {
 		this.isAvailable = isAvailable;
 	}
 
-	public boolean isVerified() {
+	public int isVerified() {
 		return verified;
 	}
 
-	public void setVerified(boolean verified) {
+	public void setVerified(int verified) {
 		this.verified = verified;
 	}
 

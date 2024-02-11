@@ -52,17 +52,36 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 		UserDetails seller = sellerRepo.findById(id).orElseThrow(
 				() -> new ResourceNotFoundException("seller not found"));
 		SellerMachineryDetails detail = mapper.map(smDto, SellerMachineryDetails.class);
-		// calling helper method of seller
-		seller.addSellerMachineryDetails(detail);
 		
-		String machineId = detail.getMachineryId().getMachineId();
+		// Retrieving machine ID
+		String machineId = smDto.getMachineryId();
+//		String machineId = smDto.getMachineryId().getMachineId();
 		Machinery machine = machineRepo.findById(machineId).orElseThrow(
 				() -> new RuntimeException("Machine not found"));
+		
+		detail.setSellerId(seller);
+		detail.setMachineryId(machine);
+		
+		// calling helper method of seller and machine
+		seller.addSellerMachineryDetails(detail);
 		machine.addSellerMachineryDetails(detail);
 		
 		// saving the sellerMachineryDetail
 		SellerMachineryDetails savedDetail = repository.save(detail);
-		return mapper.map(savedDetail, SellerMachineryDetailsDTO.class);
+
+		SellerMachineryDetailsDTO savedDetailDTO = new SellerMachineryDetailsDTO();
+		savedDetailDTO.setSellerId(id);
+		savedDetailDTO.setMachineryId(machineId);
+		savedDetailDTO.setAvailable(savedDetail.isAvailable());
+		savedDetailDTO.setVerified(savedDetail.isVerified());
+		savedDetailDTO.setQuantity(savedDetail.getQuantity());
+		savedDetailDTO.setPrice(savedDetail.getPrice());
+		savedDetailDTO.setDescription(savedDetail.getDescription());
+		savedDetailDTO.setSellerMachineryId(savedDetail.getSellerMachineryId());
+//		savedDetail.setMachineryId(machine);
+//		savedDetail.setSellerId(seller);
+//		return mapper.map(savedDetail, SellerMachineryDetailsDTO.class);
+		return savedDetailDTO;
 	}
 
 	// ----------------- PUT operations ----------------------------
