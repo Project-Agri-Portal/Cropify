@@ -1,10 +1,15 @@
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "./Cart.css"
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import NavBar from "../Common/NavBar"
+import Orange from "../../../assets/ShopImages/orange.png"
 
 const Cart = () => {
   return (
     <>
+    <NavBar></NavBar>
+    <div style={{height:80}}></div>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-10 col-11 mx-auto">
@@ -17,7 +22,7 @@ const Cart = () => {
                     {/* <!-- cart images div --> */}
                     <div className="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img">
                       <img
-                        src="images/product-5.png"
+                        src={Orange}
                         className="img-fluid"
                         alt="cart img"
                       />
@@ -89,7 +94,7 @@ const Cart = () => {
                     {/* <!-- cart images div --> */}
                     <div className="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img">
                       <img
-                        src="images/product-5.png"
+                        src="http://localhost:3000/assets/ShopImages/orange.png"
                         className="img-fluid"
                         alt="cart img"
                       />
@@ -252,9 +257,12 @@ const Cart = () => {
                       $<span id="total_cart_amt">0.00</span>
                     </p>
                   </div>
-                  <button className="btn btn-primary text-uppercase">
+                  {/* <button className="btn btn-primary text-uppercase">
                     Checkout
-                  </button>
+                  </button> */}
+                  <Link className="btn btn-primary text-uppercase" to="/shop/cart/checkout">
+                  Checkout
+                  </Link>
                 </div>
                 {/* <!-- discount code part --> */}
                 <div className="discount_code mt-3 shadow">

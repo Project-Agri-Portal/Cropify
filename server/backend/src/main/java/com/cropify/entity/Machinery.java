@@ -38,6 +38,9 @@ public class Machinery implements Prefixable {
 	@Enumerated(EnumType.STRING)
 	private MachineType machineType;
 	
+	@Column
+	private String imgPath;
+	
 	// ------------ Relationship Mapping ------------------------------
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<SellerMachineryDetails>();
