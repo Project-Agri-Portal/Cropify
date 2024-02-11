@@ -2,21 +2,23 @@ package com.cropify.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Future;
+
+import com.cropify.entity.Machinery;
 import com.cropify.entity.SellerMachineryDetails;
 import com.cropify.entity.UserDetails;
 
 public class OrderMachineDetailsDTO {
 	private UserDetails farmerId;
-	private SellerMachineryDetails sellerMachineryId;
-
+//	private SellerMachineryDetails sellerMachineryId;
+	private UserDetails sellerId;
+	private Machinery machineId;
 	private int rentDuration;
-
 	private LocalDate orderDate;
 
+	@Future
 	private LocalDate deliveryDate;
-
 	private int quantity;
-
 	private double totalPrice;
 	
 	//-----------------------------Getter and Setters--------------------
@@ -29,16 +31,25 @@ public class OrderMachineDetailsDTO {
 		this.farmerId = farmerId;
 	}
 
+	/*
 	public SellerMachineryDetails getSellerMachineryId() {
 		return sellerMachineryId;
 	}
-
 	public void setSellerMachineryId(SellerMachineryDetails sellerMachineryId) {
 		this.sellerMachineryId = sellerMachineryId;
 	}
-
+	*/
+	
 	public int getRentDuration() {
 		return rentDuration;
+	}
+
+	public UserDetails getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(UserDetails sellerId) {
+		this.sellerId = sellerId;
 	}
 
 	public void setRentDuration(int rentDuration) {
@@ -75,6 +86,14 @@ public class OrderMachineDetailsDTO {
 
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	public Machinery getMachineId() {
+		return machineId;
+	}
+
+	public void setMachineId(Machinery machineId) {
+		this.machineId = machineId;
 	}
 
 }

@@ -5,14 +5,10 @@ import com.cropify.entity.enums.FarmProductType;
 public class FarmProductsDTO {
 	
 	private String farmProductId;
-	
 	private String farmProductName;
-	
 	private FarmProductType farmProductType;
 
-	
 	//-----------------------------Getter and Setters--------------------
-	
 	/**
 	 * @return the farmProductId
 	 */

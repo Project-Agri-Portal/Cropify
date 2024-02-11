@@ -6,11 +6,8 @@ import com.cropify.entity.enums.AgriProductType;
 public class AgricultureProductsDTO {
 	
 	private String agriProductId;
-	
 	private String agriProductName;
-	
 	private AgriProductType agriProductType;
-	
 	
 	//-----------------------------Getter and Setters--------------------
 	

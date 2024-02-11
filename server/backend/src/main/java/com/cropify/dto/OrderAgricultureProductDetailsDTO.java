@@ -2,21 +2,20 @@ package com.cropify.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Future;
+
 import com.cropify.entity.SellerAgricultureProductDetails;
 import com.cropify.entity.UserDetails;
 
 public class OrderAgricultureProductDetailsDTO {
 
 	private UserDetails farmerId;
-
 	private SellerAgricultureProductDetails sellerAgricultureProductId;
-
 	private LocalDate orderDate;
-
+	
+	@Future
 	private LocalDate deliveryDate;
-
 	private int quantity;
-
 	private double totalPrice;
 
 	// -------------Getters and Setters--------------------

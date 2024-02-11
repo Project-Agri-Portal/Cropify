@@ -26,10 +26,12 @@ public class SellerAgricultureProductDetails {
 	@Column(name = "seller_agri_product_id")
 	private Long sellerAgricultureProductId;
 
+	// Mapped with agriculture_products table
 	@ManyToOne
 	@JoinColumn(name = "seller_prod_id", nullable = false)
 	private AgricultureProducts agriProductId;
 
+	// Mapped with user_details table
 	@ManyToOne // owning
 	@JoinColumn(name = "seller_id", nullable = false)
 	private UserDetails sellerId;
@@ -42,6 +44,9 @@ public class SellerAgricultureProductDetails {
 
 	@Column
 	private String description;
+	
+	@Column(nullable = false)
+	private boolean verified;
 
 	@Column(name = "expiry_date", nullable = false)
 	private LocalDate expiryDate;
@@ -50,10 +55,12 @@ public class SellerAgricultureProductDetails {
 	@Enumerated(EnumType.STRING)
 	private FarmProductsStatus sellerProductStatus;
 
+	/* Commented to remove order table relationship
 	// ------------ Relationship Mapping ------------------------------
 	@OneToMany(mappedBy = "sellerAgricultureProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
-
+	*/
+	
 	// -------------------------- Constructors ---------------------------
 	public SellerAgricultureProductDetails() {}
 
@@ -95,14 +102,15 @@ public class SellerAgricultureProductDetails {
 		this.agriProductId = agriProductId;
 	}
 
+	/* Commented to remove order table relationship
 	public List<OrderAgricultureProductDetails> getOrderAgricultureProductDetails() {
 		return orderAgricultureProductDetails;
 	}
-
 	public void setOrderAgricultureProductDetails(List<OrderAgricultureProductDetails> orderAgricultureProductDetails) {
 		this.orderAgricultureProductDetails = orderAgricultureProductDetails;
 	}
-
+	*/
+	
 	public int getQuantity() {
 		return quantity;
 	}
@@ -143,7 +151,16 @@ public class SellerAgricultureProductDetails {
 		this.sellerProductStatus = sellerProductStatus;
 	}
 
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+
 	// -------------- Helper Methods for: --------------------
+	/*
 	public void addOrderAgricultureProductDetails(OrderAgricultureProductDetails productDetails) {
 		orderAgricultureProductDetails.add(productDetails);
 		productDetails.setSellerAgricultureProductId(this);
@@ -153,4 +170,5 @@ public class SellerAgricultureProductDetails {
 		orderAgricultureProductDetails.remove(productDetails);
 		productDetails.setSellerAgricultureProductId(null);
 	}
+	*/
 }

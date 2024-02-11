@@ -2,6 +2,8 @@ package com.cropify.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Future;
+
 import com.cropify.entity.FarmerProductDetails;
 import com.cropify.entity.UserDetails;
 import com.cropify.entity.enums.FarmOrderStatus;
@@ -12,15 +14,12 @@ public class OrderFarmProductDetailsDTO {
 private UserDetails customerId;
 	
 	private FarmerProductDetails farmerProductDetails;
-	
 	private LocalDate orderDate;
 	
+	@Future
 	private LocalDate deliveryDate;
-	
 	private int quantity;
-	
 	private double totalPrice;
-	
 	private FarmOrderStatus farmOrderStatus;
 	
 	//-------------Getters and Setters--------------------
