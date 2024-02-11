@@ -46,6 +46,9 @@ public class FarmProducts implements Prefixable {
 	@OneToMany(mappedBy = "farmProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FarmerProductDetails> farmerProductDetails = new ArrayList<FarmerProductDetails>();
 	
+	@OneToMany(mappedBy = "farmProdId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CartFarmProduct> cartFarmProductList = new ArrayList<>();
+	
 	//-----------------------------Constructors--------------------
 		
 	public FarmProducts(String farmProductId, String farmProductName, FarmProductType farmProductType) {
@@ -98,10 +101,28 @@ public class FarmProducts implements Prefixable {
 		this.farmProductType = farmProductType;
 	}
 
+	public List<CartFarmProduct> getCartFarmProductList() {
+		return cartFarmProductList;
+	}
+
+	public void setCartFarmProductList(List<CartFarmProduct> cartFarmProductList) {
+		this.cartFarmProductList = cartFarmProductList;
+	}
+
 	@Override
 	public String toString() {
 		return "FarmProducts [farmProductId=" + farmProductId + ", farmProductName=" + farmProductName
 				+ ", farmProductType=" + farmProductType + ", farmerProductDetails=" + farmerProductDetails + "]";
+	}
+	
+	// ------------- Helper Methods ------------------------------
+	public void addCartFarmProduct(CartFarmProduct product) {
+		cartFarmProductList.add(product);
+		product.setFarmProdId(this);
+	}
+	public void removeCartFarmProduct(CartFarmProduct product) {
+		cartFarmProductList.remove(product);
+		product.setFarmProdId(null);
 	}
 
 	// ------------ Inherited methods of Prefixable interface ---------------------

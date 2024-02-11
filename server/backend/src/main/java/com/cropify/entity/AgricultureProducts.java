@@ -45,6 +45,9 @@ public class AgricultureProducts implements Prefixable {
 	@OneToMany(mappedBy = "agriProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "agriProdId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CartAgricultureProduct> cartAgricultureProductList = new ArrayList<>();
+	
 	//-----------------------------Constructors--------------------
 	
 	public AgricultureProducts(String agriProductId, String agriProductName, AgriProductType agriProductType) {
@@ -83,7 +86,14 @@ public class AgricultureProducts implements Prefixable {
 		this.agriProductType = agriProductType;
 	}
 	
-	
+	public List<CartAgricultureProduct> getCartAgricultureProductList() {
+		return cartAgricultureProductList;
+	}
+
+	public void setCartAgricultureProductList(List<CartAgricultureProduct> cartAgricultureProductList) {
+		this.cartAgricultureProductList = cartAgricultureProductList;
+	}
+
 	// ---------------------- Helper Methods ---------------------------------
 	public void addSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
 		sellerAgricultureProductDetails.add(productDetails);
@@ -92,6 +102,17 @@ public class AgricultureProducts implements Prefixable {
 	public void removeSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
 		sellerAgricultureProductDetails.remove(productDetails);
 		productDetails.setAgriProductId(null);
+	}
+	
+	public void addCartAgricultureProduct(CartAgricultureProduct agriProduct)
+	{
+		cartAgricultureProductList.add(agriProduct);
+		agriProduct.setAgriProdId(this);
+	}
+	public void removeCartAgricultureProduct(CartAgricultureProduct agriProduct)
+	{
+		cartAgricultureProductList.remove(agriProduct);
+		agriProduct.setAgriProdId(null);
 	}
 
 	// ------------ Inherited methods of Prefixable interface ---------------------

@@ -11,6 +11,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CartAgricultureProductDTO {
+	private Long cid;
 	private AgricultureProducts agriProdId;
 	private UserDetails farmerId;
 	private UserDetails sellerId;
