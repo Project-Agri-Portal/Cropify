@@ -199,11 +199,11 @@ public class UserDetails {
 	// -------------- 2) seller details ---------------
 	public void addCartMachinerySellerList(CartMachinery seller) {
 		cartMachinerySellerList.add(seller);
-		seller.setFarmerId(this);
+		seller.setSellerId(this);
 	}
 	public void removeCartMachinerySellerList(CartMachinery seller) {
 		cartMachinerySellerList.remove(seller);
-		seller.setFarmerId(null);
+		seller.setSellerId(null);
 	}
 	// ---------------------------------------------------------------
 	
