@@ -10,7 +10,6 @@ import com.cropify.entity.UserDetails;
 
 public class OrderMachineDetailsDTO {
 	private UserDetails farmerId;
-//	private SellerMachineryDetails sellerMachineryId;
 	private UserDetails sellerId;
 	private Machinery machineId;
 	private int rentDuration;
@@ -94,6 +93,13 @@ public class OrderMachineDetailsDTO {
 
 	public void setMachineId(Machinery machineId) {
 		this.machineId = machineId;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderMachineDetailsDTO [farmerId=" + farmerId + ", sellerId=" + sellerId + ", machineId=" + machineId
+				+ ", rentDuration=" + rentDuration + ", orderDate=" + orderDate + ", deliveryDate=" + deliveryDate
+				+ ", quantity=" + quantity + ", totalPrice=" + totalPrice + "]";
 	}
 
 }
