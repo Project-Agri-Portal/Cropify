@@ -24,9 +24,9 @@ public interface MachineryRepository extends JpaRepository<Machinery, String>{
 //	@Query("update machine_name = :name from Machinery where machine_id = :id")
 //	public void UpdateMachine(@Param("name") String name, @Param("id") String id);
 	
-	public Optional<Machinery> findByMachineId(String id);
-	
-	public void deleteByMachineId(String id);
+//	public Optional<Machinery> findByMachineId(String id);
+//	
+//	public void deleteByMachineId(String id);
 	
 //	
 }

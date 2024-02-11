@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.cropify.entity.enums.UserType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -70,48 +71,63 @@ public class UserDetails {
 	private String status;
 	
 	// ------------ Relationship Mapping ------------------------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<FarmerProductDetails> farmerProductDetails = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
 	
 	// ----------------- Order Farm Product --------------------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "customerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderFarmProductDetails> orderFarmProductCustomerDetails = new ArrayList<>();
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderFarmProductDetails> orderFarmProductFarmerDetails = new ArrayList<>();
 
 	// ----------------- Order Machinery --------------------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderMachineDetails> orderMachineFarmerDetails = new ArrayList<>();
+	@JsonIgnore
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderMachineDetails> orderMachineSellerDetails = new ArrayList<>();
 	
 	// ----------------- Order Agriculture Product --------------------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderAgricultureProductDetails> orderAgricultureProductFarmerDetails = new ArrayList<>();
+	@JsonIgnore
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderAgricultureProductDetails> orderAgricultureProductSellerDetails = new ArrayList<>();
 	
 	// --------------- Cart Machinery --------------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartMachinery> cartMachineryFarmerList = new ArrayList<>();
+	@JsonIgnore
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartMachinery> cartMachinerySellerList = new ArrayList<>();
 	
 	// --------------- Cart Agri Product -----------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartAgricultureProduct> cartAgriProdFarmerList = new ArrayList<>();
+	@JsonIgnore
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartAgricultureProduct> cartAgriProdSellerList = new ArrayList<>();
 	
 	// --------------- Cart Farm Product -----------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartFarmProduct> cartFarmProdFarmerList = new ArrayList<>();
+	@JsonIgnore
 	@OneToMany(mappedBy = "customerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartFarmProduct> cartFarmProdCustomerList = new ArrayList<>();
 	
