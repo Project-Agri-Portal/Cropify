@@ -11,9 +11,8 @@ import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Entity
-@Getter
-@Setter
 public class CartFarmProduct {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,4 +38,90 @@ public class CartFarmProduct {
 	
 	@Column(name = "total_amount")
 	private double totalAmount;
+
+	/**
+	 * @return the cid
+	 */
+	public Long getCid() {
+		return cid;
+	}
+
+	/**
+	 * @param cid the cid to set
+	 */
+	public void setCid(Long cid) {
+		this.cid = cid;
+	}
+
+	/**
+	 * @return the farmProdId
+	 */
+	public FarmProducts getFarmProdId() {
+		return farmProdId;
+	}
+
+	/**
+	 * @param farmProdId the farmProdId to set
+	 */
+	public void setFarmProdId(FarmProducts farmProdId) {
+		this.farmProdId = farmProdId;
+	}
+
+	/**
+	 * @return the farmerId
+	 */
+	public UserDetails getFarmerId() {
+		return farmerId;
+	}
+
+	/**
+	 * @param farmerId the farmerId to set
+	 */
+	public void setFarmerId(UserDetails farmerId) {
+		this.farmerId = farmerId;
+	}
+
+	/**
+	 * @return the customerId
+	 */
+	public UserDetails getCustomerId() {
+		return customerId;
+	}
+
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(UserDetails customerId) {
+		this.customerId = customerId;
+	}
+
+	/**
+	 * @return the quantity
+	 */
+	public int getQuantity() {
+		return quantity;
+	}
+
+	/**
+	 * @param quantity the quantity to set
+	 */
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	/**
+	 * @return the totalAmount
+	 */
+	public double getTotalAmount() {
+		return totalAmount;
+	}
+
+	/**
+	 * @param totalAmount the totalAmount to set
+	 */
+	public void setTotalAmount(double totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+	
+	
 }
