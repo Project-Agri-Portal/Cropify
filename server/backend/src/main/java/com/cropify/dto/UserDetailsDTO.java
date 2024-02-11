@@ -1,5 +1,6 @@
 package com.cropify.dto;
 
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.cropify.entity.UserAddress;
@@ -9,6 +10,7 @@ public class UserDetailsDTO {
 	private Long id;
 	private String firstName;
 	private String lastName;
+	@Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
 	private String email;
 	@Size(min = 6)
 	private String password;
@@ -16,6 +18,7 @@ public class UserDetailsDTO {
 	private UserType userType;
 	private UserAddress userAddress;
 	private byte verify;
+	
 	private long aadharNo;
 	private String panNo;
 	private String status;

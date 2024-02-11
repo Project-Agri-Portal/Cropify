@@ -20,6 +20,7 @@ import ShopAboutUs from "./components/Shop/ShopBody/AboutUs.jsx"
 import ProductListAll from "./components/Shop/ShopBody/ProductList.jsx"
 import Cart from "./components/Shop/ShopBody/Cart.jsx"
 import Checkout from "./components/Shop/ShopBody/Checkout.jsx";
+import MainLayout from "./components/ComponentAdmin/MainLayout.jsx";
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
           <Route path="/shop/productsall" component={ProductListAll} exact />
           <Route path="/shop/cart" component={Cart} exact />
           <Route path="/shop/cart/checkout" component={Checkout} exact />
+
+          <Route path="/admin" component={MainLayout} exact />
 
           {/* <Route path="/shop/productdetails" component={SingleProductDetails} exact /> */}
           
