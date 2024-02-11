@@ -17,21 +17,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cropify.dao.AgricultureProductsRepository;
 import com.cropify.dto.AgricultureProductsDTO;
 import com.cropify.services.AgricultureProductsService;
 
 @RestController
 @RequestMapping("/api/agriProducts")
-@Validated
 public class AgricultureProductsController {
 	@Autowired
 	private AgricultureProductsService productService;
 	
 	// ------- GET methods ----------------
-	@GetMapping("/")
+	@GetMapping("/all")
 	public ResponseEntity<List<AgricultureProductsDTO>> getAllAgricultureProducts()
 	{
-		return ResponseEntity.ok(productService.getAllAgricultureProducts());
+//		return ResponseEntity.ok(productService.getAllAgricultureProducts());
+		return new ResponseEntity<>(productService.getAllAgricultureProducts(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{productId}")
