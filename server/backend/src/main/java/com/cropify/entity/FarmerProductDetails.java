@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.cropify.entity.enums.FarmProductsStatus;
+
 @Entity
 public class FarmerProductDetails {
 	
@@ -24,38 +26,44 @@ public class FarmerProductDetails {
 	@Column(name = "farmer_product_details_id")
 	private Long farmerProductDetailsId;
 
+	// Mapped with farm_products table
 	@ManyToOne
 	@JoinColumn(name = "farm_prod_id", nullable = false)
 	private FarmProducts farmProductId;
 
+	// Mapped with user_details table
 	@ManyToOne	// owning
 	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
 	
-	@Column
+	@Column(nullable = false)
 	private int quantity;
-	@Column
+	@Column(nullable = false)
 	private double price;
 	
-	@Column(columnDefinition = "TEXT")
+	@Column
 	private String description;
 	
-	@Column(name = "harvest_date")
+	@Column(nullable = false)
+	private boolean verified;
+	
+	@Column(name = "harvest_date", nullable = false)
 	private LocalDate harvestDate;
 	
-	@Column(name = "expiry_date")
+	@Column(name = "expiry_date", nullable = false)
 	private LocalDate expiryDate;
 	
-	@Column(name = "farm_prod_status")
+	@Column(name = "farm_prod_status", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private FarmProductsStatus farmProductStatus;
 	
+	/* Commented to remove order table relationship
+	// ------------ Relationship Mapping ------------------------------
 	@OneToMany(mappedBy = "farmerProductDetails" ,cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<OrderFarmProductDetails> orderFarmProductDetails= new ArrayList<OrderFarmProductDetails>();
-	
+	*/
 	
 	//-----------------------------Constructors--------------------
-	
 	public FarmerProductDetails(Long farmerProductDetailsId, FarmProducts farmProductId, UserDetails farmerId,
 			int quantity, double price, String description, LocalDate harvestDate, LocalDate expiryDate,
 			FarmProductsStatus farmProductStatus) {
@@ -73,7 +81,6 @@ public class FarmerProductDetails {
 	public FarmerProductDetails() {
 		super();
 	}
-	
 	
 	//-----------------------------Getter and Setters--------------------
 
@@ -149,14 +156,21 @@ public class FarmerProductDetails {
 		this.farmerProductDetailsId = farmerProductDetailsId;
 	}
 
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+
+	/* Commented to remove order table relationship
 	public List<OrderFarmProductDetails> getOrderFarmProductDetails() {
 		return orderFarmProductDetails;
 	}
-
 	public void setOrderFarmProductDetails(List<OrderFarmProductDetails> orderFarmProductDetails) {
 		this.orderFarmProductDetails = orderFarmProductDetails;
 	}
-	
 	
 	//-----------------------------Helper Methods--------------------
 	
@@ -169,5 +183,5 @@ public class FarmerProductDetails {
 		orderFarmProductDetails.remove(orderDetails);
 		orderDetails.setFarmerProductDetails(null);
 	}
-	
+	*/
 }

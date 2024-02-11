@@ -2,33 +2,28 @@ package com.cropify.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Future;
+
 import com.cropify.entity.FarmProducts;
-import com.cropify.entity.FarmProductsStatus;
 import com.cropify.entity.UserDetails;
+import com.cropify.entity.enums.FarmProductsStatus;
 
 public class FarmerProductDetailsDTO {
 	
 	private Long farmerProductDetailsId;
-	
 	private FarmProducts farmProductId;
-
 	private UserDetails farmerId;
-	
 	private int quantity;
-	
 	private double price;
-	
 	private String description;
-	
+	private boolean verified;
 	private LocalDate harvestDate;
 	
+	@Future
 	private LocalDate expiryDate;
-	
 	private FarmProductsStatus farmProductStatus;
 	
-	
 	//-----------------------------Getter and Setters--------------------
-
 	/**
 	 * @return the farmerProductDetailsId
 	 */
@@ -154,4 +149,13 @@ public class FarmerProductDetailsDTO {
 	public void setFarmProductStatus(FarmProductsStatus farmProductStatus) {
 		this.farmProductStatus = farmProductStatus;
 	}
+
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+	
 }

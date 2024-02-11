@@ -20,10 +20,12 @@ public class SellerMachineryDetails {
 	@Column(name = "seller_machine_id")
 	private Long sellerMachineryId;
 
+	// Mapped with Machinery table
 	@ManyToOne
 	@JoinColumn(name = "machine_id", nullable = false)
 	private Machinery machineryId;
 
+	// Mapped with UserDetails table
 	@ManyToOne	// owning
 	@JoinColumn(name = "seller_id", nullable = false)
 	private UserDetails sellerId;
@@ -34,15 +36,27 @@ public class SellerMachineryDetails {
 	@Column(nullable = false)
 	private double price;
 	
-	@Column(columnDefinition = "TEXT")
+	@Column
 	private String description;
 	
 	@Column(nullable = false)
 	private boolean isAvailable;
 	
-	@OneToMany(mappedBy = "sellerMachineryId", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
+	@Column(nullable = false)
+	private boolean verified;
+
+
+	/*
+	// ------------ Relationship Mapping ------------------------------
+	// Mapped with OrderMachineDetails table
+//	@OneToMany(mappedBy = "sellerMachineryId", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
+	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderMachineDetails> orderMachineSellerDetails = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
+	*/
 	// ------------ Constructors ------------------------
 	public SellerMachineryDetails() {}
 	
@@ -58,7 +72,6 @@ public class SellerMachineryDetails {
 	}
 
 	//-----------------------------Getter and Setters--------------------
-
 	public Machinery getMachineryId() {
 		return machineryId;
 	}
@@ -114,23 +127,37 @@ public class SellerMachineryDetails {
 	public void setSellerMachineryId(Long sellerMachineryId) {
 		this.sellerMachineryId = sellerMachineryId;
 	}
-
-	public List<OrderMachineDetails> getOrderMachineDetails() {
-		return orderMachineDetails;
-	}
-
-	public void setOrderMachineDetails(List<OrderMachineDetails> orderMachineDetails) {
-		this.orderMachineDetails = orderMachineDetails;
-	}
-
-	// -------------- Helper Methods for: --------------------
-	public void addOrderMachineDetails(OrderMachineDetails machineDetails) {
-		orderMachineDetails.add(machineDetails);
-		machineDetails.setSellerMachineryId(this);
-	}
-	public void removeOrderMachineDetails(OrderMachineDetails machineDetails) {
-		orderMachineDetails.remove(machineDetails);
-		machineDetails.setSellerMachineryId(null);
-	}
 	
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+	/*	
+	 * Commented to remove the relationship with orders table
+		public List<OrderMachineDetails> getOrderMachineDetails() {
+			return orderMachineDetails;
+		}
+		public void setOrderMachineDetails(List<OrderMachineDetails> orderMachineDetails) {
+			this.orderMachineDetails = orderMachineDetails;
+		}
+		public List<OrderMachineDetails> getOrderMachineSellerDetails() {
+			return orderMachineSellerDetails;
+		}
+		public void setOrderMachineSellerDetails(List<OrderMachineDetails> orderMachineSellerDetails) {
+			this.orderMachineSellerDetails = orderMachineSellerDetails;
+		}
+	
+		// -------------- Helper Methods for: --------------------
+		public void addOrderMachineDetails(OrderMachineDetails machineDetails) {
+			orderMachineDetails.add(machineDetails);
+			machineDetails.setMachineId(this);
+		}
+		public void removeOrderMachineDetails(OrderMachineDetails machineDetails) {
+			orderMachineDetails.remove(machineDetails);
+			machineDetails.setSellerMachineryId(null);
+		}
+	 */
 }

@@ -16,18 +16,57 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.cropify.entity.enums.FarmProductsStatus;
+
 @Entity
 public class SellerAgricultureProductDetails {
 
-	public SellerAgricultureProductDetails() {
-//		super();
-		// TODO Auto-generated constructor stub
-	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "seller_agri_product_id")
+	private Long sellerAgricultureProductId;
+
+	// Mapped with agriculture_products table
+	@ManyToOne
+	@JoinColumn(name = "seller_prod_id", nullable = false)
+	private AgricultureProducts agriProductId;
+
+	// Mapped with user_details table
+	@ManyToOne // owning
+	@JoinColumn(name = "seller_id", nullable = false)
+	private UserDetails sellerId;
+
+	@Column
+	private int quantity;
+
+	@Column(nullable = false)
+	private double price;
+
+	@Column
+	private String description;
+	
+	@Column(nullable = false)
+	private boolean verified;
+
+	@Column(name = "expiry_date", nullable = false)
+	private LocalDate expiryDate;
+
+	@Column(name = "seller_prod_status", nullable = false)
+	@Enumerated(EnumType.STRING)
+	private FarmProductsStatus sellerProductStatus;
+
+	/* Commented to remove order table relationship
+	// ------------ Relationship Mapping ------------------------------
+	@OneToMany(mappedBy = "sellerAgricultureProductId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
+	*/
+	
+	// -------------------------- Constructors ---------------------------
+	public SellerAgricultureProductDetails() {}
 
 	public SellerAgricultureProductDetails(Long sellerAgricultureProductId, AgricultureProducts agriProductId,
 			UserDetails sellerId, int quantity, double price, String description, LocalDate expiryDate,
 			FarmProductsStatus sellerProductStatus) {
-//		super();
 		this.sellerAgricultureProductId = sellerAgricultureProductId;
 		this.agriProductId = agriProductId;
 		this.sellerId = sellerId;
@@ -37,41 +76,8 @@ public class SellerAgricultureProductDetails {
 		this.expiryDate = expiryDate;
 		this.sellerProductStatus = sellerProductStatus;
 	}
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "seller_agri_product_id")
-	private Long sellerAgricultureProductId;
-
-	@ManyToOne
-	@JoinColumn(name = "seller_prod_id", nullable = false)
-	private AgricultureProducts agriProductId;
-
-	@ManyToOne // owning
-	@JoinColumn(name = "seller_id", nullable = false)
-	private UserDetails sellerId;
-
-	@Column
-	private int quantity;
-
-	@Column
-	private double price;
-
-	@Column(columnDefinition = "TEXT")
-	private String description;
-
-	@Column(name = "expiry_date")
-	private LocalDate expiryDate;
-
-	@Column(name = "seller_prod_status")
-	@Enumerated(EnumType.STRING)
-	private FarmProductsStatus sellerProductStatus;
-
-	@OneToMany(mappedBy = "sellerAgricultureProductId", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
-
+	
 	// -----------------------------Getter and Setters--------------------
-
 	public UserDetails getSellerId() {
 		return sellerId;
 	}
@@ -96,14 +102,15 @@ public class SellerAgricultureProductDetails {
 		this.agriProductId = agriProductId;
 	}
 
+	/* Commented to remove order table relationship
 	public List<OrderAgricultureProductDetails> getOrderAgricultureProductDetails() {
 		return orderAgricultureProductDetails;
 	}
-
 	public void setOrderAgricultureProductDetails(List<OrderAgricultureProductDetails> orderAgricultureProductDetails) {
 		this.orderAgricultureProductDetails = orderAgricultureProductDetails;
 	}
-
+	*/
+	
 	public int getQuantity() {
 		return quantity;
 	}
@@ -144,7 +151,16 @@ public class SellerAgricultureProductDetails {
 		this.sellerProductStatus = sellerProductStatus;
 	}
 
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+
 	// -------------- Helper Methods for: --------------------
+	/*
 	public void addOrderAgricultureProductDetails(OrderAgricultureProductDetails productDetails) {
 		orderAgricultureProductDetails.add(productDetails);
 		productDetails.setSellerAgricultureProductId(this);
@@ -154,4 +170,5 @@ public class SellerAgricultureProductDetails {
 		orderAgricultureProductDetails.remove(productDetails);
 		productDetails.setSellerAgricultureProductId(null);
 	}
+	*/
 }

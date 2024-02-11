@@ -8,13 +8,26 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import com.cropify.entity.enums.MachineType;
+import com.cropify.util.Prefixable;
 
 @Entity
-public class Machinery {
+public class Machinery implements Prefixable {
+	// This annotation specifies the respective field is not to be persisted
+	@Transient
+	private String prefix = "m";
 	
 	@Id
+	@GeneratedValue(generator = "customId")
+	@GenericGenerator(name = "customId", strategy = "com.cropify.util.CustomIdGenerator")
 	@Column(name = "machine_id")
 	private String machineId;
 	
@@ -25,24 +38,23 @@ public class Machinery {
 	@Enumerated(EnumType.STRING)
 	private MachineType machineType;
 	
-	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	@Column
+	private String imgPath;
+	
+	// ------------ Relationship Mapping ------------------------------
+	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<SellerMachineryDetails>();
 
-	//---------------Constructos---------------
-	
-	public Machinery() {
-//		super();
-	}
+	// -------------------------- Constructors ------------------------------
+	public Machinery() {}
 
 	public Machinery(String machineId, String machineName, MachineType machineType) {
-//		super();
 		this.machineId = machineId;
 		this.machineName = machineName;
 		this.machineType = machineType;
 	}
 
 	//-----------------------------Getter and Setters--------------------
-	
 	public String getMachineId() {
 		return machineId;
 	}
@@ -82,6 +94,19 @@ public class Machinery {
 		return "Machinery [machineId=" + machineId + ", machineName=" + machineName + ", machineType=" + machineType
 				+ ", sellerMachineryDetails=" + sellerMachineryDetails + "]";
 	}
-	
+
+	// ------------ Inherited methods of Prefixable interface ---------------------
+	@Override
+	public String getPrefix() {
+		return prefix;
+	}
+	@Override
+	public String getTableName() {
+		return "machinery";
+	}
+	@Override
+	public String getIdColName() {
+		return "machine_id";
+	}
 }
 

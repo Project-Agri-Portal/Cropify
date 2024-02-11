@@ -1,22 +1,23 @@
 package com.cropify.dto;
 
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.cropify.entity.UserAddress;
-import com.cropify.entity.UserType;
+import com.cropify.entity.enums.UserType;
 
 public class UserDetailsDTO {
 	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
-	@Size(min = 6)
+	
+	@Pattern(regexp="((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{5,20})", message = "Invalid Password")
 	private String password;
-	private long mobileNo;
+	private String mobileNo;
 	private UserType userType;
 	private UserAddress userAddress;
-	private byte verify;
-	private long aadharNo;
+	private String aadharNo;
 	private String panNo;
 	private String status;
 	
@@ -51,10 +52,10 @@ public class UserDetailsDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public long getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
-	public void setMobileNo(long mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 	public UserType getUserType() {
@@ -69,16 +70,10 @@ public class UserDetailsDTO {
 	public void setUserAddress(UserAddress userAddress) {
 		this.userAddress = userAddress;
 	}
-	public byte getVerify() {
-		return verify;
-	}
-	public void setVerify(byte verify) {
-		this.verify = verify;
-	}
-	public long getAadharNo() {
+	public String getAadharNo() {
 		return aadharNo;
 	}
-	public void setAadharNo(long aadharNo) {
+	public void setAadharNo(String aadharNo) {
 		this.aadharNo = aadharNo;
 	}
 	public String getPanNo() {
@@ -98,8 +93,7 @@ public class UserDetailsDTO {
 	@Override
 	public String toString() {
 		return "UserDetailsDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", mobileNo=" + mobileNo + ", userType=" + userType + ", userAddress=" + userAddress + ", verify="
-				+ verify + "]";
+				+ ", mobileNo=" + mobileNo + ", userType=" + userType + ", userAddress=" + userAddress + "]";
 	}
 	
 }

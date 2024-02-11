@@ -1,7 +1,6 @@
 package com.cropify.services.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -46,9 +45,8 @@ public class FarmProductsServiceImpl implements FarmProductsService {
 
 
 	@Override
-	public Optional<FarmProducts> getFarmProductById(String pid) {
-		// TODO Auto-generated method stub
-		return null;
+	public FarmProducts getFarmProductById(String pid) {
+		return farmProductsRepository.findByfarmProductId(pid).orElseThrow(() -> new RuntimeException("NotFound"));
 	}
 
 

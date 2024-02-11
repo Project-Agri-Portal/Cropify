@@ -1,14 +1,12 @@
 package com.cropify.dto;
 
 
-import com.cropify.entity.MachineType;
+import com.cropify.entity.enums.MachineType;
 
 public class MachineryDTO {
 	
 	private String machineId;
-	
 	private String machineName;
-	
 	private MachineType machineType;
 	
 	//-------------Getters and Setters--------------------

@@ -1,6 +1,5 @@
 package com.cropify.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,13 +8,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cropify.entity.FarmProducts;
 import com.cropify.services.FarmProductsService;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/farmproducts")
@@ -56,7 +54,8 @@ public class FarmProductsController {
 	@GetMapping("/{pid}")
 	public ResponseEntity<?> getFarmProduct(@PathVariable String pid) {
 //		try {
-			return new ResponseEntity<>(farmProductsService.fetchFarmProductDetails(pid), HttpStatus.OK);
+//			return new ResponseEntity<>(farmProductsService.fetchFarmProductDetails(pid), HttpStatus.OK);
+			return ResponseEntity.status(HttpStatus.OK).body(farmProductsService.fetchFarmProductDetails(pid));
 //		}
 //		catch(RuntimeException e) {
 ////			you generate status code using HttpStatus
@@ -65,10 +64,10 @@ public class FarmProductsController {
 //		}
 	}
 	
-	@PostMapping
-	public FarmProducts addFarmProduct(@RequestBody FarmProducts farmProducts) {
-		return farmProductsService.addFarmProduct(farmProducts);
+	@PostMapping("/add")
+	public ResponseEntity<?> addFarmProduct(@RequestBody FarmProducts farmProducts) {
+		System.out.println(farmProducts);
+		return ResponseEntity.ok(farmProductsService.addFarmProduct(farmProducts));
 	}
 	
-//	@GetMapping("/")
 }
