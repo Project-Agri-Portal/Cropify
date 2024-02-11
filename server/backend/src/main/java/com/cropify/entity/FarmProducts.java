@@ -54,6 +54,19 @@ public class FarmProducts implements Prefixable {
 		this.farmProductType = farmProductType;
 	}
 	
+	public FarmProducts(String prefix, String farmProductId, String farmProductName, FarmProductType farmProductType,
+			String imgPath, List<FarmerProductDetails> farmerProductDetails) {
+		super();
+		this.prefix = prefix;
+		this.farmProductId = farmProductId;
+		this.farmProductName = farmProductName;
+		this.farmProductType = farmProductType;
+		this.imgPath = imgPath;
+		this.farmerProductDetails = farmerProductDetails;
+	}
+
+
+
 	public FarmProducts() {
 //		super();
 	}

@@ -52,6 +52,16 @@ public class Machinery implements Prefixable {
 		this.machineId = machineId;
 		this.machineName = machineName;
 		this.machineType = machineType;
+	}	
+
+	public Machinery(String machineId, String machineName, MachineType machineType, String imgPath,
+			List<SellerMachineryDetails> sellerMachineryDetails) {
+		super();
+		this.machineId = machineId;
+		this.machineName = machineName;
+		this.machineType = machineType;
+		this.imgPath = imgPath;
+		this.sellerMachineryDetails = sellerMachineryDetails;
 	}
 
 	//-----------------------------Getter and Setters--------------------
