@@ -5,19 +5,19 @@
     --second-bg-color: #c1efde;
   }
   
-  .primary-text {
+.p-t{
     color: var(--main-text-color);
   }
   
-  .second-text {
+  .s-t{
     color: var(--second-text-color);
   }
   
-  .primary-bg {
+  /* .primary-bg p-g{
     background-color: var(--main-bg-color);
-  }
+  } */
   
-  .secondary-bg {
+  .s-b{
     background-color: var(--second-bg-color);
   }
   
@@ -26,7 +26,7 @@
   }
   
   #wrapper {
-    overflow-x: hidden;
+    overflow: hidden;
     background-image: linear-gradient(
       to right,
       hsla(0, 56%, 75%, 0.049),
@@ -46,7 +46,7 @@
     height: 100%;
   }
   #sidebar-wrapper {
-    min-height: 100vh;
+    min-height: 100%;
     margin-left: -15rem;
     -webkit-transition: margin 0.25s ease-out;
     -moz-transition: margin 0.25s ease-out;

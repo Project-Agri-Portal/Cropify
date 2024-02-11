@@ -20,6 +20,7 @@ import ShopAboutUs from "./components/Shop/ShopBody/AboutUs.jsx"
 import ProductListAll from "./components/Shop/ShopBody/ProductList.jsx"
 import Cart from "./components/Shop/ShopBody/Cart.jsx"
 import Checkout from "./components/Shop/ShopBody/Checkout.jsx";
+import sidebar from "./components/ComponentsSeller/sidebar";
 
 function App() {
   return (
