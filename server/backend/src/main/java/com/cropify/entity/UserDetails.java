@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.cropify.entity.enums.UserType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -70,39 +71,63 @@ public class UserDetails {
 	private String status;
 	
 	// ------------ Relationship Mapping ------------------------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<FarmerProductDetails> farmerProductDetails = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
 	
+	// ----------------- Order Farm Product --------------------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "customerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-	private List<OrderFarmProductDetails> orderFarmProductDetails = new ArrayList<>();
+	private List<OrderFarmProductDetails> orderFarmProductCustomerDetails = new ArrayList<>();
+	@JsonIgnore
+	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	private List<OrderFarmProductDetails> orderFarmProductFarmerDetails = new ArrayList<>();
 
+	// ----------------- Order Machinery --------------------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
+	private List<OrderMachineDetails> orderMachineFarmerDetails = new ArrayList<>();
+	@JsonIgnore
+	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	private List<OrderMachineDetails> orderMachineSellerDetails = new ArrayList<>();
 	
+	// ----------------- Order Agriculture Product --------------------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
+	private List<OrderAgricultureProductDetails> orderAgricultureProductFarmerDetails = new ArrayList<>();
+	@JsonIgnore
+	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	private List<OrderAgricultureProductDetails> orderAgricultureProductSellerDetails = new ArrayList<>();
 	
 	// --------------- Cart Machinery --------------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartMachinery> cartMachineryFarmerList = new ArrayList<>();
+	@JsonIgnore
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartMachinery> cartMachinerySellerList = new ArrayList<>();
 	
 	// --------------- Cart Agri Product -----------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartAgricultureProduct> cartAgriProdFarmerList = new ArrayList<>();
+	@JsonIgnore
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartAgricultureProduct> cartAgriProdSellerList = new ArrayList<>();
 	
 	// --------------- Cart Farm Product -----------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartFarmProduct> cartFarmProdFarmerList = new ArrayList<>();
+	@JsonIgnore
 	@OneToMany(mappedBy = "customerId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartFarmProduct> cartFarmProdCustomerList = new ArrayList<>();
 	
@@ -156,34 +181,58 @@ public class UserDetails {
 		productDetails.setSellerId(null);
 	}
 	
-	// -------------- 4) order agriculture product details ---------
-	public void addOrderAgricultureProductDetails(OrderAgricultureProductDetails productDetails) {
-		orderAgricultureProductDetails.add(productDetails);
+	// -------------- 4) order farm product farmer-customer details ---------------
+	public void addOrderFarmProductCustomerDetails(OrderFarmProductDetails productDetails) {
+		orderFarmProductCustomerDetails.add(productDetails);
+		productDetails.setCustomerId(this);
+	}
+	public void removeOrderFarmProductCustomerDetails(OrderFarmProductDetails productDetails) {
+		orderFarmProductCustomerDetails.remove(productDetails);
+		productDetails.setCustomerId(null);
+	}
+	public void addOrderFarmProductFarmerDetails(OrderFarmProductDetails productDetails) {
+		orderFarmProductFarmerDetails.add(productDetails);
 		productDetails.setFarmerId(this);
 	}
-	public void removeOrderAgricultureProductDetails(OrderAgricultureProductDetails productDetails) {
-		orderAgricultureProductDetails.remove(productDetails);
+	public void removeOrderFarmProductFarmerDetails(OrderFarmProductDetails productDetails) {
+		orderFarmProductFarmerDetails.remove(productDetails);
 		productDetails.setFarmerId(null);
 	}
 	
-	// -------------- 5) order farm product details ---------------
-	public void addOrderFarmProductDetails(OrderFarmProductDetails productDetails) {
-		orderFarmProductDetails.add(productDetails);
-		productDetails.setCustomerId(this);
-	}
-	public void removeOrderFarmProductDetails(OrderFarmProductDetails productDetails) {
-		orderFarmProductDetails.remove(productDetails);
-		productDetails.setCustomerId(null);
-	}
-	
-	// -------------- 6) order machine details ---------------
-	public void addOrderMachineDetails(OrderMachineDetails machineDetails) {
-		orderMachineDetails.add(machineDetails);
+	// -------------- 5) order machine farmer-seller details ---------------
+	public void addOrderMachineFarmerDetails(OrderMachineDetails machineDetails) {
+		orderMachineFarmerDetails.add(machineDetails);
 		machineDetails.setFarmerId(this);
 	}
-	public void removeOrderMachineDetails(OrderMachineDetails machineDetails) {
-		orderMachineDetails.remove(machineDetails);
+	public void removeOrderMachineFarmerDetails(OrderMachineDetails machineDetails) {
+		orderMachineFarmerDetails.remove(machineDetails);
 		machineDetails.setFarmerId(null);
+	}
+	public void addOrderMachineSellerDetails(OrderMachineDetails machineDetails) {
+		orderMachineSellerDetails.add(machineDetails);
+		machineDetails.setSellerId(this);
+	}
+	public void removeOrderMachineSellerDetails(OrderMachineDetails machineDetails) {
+		orderMachineSellerDetails.remove(machineDetails);
+		machineDetails.setSellerId(null);
+	}
+	
+	// -------------- 6) order agri product farmer-seller details ---------------
+	public void addOrderAgricultureProductFarmerDetails(OrderAgricultureProductDetails productDetails) {
+		orderAgricultureProductFarmerDetails.add(productDetails);
+		productDetails.setFarmerId(this);
+	}
+	public void removeOrderAgricultureProductFarmerDetails(OrderAgricultureProductDetails productDetails) {
+		orderAgricultureProductFarmerDetails.remove(productDetails);
+		productDetails.setFarmerId(null);
+	}
+	public void addOrderAgricultureProductSellerDetails(OrderAgricultureProductDetails productDetails) {
+		orderAgricultureProductSellerDetails.add(productDetails);
+		productDetails.setSellerId(this);
+	}
+	public void removeOrderAgricultureProductSellerDetails(OrderAgricultureProductDetails productDetails) {
+		orderAgricultureProductSellerDetails.remove(productDetails);
+		productDetails.setSellerId(null);
 	}
 	
 	// ---------------- Cart Machinery -----------------------------

@@ -18,6 +18,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.cropify.entity.enums.AgriProductType;
 import com.cropify.util.Prefixable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class AgricultureProducts implements Prefixable {
@@ -42,11 +43,17 @@ public class AgricultureProducts implements Prefixable {
 	private String imgPath;
 	
 	// ------------ Relationship Mapping ------------------------------
+	@JsonIgnore
 	@OneToMany(mappedBy = "agriProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "agriProdId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartAgricultureProduct> cartAgricultureProductList = new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "agricultureProductId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
 	
 	//-----------------------------Constructors--------------------
 	
@@ -94,6 +101,22 @@ public class AgricultureProducts implements Prefixable {
 		this.cartAgricultureProductList = cartAgricultureProductList;
 	}
 
+	public List<SellerAgricultureProductDetails> getSellerAgricultureProductDetails() {
+		return sellerAgricultureProductDetails;
+	}
+
+	public void setSellerAgricultureProductDetails(List<SellerAgricultureProductDetails> sellerAgricultureProductDetails) {
+		this.sellerAgricultureProductDetails = sellerAgricultureProductDetails;
+	}
+
+	public List<OrderAgricultureProductDetails> getOrderAgricultureProductDetails() {
+		return orderAgricultureProductDetails;
+	}
+
+	public void setOrderAgricultureProductDetails(List<OrderAgricultureProductDetails> orderAgricultureProductDetails) {
+		this.orderAgricultureProductDetails = orderAgricultureProductDetails;
+	}
+
 	// ---------------------- Helper Methods ---------------------------------
 	public void addSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
 		sellerAgricultureProductDetails.add(productDetails);
@@ -113,6 +136,15 @@ public class AgricultureProducts implements Prefixable {
 	{
 		cartAgricultureProductList.remove(agriProduct);
 		agriProduct.setAgriProdId(null);
+	}
+	
+	public void addOrderAgricultureProductDetails(OrderAgricultureProductDetails product) {
+		orderAgricultureProductDetails.add(product);
+		product.setAgricultureProductId(this);
+	}
+	public void removeOrderAgricultureProductDetails(OrderAgricultureProductDetails product) {
+		orderAgricultureProductDetails.remove(product);
+		product.setAgricultureProductId(null);
 	}
 
 	// ------------ Inherited methods of Prefixable interface ---------------------

@@ -18,6 +18,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.cropify.entity.enums.MachineType;
 import com.cropify.util.Prefixable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Machinery implements Prefixable {
@@ -42,11 +43,17 @@ public class Machinery implements Prefixable {
 	private String imgPath;
 	
 	// ------------ Relationship Mapping ------------------------------
-	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
+	@OneToMany(mappedBy = "machineryId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<SellerMachineryDetails>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartMachinery> cartMachinery = new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
 
 	// -------------------------- Constructors ------------------------------
 	public Machinery() {}
@@ -90,6 +97,22 @@ public class Machinery implements Prefixable {
 		this.cartMachinery = cartMachinery;
 	}
 
+	public List<SellerMachineryDetails> getSellerMachineryDetails() {
+		return sellerMachineryDetails;
+	}
+
+	public void setSellerMachineryDetails(List<SellerMachineryDetails> sellerMachineryDetails) {
+		this.sellerMachineryDetails = sellerMachineryDetails;
+	}
+
+	public List<OrderMachineDetails> getOrderMachineDetails() {
+		return orderMachineDetails;
+	}
+
+	public void setOrderMachineDetails(List<OrderMachineDetails> orderMachineDetails) {
+		this.orderMachineDetails = orderMachineDetails;
+	}
+
 	// ---------------------- Helper Methods ---------------------------------
 	public void addSellerMachineryDetails(SellerMachineryDetails machineDetails) {
 		sellerMachineryDetails.add(machineDetails);
@@ -107,6 +130,15 @@ public class Machinery implements Prefixable {
 	}
 	public void removeCartMachinery(CartMachinery machine) {
 		cartMachinery.remove(machine);
+		machine.setMachineId(null);
+	}
+	
+	public void addOrderMachineDetails(OrderMachineDetails machine) {
+		orderMachineDetails.add(machine);
+		machine.setMachineId(this);
+	}
+	public void removeOrderMachineDetails(OrderMachineDetails machine) {
+		orderMachineDetails.remove(machine);
 		machine.setMachineId(null);
 	}
 

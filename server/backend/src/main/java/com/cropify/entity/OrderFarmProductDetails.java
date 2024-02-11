@@ -13,14 +13,20 @@ import com.cropify.entity.enums.FarmOrderStatus;
 
 @Entity
 public class OrderFarmProductDetails extends OrderBaseClass {
-
+	// Mapped with user_details for customer
 	@ManyToOne
 	@JoinColumn(name = "customer_id", nullable = false)
 	private UserDetails customerId;
 
+	// Mapped with user_details for farmer
 	@ManyToOne
-	@JoinColumn(name = "farmer_product_details_id", nullable = false)
-	private FarmerProductDetails farmerProductDetails;
+	@JoinColumn(name = "farmer_id", nullable = false)
+	private UserDetails farmerId;
+	
+	// Mapped with farm_product
+	@ManyToOne
+	@JoinColumn(name = "farm_prod_id", nullable = false)
+	private FarmProducts farmProdId;
 
 	@Column(name = "order_date", nullable = false)
 	private LocalDate orderDate;
@@ -42,20 +48,21 @@ public class OrderFarmProductDetails extends OrderBaseClass {
 	public OrderFarmProductDetails() {
 		super();
 	}
-
-	public OrderFarmProductDetails(UserDetails customerId, FarmerProductDetails farmerProductDetails,
+	
+	public OrderFarmProductDetails(UserDetails customerId, UserDetails farmerId, FarmProducts farmProdId,
 			LocalDate orderDate, LocalDate deliveryDate, int quantity, double totalPrice,
 			FarmOrderStatus farmOrderStatus) {
 		super();
 		this.customerId = customerId;
-		this.farmerProductDetails = farmerProductDetails;
+		this.farmerId = farmerId;
+		this.farmProdId = farmProdId;
 		this.orderDate = orderDate;
 		this.deliveryDate = deliveryDate;
 		this.quantity = quantity;
 		this.totalPrice = totalPrice;
 		this.farmOrderStatus = farmOrderStatus;
 	}
-	
+
 	// -----------------------------Getter and Setters--------------------
 	public UserDetails getCustomerId() {
 		return customerId;
@@ -105,12 +112,28 @@ public class OrderFarmProductDetails extends OrderBaseClass {
 		this.farmOrderStatus = farmOrderStatus;
 	}
 
-	public FarmerProductDetails getFarmerProductDetails() {
-		return farmerProductDetails;
+	public UserDetails getFarmerId() {
+		return farmerId;
 	}
 
-	public void setFarmerProductDetails(FarmerProductDetails farmerProductDetails) {
-		this.farmerProductDetails = farmerProductDetails;
+	public void setFarmerId(UserDetails farmerId) {
+		this.farmerId = farmerId;
 	}
+
+	public FarmProducts getFarmProdId() {
+		return farmProdId;
+	}
+
+	public void setFarmProdId(FarmProducts farmProdId) {
+		this.farmProdId = farmProdId;
+	}
+
+//	public FarmerProductDetails getFarmerProductDetails() {
+//		return farmerProductDetails;
+//	}
+//
+//	public void setFarmerProductDetails(FarmerProductDetails farmerProductDetails) {
+//		this.farmerProductDetails = farmerProductDetails;
+//	}
 
 }

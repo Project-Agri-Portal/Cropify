@@ -4,13 +4,15 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.Future;
 
+import com.cropify.entity.AgricultureProducts;
 import com.cropify.entity.SellerAgricultureProductDetails;
 import com.cropify.entity.UserDetails;
 
 public class OrderAgricultureProductDetailsDTO {
 
 	private UserDetails farmerId;
-	private SellerAgricultureProductDetails sellerAgricultureProductId;
+	private UserDetails sellerId;
+	private AgricultureProducts agricultureProductId;
 	private LocalDate orderDate;
 	
 	@Future
@@ -26,14 +28,6 @@ public class OrderAgricultureProductDetailsDTO {
 
 	public void setFarmerId(UserDetails farmerId) {
 		this.farmerId = farmerId;
-	}
-
-	public SellerAgricultureProductDetails getSellerAgricultureProductId() {
-		return sellerAgricultureProductId;
-	}
-
-	public void setSellerAgricultureProductId(SellerAgricultureProductDetails sellerAgricultureProductId) {
-		this.sellerAgricultureProductId = sellerAgricultureProductId;
 	}
 
 	public LocalDate getOrderDate() {
@@ -68,11 +62,27 @@ public class OrderAgricultureProductDetailsDTO {
 		this.totalPrice = totalPrice;
 	}
 
+	public UserDetails getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(UserDetails sellerId) {
+		this.sellerId = sellerId;
+	}
+
+	public AgricultureProducts getAgricultureProductId() {
+		return agricultureProductId;
+	}
+
+	public void setAgricultureProductId(AgricultureProducts agricultureProductId) {
+		this.agricultureProductId = agricultureProductId;
+	}
+
 	@Override
 	public String toString() {
-		return "OrderAgricultureProductDetailsDTO [farmerId=" + farmerId + ", sellerAgricultureProductId="
-				+ sellerAgricultureProductId + ", orderDate=" + orderDate + ", deliveryDate=" + deliveryDate
-				+ ", quantity=" + quantity + ", totalPrice=" + totalPrice + "]";
+		return "OrderAgricultureProductDetailsDTO [farmerId=" + farmerId + ", sellerId=" + sellerId
+				+ ", agricultureProductId=" + agricultureProductId + ", orderDate=" + orderDate + ", deliveryDate="
+				+ deliveryDate + ", quantity=" + quantity + ", totalPrice=" + totalPrice + "]";
 	}
 
 }

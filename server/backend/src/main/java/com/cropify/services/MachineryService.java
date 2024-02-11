@@ -7,8 +7,8 @@ import com.cropify.entity.Machinery;
 
 public interface MachineryService{
 	// Read operations
-	List<Machinery> getAllMachine();
-	public Machinery getMachineById(String id);
+	List<MachineryDTO> getAllMachine();
+	public MachineryDTO getMachineById(String id);
 
 	// Create operations
 	MachineryDTO addMachine(MachineryDTO machineryDTO);

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.Future;
 
+import com.cropify.entity.FarmProducts;
 import com.cropify.entity.FarmerProductDetails;
 import com.cropify.entity.UserDetails;
 import com.cropify.entity.enums.FarmOrderStatus;
@@ -11,9 +12,9 @@ import com.cropify.entity.enums.FarmOrderStatus;
 
 public class OrderFarmProductDetailsDTO {
 	
-private UserDetails customerId;
-	
-	private FarmerProductDetails farmerProductDetails;
+	private UserDetails customerId;
+	private UserDetails farmerId;
+	private FarmProducts farmProdId;
 	private LocalDate orderDate;
 	
 	@Future
@@ -31,14 +32,6 @@ private UserDetails customerId;
 
 	public void setCustomerId(UserDetails customerId) {
 		this.customerId = customerId;
-	}
-
-	public FarmerProductDetails getFarmerProductDetails() {
-		return farmerProductDetails;
-	}
-
-	public void setFarmerProductDetails(FarmerProductDetails farmerProductDetails) {
-		this.farmerProductDetails = farmerProductDetails;
 	}
 
 	public LocalDate getOrderDate() {
@@ -81,13 +74,27 @@ private UserDetails customerId;
 		this.farmOrderStatus = farmOrderStatus;
 	}
 
+	public UserDetails getFarmerId() {
+		return farmerId;
+	}
+
+	public void setFarmerId(UserDetails farmerId) {
+		this.farmerId = farmerId;
+	}
+
+	public FarmProducts getFarmProdId() {
+		return farmProdId;
+	}
+
+	public void setFarmProdId(FarmProducts farmProdId) {
+		this.farmProdId = farmProdId;
+	}
+
 	@Override
 	public String toString() {
-		return "OrderFarmProductDetailsDTO [customerId=" + customerId + ", farmerProductDetails=" + farmerProductDetails
-				+ ", orderDate=" + orderDate + ", deliveryDate=" + deliveryDate + ", quantity=" + quantity
+		return "OrderFarmProductDetailsDTO [customerId=" + customerId + ", farmerId=" + farmerId + ", farmProdId="
+				+ farmProdId + ", orderDate=" + orderDate + ", deliveryDate=" + deliveryDate + ", quantity=" + quantity
 				+ ", totalPrice=" + totalPrice + ", farmOrderStatus=" + farmOrderStatus + "]";
 	}
-	
-	
 
 }

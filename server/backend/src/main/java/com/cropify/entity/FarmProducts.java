@@ -46,8 +46,13 @@ public class FarmProducts implements Prefixable {
 	@OneToMany(mappedBy = "farmProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FarmerProductDetails> farmerProductDetails = new ArrayList<FarmerProductDetails>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "farmProdId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartFarmProduct> cartFarmProductList = new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "farmProdId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderFarmProductDetails> orderFarmProductDetails = new ArrayList<>();
 	
 	//-----------------------------Constructors--------------------
 		
@@ -109,6 +114,14 @@ public class FarmProducts implements Prefixable {
 		this.cartFarmProductList = cartFarmProductList;
 	}
 
+	public List<OrderFarmProductDetails> getOrderFarmProductDetails() {
+		return orderFarmProductDetails;
+	}
+
+	public void setOrderFarmProductDetails(List<OrderFarmProductDetails> orderFarmProductDetails) {
+		this.orderFarmProductDetails = orderFarmProductDetails;
+	}
+
 	@Override
 	public String toString() {
 		return "FarmProducts [farmProductId=" + farmProductId + ", farmProductName=" + farmProductName
@@ -116,6 +129,15 @@ public class FarmProducts implements Prefixable {
 	}
 	
 	// ------------- Helper Methods ------------------------------
+	public void addFarmProductDetails(FarmerProductDetails product) {
+		farmerProductDetails.add(product);
+		product.setFarmProductId(this);
+	}
+	public void removeFarmProductDetails(FarmerProductDetails product) {
+		farmerProductDetails.remove(product);
+		product.setFarmProductId(null);
+	}
+	
 	public void addCartFarmProduct(CartFarmProduct product) {
 		cartFarmProductList.add(product);
 		product.setFarmProdId(this);
@@ -125,6 +147,14 @@ public class FarmProducts implements Prefixable {
 		product.setFarmProdId(null);
 	}
 
+	public void addOrderFarmProductDetails(OrderFarmProductDetails product) {
+		orderFarmProductDetails.add(product);
+		product.setFarmProdId(this);
+	}
+	public void removeOrderFarmProductDetails(OrderFarmProductDetails product) {
+		orderFarmProductDetails.remove(product);
+		product.setFarmProdId(null);
+	}
 	// ------------ Inherited methods of Prefixable interface ---------------------
 	@Override
 	public String getPrefix() {
