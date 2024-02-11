@@ -7,11 +7,11 @@ const Profile = () => {
 
     const {userEvent, loading} = useSelector(state => state.auth);
 
-  return (
-    <Fragment>
-        {loading ? }
-    </Fragment>
-  )
+//   return (
+//     <Fragment>
+//         {loading ? }
+//     </Fragment>
+//   )
 }
 
 export default Profile

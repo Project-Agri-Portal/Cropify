@@ -38,6 +38,9 @@ public class AgricultureProducts implements Prefixable {
 	@Enumerated(EnumType.STRING)
 	private AgriProductType agriProductType;
 	
+	@Column
+	private String imgPath;
+	
 	// ------------ Relationship Mapping ------------------------------
 	@OneToMany(mappedBy = "agriProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
