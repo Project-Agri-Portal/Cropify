@@ -88,6 +88,24 @@ public class UserDetails {
 	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
 	
+	// --------------- Cart Machinery --------------------
+	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CartMachinery> cartMachineryFarmerList = new ArrayList<>();
+	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CartMachinery> cartMachinerySellerList = new ArrayList<>();
+	
+	// --------------- Cart Agri Product -----------------
+	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CartAgricultureProduct> cartAgriProdFarmerList = new ArrayList<>();
+	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CartAgricultureProduct> cartAgriProdSellerList = new ArrayList<>();
+	
+	// --------------- Cart Farm Product -----------------
+	@OneToMany(mappedBy = "farmerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CartFarmProduct> cartFarmProdFarmerList = new ArrayList<>();
+	@OneToMany(mappedBy = "customerId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CartFarmProduct> cartFarmProdCustomerList = new ArrayList<>();
+	
 	//--------- Constructors -------------------------	
 	public UserDetails() {}
 	
@@ -167,4 +185,67 @@ public class UserDetails {
 		orderMachineDetails.remove(machineDetails);
 		machineDetails.setFarmerId(null);
 	}
+	
+	// ---------------- Cart Machinery -----------------------------
+	// -------------- 1) farmer details ---------------
+	public void addCartMachineryFarmerList(CartMachinery farmer) {
+		cartMachineryFarmerList.add(farmer);
+		farmer.setFarmerId(this);
+	}
+	public void removeCartMachineryFarmerList(CartMachinery farmer) {
+		cartMachineryFarmerList.remove(farmer);
+		farmer.setFarmerId(null);
+	}
+	// -------------- 2) seller details ---------------
+	public void addCartMachinerySellerList(CartMachinery seller) {
+		cartMachinerySellerList.add(seller);
+		seller.setFarmerId(this);
+	}
+	public void removeCartMachinerySellerList(CartMachinery seller) {
+		cartMachinerySellerList.remove(seller);
+		seller.setFarmerId(null);
+	}
+	// ---------------------------------------------------------------
+	
+	// ---------------- Cart Agriculture Product -----------------------------
+	// -------------- 1) farmer details ---------------
+	public void addCartAgricultureProductFarmerList(CartAgricultureProduct farmer) {
+		cartAgriProdFarmerList.add(farmer);
+		farmer.setFarmerId(this);
+	}
+	public void removeCartAgricultureProductFarmerList(CartAgricultureProduct farmer) {
+		cartAgriProdFarmerList.remove(farmer);
+		farmer.setFarmerId(null);
+	}
+	// -------------- 2) seller details ---------------
+	public void addCartAgricultureProductSellerList(CartAgricultureProduct seller) {
+		cartAgriProdSellerList.add(seller);
+		seller.setSellerId(this);
+	}
+	public void removeCartAgricultureProductSellerList(CartAgricultureProduct seller) {
+		cartAgriProdSellerList.remove(seller);
+		seller.setSellerId(null);
+	}
+	// ---------------------------------------------------------------
+	
+	// ---------------- Cart Farmer Product -----------------------------
+	// -------------- 1) farmer details ---------------
+	public void addCartFarmProdFarmerList(CartFarmProduct farmer) {
+		cartFarmProdFarmerList.add(farmer);
+		farmer.setFarmerId(this);
+	}
+	public void removeCartFarmProdFarmerList(CartFarmProduct farmer) {
+		cartFarmProdFarmerList.remove(farmer);
+		farmer.setFarmerId(null);
+	}
+	// -------------- 2) customer details ---------------
+	public void addCartFarmProdCustomerList(CartFarmProduct customer) {
+		cartFarmProdCustomerList.add(customer);
+		customer.setCustomerId(this);
+	}
+	public void removeCartFarmProdCustomerList(CartFarmProduct customer) {
+		cartFarmProdCustomerList.remove(customer);
+		customer.setCustomerId(null);
+	}
+	// ---------------------------------------------------------------
 }
