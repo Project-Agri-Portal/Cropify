@@ -1,6 +1,8 @@
 package com.cropify.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +37,7 @@ public class FarmProductsController {
 //	}
 //	with ResponseEntity
 	@GetMapping("/all")
-	public ResponseEntity<?> getFarmProducts(){
+	public ResponseEntity<List<FarmProducts>> getFarmProducts(){
 //		return new ResponseEntity<>(farmProductsService.getAllFarmProducts(), HttpStatus.OK);
 		return ResponseEntity.ok(farmProductsService.getAllFarmProducts());
 	}
