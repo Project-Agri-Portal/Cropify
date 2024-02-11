@@ -18,55 +18,55 @@ function ProductList() {
           <div className="list-group list-group-flush my-3">
             <Link
               to="/home/seller"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-tachometer-alt me-2"></i>Dashboard
             </Link>
             <Link
               to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text active"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text active"
             >
               <i className="fas fa-project-diagram me-2"></i>Products
             </Link>
             <Link
               to="/seller/orderlist"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-chart-line me-2"></i>Order List
             </Link>
             <Link
               to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-paperclip me-2"></i>Available Stock
             </Link>
             <Link
               to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-shopping-cart me-2"></i>Store Mng
             </Link>
             <Link
               to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-gift me-2"></i>Products
             </Link>
             <Link
               to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-comment-dots me-2"></i>Chat
             </Link>
             <Link
               to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-map-marker-alt me-2"></i>Outlet
             </Link>
             <Link
               to="/"
-              className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent text-danger fw-bold"
             >
               <i className="fas fa-power-off me-2"></i>Logout
             </Link>
