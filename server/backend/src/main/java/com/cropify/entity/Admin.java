@@ -38,7 +38,7 @@ public class Admin {
 	@Column(name = "join_date", nullable = false)
 	private LocalDate joinDate;
 	
-	@Column(name = "root_admin", nullable = false)
+	@Column(name = "root_admin", nullable = false, columnDefinition = "boolean")
 	private boolean isRootAdmin;
 	
 	// ------------------ Constructors ---------------------------
