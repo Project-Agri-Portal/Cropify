@@ -44,6 +44,9 @@ public class Machinery implements Prefixable {
 	// ------------ Relationship Mapping ------------------------------
 	@OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<SellerMachineryDetails>();
+	
+	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CartMachinery> cartMachinery = new ArrayList<>();
 
 	// -------------------------- Constructors ------------------------------
 	public Machinery() {}
@@ -89,6 +92,14 @@ public class Machinery implements Prefixable {
 		this.machineType = machineType;
 	}
 	
+	public List<CartMachinery> getCartMachinery() {
+		return cartMachinery;
+	}
+
+	public void setCartMachinery(List<CartMachinery> cartMachinery) {
+		this.cartMachinery = cartMachinery;
+	}
+
 	// ---------------------- Helper Methods ---------------------------------
 	public void addSellerMachineryDetails(SellerMachineryDetails machineDetails) {
 		sellerMachineryDetails.add(machineDetails);
@@ -98,7 +109,18 @@ public class Machinery implements Prefixable {
 		sellerMachineryDetails.remove(machineDetails);
 		machineDetails.setMachineryId(null);
 	}
+	
+	// ----- b) CartMachinery List -----
+	public void addCartMachinery(CartMachinery machine) {
+		cartMachinery.add(machine);
+		machine.setMachineId(this);
+	}
+	public void removeCartMachinery(CartMachinery machine) {
+		cartMachinery.remove(machine);
+		machine.setMachineId(null);
+	}
 
+	// ------------------ To String --------------------------------------------
 	@Override
 	public String toString() {
 		return "Machinery [machineId=" + machineId + ", machineName=" + machineName + ", machineType=" + machineType
