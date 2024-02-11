@@ -41,11 +41,11 @@ public class SellerMachineryDetails {
 	@Column
 	private String description;
 	
-	@Column(nullable = false)
-	private boolean isAvailable;
+	@Column(columnDefinition = "TINYINT", nullable = false)
+	private int isAvailable;
 	
-	@Column(nullable = false)
-	private boolean verified;
+	@Column(columnDefinition = "TINYINT", nullable = false)
+	private int verified;
 
 
 	/*
@@ -61,9 +61,10 @@ public class SellerMachineryDetails {
 	*/
 	// ------------ Constructors ------------------------
 	public SellerMachineryDetails() {}
-	
+
 	public SellerMachineryDetails(Long sellerMachineryId, Machinery machineryId, UserDetails sellerId, int quantity,
-			double price, String description, boolean isAvailable) {
+			double price, String description, int isAvailable, int verified) {
+		super();
 		this.sellerMachineryId = sellerMachineryId;
 		this.machineryId = machineryId;
 		this.sellerId = sellerId;
@@ -71,6 +72,7 @@ public class SellerMachineryDetails {
 		this.price = price;
 		this.description = description;
 		this.isAvailable = isAvailable;
+		this.verified = verified;
 	}
 
 	//-----------------------------Getter and Setters--------------------
@@ -114,11 +116,11 @@ public class SellerMachineryDetails {
 		this.description = description;
 	}
 
-	public boolean isAvailable() {
+	public int isAvailable() {
 		return isAvailable;
 	}
 
-	public void setAvailable(boolean isAvailable) {
+	public void setAvailable(int isAvailable) {
 		this.isAvailable = isAvailable;
 	}
 	
@@ -130,11 +132,11 @@ public class SellerMachineryDetails {
 		this.sellerMachineryId = sellerMachineryId;
 	}
 	
-	public boolean isVerified() {
+	public int isVerified() {
 		return verified;
 	}
 
-	public void setVerified(boolean verified) {
+	public void setVerified(int verified) {
 		this.verified = verified;
 	}
 	/*	

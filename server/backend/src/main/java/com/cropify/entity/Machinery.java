@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Machinery implements Prefixable {
 	// This annotation specifies the respective field is not to be persisted
 	@Transient
+	@JsonIgnore
 	private String prefix = "m";
 	
 	@Id
@@ -43,15 +44,15 @@ public class Machinery implements Prefixable {
 	private String imgPath;
 	
 	// ------------ Relationship Mapping ------------------------------
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy = "machineryId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<SellerMachineryDetails>();
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartMachinery> cartMachinery = new ArrayList<>();
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
 
