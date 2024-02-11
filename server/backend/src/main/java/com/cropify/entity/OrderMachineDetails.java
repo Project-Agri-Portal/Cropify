@@ -13,15 +13,17 @@ import javax.persistence.ManyToOne;
 @Entity
 public class OrderMachineDetails extends OrderBaseClass {
 
-	// Mapped with UserDetails table
+	// Mapped with UserDetails for farmer
 	@ManyToOne
 	@JoinColumn(name = "farmer_id", nullable = false)
 	private UserDetails farmerId;
 	
+	// Mapped with UserDetails for seller
 	@ManyToOne
 	@JoinColumn(name = "seller_id", nullable = false) 
 	private UserDetails sellerId;
 	
+	// Mapped with machinery
 	@ManyToOne
 	@JoinColumn(name = "machine_id", nullable = false) 
 	private Machinery machineId;
