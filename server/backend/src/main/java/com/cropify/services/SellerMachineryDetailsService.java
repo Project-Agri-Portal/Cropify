@@ -10,7 +10,7 @@ public interface SellerMachineryDetailsService {
 	SellerMachineryDetailsDTO getSellerMachineryDetailsById(Long id);
 	
 	// Create operations
-	SellerMachineryDetailsDTO addSellerMachineryDetails(Long id, SellerMachineryDetailsDTO smDto);
+	Long addSellerMachineryDetails(Long id, SellerMachineryDetailsDTO smDto);
 	
 	// Update operations
 	SellerMachineryDetailsDTO updateSellerMachineryDetails(SellerMachineryDetailsDTO smDto, Long id);
