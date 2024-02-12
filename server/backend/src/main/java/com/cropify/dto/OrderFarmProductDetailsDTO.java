@@ -12,9 +12,9 @@ import com.cropify.entity.enums.FarmOrderStatus;
 
 public class OrderFarmProductDetailsDTO {
 	
-	private UserDetails customerId;
-	private UserDetails farmerId;
-	private FarmProducts farmProdId;
+	private Long customerId;
+	private Long farmerId;
+	private String farmProdId;
 	private LocalDate orderDate;
 	
 	@Future
@@ -22,16 +22,30 @@ public class OrderFarmProductDetailsDTO {
 	private int quantity;
 	private double totalPrice;
 	private FarmOrderStatus farmOrderStatus;
-	
+
 	//-------------Getters and Setters--------------------
-
-
-	public UserDetails getCustomerId() {
+	public Long getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(UserDetails customerId) {
+	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
+	}
+
+	public Long getFarmerId() {
+		return farmerId;
+	}
+
+	public void setFarmerId(Long farmerId) {
+		this.farmerId = farmerId;
+	}
+
+	public String getFarmProdId() {
+		return farmProdId;
+	}
+
+	public void setFarmProdId(String farmProdId) {
+		this.farmProdId = farmProdId;
 	}
 
 	public LocalDate getOrderDate() {
@@ -74,27 +88,10 @@ public class OrderFarmProductDetailsDTO {
 		this.farmOrderStatus = farmOrderStatus;
 	}
 
-	public UserDetails getFarmerId() {
-		return farmerId;
-	}
-
-	public void setFarmerId(UserDetails farmerId) {
-		this.farmerId = farmerId;
-	}
-
-	public FarmProducts getFarmProdId() {
-		return farmProdId;
-	}
-
-	public void setFarmProdId(FarmProducts farmProdId) {
-		this.farmProdId = farmProdId;
-	}
-
 	@Override
 	public String toString() {
 		return "OrderFarmProductDetailsDTO [customerId=" + customerId + ", farmerId=" + farmerId + ", farmProdId="
 				+ farmProdId + ", orderDate=" + orderDate + ", deliveryDate=" + deliveryDate + ", quantity=" + quantity
 				+ ", totalPrice=" + totalPrice + ", farmOrderStatus=" + farmOrderStatus + "]";
 	}
-
 }

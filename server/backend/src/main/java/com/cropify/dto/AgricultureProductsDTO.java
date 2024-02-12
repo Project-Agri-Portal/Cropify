@@ -2,9 +2,12 @@ package com.cropify.dto;
 
 
 import com.cropify.entity.enums.AgriProductType;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class AgricultureProductsDTO {
 	
+	@JsonProperty(access = Access.READ_ONLY)
 	private String agriProductId;
 	private String agriProductName;
 	private AgriProductType agriProductType;
