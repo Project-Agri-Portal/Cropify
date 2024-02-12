@@ -7,12 +7,15 @@ import javax.validation.constraints.Future;
 import com.cropify.entity.AgricultureProducts;
 import com.cropify.entity.UserDetails;
 import com.cropify.entity.enums.FarmProductsStatus;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class SellerAgricultureProductDetailsDTO {
 
+	@JsonProperty(access = Access.READ_ONLY)
 	private Long sellerAgricultureProductId;
-	private AgricultureProducts agriProductId;
-	private UserDetails sellerId;
+	private String agriProductId;
+	private Long sellerId;
 	private int quantity;
 	private double price;
 	private String description;
@@ -32,19 +35,19 @@ public class SellerAgricultureProductDetailsDTO {
 		this.sellerAgricultureProductId = sellerAgricultureProductId;
 	}
 
-	public AgricultureProducts getAgriProductId() {
+	public String getAgriProductId() {
 		return agriProductId;
 	}
 
-	public void setAgriProductId(AgricultureProducts agriProductId) {
+	public void setAgriProductId(String agriProductId) {
 		this.agriProductId = agriProductId;
 	}
 
-	public UserDetails getSellerId() {
+	public Long getSellerId() {
 		return sellerId;
 	}
 
-	public void setSellerId(UserDetails sellerId) {
+	public void setSellerId(Long sellerId) {
 		this.sellerId = sellerId;
 	}
 

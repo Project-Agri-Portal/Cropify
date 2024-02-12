@@ -49,18 +49,18 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 	// ----------------- POST operations ----------------------------
 	@Override
 	public Long addSellerMachineryDetails(Long id, SellerMachineryDetailsDTO smDto) {
-		// Retrieving the Seller
-		UserDetails seller = sellerRepo.findById(id).orElseThrow(
-				() -> new ResourceNotFoundException("seller not found"));
+		// Retrieving the Seller proxy
+		UserDetails seller = sellerRepo.getReferenceById(id);
 		
-		// Retrieving machine ID and machine using the machine ID
+		// Retrieving machine ID to get machine proxy
 		String machineId = smDto.getMachineryId();
-		Machinery machine = machineRepo.findById(machineId).orElseThrow(
-				() -> new RuntimeException("Machine not found"));
+		Machinery machine = machineRepo.getReferenceById(machineId);
 		
 		SellerMachineryDetails detail = mapper.map(smDto, SellerMachineryDetails.class);
-		detail.setSellerId(seller);
-		detail.setMachineryId(machine);
+		
+		// Calling the dependencies helper methods
+		seller.addSellerMachineryDetails(detail);
+		machine.addSellerMachineryDetails(detail);
 		
 		// saving the sellerMachineryDetail
 		SellerMachineryDetails savedDetail = repository.save(detail);
