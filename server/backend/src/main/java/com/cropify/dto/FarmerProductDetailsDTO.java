@@ -7,12 +7,13 @@ import javax.validation.constraints.Future;
 import com.cropify.entity.FarmProducts;
 import com.cropify.entity.UserDetails;
 import com.cropify.entity.enums.FarmProductsStatus;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class FarmerProductDetailsDTO {
 	
+	@JsonProperty(access = Access.READ_ONLY)
 	private Long farmerProductDetailsId;
-//	private FarmProducts farmProductId;
-//	private UserDetails farmerId;
 	private String farmProductId;
 	private Long farmerId;
 	private int quantity;
@@ -26,19 +27,13 @@ public class FarmerProductDetailsDTO {
 	private FarmProductsStatus farmProductStatus;
 	
 	//-----------------------------Getter and Setters--------------------
-	/**
-	 * @return the farmerProductDetailsId
-	 */
 	public Long getFarmerProductDetailsId() {
 		return farmerProductDetailsId;
 	}
-
-	/**
-	 * @param farmerProductDetailsId the farmerProductDetailsId to set
-	 */
 	public void setFarmerProductDetailsId(Long farmerProductDetailsId) {
 		this.farmerProductDetailsId = farmerProductDetailsId;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * @return the farmProductId
@@ -108,37 +103,39 @@ public class FarmerProductDetailsDTO {
 	/**
 	 * @param quantity the quantity to set
 	 */
+=======
+	public String getFarmProductId() {
+		return farmProductId;
+	}
+	public void setFarmProductId(String farmProductId) {
+		this.farmProductId = farmProductId;
+	}
+	public Long getFarmerId() {
+		return farmerId;
+	}
+	public void setFarmerId(Long farmerId) {
+		this.farmerId = farmerId;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+>>>>>>> cf20758329fa4bd2875a3b56f5fceb413d5f36da
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-
-	/**
-	 * @return the price
-	 */
 	public double getPrice() {
 		return price;
 	}
-
-	/**
-	 * @param price the price to set
-	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-	/**
-	 * @return the description
-	 */
 	public String getDescription() {
 		return description;
 	}
-
-	/**
-	 * @param description the description to set
-	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * @return the harvestDate
@@ -187,7 +184,29 @@ public class FarmerProductDetailsDTO {
 	}
 
 	public void setVerified(String verified) {
+	public boolean isVerified() {
+		return verified;
+	}
+	public void setVerified(boolean verified) {
 		this.verified = verified;
+	}
+	public LocalDate getHarvestDate() {
+		return harvestDate;
+	}
+	public void setHarvestDate(LocalDate harvestDate) {
+		this.harvestDate = harvestDate;
+	}
+	public LocalDate getExpiryDate() {
+		return expiryDate;
+	}
+	public void setExpiryDate(LocalDate expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+	public FarmProductsStatus getFarmProductStatus() {
+		return farmProductStatus;
+	}
+	public void setFarmProductStatus(FarmProductsStatus farmProductStatus) {
+		this.farmProductStatus = farmProductStatus;
 	}
 	
 }
