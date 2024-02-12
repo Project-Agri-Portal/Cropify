@@ -224,7 +224,7 @@ VALUES
 ('Amit', 'Sharma', 'amit.sharma@example.com', 'hashedPassword', '9876543210', 'ADMIN', '102 Ganga Nagar', 'Delhi', 'Delhi', '110001', '123456789012', 'ABCDE1234F', 'ACTIVE'),
 ('Priya', 'Patel', 'priya.patel@example.com', 'hashedPassword', '8765432109', 'SELLER', '205 Tulsi Vihar', 'Mumbai', 'Maharashtra', '400001', '987654321098', 'FGHIJ5678K', 'ACTIVE'),
 ('Raj', 'Verma', 'raj.verma@example.com', 'hashedPassword', '7654321098', 'CUSTOMER', '308 Yamuna Enclave', 'Jaipur', 'Rajasthan', '302001', '234567890123', 'LMNOP6789Q', 'INACTIVE'),
-('Sneha', 'Singh', 'sneha.singh@example.com', 'hashedPassword', '6543210987', 'ADMIN', '401 Rose Lane', 'Bangalore', 'Karnataka', '560001', '345678901234', 'QRSTU9012V', 'ACTIVE');
+('Sneha', 'Singh', 'sneha.singh@example.com', 'hashedPassword', '6543210987', 'CUSROMER', '401 Rose Lane', 'Bangalore', 'Karnataka', '560001', '345678901234', 'QRSTU9012V', 'ACTIVE');
 ('Vijay', 'Kumar', 'vijay.kumar@example.com', 'hashedPassword', '5432109876', 'CUSTOMER', '504 Jasmine Road', 'Chennai', 'Tamil Nadu', '600001', '456789012345', 'BCDEA3456C', 'ACTIVE'),
 ('Pooja', 'Gupta', 'pooja.gupta@example.com', 'hashedPassword', '4321098765', 'SELLER', '607 Orchid Street', 'Kolkata', 'West Bengal', '700001', '567890123456', 'LMNOP5678Q', 'ACTIVE'),
 ('Rahul', 'Sinha', 'rahul.sinha@example.com', 'hashedPassword', '3210987654', 'FARMER', '710 Lotus Lane', 'Hyderabad', 'Telangana', '500001', '678901234567', 'QRSTU6789V', 'ACTIVE'),

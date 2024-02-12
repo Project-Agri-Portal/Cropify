@@ -11,12 +11,14 @@ import com.cropify.entity.enums.FarmProductsStatus;
 public class FarmerProductDetailsDTO {
 	
 	private Long farmerProductDetailsId;
-	private FarmProducts farmProductId;
-	private UserDetails farmerId;
+//	private FarmProducts farmProductId;
+//	private UserDetails farmerId;
+	private String farmProductId;
+	private Long farmerId;
 	private int quantity;
 	private double price;
 	private String description;
-	private boolean verified;
+	private String verified;
 	private LocalDate harvestDate;
 	
 	@Future
@@ -41,36 +43,66 @@ public class FarmerProductDetailsDTO {
 	/**
 	 * @return the farmProductId
 	 */
-	public FarmProducts getFarmProductId() {
-		return farmProductId;
-	}
-
-	/**
-	 * @param farmProductId the farmProductId to set
-	 */
-	public void setFarmProductId(FarmProducts farmProductId) {
-		this.farmProductId = farmProductId;
-	}
-
-	/**
-	 * @return the farmerId
-	 */
-	public UserDetails getFarmerId() {
-		return farmerId;
-	}
-
-	/**
-	 * @param farmerId the farmerId to set
-	 */
-	public void setFarmerId(UserDetails farmerId) {
-		this.farmerId = farmerId;
-	}
+//	public FarmProducts getFarmProductId() {
+//		return farmProductId;
+//	}
+//
+//	/**
+//	 * @param farmProductId the farmProductId to set
+//	 */
+//	public void setFarmProductId(FarmProducts farmProductId) {
+//		this.farmProductId = farmProductId;
+//	}
+//
+//	/**
+//	 * @return the farmerId
+//	 */
+//	public UserDetails getFarmerId() {
+//		return farmerId;
+//	}
+//
+//	/**
+//	 * @param farmerId the farmerId to set
+//	 */
+//	public void setFarmerId(UserDetails farmerId) {
+//		this.farmerId = farmerId;
+//	}
+	
+	
 
 	/**
 	 * @return the quantity
 	 */
 	public int getQuantity() {
 		return quantity;
+	}
+
+	/**
+	 * @return the farmProductId
+	 */
+	public String getFarmProductId() {
+		return farmProductId;
+	}
+
+	/**
+	 * @param farmProductId the farmProductId to set
+	 */
+	public void setFarmProductId(String farmProductId) {
+		this.farmProductId = farmProductId;
+	}
+
+	/**
+	 * @return the farmerId
+	 */
+	public Long getFarmerId() {
+		return farmerId;
+	}
+
+	/**
+	 * @param farmerId the farmerId to set
+	 */
+	public void setFarmerId(Long farmerId) {
+		this.farmerId = farmerId;
 	}
 
 	/**
@@ -150,11 +182,11 @@ public class FarmerProductDetailsDTO {
 		this.farmProductStatus = farmProductStatus;
 	}
 
-	public boolean isVerified() {
+	public String isVerified() {
 		return verified;
 	}
 
-	public void setVerified(boolean verified) {
+	public void setVerified(String verified) {
 		this.verified = verified;
 	}
 	

@@ -45,7 +45,7 @@ public class FarmerProductDetails {
 	private String description;
 	
 	@Column(nullable = false)
-	private boolean verified;
+	private String verified;
 	
 	@Column(name = "harvest_date", nullable = false)
 	private LocalDate harvestDate;
@@ -156,11 +156,11 @@ public class FarmerProductDetails {
 		this.farmerProductDetailsId = farmerProductDetailsId;
 	}
 
-	public boolean isVerified() {
+	public String isVerified() {
 		return verified;
 	}
 
-	public void setVerified(boolean verified) {
+	public void setVerified(String verified) {
 		this.verified = verified;
 	}
 
