@@ -10,9 +10,9 @@ import com.cropify.entity.UserDetails;
 
 public class OrderAgricultureProductDetailsDTO {
 
-	private UserDetails farmerId;
-	private UserDetails sellerId;
-	private AgricultureProducts agricultureProductId;
+	private Long farmerId;
+	private Long sellerId;
+	private String agricultureProductId;
 	private LocalDate orderDate;
 	
 	@Future
@@ -21,13 +21,28 @@ public class OrderAgricultureProductDetailsDTO {
 	private double totalPrice;
 
 	// -------------Getters and Setters--------------------
-
-	public UserDetails getFarmerId() {
+	public Long getFarmerId() {
 		return farmerId;
 	}
 
-	public void setFarmerId(UserDetails farmerId) {
+	public void setFarmerId(Long farmerId) {
 		this.farmerId = farmerId;
+	}
+
+	public Long getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(Long sellerId) {
+		this.sellerId = sellerId;
+	}
+
+	public String getAgricultureProductId() {
+		return agricultureProductId;
+	}
+
+	public void setAgricultureProductId(String agricultureProductId) {
+		this.agricultureProductId = agricultureProductId;
 	}
 
 	public LocalDate getOrderDate() {
@@ -62,27 +77,10 @@ public class OrderAgricultureProductDetailsDTO {
 		this.totalPrice = totalPrice;
 	}
 
-	public UserDetails getSellerId() {
-		return sellerId;
-	}
-
-	public void setSellerId(UserDetails sellerId) {
-		this.sellerId = sellerId;
-	}
-
-	public AgricultureProducts getAgricultureProductId() {
-		return agricultureProductId;
-	}
-
-	public void setAgricultureProductId(AgricultureProducts agricultureProductId) {
-		this.agricultureProductId = agricultureProductId;
-	}
-
 	@Override
 	public String toString() {
 		return "OrderAgricultureProductDetailsDTO [farmerId=" + farmerId + ", sellerId=" + sellerId
 				+ ", agricultureProductId=" + agricultureProductId + ", orderDate=" + orderDate + ", deliveryDate="
 				+ deliveryDate + ", quantity=" + quantity + ", totalPrice=" + totalPrice + "]";
 	}
-
 }

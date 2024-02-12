@@ -2,12 +2,16 @@ package com.cropify.dto;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class AdminDTO {
+	@JsonProperty(access = Access.READ_ONLY)
 	private Long adminId;
 	private String firstName;
 	private String lastName;

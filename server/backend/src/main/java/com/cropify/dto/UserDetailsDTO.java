@@ -5,13 +5,18 @@ import javax.validation.constraints.Size;
 
 import com.cropify.entity.UserAddress;
 import com.cropify.entity.enums.UserType;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class UserDetailsDTO {
+	
+	@JsonProperty(access = Access.READ_ONLY)
 	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@Pattern(regexp="((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{5,20})", message = "Invalid Password")
 	private String password;
 	private String mobileNo;

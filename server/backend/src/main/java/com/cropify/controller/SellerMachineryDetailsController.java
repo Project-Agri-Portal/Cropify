@@ -42,11 +42,12 @@ public class SellerMachineryDetailsController {
 	
 	// ----------------- POST methods ----------------------
 	@PostMapping("/{sellerId}")
-	public ResponseEntity<SellerMachineryDetailsDTO> addSellerMachineryDetails(
+	public ResponseEntity<String> addSellerMachineryDetails(
 			@PathVariable @NotNull Long sellerId,
 			@RequestBody @Valid SellerMachineryDetailsDTO smDto)
 	{
-		return ResponseEntity.status(HttpStatus.CREATED).body(service.addSellerMachineryDetails(sellerId, smDto));
+		int id = service.addSellerMachineryDetails(sellerId, smDto).intValue();
+		return ResponseEntity.status(HttpStatus.CREATED).body("Detail saved with ID = " + id);
 	}
 	
 	// ----------------- PUT methods ----------------------
