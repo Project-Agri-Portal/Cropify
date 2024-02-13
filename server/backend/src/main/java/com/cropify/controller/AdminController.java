@@ -36,11 +36,11 @@ public class AdminController {
 	}
 
 	// PUT
-//	@PutMapping("/{adminId}")
-//	public ResponseEntity<AdminDTO> updateAdmin(@Valid @RequestBody AdminDTO adminDto, @PathVariable long adminId) {
-//		AdminDTO updatedAdminDto = this.adminService.updateAdmin(adminDto, adminId);
-//		return ResponseEntity.ok(updatedAdminDto);
-//	}
+	@PutMapping("/{adminId}")
+	public ResponseEntity<AdminDTO> updateAdmin(@Valid @RequestBody AdminDTO adminDto, @PathVariable long adminId) {
+		AdminDTO updatedAdminDto = this.adminService.updateAdmin(adminDto, adminId);
+		return ResponseEntity.ok(updatedAdminDto);
+	}
 
 	// DELETE
 	@DeleteMapping("/{adminId}")

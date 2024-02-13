@@ -8,7 +8,7 @@ function Seller() {
     <div>
       <div className="d-flex" id="wrapper">
         {/* <!-- Sidebar --> */}
-    <sidebar/>
+    {/* <sidebar/> */}
         {/* <!-- /#sidebar-wrapper --> */}
 
         {/* ------------------------------------------------------------------------------------------------------- */}

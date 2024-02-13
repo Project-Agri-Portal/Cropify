@@ -56,6 +56,18 @@ public class AdminServiceImpl implements AdminService {
 				.collect(Collectors.toList());
 		return adminDtos;
 	}
+	
+	
+	@Override
+	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
+		
+		Admin admin = this.adminRepository.findById(adminId).orElseThrow(()-> new ResourceNotFoundException("Admin Not Found"));
+		Admin updatedAdmin = modelMapper.map(adminDto, Admin.class);
+		return modelMapper.map(adminRepository.save(updatedAdmin),AdminDTO.class);
+		
+		
+		
+	}
 
 //	@Override
 //	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
