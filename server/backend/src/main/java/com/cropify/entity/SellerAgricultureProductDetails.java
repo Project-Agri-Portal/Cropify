@@ -35,6 +35,7 @@ public class SellerAgricultureProductDetails {
 	@ManyToOne // owning
 	@JoinColumn(name = "seller_id", nullable = false)
 	private UserDetails sellerId;
+//	private UserDetails id;
 
 	@Column
 	private int quantity;
@@ -65,11 +66,11 @@ public class SellerAgricultureProductDetails {
 	public SellerAgricultureProductDetails() {}
 
 	public SellerAgricultureProductDetails(Long sellerAgricultureProductId, AgricultureProducts agriProductId,
-			UserDetails sellerId, int quantity, double price, String description, LocalDate expiryDate,
+			UserDetails id, int quantity, double price, String description, LocalDate expiryDate,
 			FarmProductsStatus sellerProductStatus) {
 		this.sellerAgricultureProductId = sellerAgricultureProductId;
 		this.agriProductId = agriProductId;
-		this.sellerId = sellerId;
+		this.sellerId = id;
 		this.quantity = quantity;
 		this.price = price;
 		this.description = description;
@@ -82,8 +83,8 @@ public class SellerAgricultureProductDetails {
 		return sellerId;
 	}
 
-	public void setSellerId(UserDetails sellerId) {
-		this.sellerId = sellerId;
+	public void setSellerId(UserDetails id) {
+		this.sellerId = id;
 	}
 
 	public Long getSellerAgricultureProductId() {

@@ -134,6 +134,11 @@ public class UserDetails {
 	//--------- Constructors -------------------------	
 	public UserDetails() {}
 	
+	public UserDetails(Long id) {
+		super();
+		this.id = id;
+	}
+	
 	public UserDetails(Long id, String firstName, String lastName, String email, String password, String mobileNo,
 			UserType userType, UserAddress userAddress, String aadharNo, String panNo, String status) {
 		super();
