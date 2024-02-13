@@ -5,16 +5,21 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cropify.dao.AgricultureProductsRepository;
 import com.cropify.dao.SellerAgricultureProductDetailsRepository;
 import com.cropify.dao.UserDetailsRepository;
 import com.cropify.dto.SellerAgricultureProductDetailsDTO;
+import com.cropify.dto.UserDetailsDTO;
 import com.cropify.entity.AgricultureProducts;
 import com.cropify.entity.SellerAgricultureProductDetails;
 import com.cropify.entity.UserDetails;
 import com.cropify.services.SellerAgricultureProductDetailsService;
 
+@Service
+@Transactional
 public class SellerAgricultureProductDetailsServiceImpl implements SellerAgricultureProductDetailsService {
 
 	@Autowired
@@ -40,7 +45,11 @@ public class SellerAgricultureProductDetailsServiceImpl implements SellerAgricul
 	public SellerAgricultureProductDetailsDTO getAgricultureProductById(Long sapId) {
 		SellerAgricultureProductDetails product = repository.findById(sapId).orElseThrow(
 				() -> new RuntimeException("Agriculture product not found"));
-		return mapper.map(product, SellerAgricultureProductDetailsDTO.class);
+		
+		SellerAgricultureProductDetailsDTO agriDto = mapper.map(product, SellerAgricultureProductDetailsDTO.class);
+//		agriDto.setSellerId(product.getSellerId().getId());
+//		return mapper.map(product, SellerAgricultureProductDetailsDTO.class);
+		return agriDto;
 	}
 
 //  ---------------- Create operations ----------------
@@ -61,6 +70,7 @@ public class SellerAgricultureProductDetailsServiceImpl implements SellerAgricul
 		
 		// Saving the agriProduct
 		SellerAgricultureProductDetails savedAgriProduct = repository.save(productEnt);
+//		SellerAgricultureProductDetailsDTO agriDto = mapper.map(savedAgriProduct, SellerAgricultureProductDetailsDTO.class);
 		
 		return savedAgriProduct.getSellerAgricultureProductId();
 	}
@@ -69,7 +79,22 @@ public class SellerAgricultureProductDetailsServiceImpl implements SellerAgricul
 	@Override
 	public SellerAgricultureProductDetailsDTO updateAgricultureProduct(Long sapId,
 			SellerAgricultureProductDetailsDTO sapDto) {
-		// TODO Auto-generated method stub
+		boolean sapExists = repository.existsById(sapId);
+		
+		Long sellerId = sapDto.getSellerId();
+		UserDetails seller = sellerRepo.getReferenceById(sellerId);
+		String agriProdId = sapDto.getAgriProductId();
+		AgricultureProducts agriProduct = agriProdRepo.getReferenceById(agriProdId);
+		
+		if (sapExists) {
+			SellerAgricultureProductDetails productEnt = mapper.map(sapDto, SellerAgricultureProductDetails.class);
+			
+//			seller.addSellerAgricultureProductDetails(productEnt);
+//			agriProduct.addSellerAgricultureProductDetails(productEnt);
+			
+			SellerAgricultureProductDetails updatedProductEnt = repository.save(productEnt);
+			return mapper.map(updatedProductEnt, SellerAgricultureProductDetailsDTO.class);
+		}
 		return null;
 	}
 
