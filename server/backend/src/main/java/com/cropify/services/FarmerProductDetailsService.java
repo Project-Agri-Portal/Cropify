@@ -8,6 +8,6 @@ public interface FarmerProductDetailsService {
 	
 	List<FarmerProductDetailsDTO> getAllFarmProductDetails();
 	
-	FarmerProductDetailsDTO addFarmerProductDetails(FarmerProductDetailsDTO detailsDTO);
+	Long addFarmerProductDetails(FarmerProductDetailsDTO detailsDTO, Long id);
 	
 }

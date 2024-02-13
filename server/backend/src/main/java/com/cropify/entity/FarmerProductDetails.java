@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.cropify.entity.enums.FarmProductsStatus;
 
 @Entity
@@ -48,8 +50,10 @@ public class FarmerProductDetails {
 	private String verified;
 	
 	@Column(name = "harvest_date", nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate harvestDate;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "expiry_date", nullable = false)
 	private LocalDate expiryDate;
 	

@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class UserDetailsDTO {
 	
-	@JsonProperty(access = Access.READ_ONLY)
+	// @JsonProperty(access = Access.WRITE_ONLY)
 	private Long id;
 	private String firstName;
 	private String lastName;

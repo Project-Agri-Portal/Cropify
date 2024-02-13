@@ -1,7 +1,5 @@
 package com.cropify.dto;
 
-import com.cropify.entity.Machinery;
-import com.cropify.entity.UserDetails;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
