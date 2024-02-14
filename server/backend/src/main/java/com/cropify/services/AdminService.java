@@ -26,8 +26,14 @@ public interface AdminService {
 	public int countOfSellers();
 	
 	// Customer Count
-	public int countOfCustomer();
+	public int countOfCustomers();
 		
 	// Farmer Count
-	public int countOfFarmer();
+	public int countOfFarmers();
+	
+	public int farmProductCount();
+	public int agriProductCount();
+	public int machineCount();
+
+
 }

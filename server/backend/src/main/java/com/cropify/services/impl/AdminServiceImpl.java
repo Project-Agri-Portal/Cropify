@@ -26,6 +26,8 @@ public class AdminServiceImpl implements AdminService {
 
 	private StringBuilder errorMessage = new StringBuilder("Admin Not found for ID = ");
 
+	// ------------------------------- Add Admin ------------------------------------------
+	
 	@Override
 	public AdminDTO addAdmin(AdminDTO adminDto) {
 		Admin admin=this.modelMapper.map(adminDto, Admin.class);
@@ -33,6 +35,8 @@ public class AdminServiceImpl implements AdminService {
 		AdminDTO adminDTO=this.modelMapper.map(addedAdmin, AdminDTO.class);
 		return adminDTO;
 	}
+	
+	// --------------------------------- Delete Admin ------------------------------------------
 
 	@Override
 	public void deleteAdmin(Long adminId) {
@@ -40,12 +44,16 @@ public class AdminServiceImpl implements AdminService {
 		adminRepository.delete(admin);
 	}
 
+	// --------------------------------- Get Admin ------------------------------------------
+
 	@Override
 	public AdminDTO getAdmin(Long adminId) {
 		Admin admin= this.adminRepository.findById(adminId).orElseThrow(()-> new ResourceNotFoundException("Admin Not Found"));
 		
 		return this.modelMapper.map(admin, AdminDTO.class);
 	}
+	
+	// --------------------------------- Get All Admin ------------------------------------------
 
 	@Override
 	public List<AdminDTO> getAllAdmins() {
@@ -54,6 +62,8 @@ public class AdminServiceImpl implements AdminService {
 		
 		return adminsDTO;
 	}
+	
+	// --------------------------------- Update Admin ------------------------------------------
 
 	@Override
 	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
@@ -62,6 +72,8 @@ public class AdminServiceImpl implements AdminService {
 
 		return this.modelMapper.map(savedadmin, AdminDTO.class);
 	}
+	
+	// ------------------------------- Count OF Seller , Customers , Farmer --------------------------------------
 
 	@Override
 	public int countOfSellers() {
@@ -70,16 +82,38 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int countOfCustomer() {
-		int count = adminRepository.countOfCustomer("CUSTOMERS");
-		return 0;
+	public int countOfCustomers() {
+		int count = adminRepository.countOfCustomers("CUSTOMER");
+		return count;
 	}
 
 	@Override
-	public int countOfFarmer() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int countOfFarmers() {
+		int count = adminRepository.countOfFarmers("FARMER");
+		return count;
 	}
+	
+	// ---------------------------- Count Of Farmer Products , agri products , machines -----------------------------
+
+	@Override
+	public int farmProductCount() {
+		int count = adminRepository.farmProductCount();
+		return count;
+	}
+
+	@Override
+	public int agriProductCount() {
+		int count = adminRepository.agriProductCount();
+		return count;
+	}
+
+	@Override
+	public int machineCount() {
+		int count = adminRepository.machineCount();
+		return count;
+	}
+
+	
 	
 	
 

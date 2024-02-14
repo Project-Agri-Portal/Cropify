@@ -61,10 +61,38 @@ public class AdminController {
 		return ResponseEntity.ok(this.adminService.getAllAdmins());
 	}
 	
-	// Count Seller , Customer , Farmer
+	//---------------------- Count of Seller , Customer , Farmer ------------------------------------
+	
 	@GetMapping("/sellerCount")
-	public ResponseEntity<?> GetCount(){
+	public ResponseEntity<?> GetCountSeller(){
 		return ResponseEntity.ok(this.adminService.countOfSellers());
+	}
+	
+	@GetMapping("/farmerCount")
+	public ResponseEntity<?> GetCountFarmer(){
+		return ResponseEntity.ok(this.adminService.countOfFarmers());
+	}
+	
+	@GetMapping("/customerCount")
+	public ResponseEntity<?> GetCountCustomer(){
+		return ResponseEntity.ok(this.adminService.countOfCustomers());
+	}
+	
+	// ---------------------------- Count Of Farmer Products , agri products , machines -----------------------------
+	
+	@GetMapping("/agriProdCount")
+	public ResponseEntity<?> GetAgriProductCount(){
+		return ResponseEntity.ok(this.adminService.agriProductCount());
+	}
+	
+	@GetMapping("/farmerProdCount")
+	public ResponseEntity<?> GetFarmerProductCount(){
+		return ResponseEntity.ok(this.adminService.farmProductCount());
+	}
+	
+	@GetMapping("/machineCount")
+	public ResponseEntity<?> GetMachineCount(){
+		return ResponseEntity.ok(this.adminService.machineCount());
 	}
 
 }
