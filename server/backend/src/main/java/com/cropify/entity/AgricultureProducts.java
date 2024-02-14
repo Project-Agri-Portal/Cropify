@@ -47,24 +47,28 @@ public class AgricultureProducts implements Prefixable {
 	@OneToMany(mappedBy = "agriProductId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SellerAgricultureProductDetails> sellerAgricultureProductDetails = new ArrayList<>();
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "agriProdId", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<CartAgricultureProduct> cartAgricultureProductList = new ArrayList<>();
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "agriProdId", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<CartAgricultureProduct> cartAgricultureProductList = new ArrayList<>();
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "agricultureProductId", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "agricultureProductId", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<OrderAgricultureProductDetails> orderAgricultureProductDetails = new ArrayList<>();
 	
 	//-----------------------------Constructors--------------------
+	
+	public AgricultureProducts() {
+		
+	}
+	
+	public AgricultureProducts(String id) {
+		this.agriProductId = id;
+	}
 	
 	public AgricultureProducts(String agriProductId, String agriProductName, AgriProductType agriProductType) {
 		this.agriProductId = agriProductId;
 		this.agriProductName = agriProductName;
 		this.agriProductType = agriProductType;
-	}
-	
-	public AgricultureProducts() {
-		
 	}
 	
 	//-----------------------------Getter and Setters--------------------
@@ -93,13 +97,13 @@ public class AgricultureProducts implements Prefixable {
 		this.agriProductType = agriProductType;
 	}
 	
-	public List<CartAgricultureProduct> getCartAgricultureProductList() {
-		return cartAgricultureProductList;
-	}
-
-	public void setCartAgricultureProductList(List<CartAgricultureProduct> cartAgricultureProductList) {
-		this.cartAgricultureProductList = cartAgricultureProductList;
-	}
+//	public List<CartAgricultureProduct> getCartAgricultureProductList() {
+//		return cartAgricultureProductList;
+//	}
+//
+//	public void setCartAgricultureProductList(List<CartAgricultureProduct> cartAgricultureProductList) {
+//		this.cartAgricultureProductList = cartAgricultureProductList;
+//	}
 
 	public List<SellerAgricultureProductDetails> getSellerAgricultureProductDetails() {
 		return sellerAgricultureProductDetails;
@@ -109,13 +113,13 @@ public class AgricultureProducts implements Prefixable {
 		this.sellerAgricultureProductDetails = sellerAgricultureProductDetails;
 	}
 
-	public List<OrderAgricultureProductDetails> getOrderAgricultureProductDetails() {
-		return orderAgricultureProductDetails;
-	}
-
-	public void setOrderAgricultureProductDetails(List<OrderAgricultureProductDetails> orderAgricultureProductDetails) {
-		this.orderAgricultureProductDetails = orderAgricultureProductDetails;
-	}
+//	public List<OrderAgricultureProductDetails> getOrderAgricultureProductDetails() {
+//		return orderAgricultureProductDetails;
+//	}
+//
+//	public void setOrderAgricultureProductDetails(List<OrderAgricultureProductDetails> orderAgricultureProductDetails) {
+//		this.orderAgricultureProductDetails = orderAgricultureProductDetails;
+//	}
 
 	// ---------------------- Helper Methods ---------------------------------
 	public void addSellerAgricultureProductDetails(SellerAgricultureProductDetails productDetails) {
@@ -127,25 +131,25 @@ public class AgricultureProducts implements Prefixable {
 		productDetails.setAgriProductId(null);
 	}
 	
-	public void addCartAgricultureProduct(CartAgricultureProduct agriProduct)
-	{
-		cartAgricultureProductList.add(agriProduct);
-		agriProduct.setAgriProdId(this);
-	}
-	public void removeCartAgricultureProduct(CartAgricultureProduct agriProduct)
-	{
-		cartAgricultureProductList.remove(agriProduct);
-		agriProduct.setAgriProdId(null);
-	}
+//	public void addCartAgricultureProduct(CartAgricultureProduct agriProduct)
+//	{
+//		cartAgricultureProductList.add(agriProduct);
+//		agriProduct.setAgriProdId(this);
+//	}
+//	public void removeCartAgricultureProduct(CartAgricultureProduct agriProduct)
+//	{
+//		cartAgricultureProductList.remove(agriProduct);
+//		agriProduct.setAgriProdId(null);
+//	}
 	
-	public void addOrderAgricultureProductDetails(OrderAgricultureProductDetails product) {
-		orderAgricultureProductDetails.add(product);
-		product.setAgricultureProductId(this);
-	}
-	public void removeOrderAgricultureProductDetails(OrderAgricultureProductDetails product) {
-		orderAgricultureProductDetails.remove(product);
-		product.setAgricultureProductId(null);
-	}
+//	public void addOrderAgricultureProductDetails(OrderAgricultureProductDetails product) {
+//		orderAgricultureProductDetails.add(product);
+//		product.setAgricultureProductId(this);
+//	}
+//	public void removeOrderAgricultureProductDetails(OrderAgricultureProductDetails product) {
+//		orderAgricultureProductDetails.remove(product);
+//		product.setAgricultureProductId(null);
+//	}
 
 	// ------------ Inherited methods of Prefixable interface ---------------------
 	@Override

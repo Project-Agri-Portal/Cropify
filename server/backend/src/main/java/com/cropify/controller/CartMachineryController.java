@@ -2,8 +2,6 @@ package com.cropify.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,25 +16,30 @@ import com.cropify.dto.CartMachineryDTO;
 import com.cropify.services.CartMachineryService;
 
 @RestController
-@RequestMapping("/api/cartMachinery")
+@RequestMapping("/api/cartmachinery")
 public class CartMachineryController {
 	
 	@Autowired
 	private CartMachineryService cartMachineryService;
 	
 	@PostMapping("/add")
-	public ResponseEntity<Long> addMachineryIntoCart(@RequestBody @Valid CartMachineryDTO cartMachineryDTO){
-		return ResponseEntity.status(HttpStatus.CREATED).body(cartMachineryService.addMachineIntoCart(cartMachineryDTO));
-	}
-	
-	@GetMapping("/all")
-	public ResponseEntity<List<CartMachineryDTO>> getAllCartMachinery(){
-		return new ResponseEntity(cartMachineryService.getALLCartMachinery(), HttpStatus.OK);
+	public ResponseEntity<CartMachineryDTO> addMachineryIntoCart(@RequestBody CartMachineryDTO cartMachineryDTO){
+		return ResponseEntity.status(HttpStatus.CREATED).body(cartMachineryService.addMachineryIntoCart(cartMachineryDTO));
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<List<CartMachineryDTO>> getCartMachineOfFarmerById(@RequestParam Long id){
-		return ResponseEntity.ok(cartMachineryService.getCartMachine(id));
+	@GetMapping("/{farmerId}")
+	public ResponseEntity<List<CartMachineryDTO>> getAllCartMachineByFarmerId(@RequestParam Long farmerId){
+		return ResponseEntity.status(HttpStatus.OK).body(cartMachineryService.getAllCartMachineByFarmerId(farmerId));
+	}
+
+	@GetMapping("/{machineId}")
+	public ResponseEntity<int> deleteCartMachineByMachineId(@RequestParam String machineId){
+		return ResponseEntity.status(HttpStatus.OK).body(cartMachineryService.deleteCartMachineById(machineId));
+	}
+
+	@GetMapping("/all")
+	public ResponseEntity<List<CartMachineryDTO>> getAllCartMachine(){
+		return ResponseEntity.status(HttpStatus.OK).body(cartMachineryService.getAllCartMachine());
 	}
 	
 }

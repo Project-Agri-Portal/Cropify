@@ -2,13 +2,15 @@ package com.cropify.services;
 
 import java.util.List;
 
-
 import com.cropify.dto.CartMachineryDTO;
 
 public interface CartMachineryService {
-	Long addMachineIntoCart(CartMachineryDTO cartMachineryDTO);
 	
-	List<CartMachineryDTO> getALLCartMachinery();
+	CartMachineryDTO addMachineryIntoCart(CartMachineryDTO cartMachineryDTO);
 
-	List<CartMachineryDTO> getCartMachine(Long id);
+	List<CartMachineryDTO> getAllCartMachineByFarmerId(Long farmerId);
+
+	int deleteCartMachineById(String machineId);
+
+	List<CartMachineryDTO> getAllCartMachine();
 }

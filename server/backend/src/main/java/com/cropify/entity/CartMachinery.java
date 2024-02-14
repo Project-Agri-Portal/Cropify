@@ -35,6 +35,19 @@ public class CartMachinery {
 	@Column(name = "total_amount")
 	private double totalAmount;
 
+	public CartMachinery() {}
+	public CartMachinery(Long cid) {
+		this.cid = cid;
+	}
+	public CartMachinery(Long cid, Machinery machineId, UserDetails farmerId, UserDetails sellerId, int quantity, double totalAmount)
+	{
+		this.cid = cid;
+		this.machineId = machineId;
+		this.farmerId = farmerId;
+		this.sellerId = sellerId;
+		this.quantity = quantity;
+		this.totalAmount = totalAmount;
+	}
 	/**
 	 * @return the cid
 	 */

@@ -59,11 +59,14 @@ public class SellerAgricultureProductDetailsController {
 			@PathVariable @NotNull Long productId,
 			@RequestBody @Valid SellerAgricultureProductDetailsDTO sapDto)
 	{
-		SellerAgricultureProductDetailsDTO updatedProductDTO = service.updateAgricultureProduct(productId, sapDto);
-		if (updatedProductDTO != null) 
-			return ResponseEntity.status(HttpStatus.CREATED).body("Updated the agriculture product");
-		else
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No such agriculture product found");
+//		SellerAgricultureProductDetailsDTO updatedProductDTO = service.updateAgricultureProduct(productId, sapDto);
+//		if (updatedProductDTO != null) 
+//			return ResponseEntity.status(HttpStatus.CREATED).body("Updated the agriculture product");
+//		else
+//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No such agriculture product found");
+		
+		int rows = service.updateSellerAgriucltureProductDetails(productId, sapDto);
+		return ResponseEntity.status(HttpStatus.CREATED).body("updated rows = " + rows);
 	}
 	
 	// ------- DELETE methods ----------------

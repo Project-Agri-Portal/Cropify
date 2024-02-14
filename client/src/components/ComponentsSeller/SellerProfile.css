@@ -117,7 +117,7 @@
   .list-group-item.active {
     background-color: #f8f9fa;
     /* Add your preferred active background color */
-    color: #000 !important;
+    color: rgb(201, 185, 185) !important;
     /* Add your preferred active text color */
     border-right: 4px solid #007bff;
     /* Add your preferred active border color */

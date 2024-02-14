@@ -1,4 +1,4 @@
-package com.cropify.controller;
+package com.cropify.controller; 
 
 import java.util.List;
 
@@ -42,10 +42,13 @@ public class AgricultureProductsController {
 	}
 	
 	// ------- POST methods ----------------
+	// @RequestBody => data from user is in json, to convert it into java object we use this 
+	// @valid => objects validations is checked by this annotation
 	@PostMapping("/")
 	public ResponseEntity<AgricultureProductsDTO> addAgricultureProduct(
 			@RequestBody @Valid AgricultureProductsDTO productDto)
 	{
+		
 		return ResponseEntity.status(HttpStatus.CREATED).body(productService.addAgricultureProduct(productDto));
 	}
 	

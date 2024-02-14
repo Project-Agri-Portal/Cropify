@@ -42,8 +42,8 @@ public class SellerAgricultureProductDetailsDTO {
 		return agriProductId;
 	}
 
-	public void setAgriProductId(String agriProductId) {
-		this.agriProductId = agriProductId;
+	public void setAgriProductId(AgricultureProductsDTO agriProductId) {
+		this.agriProductId = agriProductId.getAgriProductId();
 	}
 
 	public Long getSellerId() {
