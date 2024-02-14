@@ -28,61 +28,42 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public AdminDTO addAdmin(AdminDTO adminDto) {
-		Admin admin = this.modelMapper.map(adminDto, Admin.class);
-		Admin createdAdmin = this.adminRepository.save(admin);
-
-		return this.modelMapper.map(createdAdmin, AdminDTO.class);
+		Admin admin=this.modelMapper.map(adminDto, Admin.class);
+		Admin addedAdmin = adminRepository.save(admin);
+		AdminDTO adminDTO=this.modelMapper.map(addedAdmin, AdminDTO.class);
+		return adminDTO;
 	}
 
 	@Override
 	public void deleteAdmin(Long adminId) {
-		Admin admin = this.adminRepository.findById(adminId)
-				.orElseThrow(() -> new ResourceNotFoundException(errorMessage.append(adminId).toString()));
-		this.adminRepository.delete(admin);
+		Admin admin=this.adminRepository.findById(adminId).orElseThrow(()-> new ResourceNotFoundException(errorMessage.append(adminId).toString()));
+		adminRepository.delete(admin);
 	}
 
 	@Override
 	public AdminDTO getAdmin(Long adminId) {
-		Admin admin = this.adminRepository.findById(adminId)
-				.orElseThrow(() -> new ResourceNotFoundException(errorMessage.append(adminId).toString()));
-
+		Admin admin= this.adminRepository.findById(adminId).orElseThrow(()-> new ResourceNotFoundException("Admin Not Found"));
+		
 		return this.modelMapper.map(admin, AdminDTO.class);
 	}
 
 	@Override
 	public List<AdminDTO> getAllAdmins() {
-		List<Admin> admins = this.adminRepository.findAll();
-		List<AdminDTO> adminDtos = admins.stream().map((admin) -> this.modelMapper.map(admin, AdminDTO.class))
-				.collect(Collectors.toList());
-		return adminDtos;
-	}
-	
-	
-	@Override
-	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
+		List<Admin> admins= this.adminRepository.findAll();
+		List<AdminDTO> adminsDTO=admins.stream().map((admin1)-> this.modelMapper.map(admin1, AdminDTO.class)).collect(Collectors.toList());
 		
-		Admin admin = this.adminRepository.findById(adminId).orElseThrow(()-> new ResourceNotFoundException("Admin Not Found"));
-		Admin updatedAdmin = modelMapper.map(adminDto, Admin.class);
-		return modelMapper.map(adminRepository.save(updatedAdmin),AdminDTO.class);
-		
-		
-		
+		return adminsDTO;
 	}
 
-//	@Override
-//	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
-//		Admin admin = this.adminRepository.findById(adminId)
-//				.orElseThrow(() -> new ResourceNotFoundException(errorMessage.append(adminId).toString()));
-////		admin.setAdminMobile(adminDto.getAdminMobile());
-////		admin.setEmail(adminDto.getAdminMobile());
-////		admin.setFirstName(adminDto.getFirstName());
-////		admin.setJoinDate(adminDto.getJoinDate());
-////		admin.setLastName(adminDto.getLastName());
-////		admin.setPassword(adminDto.getPassword());
-////		admin.setRootAdmin(adminDto.isRootAdmin());
-////		Admin updatedAdmin = this.adminRepository.save(admin);
-//
-//		return this.modelMapper.map(updatedAdmin, AdminDTO.class);
-//	}
+	@Override
+	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
+		Admin admin= this.adminRepository.findById(adminId).orElseThrow(()-> new ResourceNotFoundException("Admin Not Found"));
+		Admin savedadmin= this.adminRepository.save(admin);
+
+		return this.modelMapper.map(savedadmin, AdminDTO.class);
+	}
+	
+	
+
 
 }

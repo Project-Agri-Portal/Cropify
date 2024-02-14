@@ -25,11 +25,11 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 public class AdminController {
 
 	@Autowired
-	AdminService adminService;
+	private AdminService adminService;
 
 	// POST
 	@PostMapping("/")
-	public ResponseEntity<AdminDTO> createAdmin(@RequestBody AdminDTO adminDto) {
+	public ResponseEntity<AdminDTO> createAdmin(@RequestBody @Valid AdminDTO adminDto) {
 		AdminDTO createdAdminDTO = this.adminService.addAdmin(adminDto);
 		return new ResponseEntity<>(createdAdminDTO, HttpStatus.CREATED);
 
