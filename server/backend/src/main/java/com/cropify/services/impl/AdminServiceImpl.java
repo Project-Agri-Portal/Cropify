@@ -62,6 +62,24 @@ public class AdminServiceImpl implements AdminService {
 
 		return this.modelMapper.map(savedadmin, AdminDTO.class);
 	}
+
+	@Override
+	public int countOfSellers() {
+		int count = adminRepository.countOfSellers("SELLER");
+		return count;
+	}
+
+	@Override
+	public int countOfCustomer() {
+		int count = adminRepository.countOfCustomer("CUSTOMERS");
+		return 0;
+	}
+
+	@Override
+	public int countOfFarmer() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 

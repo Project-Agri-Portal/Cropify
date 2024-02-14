@@ -60,5 +60,11 @@ public class AdminController {
 	public ResponseEntity<List<AdminDTO>> getAllAdmins() {
 		return ResponseEntity.ok(this.adminService.getAllAdmins());
 	}
+	
+	// Count Seller , Customer , Farmer
+	@GetMapping("/sellerCount")
+	public ResponseEntity<?> GetCount(){
+		return ResponseEntity.ok(this.adminService.countOfSellers());
+	}
 
 }
