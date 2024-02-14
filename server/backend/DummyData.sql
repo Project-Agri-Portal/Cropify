@@ -296,16 +296,16 @@ VALUES
 
 INSERT INTO Machinery (machine_id, machine_name, machine_type, img_path)
 VALUES
-    ('1', 'Machine1', 'TYPE1', '/path/to/image1.jpg'),
-    ('2', 'Machine2', 'TYPE2', '/path/to/image2.jpg'),
-    ('3', 'Machine3', 'TYPE1', '/path/to/image3.jpg'),
-    ('4', 'Machine4', 'TYPE3', '/path/to/image4.jpg');
-    ('5', 'Machine5', 'TYPE2', '/path/to/image5.jpg'),
-    ('6', 'Machine6', 'TYPE1', '/path/to/image6.jpg'),
-    ('7', 'Machine7', 'TYPE3', '/path/to/image7.jpg'),
-    ('8', 'Machine8', 'TYPE2', '/path/to/image8.jpg'),
-    ('9', 'Machine9', 'TYPE1', '/path/to/image9.jpg'),
-    ('10', 'Machine10', 'TYPE3', '/path/to/image10.jpg');
+    ('m1', 'Machine1', 'TYPE1', '/path/to/image1.jpg'),
+    ('m2', 'Machine2', 'TYPE2', '/path/to/image2.jpg'),
+    ('m3', 'Machine3', 'TYPE1', '/path/to/image3.jpg'),
+    ('m4', 'Machine4', 'TYPE3', '/path/to/image4.jpg');
+    ('m5', 'Machine5', 'TYPE2', '/path/to/image5.jpg'),
+    ('m6', 'Machine6', 'TYPE1', '/path/to/image6.jpg'),
+    ('m7', 'Machine7', 'TYPE3', '/path/to/image7.jpg'),
+    ('m8', 'Machine8', 'TYPE2', '/path/to/image8.jpg'),
+    ('m9', 'Machine9', 'TYPE1', '/path/to/image9.jpg'),
+    ('m10', 'Machine10', 'TYPE3', '/path/to/image10.jpg');
 
 
 INSERT INTO farm_products (farm_prod_id, farm_prod_name, farm_prod_type,  img_path)
