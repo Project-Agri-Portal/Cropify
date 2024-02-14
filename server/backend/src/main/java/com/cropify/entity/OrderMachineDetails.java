@@ -8,7 +8,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class OrderMachineDetails extends OrderBaseClass {
+public class OrderMachineDetails{
+
+	@Column(name = "order_id", nullable = false)
+	private String orderId;
 
 	// Mapped with UserDetails for farmer
 	@ManyToOne
@@ -51,9 +54,10 @@ public class OrderMachineDetails extends OrderBaseClass {
 		super();
 	}
 	
-	public OrderMachineDetails(UserDetails farmerId, UserDetails sellerId, Machinery machineId, int rentDuration,
+	public OrderMachineDetails(String orderId , UserDetails farmerId, UserDetails sellerId, Machinery machineId, int rentDuration,
 			LocalDate orderDate, LocalDate deliveryDate, int quantity, double totalPrice) {
 		super();
+		this.orderId = orderId;
 		this.farmerId = farmerId;
 		this.sellerId = sellerId;
 		this.machineId = machineId;
@@ -107,6 +111,14 @@ public class OrderMachineDetails extends OrderBaseClass {
 
 	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
+	}
+
+	public String getOrderId(){
+		return orderId;
+	}
+
+	public void setOrderId(String orderId){
+		this.orderId = orderId;
 	}
 
 	public LocalDate getDeliveryDate() {

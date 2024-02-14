@@ -9,6 +9,17 @@ public class MachineryDTO {
 	private String machineName;
 	private MachineType machineType;
 	
+	// ------------------ Constructors ---------------------------
+	public MachineryDTO() {}
+	public MachineryDTO(String machineId) {
+		this.machineId = machineId;
+	}
+	public MachineryDTO(String machineId, String machineName, MachineType machineType) {
+		this.machineId = machineId;
+		this.machineName = machineName;
+		this.machineType = machineType;
+	}
+
 	//-------------Getters and Setters--------------------
 
 	public String getMachineId() {
@@ -34,16 +45,5 @@ public class MachineryDTO {
 	public void setMachineType(MachineType machineType) {
 		this.machineType = machineType;
 	}
-
-	@Override
-	public String toString() {
-		return "MachineryDTO [machineId=" + machineId + ", machineName=" + machineName + ", machineType=" + machineType
-				+ "]";
-	}
-	
-	
-	
-	
-	
 
 }

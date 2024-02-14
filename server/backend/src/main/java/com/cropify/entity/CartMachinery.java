@@ -39,8 +39,10 @@ public class CartMachinery {
 	public CartMachinery(Long cid) {
 		this.cid = cid;
 	}
-	public CartMachinery(Long cid, Machinery machineId, UserDetails farmerId, UserDetails sellerId, int quantity, double totalAmount)
-	{
+	// ---------------- Constructors ----------------
+	public CartMachinery(Long cid, Machinery machineId, UserDetails farmerId, UserDetails sellerId, int quantity,
+			double totalAmount) {
+		super();
 		this.cid = cid;
 		this.machineId = machineId;
 		this.farmerId = farmerId;
@@ -51,84 +53,44 @@ public class CartMachinery {
 	/**
 	 * @return the cid
 	 */
+	
+	
+	// ------------------ Getter & Setter --------------------
 	public Long getCid() {
 		return cid;
 	}
-
-	/**
-	 * @param cid the cid to set
-	 */
 	public void setCid(Long cid) {
 		this.cid = cid;
 	}
-
-	/**
-	 * @return the machineId
-	 */
 	public Machinery getMachineId() {
 		return machineId;
 	}
-
-	/**
-	 * @param machineId the machineId to set
-	 */
 	public void setMachineId(Machinery machineId) {
 		this.machineId = machineId;
 	}
-
-	/**
-	 * @return the farmerId
-	 */
 	public UserDetails getFarmerId() {
 		return farmerId;
 	}
-
-	/**
-	 * @param farmerId the farmerId to set
-	 */
 	public void setFarmerId(UserDetails farmerId) {
 		this.farmerId = farmerId;
 	}
-
-	/**
-	 * @return the sellerId
-	 */
 	public UserDetails getSellerId() {
 		return sellerId;
 	}
-
-	/**
-	 * @param sellerId the sellerId to set
-	 */
 	public void setSellerId(UserDetails sellerId) {
 		this.sellerId = sellerId;
 	}
-
-	/**
-	 * @return the quantity
-	 */
 	public int getQuantity() {
 		return quantity;
 	}
-
-	/**
-	 * @param quantity the quantity to set
-	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-
-	/**
-	 * @return the totalAmount
-	 */
 	public double getTotalAmount() {
 		return totalAmount;
 	}
-
-	/**
-	 * @param totalAmount the totalAmount to set
-	 */
 	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
+
 }

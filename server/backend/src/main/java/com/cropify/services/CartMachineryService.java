@@ -8,9 +8,11 @@ public interface CartMachineryService {
 	
 	CartMachineryDTO addMachineryIntoCart(CartMachineryDTO cartMachineryDTO);
 
-	List<CartMachineryDTO> getAllCartMachineByFarmerId(Long farmerId);
-
-	int deleteCartMachineById(String machineId);
+	Long deleteCartMachineById(Long cartId);
 
 	List<CartMachineryDTO> getAllCartMachine();
+
+	public List<CartMachineryDTO> getAllCartMachineByFarmerId(Long farmerId);
+	
+	Long addMachineryIntoCart(Long farmerId, CartMachineryDTO cartMachineryDTO);
 }

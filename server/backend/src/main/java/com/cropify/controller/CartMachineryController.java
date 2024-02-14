@@ -1,11 +1,16 @@
 package com.cropify.controller;
 
 import java.util.List;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +22,19 @@ import com.cropify.services.CartMachineryService;
 
 @RestController
 @RequestMapping("/api/cartmachinery")
+@Validated
 public class CartMachineryController {
 	
 	@Autowired
 	private CartMachineryService cartMachineryService;
 	
-	@PostMapping("/add")
-	public ResponseEntity<CartMachineryDTO> addMachineryIntoCart(@RequestBody CartMachineryDTO cartMachineryDTO){
-		return ResponseEntity.status(HttpStatus.CREATED).body(cartMachineryService.addMachineryIntoCart(cartMachineryDTO));
+	@PostMapping("/add/{farmerId}")
+	public ResponseEntity<String> addMachineryIntoCart(
+			@PathVariable @NotNull Long farmerId,
+			@RequestBody @Valid CartMachineryDTO cartMachineryDTO)
+	{
+		int cartId = cartMachineryService.addMachineryIntoCart(farmerId, cartMachineryDTO).intValue();
+		return ResponseEntity.status(HttpStatus.CREATED).body("Created cart with ID = " + cartId);
 	}
 
 	@GetMapping("/{farmerId}")
@@ -32,9 +42,9 @@ public class CartMachineryController {
 		return ResponseEntity.status(HttpStatus.OK).body(cartMachineryService.getAllCartMachineByFarmerId(farmerId));
 	}
 
-	@GetMapping("/{machineId}")
-	public ResponseEntity<int> deleteCartMachineByMachineId(@RequestParam String machineId){
-		return ResponseEntity.status(HttpStatus.OK).body(cartMachineryService.deleteCartMachineById(machineId));
+	@DeleteMapping("/{cartId}")
+	public ResponseEntity<Long> deleteCartMachineByMachineId(@RequestParam Long cartId){
+		return ResponseEntity.status(HttpStatus.OK).body(cartMachineryService.deleteCartMachineById(cartId));
 	}
 
 	@GetMapping("/all")

@@ -7,9 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
 public class CartMachineryDTO {
 	
 	@JsonProperty(access = Access.READ_ONLY)
@@ -21,11 +18,11 @@ public class CartMachineryDTO {
 	private double totalAmount;
 
 	public CartMachineryDTO() {}
-	public CartMachineryDTO(Long cid){
+	public CartMachineryDTO(Long cid) {
 		this.cid = cid;
 	}
-	public CartMachineryDTO(Long cid, String machineId, Long farmerId, Long sellerId, int quantity, double totalAmount)
-	{
+	public CartMachineryDTO(Long cid, String machineId, Long farmerId, Long sellerId, int quantity,
+			double totalAmount) {
 		this.cid = cid;
 		this.machineId = machineId;
 		this.farmerId = farmerId;
@@ -46,4 +43,32 @@ public class CartMachineryDTO {
 		this.sellerId = detailsDTO.getId();
 	}
 
+	
+	public Long getCid() {
+		return cid;
+	}
+	public void setCid(Long cid) {
+		this.cid = cid;
+	}
+	public String getMachineId() {
+		return machineId;
+	}
+	public Long getFarmerId() {
+		return farmerId;
+	}
+	public Long getSellerId() {
+		return sellerId;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public double getTotalAmount() {
+		return totalAmount;
+	}
+	public void setTotalAmount(double totalAmount) {
+		this.totalAmount = totalAmount;
+	}
 }

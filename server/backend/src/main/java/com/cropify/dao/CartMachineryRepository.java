@@ -12,7 +12,7 @@ public interface CartMachineryRepository extends JpaRepository<CartMachinery, Lo
 
     List<CartMachinery> findByFarmerId(Long farmerId);
 
-    @Query(value = "select * from cart_machinery where farmer_id = :id", nativeQuery = true)
+    @Query(value = " select * from cart_machinery where farmer_id = :id", nativeQuery = true)
     List<CartMachinery> findCartByFarmerId(@Param(value = "id") Long farmerId);
 
     int deleteByMachineId(String machineId);

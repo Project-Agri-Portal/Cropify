@@ -13,6 +13,7 @@ public class AgricultureProductsDTO {
 	private AgriProductType agriProductType;
 	private String imgPath;
 	
+	// ---------------- Constructors -------------------------------
 	public AgricultureProductsDTO() {}
 	public AgricultureProductsDTO(String agriProductId) {
 		this.agriProductId = agriProductId;
