@@ -56,21 +56,33 @@ public class AdminServiceImpl implements AdminService {
 				.collect(Collectors.toList());
 		return adminDtos;
 	}
-
+	
+	
 	@Override
 	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
-		Admin admin = this.adminRepository.findById(adminId)
-				.orElseThrow(() -> new ResourceNotFoundException(errorMessage.append(adminId).toString()));
-		admin.setAdminMobile(adminDto.getAdminMobile());
-		admin.setEmail(adminDto.getAdminMobile());
-		admin.setFirstName(adminDto.getFirstName());
-		admin.setJoinDate(adminDto.getJoinDate());
-		admin.setLastName(adminDto.getLastName());
-		admin.setPassword(adminDto.getPassword());
-		admin.setRootAdmin(adminDto.isRootAdmin());
-		Admin updatedAdmin = this.adminRepository.save(admin);
-
-		return this.modelMapper.map(updatedAdmin, AdminDTO.class);
+		
+		Admin admin = this.adminRepository.findById(adminId).orElseThrow(()-> new ResourceNotFoundException("Admin Not Found"));
+		Admin updatedAdmin = modelMapper.map(adminDto, Admin.class);
+		return modelMapper.map(adminRepository.save(updatedAdmin),AdminDTO.class);
+		
+		
+		
 	}
+
+//	@Override
+//	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
+//		Admin admin = this.adminRepository.findById(adminId)
+//				.orElseThrow(() -> new ResourceNotFoundException(errorMessage.append(adminId).toString()));
+////		admin.setAdminMobile(adminDto.getAdminMobile());
+////		admin.setEmail(adminDto.getAdminMobile());
+////		admin.setFirstName(adminDto.getFirstName());
+////		admin.setJoinDate(adminDto.getJoinDate());
+////		admin.setLastName(adminDto.getLastName());
+////		admin.setPassword(adminDto.getPassword());
+////		admin.setRootAdmin(adminDto.isRootAdmin());
+////		Admin updatedAdmin = this.adminRepository.save(admin);
+//
+//		return this.modelMapper.map(updatedAdmin, AdminDTO.class);
+//	}
 
 }
