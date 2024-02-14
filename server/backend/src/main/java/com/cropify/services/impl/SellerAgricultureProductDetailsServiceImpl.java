@@ -77,6 +77,18 @@ public class SellerAgricultureProductDetailsServiceImpl implements SellerAgricul
 
 //  ---------------- Update operations ----------------
 	@Override
+	public int updateSellerAgriucltureProductDetails(Long sapId, SellerAgricultureProductDetailsDTO sapDto) {
+		int quantity = sapDto.getQuantity();
+		double price = sapDto.getPrice();
+		String description = sapDto.getDescription();
+//		String sellerProductStatus = sapDto.getSellerProductStatus();
+		
+		int rowsAffected = repository.updateSellerAgriucltureProductDetails(quantity, price, description, sapId);
+		return rowsAffected;
+	}
+	
+	/*
+	@Override
 	public SellerAgricultureProductDetailsDTO updateAgricultureProduct(Long sapId,
 			SellerAgricultureProductDetailsDTO sapDto) {
 		boolean sapExists = repository.existsById(sapId);
@@ -97,7 +109,7 @@ public class SellerAgricultureProductDetailsServiceImpl implements SellerAgricul
 		}
 		return null;
 	}
-
+	*/
 //  ---------------- Delete operations ----------------
 	@Override
 	public void deleteAgricultureProduct(Long sapId) {

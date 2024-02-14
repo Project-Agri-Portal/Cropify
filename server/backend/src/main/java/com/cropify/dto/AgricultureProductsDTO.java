@@ -13,6 +13,18 @@ public class AgricultureProductsDTO {
 	private AgriProductType agriProductType;
 	private String imgPath;
 	
+	public AgricultureProductsDTO() {}
+	public AgricultureProductsDTO(String agriProductId) {
+		this.agriProductId = agriProductId;
+	}
+	public AgricultureProductsDTO(String agriProductId, String agriProductName, AgriProductType agriProductType,
+			String imgPath) {
+		this.agriProductId = agriProductId;
+		this.agriProductName = agriProductName;
+		this.agriProductType = agriProductType;
+		this.imgPath = imgPath;
+	}
+
 	//-----------------------------Getter and Setters--------------------
 	
 	/**

@@ -49,12 +49,12 @@ public class Machinery implements Prefixable {
 	private List<SellerMachineryDetails> sellerMachineryDetails = new ArrayList<SellerMachineryDetails>();
 	
 //	@JsonIgnore
-	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<CartMachinery> cartMachinery = new ArrayList<>();
+//	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<CartMachinery> cartMachinery = new ArrayList<>();
 	
 //	@JsonIgnore
-	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
+//	@OneToMany(mappedBy = "machineId", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
 
 	// -------------------------- Constructors ------------------------------
 	public Machinery() {}
@@ -90,13 +90,13 @@ public class Machinery implements Prefixable {
 		this.machineType = machineType;
 	}
 	
-	public List<CartMachinery> getCartMachinery() {
-		return cartMachinery;
-	}
-
-	public void setCartMachinery(List<CartMachinery> cartMachinery) {
-		this.cartMachinery = cartMachinery;
-	}
+//	public List<CartMachinery> getCartMachinery() {
+//		return cartMachinery;
+//	}
+//
+//	public void setCartMachinery(List<CartMachinery> cartMachinery) {
+//		this.cartMachinery = cartMachinery;
+//	}
 
 	public List<SellerMachineryDetails> getSellerMachineryDetails() {
 		return sellerMachineryDetails;
@@ -106,13 +106,13 @@ public class Machinery implements Prefixable {
 		this.sellerMachineryDetails = sellerMachineryDetails;
 	}
 
-	public List<OrderMachineDetails> getOrderMachineDetails() {
-		return orderMachineDetails;
-	}
-
-	public void setOrderMachineDetails(List<OrderMachineDetails> orderMachineDetails) {
-		this.orderMachineDetails = orderMachineDetails;
-	}
+//	public List<OrderMachineDetails> getOrderMachineDetails() {
+//		return orderMachineDetails;
+//	}
+//
+//	public void setOrderMachineDetails(List<OrderMachineDetails> orderMachineDetails) {
+//		this.orderMachineDetails = orderMachineDetails;
+//	}
 
 	// ---------------------- Helper Methods ---------------------------------
 	public void addSellerMachineryDetails(SellerMachineryDetails machineDetails) {
@@ -125,23 +125,23 @@ public class Machinery implements Prefixable {
 	}
 	
 	// ----- b) CartMachinery List -----
-	public void addCartMachinery(CartMachinery machine) {
-		cartMachinery.add(machine);
-		machine.setMachineId(this);
-	}
-	public void removeCartMachinery(CartMachinery machine) {
-		cartMachinery.remove(machine);
-		machine.setMachineId(null);
-	}
+//	public void addCartMachinery(CartMachinery machine) {
+//		cartMachinery.add(machine);
+//		machine.setMachineId(this);
+//	}
+//	public void removeCartMachinery(CartMachinery machine) {
+//		cartMachinery.remove(machine);
+//		machine.setMachineId(null);
+//	}
 	
-	public void addOrderMachineDetails(OrderMachineDetails machine) {
-		orderMachineDetails.add(machine);
-		machine.setMachineId(this);
-	}
-	public void removeOrderMachineDetails(OrderMachineDetails machine) {
-		orderMachineDetails.remove(machine);
-		machine.setMachineId(null);
-	}
+//	public void addOrderMachineDetails(OrderMachineDetails machine) {
+//		orderMachineDetails.add(machine);
+//		machine.setMachineId(this);
+//	}
+//	public void removeOrderMachineDetails(OrderMachineDetails machine) {
+//		orderMachineDetails.remove(machine);
+//		machine.setMachineId(null);
+//	}
 
 	// ------------------ To String --------------------------------------------
 	@Override

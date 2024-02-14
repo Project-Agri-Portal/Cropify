@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.cropify.entity.SellerAgricultureProductDetails;
 
@@ -19,6 +20,12 @@ public interface SellerAgricultureProductDetailsRepository
 //	public void deleteBySellerAgricultureProductId(Long sellerAgricultureProductId);
 //
 //	public List<SellerAgricultureProductDetails> findAll();
-
+	@Modifying
+	@Query("update SellerAgricultureProductDetails s set s.quantity=:quantity, s.price=:price, s.description=:description where s.sellerAgricultureProductId = :sellerAgricultureProductId")
+	int updateSellerAgriucltureProductDetails(
+			@Param("quantity") int quantity, 
+			@Param("price") double price, 
+			@Param("description") String description, 
+			@Param("sellerAgricultureProductId") Long agriProductId);
 	
 }
