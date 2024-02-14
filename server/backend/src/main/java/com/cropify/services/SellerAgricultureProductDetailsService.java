@@ -13,7 +13,8 @@ public interface SellerAgricultureProductDetailsService {
 	Long addAgricultureProduct(Long sellerId, SellerAgricultureProductDetailsDTO sapDto);
 	
 	// Update operations
-	SellerAgricultureProductDetailsDTO updateAgricultureProduct(Long sapId, SellerAgricultureProductDetailsDTO sapDto);
+//	SellerAgricultureProductDetailsDTO updateAgricultureProduct(Long sapId, SellerAgricultureProductDetailsDTO sapDto);
+	int updateSellerAgriucltureProductDetails(Long sapId, SellerAgricultureProductDetailsDTO sapDto);
 	
 	// Delete operations
 	void deleteAgricultureProduct(Long sapId);
