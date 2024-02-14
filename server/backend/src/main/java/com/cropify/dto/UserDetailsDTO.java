@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class UserDetailsDTO {
 	
-	// @JsonProperty(access = Access.WRITE_ONLY)
+//	@JsonProperty(access = Access.READ_ONLY)
 	private Long id;
 	private String firstName;
 	private String lastName;
@@ -94,11 +94,32 @@ public class UserDetailsDTO {
 		this.status = status;
 	}
 	
-	// ------------- ToString() -----------------
-	@Override
-	public String toString() {
-		return "UserDetailsDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", mobileNo=" + mobileNo + ", userType=" + userType + ", userAddress=" + userAddress + "]";
+	public UserDetailsDTO() {}
+	public UserDetailsDTO(Long id) {
+		this.id = id;
 	}
+	public UserDetailsDTO(Long id, String firstName, String lastName, String email,
+			@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{5,20})", message = "Invalid Password") String password,
+			String mobileNo, UserType userType, UserAddress userAddress, String aadharNo, String panNo, String status) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.mobileNo = mobileNo;
+		this.userType = userType;
+		this.userAddress = userAddress;
+		this.aadharNo = aadharNo;
+		this.panNo = panNo;
+		this.status = status;
+	}
+	
+	// ------------- ToString() -----------------
+//	@Override
+//	public String toString() {
+//		return "UserDetailsDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+//				+ ", mobileNo=" + mobileNo + ", userType=" + userType + ", userAddress=" + userAddress + "]";
+//	}
 	
 }

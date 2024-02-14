@@ -10,6 +10,6 @@ import com.cropify.entity.CartMachinery;
 
 public interface CartMachineryRepository extends JpaRepository<CartMachinery, Long>{
 
-	@Query( nativeQuery = true, value = "select * from cart_machinery a where a.farmer_id = :id")
+	@Query( nativeQuery = true, value = "select a from CartMachinery a where a.farmerId = :id")
 	List<CartMachinery> findCartMachineryById(@Param("id") Long id);
 }
