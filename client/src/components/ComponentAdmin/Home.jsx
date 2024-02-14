@@ -60,28 +60,28 @@ function Home() {
         </div>
 
         <div className='main-cards'>
-            <div className='card'>
+            <div className='card card1'>
                 <div className='card-inner'>
                     <h3>PRODUCTS</h3>
                     <BsFillArchiveFill className='card_icon'/>
                 </div>
                 <h1>300</h1>
             </div>
-            <div className='card'>
+            <div className='card card2'>
                 <div className='card-inner'>
                     <h3>SELLERS</h3>
                     <BsFillGrid3X3GapFill className='card_icon'/>
                 </div>
                 <h1>12</h1>
             </div>
-            <div className='card'>
+            <div className='card card3'>
                 <div className='card-inner'>
                     <h3>CUSTOMERS</h3>
                     <BsPeopleFill className='card_icon'/>
                 </div>
                 <h1>33</h1>
             </div>
-            <div className='card'>
+            <div className='card card4'>
                 <div className='card-inner'>
                     <h3>TOTAL SALE</h3>
                     <BsFillBellFill className='card_icon'/>
