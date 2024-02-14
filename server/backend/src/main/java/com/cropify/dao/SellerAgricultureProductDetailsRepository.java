@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.cropify.entity.SellerAgricultureProductDetails;
+import com.cropify.entity.enums.FarmProductsStatus;
 
 public interface SellerAgricultureProductDetailsRepository
 		extends JpaRepository<SellerAgricultureProductDetails, Long> {
@@ -21,11 +22,11 @@ public interface SellerAgricultureProductDetailsRepository
 //
 //	public List<SellerAgricultureProductDetails> findAll();
 	@Modifying
-	@Query("update SellerAgricultureProductDetails s set s.quantity=:quantity, s.price=:price, s.description=:description where s.sellerAgricultureProductId = :sellerAgricultureProductId")
+	@Query("update SellerAgricultureProductDetails s set s.quantity=:quantity, s.price=:price, s.description=:description, s.sellerProductStatus=:sellerProductStatus where s.sellerAgricultureProductId = :sellerAgricultureProductId")
 	int updateSellerAgriucltureProductDetails(
 			@Param("quantity") int quantity, 
 			@Param("price") double price, 
 			@Param("description") String description, 
+			@Param("sellerProductStatus") FarmProductsStatus sellerProductStatus,
 			@Param("sellerAgricultureProductId") Long agriProductId);
-	
 }
