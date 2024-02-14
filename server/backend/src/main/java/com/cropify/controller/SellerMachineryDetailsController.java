@@ -33,11 +33,11 @@ public class SellerMachineryDetailsController {
 		return ResponseEntity.status(HttpStatus.OK).body(list);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/{smId}")
 	public ResponseEntity<SellerMachineryDetailsDTO> getSellerMachineryDetailById(
-			@PathVariable @NotNull Long id)
+			@PathVariable @NotNull Long smId)
 	{
-		return ResponseEntity.status(HttpStatus.OK).body(service.getSellerMachineryDetailsById(id));
+		return ResponseEntity.status(HttpStatus.OK).body(service.getSellerMachineryDetailsById(smId));
 	}
 	
 	// ----------------- POST methods ----------------------
@@ -51,19 +51,20 @@ public class SellerMachineryDetailsController {
 	}
 	
 	// ----------------- PUT methods ----------------------
-	@PutMapping("/{id}")
-	public ResponseEntity<SellerMachineryDetailsDTO> updateSellerMachineryDetails(
+	@PutMapping("/{smId}")
+	public ResponseEntity<String> updateSellerMachineryDetails(
 			@RequestBody @Valid SellerMachineryDetailsDTO smDto,
-			@PathVariable @NotNull Long id)
+			@PathVariable @NotNull Long smId)
 	{
-		return ResponseEntity.status(HttpStatus.CREATED).body(service.updateSellerMachineryDetails(smDto, id));
+		int rows = service.updateSellerMachineryDetails(smDto, smId);
+		return ResponseEntity.status(HttpStatus.CREATED).body("Rows updated = " + rows);
 	}
 	
 	// ----------------- DELETE methods ----------------------
-	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteSellerMachineryDetailsById(@PathVariable @NotNull Long id) 
+	@DeleteMapping("/{smId}")
+	public ResponseEntity<String> deleteSellerMachineryDetailsById(@PathVariable @NotNull Long smId) 
 	{
-		service.deleteSellerMachineryDetailsById(id);
+		service.deleteSellerMachineryDetailsById(smId);
 		return ResponseEntity.status(HttpStatus.OK).body("Detalil deleted successfully");
 	}
 }

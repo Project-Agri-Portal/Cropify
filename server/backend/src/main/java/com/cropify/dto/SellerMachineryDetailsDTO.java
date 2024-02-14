@@ -25,14 +25,14 @@ public class SellerMachineryDetailsDTO {
 	public String getMachineryId() {
 		return machineryId;
 	}
-	public void setMachineryId(String machineryId) {
-		this.machineryId = machineryId;
+	public void setMachineryId(MachineryDTO machineryId) {
+		this.machineryId = machineryId.getMachineId();
 	}
 	public Long getSellerId() {
 		return sellerId;
 	}
-	public void setSellerId(Long sellerId) {
-		this.sellerId = sellerId;
+	public void setSellerId(UserDetailsDTO sellerId) {
+		this.sellerId = sellerId.getId();
 	}
 	public int getQuantity() {
 		return quantity;
