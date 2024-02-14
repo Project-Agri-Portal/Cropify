@@ -101,7 +101,6 @@ public class UserDetailsDTO {
 	public UserDetailsDTO(Long id, String firstName, String lastName, String email,
 			@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{5,20})", message = "Invalid Password") String password,
 			String mobileNo, UserType userType, UserAddress userAddress, String aadharNo, String panNo, String status) {
-		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
