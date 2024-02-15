@@ -16,7 +16,8 @@ const Cart = () => {
             <div className="row mt-5 gx-3">
               {/* <!-- left side div --> */}
               <div className="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5 shadow">
-                <div className="card p-4">
+
+                <div className="card p-4" style={{backgroundColor:"white"}}>
                   <h2 className="py-4 font-weight-bold">Cart (2 items)</h2>
                   <div className="row">
                     {/* <!-- cart images div --> */}
@@ -32,7 +33,7 @@ const Cart = () => {
                     <div className="col-md-7 col-11 mx-auto px-4 mt-2">
                       <div className="row">
                         {/* <!-- product name  --> */}
-                        <div className="col-6 card-title">
+                        <div className="col-6 card-title" >
                           <h1 className="mb-4 product_name">Tomato</h1>
                           <p className="mb-2">Category : Vegetable</p>
                           <p className="mb-2">Harvest data : today</p>
@@ -88,7 +89,7 @@ const Cart = () => {
                 </div>
                 <hr />
 
-                <div className="card p-4">
+                <div className="card p-4" style={{backgroundColor:"white"}}>
                   {/* <!-- <h2 className="py-4 font-weight-bold">Cart (2 items)</h2> --> */}
                   <div className="row">
                     {/* <!-- cart images div --> */}
@@ -161,7 +162,7 @@ const Cart = () => {
                 <hr />
 
                 {/* <!-- 2nd cart product --> */}
-                <div className="card p-4">
+                <div className="card p-4" style={{backgroundColor:"white"}}>
                   <div className="row">
                     {/* <!-- cart images div --> */}
                     <div className="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img">
@@ -265,9 +266,9 @@ const Cart = () => {
                   </Link>
                 </div>
                 {/* <!-- discount code part --> */}
-                <div className="discount_code mt-3 shadow">
+                <div className="discount_code mt-3" >
                   <div className="card">
-                    <div className="card-body">
+                    <div className="card-body" style={{backgroundColor:"white"}}>
                       <a
                         className="d-flex justify-content-between"
                         data-toggle="collapse"

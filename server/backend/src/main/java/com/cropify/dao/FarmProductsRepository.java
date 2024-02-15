@@ -14,6 +14,5 @@ public interface FarmProductsRepository extends JpaRepository<FarmProducts, Stri
 //	void deleteByFarmProductId(String id);
 //	
 //	List<FarmProducts> findAll();
-	
-	Optional<FarmProducts> findByfarmProductId(String id);
+
 }

@@ -18,4 +18,20 @@ public interface SellerMachineryDetailsRepository extends JpaRepository<SellerMa
 
 	public SellerMachineryDetails findBySellerIdAndMachineryId(Long sellerId, String machineId);
 
+	// --- Find entity methods ---
+//	List<SellerMachineryDetails> findAll();
+//	Optional<SellerMachineryDetails> findBySellerMachineryId(Long sellerMachineryId);
+//	
+//	// --- Delete entity by ID ---
+//	void deleteBySellerMachineryId(Long sellerMachineryId);
+	
+	@Modifying
+	@Query("update SellerMachineryDetails sm set sm.quantity=:quantity, sm.price=:price, sm.description=:description, sm.isAvailable=:isAvailable where sm.sellerMachineryId=:sellerMachineryId")
+	int updateSellerMachineryDetails(
+			@Param("quantity") int quantity,
+			@Param("price") double price,
+			@Param("description") String description,
+			@Param("isAvailable") int isAvailable,
+			@Param("sellerMachineryId") Long sellerMachineryId);
+
 }

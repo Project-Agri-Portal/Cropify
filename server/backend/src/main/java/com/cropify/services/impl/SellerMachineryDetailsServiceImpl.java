@@ -92,12 +92,14 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 
 	// ----------------- PUT operations ----------------------------
 	@Override
-	public SellerMachineryDetailsDTO updateSellerMachineryDetails(SellerMachineryDetailsDTO smDto, Long id) {
-		SellerMachineryDetails detail = repository.findById(id).orElseThrow(
-				() -> new ResourceNotFoundException("seller machinery detail not found"));
-		detail = mapper.map(smDto, SellerMachineryDetails.class);
-		SellerMachineryDetails savedDetail =  repository.save(detail);
-		return mapper.map(savedDetail, SellerMachineryDetailsDTO.class);
+	public int updateSellerMachineryDetails(SellerMachineryDetailsDTO smDto, Long smId) {
+		int quantity = smDto.getQuantity();
+		double price = smDto.getPrice();
+		String description = smDto.getDescription();
+		int isAvailable = smDto.getIsAvailable();
+
+		int rowsAffected = repository.updateSellerMachineryDetails(quantity, price, description, isAvailable, smId);
+		return rowsAffected;
 	}
 
 	// ----------------- DELETE operations ----------------------------
