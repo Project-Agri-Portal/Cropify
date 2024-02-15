@@ -2,6 +2,7 @@ package com.cropify.services;
 
 import java.util.List;
 
+import com.cropify.dto.CartMachineryDTO;
 import com.cropify.dto.SellerMachineryDetailsDTO;
 import com.cropify.entity.CartMachinery;
 import com.cropify.entity.OrderMachineDetails;
@@ -14,7 +15,7 @@ public interface SellerMachineryDetailsService {
 
 	// SellerMachineryDetails findSellerMachiery();
 
-	int modifyingSoldQuantity(OrderMachineDetails orderMachineDetails);
+	int modifyingSoldQuantity(CartMachineryDTO cartMachineryDTO);
 	
 	// Create operations
 	Long addSellerMachineryDetails(Long id, SellerMachineryDetailsDTO smDto);
