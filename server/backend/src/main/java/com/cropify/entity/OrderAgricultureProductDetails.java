@@ -4,11 +4,19 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class OrderAgricultureProductDetails extends OrderBaseClass {
+public class OrderAgricultureProductDetails{
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long oid;
+
 	// Mapped with user_details for farmer
 	@ManyToOne
 	@JoinColumn(name = "farmer_id", nullable = false)
@@ -74,6 +82,14 @@ public class OrderAgricultureProductDetails extends OrderBaseClass {
 //	public void setSellerAgricultureProductId(SellerAgricultureProductDetails sellerAgricultureProductId) {
 //		this.sellerAgricultureProductId = sellerAgricultureProductId;
 //	}
+
+	public Long getOid() {
+		return oid;
+	}
+
+	public void setId(Long oid) {
+		this.oid = oid;
+}
 
 	public UserDetails getSellerId() {
 		return sellerId;

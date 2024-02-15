@@ -6,13 +6,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.cropify.entity.enums.FarmOrderStatus;
 
 @Entity
-public class OrderFarmProductDetails extends OrderBaseClass {
+public class OrderFarmProductDetails {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long oid;
+
 	// Mapped with user_details for customer
 	@ManyToOne
 	@JoinColumn(name = "customer_id", nullable = false)
@@ -74,6 +82,14 @@ public class OrderFarmProductDetails extends OrderBaseClass {
 
 	public LocalDate getOrderDate() {
 		return orderDate;
+	}
+
+	public Long getOid() {
+		return oid;
+	}
+
+	public void setId(Long oid) {
+		this.oid = oid;
 	}
 
 	public void setOrderDate(LocalDate orderDate) {

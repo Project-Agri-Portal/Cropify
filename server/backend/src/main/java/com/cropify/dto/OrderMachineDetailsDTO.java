@@ -1,10 +1,14 @@
 package com.cropify.dto;
 
 import java.time.LocalDate;
-
 import javax.validation.constraints.Future;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 public class OrderMachineDetailsDTO {
+	@JsonProperty(access = Access.READ_ONLY)
+	private Long oid;
 	private Long farmerId;
 	private Long sellerId;
 	private String machineId;

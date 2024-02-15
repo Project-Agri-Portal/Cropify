@@ -4,12 +4,13 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.Future;
 
-import com.cropify.entity.AgricultureProducts;
-import com.cropify.entity.SellerAgricultureProductDetails;
-import com.cropify.entity.UserDetails;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class OrderAgricultureProductDetailsDTO {
 
+	@JsonProperty(access = Access.READ_ONLY)
+	private Long oid;
 	private Long farmerId;
 	private Long sellerId;
 	private String agricultureProductId;

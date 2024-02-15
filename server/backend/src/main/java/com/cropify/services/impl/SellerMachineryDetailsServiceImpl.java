@@ -14,6 +14,7 @@ import com.cropify.dao.SellerMachineryDetailsRepository;
 import com.cropify.dao.UserDetailsRepository;
 import com.cropify.dto.SellerMachineryDetailsDTO;
 import com.cropify.entity.Machinery;
+import com.cropify.entity.OrderMachineDetails;
 import com.cropify.entity.SellerMachineryDetails;
 import com.cropify.entity.UserDetails;
 import com.cropify.services.SellerMachineryDetailsService;
@@ -30,6 +31,9 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 	private MachineryRepository machineRepo;
 	@Autowired
 	private ModelMapper mapper;
+
+	@Autowired
+	private SellerMachineryDetailsRepository sellerMachineryDetailsRepository;
 	
 	// --------------- GET operations ----------------------------
 	@Override
@@ -39,6 +43,24 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 				.map(detail -> mapper.map(detail, SellerMachineryDetailsDTO.class))
 				.collect(Collectors.toList());
 		return list;
+	}
+
+	@Override
+	public int modifyingSoldQuantity(OrderMachineDetails orderMachineDetails) {
+		SellerMachineryDetails sellerMachineryDetails = 
+								sellerMachineryDetailsRepository
+								.findBySellerIdAndMachineryId
+								(orderMachineDetails.getSellerId().getId(), 
+								orderMachineDetails.getMachineId().getMachineId());
+		// int quantity = sellerMachineryDetails.getQuantity();
+		int availQuantity = orderMachineDetails.getQuantity();
+		if(availQuantity== 0 || orderMachineDetails.getQuantity() > availQuantity){
+			throw new RuntimeException("stock not available");
+		}else{
+			sellerMachineryDetails.setAvailQuantity(availQuantity-orderMachineDetails.getQuantity());
+			sellerMachineryDetailsRepository.save(sellerMachineryDetails);
+			return 1;
+		}
 	}
 
 	@Override

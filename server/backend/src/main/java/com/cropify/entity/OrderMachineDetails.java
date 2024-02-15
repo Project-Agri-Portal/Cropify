@@ -2,6 +2,7 @@ package com.cropify.entity;
 
 import java.time.LocalDate;
 
+import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class OrderMachineDetails extends OrderBaseClass {
+public class OrderMachineDetails{
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long oid;
+
+	@Column(name = "order_id", nullable = false)
+	private String orderId;
 
 	// Mapped with UserDetails for farmer
 	@ManyToOne
@@ -49,14 +57,18 @@ public class OrderMachineDetails extends OrderBaseClass {
 	@Column(name = "total_amount", nullable = false)
 	private double totalPrice;
 
+	@Column(name = "order_status", nullable = false)
+	private String orderStatus;
+
 	// ---------- Constructors --------------------------
 	public OrderMachineDetails() {
-		super();
+		// super();
 	}
 	
-	public OrderMachineDetails(UserDetails farmerId, UserDetails sellerId, Machinery machineId, int rentDuration,
-			LocalDate orderDate, LocalDate deliveryDate, int quantity, double totalPrice) {
-		super();
+	public OrderMachineDetails(String orderId , UserDetails farmerId, UserDetails sellerId, Machinery machineId, int rentDuration,
+			LocalDate orderDate, LocalDate deliveryDate, int quantity, double totalPrice, String orderStatus) {
+		// super();
+		this.orderId = orderId;
 		this.farmerId = farmerId;
 		this.sellerId = sellerId;
 		this.machineId = machineId;
@@ -65,6 +77,7 @@ public class OrderMachineDetails extends OrderBaseClass {
 		this.deliveryDate = deliveryDate;
 		this.quantity = quantity;
 		this.totalPrice = totalPrice;
+		this.orderStatus = orderStatus;
 	}
 /*	public OrderMachineDetails(UserDetails farmerId, SellerMachineryDetails sellerMachineryId, int rentDuration,
 //			LocalDate orderDate, LocalDate deliveryDate, int quantity, double totalPrice) {
@@ -108,8 +121,32 @@ public class OrderMachineDetails extends OrderBaseClass {
 		return orderDate;
 	}
 
+	public Long getOid() {
+		return oid;
+	}
+
+	public void setId(Long oid) {
+		this.oid = oid;
+	}
+
 	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
+	}
+
+	public String getOrderId(){
+		return orderId;
+	}
+
+	public void setOrderStatus(String orderStatus){
+		this.orderStatus = orderStatus;
+	}
+
+	public String getOrderStatus(){
+		return orderStatus;
+	}
+
+	public void setOrderId(String orderId){
+		this.orderId = orderId;
 	}
 
 	public LocalDate getDeliveryDate() {

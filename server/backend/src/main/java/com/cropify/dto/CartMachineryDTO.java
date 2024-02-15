@@ -16,7 +16,7 @@ public class CartMachineryDTO {
 	private Long sellerId;
 	private int quantity;
 	private double totalAmount;
-	
+
 	public CartMachineryDTO() {}
 	public CartMachineryDTO(Long cid) {
 		this.cid = cid;
@@ -30,6 +30,19 @@ public class CartMachineryDTO {
 		this.quantity = quantity;
 		this.totalAmount = totalAmount;
 	}
+
+	public void setFarmerId(UserDetailsDTO detailsDTO){
+		this.farmerId = detailsDTO.getId();
+	}
+
+	public void setMachineId(MachineryDTO dto){
+		this.machineId = dto.getMachineId();
+	}
+
+	public void setSellerId(UserDetailsDTO detailsDTO){
+		this.sellerId = detailsDTO.getId();
+	}
+
 	
 	public Long getCid() {
 		return cid;
@@ -40,20 +53,11 @@ public class CartMachineryDTO {
 	public String getMachineId() {
 		return machineId;
 	}
-	public void setMachineId(MachineryDTO machineId) {
-		this.machineId = machineId.getMachineId();
-	}
 	public Long getFarmerId() {
 		return farmerId;
 	}
-	public void setFarmerId(UserDetailsDTO farmerId) {
-		this.farmerId = farmerId.getId();
-	}
 	public Long getSellerId() {
 		return sellerId;
-	}
-	public void setSellerId(UserDetailsDTO sellerId) {
-		this.sellerId = sellerId.getId();
 	}
 	public int getQuantity() {
 		return quantity;

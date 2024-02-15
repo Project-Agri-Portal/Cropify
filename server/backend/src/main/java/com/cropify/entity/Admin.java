@@ -39,14 +39,14 @@ public class Admin {
 	@Column(name = "join_date", nullable = false)
 	private LocalDate joinDate;
 	
-	@Column(name = "root_admin", nullable = false, columnDefinition = "boolean")
-	private boolean isRootAdmin;
+	@Column(name = "root_admin", nullable = false)
+	private String isRootAdmin;
 	
 	// ------------------ Constructors ---------------------------
 	public Admin() {}
 	
 	public Admin(Long adminId, String firstName, String lastName, String adminMobile, String email, String password,
-			LocalDate joinDate, boolean isRootAdmin) {
+			LocalDate joinDate, String isRootAdmin) {
 		super();
 		this.adminId = adminId;
 		this.firstName = firstName;

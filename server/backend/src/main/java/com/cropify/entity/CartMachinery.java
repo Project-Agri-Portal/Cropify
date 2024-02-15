@@ -35,9 +35,11 @@ public class CartMachinery {
 	@Column(name = "total_amount")
 	private double totalAmount;
 
-	// ---------------- Constructors ----------------
-	
 	public CartMachinery() {}
+	public CartMachinery(Long cid) {
+		this.cid = cid;
+	}
+	// ---------------- Constructors ----------------
 	public CartMachinery(Long cid, Machinery machineId, UserDetails farmerId, UserDetails sellerId, int quantity,
 			double totalAmount) {
 		super();
@@ -48,6 +50,9 @@ public class CartMachinery {
 		this.quantity = quantity;
 		this.totalAmount = totalAmount;
 	}
+	/**
+	 * @return the cid
+	 */
 	
 	
 	// ------------------ Getter & Setter --------------------

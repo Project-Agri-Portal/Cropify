@@ -171,12 +171,12 @@ VALUES
 
 -- ------------------------------------------------------------------------------------------------------------------------------------
 
-INSERT INTO UserDetails (first_name, last_name, email, password, mobile_no, user_type, user_address_street, user_address_city, user_address_state, user_address_pincode, aadhar_no, pan_no, status)
+INSERT INTO  user_details (first_name, last_name, email, password, mobile_no, user_type, full_address, city, state, pincode, aadhar_no, pan_no, status)
 VALUES
 ('Amit', 'Sharma', 'amit.sharma@example.com', 'hashedPassword', '9876543210', 'ADMIN', '102 Ganga Nagar', 'Delhi', 'Delhi', '110001', '123456789012', 'ABCDE1234F', 'ACTIVE'),
 ('Priya', 'Patel', 'priya.patel@example.com', 'hashedPassword', '8765432109', 'SELLER', '205 Tulsi Vihar', 'Mumbai', 'Maharashtra', '400001', '987654321098', 'FGHIJ5678K', 'ACTIVE'),
 ('Raj', 'Verma', 'raj.verma@example.com', 'hashedPassword', '7654321098', 'CUSTOMER', '308 Yamuna Enclave', 'Jaipur', 'Rajasthan', '302001', '234567890123', 'LMNOP6789Q', 'INACTIVE'),
-('Sneha', 'Singh', 'sneha.singh@example.com', 'hashedPassword', '6543210987', 'ADMIN', '401 Rose Lane', 'Bangalore', 'Karnataka', '560001', '345678901234', 'QRSTU9012V', 'ACTIVE'),
+('Sneha', 'Singh', 'sneha.singh@example.com', 'hashedPassword', '6543210987', 'CUSROMER', '401 Rose Lane', 'Bangalore', 'Karnataka', '560001', '345678901234', 'QRSTU9012V', 'ACTIVE');
 ('Vijay', 'Kumar', 'vijay.kumar@example.com', 'hashedPassword', '5432109876', 'CUSTOMER', '504 Jasmine Road', 'Chennai', 'Tamil Nadu', '600001', '456789012345', 'BCDEA3456C', 'ACTIVE'),
 ('Pooja', 'Gupta', 'pooja.gupta@example.com', 'hashedPassword', '4321098765', 'SELLER', '607 Orchid Street', 'Kolkata', 'West Bengal', '700001', '567890123456', 'LMNOP5678Q', 'ACTIVE'),
 ('Rahul', 'Sinha', 'rahul.sinha@example.com', 'hashedPassword', '3210987654', 'FARMER', '710 Lotus Lane', 'Hyderabad', 'Telangana', '500001', '678901234567', 'QRSTU6789V', 'ACTIVE'),
@@ -232,12 +232,12 @@ VALUES (1010, 'Coffee Beans', 'BEVERAGE', '/images/coffee_beans.jpg');
 
 
 -- Inserting 10 dummy records into the AgricultureProducts table
-INSERT INTO AgricultureProducts (agri_prod_id, agri_prod_name, agri_prod_type, imgPath)
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_Path)
 VALUES
   ('1', 'Wheat', 'CROP', 'wheat.jpg'),
   ('2', 'Corn', 'CROP', 'corn.jpg'),
   ('3', 'Tomato', 'VEGETABLE', 'tomato.jpg'),
-  ('4', 'Apple', 'FRUIT', 'apple.jpg'),
+  ('4', 'Apple', 'FRUIT', 'apple.jpg');
   ('5', 'Potato', 'VEGETABLE', 'potato.jpg'),
   ('6', 'Orange', 'FRUIT', 'orange.jpg'),
   ('7', 'Rice', 'CROP', 'rice.jpg'),
@@ -246,26 +246,26 @@ VALUES
   ('10', 'Barley', 'CROP', 'barley.jpg');
 
 
-INSERT INTO Machinery (machine_id, machine_name, machine_type, imgPath)
+INSERT INTO Machinery (machine_id, machine_name, machine_type, img_path)
 VALUES
-    ('1', 'Machine1', 'TYPE1', '/path/to/image1.jpg'),
-    ('2', 'Machine2', 'TYPE2', '/path/to/image2.jpg'),
-    ('3', 'Machine3', 'TYPE1', '/path/to/image3.jpg'),
-    ('4', 'Machine4', 'TYPE3', '/path/to/image4.jpg'),
-    ('5', 'Machine5', 'TYPE2', '/path/to/image5.jpg'),
-    ('6', 'Machine6', 'TYPE1', '/path/to/image6.jpg'),
-    ('7', 'Machine7', 'TYPE3', '/path/to/image7.jpg'),
-    ('8', 'Machine8', 'TYPE2', '/path/to/image8.jpg'),
-    ('9', 'Machine9', 'TYPE1', '/path/to/image9.jpg'),
-    ('10', 'Machine10', 'TYPE3', '/path/to/image10.jpg');
+    ('m1', 'Machine1', 'TYPE1', '/path/to/image1.jpg'),
+    ('m2', 'Machine2', 'TYPE2', '/path/to/image2.jpg'),
+    ('m3', 'Machine3', 'TYPE1', '/path/to/image3.jpg'),
+    ('m4', 'Machine4', 'TYPE3', '/path/to/image4.jpg');
+    ('m5', 'Machine5', 'TYPE2', '/path/to/image5.jpg'),
+    ('m6', 'Machine6', 'TYPE1', '/path/to/image6.jpg'),
+    ('m7', 'Machine7', 'TYPE3', '/path/to/image7.jpg'),
+    ('m8', 'Machine8', 'TYPE2', '/path/to/image8.jpg'),
+    ('m9', 'Machine9', 'TYPE1', '/path/to/image9.jpg'),
+    ('m10', 'Machine10', 'TYPE3', '/path/to/image10.jpg');
 
 
-INSERT INTO FarmProducts (farm_prod_id, farm_prod_name, farm_prod_type, imgPath)
+INSERT INTO farm_products (farm_prod_id, farm_prod_name, farm_prod_type,  img_path)
 VALUES
     ('1', 'Lentils', 'PULSES', '/path/to/lentils.jpg'),
     ('2', 'Chickpeas', 'PULSES', '/path/to/chickpeas.jpg'),
     ('3', 'Black Gram', 'PULSES', '/path/to/blackgram.jpg'),
-    ('4', 'Green Gram', 'PULSES', '/path/to/greengram.jpg'),
+    ('4', 'Green Gram', 'PULSES', '/path/to/greengram.jpg');
     ('5', 'Pigeon Peas', 'PULSES', '/path/to/pigeonpeas.jpg'),
     ('6', 'Red Lentils', 'PULSES', '/path/to/redlentils.jpg'),
     ('7', 'Yellow Lentils', 'PULSES', '/path/to/yellowlentils.jpg'),

@@ -3,15 +3,15 @@ package com.cropify.dto;
 import java.time.LocalDate;
 
 import javax.validation.constraints.Future;
-
-import com.cropify.entity.FarmProducts;
-import com.cropify.entity.FarmerProductDetails;
-import com.cropify.entity.UserDetails;
 import com.cropify.entity.enums.FarmOrderStatus;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 
 public class OrderFarmProductDetailsDTO {
 	
+	@JsonProperty(access = Access.READ_ONLY)
+	private Long oid;
 	private Long customerId;
 	private Long farmerId;
 	private String farmProdId;
