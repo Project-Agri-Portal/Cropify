@@ -10,6 +10,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cropify.customexception.ResourceNotFoundException;
+import com.cropify.dao.CartMachineryRepository;
 import com.cropify.dao.MachineryRepository;
 import com.cropify.dao.OrderMachineDetailsRepository;
 import com.cropify.dao.SellerMachineryDetailsRepository;
@@ -44,6 +46,9 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
     @Autowired
     private SellerMachineryDetailsService sellerMachineryDetailsService;
 
+    @Autowired
+    private CartMachineryRepository cartMachineryRepository;
+
     private String generatedId;
 
     public String customeIdGenerationForMachineOrders(){
@@ -59,9 +64,9 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
 
         for(CartMachineryDTO cartMachineryDTO : farmerCart){
             OrderMachineDetails machineDetails = new OrderMachineDetails();
-            UserDetails farmer = userDetailsRepository.getReferenceById(farmerId);
-            UserDetails seller = userDetailsRepository.getReferenceById(cartMachineryDTO.getSellerId());
-            Machinery machinery = machineryRepository.getReferenceById(cartMachineryDTO.getMachineId());
+            UserDetails farmer = userDetailsRepository.findById(farmerId).orElseThrow(() -> new ResourceNotFoundException("user not found"));
+            UserDetails seller = userDetailsRepository.findById(cartMachineryDTO.getSellerId()).orElseThrow(() -> new ResourceNotFoundException("seller not found"));
+            Machinery machinery = machineryRepository.findById(cartMachineryDTO.getMachineId()).orElseThrow(() -> new ResourceNotFoundException("machine not found"));
 
             // machineDetails.setId(1L);
             machineDetails.setOrderId(generatedId);
@@ -79,7 +84,8 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
             sellerMachineryDetailsService.modifyingSoldQuantity(cartMachineryDTO);
 
             orderMachineDetailsRepository.save(machineDetails);
-            cartMachineryService.deleteCartMachineById(cartMachineryDTO.getCid());
+            // cartMachineryService.deleteCartMachineById(cartMachineryDTO.getCid());
+            cartMachineryRepository.deleteById(cartMachineryDTO.getCid());
         }
 
         return farmerId;

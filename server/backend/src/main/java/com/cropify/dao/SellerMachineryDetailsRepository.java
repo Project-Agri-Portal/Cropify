@@ -11,13 +11,16 @@ public interface SellerMachineryDetailsRepository extends JpaRepository<SellerMa
 
 	@Modifying
 	@Query(value = "update seller_machinery_details set avail_quantity = :availQuantity where seller_id = :sellerId and machine_id = :machineId", nativeQuery = true)
-	SellerMachineryDetails updateAvailableMachineQuantity(@Param("availQuantity") int availQuantity, @Param("sellerId") Long sellerId, @Param("machineId") Long machineId);
+	int updateAvailableMachineQuantity(
+		@Param("availQuantity") int availQuantity, 
+		@Param("sellerId") Long sellerId,
+		@Param("machineId") String machineId);
 
 	// @Query("select (*) from seller_machinery_details where seller_id = :sellerId and machine_id = :machineId")
 	// public SellerMachineryDetails findSellerMachinery(@Param("sellerId") Long sellerId, @Param("machineId") String machineId);
 
 	// @Query( value =  "select (*) from seller_machinery_details where seller_id = :sellerId and machine_id = :machineId", nativeQuery = true)
 	// public SellerMachineryDetails findBySellerIdAndMachineId(@Param("sellerId") Long sellerId, @Param("machineId")String machineId);
-	public SellerMachineryDetails findBySellerIdAndMachineryId(Long sellerId, String machineId);
+	SellerMachineryDetails findBySellerIdAndMachineryId(Long sellerId, String machineId);
 
 }

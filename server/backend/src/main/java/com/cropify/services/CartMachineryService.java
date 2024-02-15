@@ -6,7 +6,7 @@ import com.cropify.dto.CartMachineryDTO;
 
 public interface CartMachineryService {
 	
-	CartMachineryDTO addMachineryIntoCart(CartMachineryDTO cartMachineryDTO);
+	// CartMachineryDTO addMachineryIntoCart(CartMachineryDTO cartMachineryDTO);
 
 	Long deleteCartMachineById(Long cartId);
 

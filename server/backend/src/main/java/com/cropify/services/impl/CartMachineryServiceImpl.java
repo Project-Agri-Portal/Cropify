@@ -74,9 +74,9 @@ public class CartMachineryServiceImpl implements CartMachineryService {
 		return cartMachineryDTOs;
 	}
 
-	@Override
-	public CartMachineryDTO addMachineryIntoCart(CartMachineryDTO cartMachineryDTO) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'addMachineryIntoCart'");
-	}
+	// @Override
+	// public CartMachineryDTO addMachineryIntoCart(CartMachineryDTO cartMachineryDTO) {
+	// 	// TODO Auto-generated method stub
+	// 	throw new UnsupportedOperationException("Unimplemented method 'addMachineryIntoCart'");
+	// }
 }
