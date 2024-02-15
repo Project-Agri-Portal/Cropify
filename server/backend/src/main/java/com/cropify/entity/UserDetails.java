@@ -13,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 import com.cropify.entity.enums.UserType;
@@ -69,6 +70,12 @@ public class UserDetails {
 //	if status is "block" then seller cannot sell any products
 	@Column
 	private String status;
+	
+	@Lob
+	@Column(columnDefinition = "mediumblob")
+	private byte[] imgPath;
+	
+	
 	
 	// ------------ Relationship Mapping ------------------------------
 	@JsonIgnore
@@ -138,6 +145,7 @@ public class UserDetails {
 //		super();
 		this.id = id;
 	}
+	
 	
 	public UserDetails(Long id, String firstName, String lastName, String email, String password, String mobileNo,
 			UserType userType, UserAddress userAddress, String aadharNo, String panNo, String status) {
