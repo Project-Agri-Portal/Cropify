@@ -11,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -39,8 +40,9 @@ public class AgricultureProducts implements Prefixable {
 	@Enumerated(EnumType.STRING)
 	private AgriProductType agriProductType;
 	
-	@Column
-	private String imgPath;
+	@Lob
+	@Column(columnDefinition = "mediumblob")
+	private byte[] imgPath;
 	
 	// ------------ Relationship Mapping ------------------------------
 	@JsonIgnore
@@ -57,14 +59,11 @@ public class AgricultureProducts implements Prefixable {
 	
 	//-----------------------------Constructors--------------------
 	
-	public AgricultureProducts() {
-		
-	}
+	public AgricultureProducts() {}
 	
 	public AgricultureProducts(String id) {
 		this.agriProductId = id;
 	}
-	
 	public AgricultureProducts(String agriProductId, String agriProductName, AgriProductType agriProductType) {
 		this.agriProductId = agriProductId;
 		this.agriProductName = agriProductName;
@@ -97,6 +96,21 @@ public class AgricultureProducts implements Prefixable {
 		this.agriProductType = agriProductType;
 	}
 	
+	public byte[] getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(byte[] imgPath) {
+		this.imgPath = imgPath;
+	}
+
+	public List<SellerAgricultureProductDetails> getSellerAgricultureProductDetails() {
+		return sellerAgricultureProductDetails;
+	}
+	
+	public void setSellerAgricultureProductDetails(List<SellerAgricultureProductDetails> sellerAgricultureProductDetails) {
+		this.sellerAgricultureProductDetails = sellerAgricultureProductDetails;
+	}
 //	public List<CartAgricultureProduct> getCartAgricultureProductList() {
 //		return cartAgricultureProductList;
 //	}
@@ -105,13 +119,6 @@ public class AgricultureProducts implements Prefixable {
 //		this.cartAgricultureProductList = cartAgricultureProductList;
 //	}
 
-	public List<SellerAgricultureProductDetails> getSellerAgricultureProductDetails() {
-		return sellerAgricultureProductDetails;
-	}
-
-	public void setSellerAgricultureProductDetails(List<SellerAgricultureProductDetails> sellerAgricultureProductDetails) {
-		this.sellerAgricultureProductDetails = sellerAgricultureProductDetails;
-	}
 
 //	public List<OrderAgricultureProductDetails> getOrderAgricultureProductDetails() {
 //		return orderAgricultureProductDetails;
