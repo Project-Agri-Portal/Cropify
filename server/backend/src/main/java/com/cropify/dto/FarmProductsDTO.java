@@ -12,6 +12,19 @@ public class FarmProductsDTO {
 	private String farmProductName;
 	private FarmProductType farmProductType;
 
+	// ------------------ Constructors ----------------------
+	public FarmProductsDTO() {}
+	public FarmProductsDTO(String farmProductId) {
+		super();
+		this.farmProductId = farmProductId;
+	}
+	public FarmProductsDTO(String farmProductId, String farmProductName, FarmProductType farmProductType) {
+		super();
+		this.farmProductId = farmProductId;
+		this.farmProductName = farmProductName;
+		this.farmProductType = farmProductType;
+	}
+
 	//-----------------------------Getter and Setters--------------------
 	/**
 	 * @return the farmProductId

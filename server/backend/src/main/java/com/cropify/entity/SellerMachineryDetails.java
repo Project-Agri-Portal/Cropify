@@ -54,6 +54,10 @@ public class SellerMachineryDetails {
 	*/
 	// ------------ Constructors ------------------------
 	public SellerMachineryDetails() {}
+	
+	public SellerMachineryDetails(Long sellerMachineryId) {
+		this.sellerMachineryId = sellerMachineryId;
+	}
 
 	public SellerMachineryDetails(Long sellerMachineryId) {
 		this.sellerMachineryId = sellerMachineryId;
@@ -61,7 +65,6 @@ public class SellerMachineryDetails {
 
 	public SellerMachineryDetails(Long sellerMachineryId, Machinery machineryId, UserDetails sellerId, int quantity,
 			double price, String description, int availQuantity, String verified) {
-		super();
 		this.sellerMachineryId = sellerMachineryId;
 		this.machineryId = machineryId;
 		this.sellerId = sellerId;

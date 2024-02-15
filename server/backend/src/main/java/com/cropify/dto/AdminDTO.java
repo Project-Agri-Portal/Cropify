@@ -1,6 +1,7 @@
 package com.cropify.dto;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import javax.validation.constraints.Pattern;
 
@@ -19,7 +20,7 @@ public class AdminDTO {
 	private Long adminId;
 	private String firstName;
 	private String lastName;
-	private String adminMobile;
+	private String admin_Mobile;
 	private String email;
 	private String password;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

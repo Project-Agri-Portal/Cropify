@@ -11,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -38,8 +39,9 @@ public class FarmProducts implements Prefixable {
 	@Enumerated(EnumType.STRING)
 	private FarmProductType farmProductType;
 	
-	@Column
-	private String imgPath;
+	@Lob
+	@Column(columnDefinition = "mediumblob")
+	private byte[] imgPath;
 	
 	// ------------ Relationship Mapping ------------------------------
 	@JsonIgnore
@@ -55,33 +57,14 @@ public class FarmProducts implements Prefixable {
 //	private List<OrderFarmProductDetails> orderFarmProductDetails = new ArrayList<>();
 	
 	//-----------------------------Constructors--------------------
-		
+	public FarmProducts() {}
 	public FarmProducts(String farmProductId, String farmProductName, FarmProductType farmProductType) {
 		this.farmProductId = farmProductId;
 		this.farmProductName = farmProductName;
 		this.farmProductType = farmProductType;
 	}
 	
-	public FarmProducts() {
-//		super();
-	}
-	
 	//-----------------------------Getter and Setters--------------------
-
-	/**
-	 * @return the farmerProductDetails
-	 */
-	public List<FarmerProductDetails> getFarmerProductDetails() {
-		return farmerProductDetails;
-	}
-
-	/**
-	 * @param farmerProductDetails the farmerProductDetails to set
-	 */
-	public void setFarmerProductDetails(List<FarmerProductDetails> farmerProductDetails) {
-		this.farmerProductDetails = farmerProductDetails;
-	}
-
 	public String getFarmProductId() {
 		return farmProductId;
 	}
@@ -106,6 +89,23 @@ public class FarmProducts implements Prefixable {
 		this.farmProductType = farmProductType;
 	}
 
+	public byte[] getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(byte[] imgPath) {
+		this.imgPath = imgPath;
+	}
+
+	public List<FarmerProductDetails> getFarmerProductDetails() {
+		return farmerProductDetails;
+	}
+
+	public void setFarmerProductDetails(List<FarmerProductDetails> farmerProductDetails) {
+		this.farmerProductDetails = farmerProductDetails;
+	}
+
+
 //	public List<CartFarmProduct> getCartFarmProductList() {
 //		return cartFarmProductList;
 //	}
@@ -122,11 +122,11 @@ public class FarmProducts implements Prefixable {
 //		this.orderFarmProductDetails = orderFarmProductDetails;
 //	}
 
-	@Override
-	public String toString() {
-		return "FarmProducts [farmProductId=" + farmProductId + ", farmProductName=" + farmProductName
-				+ ", farmProductType=" + farmProductType + ", farmerProductDetails=" + farmerProductDetails + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "FarmProducts [farmProductId=" + farmProductId + ", farmProductName=" + farmProductName
+//				+ ", farmProductType=" + farmProductType + ", farmerProductDetails=" + farmerProductDetails + "]";
+//	}
 	
 	// ------------- Helper Methods ------------------------------
 	public void addFarmProductDetails(FarmerProductDetails product) {

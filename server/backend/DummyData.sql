@@ -1,56 +1,8 @@
 --- Users data
-INSERT INTO UserDetails (id, last_name, first_name, email, password, mobile_no, full_address, pan_no)
-VALUES
-(1, 'Sharma', 'Rahul', 'rahul.sharma@example.com', 'password123', '9876543210', '123 Street, City, State', 'ABCDE1234F'),
-(2, 'Patel', 'Neha', 'neha.patel@example.com', 'securepass', '8765432109', '456 Lane, City, State', 'FGHIJ5678K'),
-(3, 'Kumar', 'Priya', 'priya.kumar@example.com', 'pass123', '7654321098', '789 Road, City, State', 'LMNOP6789L'),
-(4, 'Singh', 'Amit', 'amit.singh@example.com', 'strongpassword', '6543210987', '012 Avenue, City, State', 'QRSTU9012M'),
-(5, 'Verma', 'Ritu', 'ritu.verma@example.com', 'password456', '5432109876', '345 Lane, City, State', 'VWXYZ3456N'),
-(6, 'Shah', 'Kunal', 'kunal.shah@example.com', 'pass123', '4321098765', '678 Street, City, State', 'OPQRA6789S'),
-(7, 'Gupta', 'Divya', 'divya.gupta@example.com', 'securepass', '3210987654', '901 Road, City, State', 'BCDEF7890T'),
-(8, 'Malhotra', 'Nehal', 'nehal.malhotra@example.com', 'password789', '2109876543', '234 Lane, City, State', 'GHIJK1234U'),
-(9, 'Rajput', 'Anjali', 'anjali.rajput@example.com', 'strongpass123', '1098765432', '567 Avenue, City, State', 'LMNOP5678V'),
-(10, 'Chopra', 'Rohit', 'rohit.chopra@example.com', 'securepassword', '9876543210', '890 Street, City, State', 'QRSTUV9012W'),
-(11, 'Mishra', 'Sonia', 'sonia.mishra@example.com', 'pass456', '8765432109', '123 Lane, City, State', 'WXYZAB3456X'),
-(12, 'Yadav', 'Kapil', 'kapil.yadav@example.com', 'password789', '7654321098', '456 Road, City, State', 'CDEFGH6789Y'),
-(13, 'Joshi', 'Pooja', 'pooja.joshi@example.com', 'strongpass', '6543210987', '789 Avenue, City, State', 'IJKLMNOP9012Z'),
-(14, 'Saxena', 'Arun', 'arun.saxena@example.com', 'pass789', '5432109876', '012 Street, City, State', 'QRSTUV2345A'),
-(15, 'Agarwal', 'Deepa', 'deepa.agarwal@example.com', 'password123', '4321098765', '345 Lane, City, State', 'WXYZAB6789B'),
-(16, 'Bansal', 'Amita', 'amita.bansal@example.com', 'securepass', '3210987654', '678 Road, City, State', 'CDEFGH1234C'),
-(17, 'Chauhan', 'Ravi', 'ravi.chauhan@example.com', 'pass456', '2109876543', '901 Avenue, City, State', 'IJKLMNOP5678D'),
-(18, 'Dixit', 'Sneha', 'sneha.dixit@example.com', 'password789', '1098765432', '234 Street, City, State', 'QRSTUV9012E'),
-(19, 'Gandhi', 'Amitabh', 'amitabh.gandhi@example.com', 'strongpass123', '9876543210', '567 Lane, City, State', 'WXYZAB3456F'),
-(20, 'Iyer', 'Kavita', 'kavita.iyer@example.com', 'securepassword', '8765432109', '890 Road, City, State', 'CDEFGH6789G'),
-(21, 'Jain', 'Prateek', 'prateek.jain@example.com', 'pass789', '7654321098', '123 Avenue, City, State', 'IJKLMNOP9012H'),
-(22, 'Kapoor', 'Anita', 'anita.kapoor@example.com', 'password123', '6543210987', '456 Street, City, State', 'QRSTUV2345I'),
-(23, 'Lal', 'Rajesh', 'rajesh.lal@example.com', 'securepass', '5432109876', '789 Lane, City, State', 'WXYZAB6789J'),
-(24, 'Mittal', 'Meera', 'meera.mittal@example.com', 'pass456', '4321098765', '012 Road, City, State', 'CDEFGH1234K'),
-(25, 'Nair', 'Aruna', 'aruna.nair@example.com', 'password789', '3210987654', '345 Avenue, City, State', 'IJKLMNOP5678L'),
-(26, 'Oberoi', 'Vikas', 'vikas.oberoi@example.com', 'strongpass123', '2109876543', '678 Street, City, State', 'QRSTUV9012M'),
-(27, 'Pandey', 'Nidhi', 'nidhi.pandey@example.com', 'securepassword', '1098765432', '901 Lane, City, State', 'WXYZAB3456N'),
-(28, 'Rathore', 'Sameer', 'sameer.rathore@example.com', 'pass789', '9876543210', '234 Road, City, State', 'CDEFGH6789O'),
-(29, 'Sinha', 'Tanvi', 'tanvi.sinha@example.com', 'password123', '8765432109', '567 Avenue, City, State', 'IJKLMNOP9012P'),
-(30, 'Tiwari', 'Vishal', 'vishal.tiwari@example.com', 'securepass', '7654321098', '890 Street, City, State', 'QRSTUV2345Q'),
-(31, 'Upadhyay', 'Anjali', 'anjali.upadhyay@example.com', 'pass456', '6543210987', '012 Lane, City, State', 'WXYZAB6789R'),
-(32, 'Varma', 'Rajat', 'rajat.varma@example.com', 'password789', '5432109876', '345 Road, City, State', 'CDEFGH1234S'),
-(33, 'Wadhwa', 'Meenakshi', 'meenakshi.wadhwa@example.com', 'strongpass123', '4321098765', '678 Avenue, City, State', 'IJKLMNOP5678T'),
-(34, 'Xavier', 'Vivek', 'vivek.xavier@example.com', 'securepassword', '3210987654', '901 Street, City, State', 'UVWXYZ9012U'),
-(35, 'Yadav', 'Neha', 'neha.yadav@example.com', 'pass789', '2109876543', '234 Lane, City, State', 'ABCDEFG5678V'),
-(36, 'Zachariah', 'Joseph', 'joseph.zachariah@example.com', 'password123', '1098765432', '567 Road, City, State', 'HIJKLMN9012W'),
-(37, 'Ahmed', 'Farhan', 'farhan.ahmed@example.com', 'securepass', '9876543210', '890 Avenue, City, State', 'OPQRSTU2345X'),
-(38, 'Bose', 'Shreya', 'shreya.bose@example.com', 'pass456', '8765432109', '123 Street, City, State', 'VWXYZAB6789Y'),
-(39, 'Chatterjee', 'Amitava', 'amitava.chatterjee@example.com', 'password789', '7654321098', '456 Lane, City, State', 'CDEFGH1234Z'),
-(40, 'Dey', 'Aparna', 'aparna.dey@example.com', 'strongpass123', '6543210987', '789 Road, City, State', 'IJKLMNOP5678A'),
-(41, 'Eswaran', 'Sarita', 'sarita.eswaran@example.com', 'securepassword', '5432109876', '012 Avenue, City, State', 'UVWXYZ9012B'),
-(42, 'Fernandes', 'Rohan', 'rohan.fernandes@example.com', 'pass789', '4321098765', '345 Street, City, State', 'ABCDEFG2345C'),
-(43, 'Gokhale', 'Aishwarya', 'aishwarya.gokhale@example.com', 'password123', '3210987654', '678 Lane, City, State', 'HIJKLMN5678D'),
-(44, 'Hegde', 'Kiran', 'kiran.hegde@example.com', 'securepass', '2109876543', '901 Road, City, State', 'OPQRSTU9012E'),
-(45, 'Inamdar', 'Seema', 'seema.inamdar@example.com', 'pass456', '1098765432', '234 Avenue, City, State', 'VWXYZAB3456F'),
-(46, 'Jha', 'Vijay', 'vijay.jha@example.com', 'password789', '9876543210', '567 Street, City, State', 'CDEFGH6789G'),
-(47, 'Kamble', 'Minal', 'minal.kamble@example.com', 'strongpass123', '8765432109', '890 Lane, City, State', 'IJKLMNOP9012H'),
-(48, 'Lobo', 'Sylvia', 'sylvia.lobo@example.com', 'securepassword', '7654321098', '123 Road, City, State', 'UVWXYZ2345I'),
-(49, 'Mukherjee', 'Arjun', 'arjun.mukherjee@example.com', 'pass789', '6543210987', '456 Avenue, City, State', 'ABCDEFG5678J'),
-(50, 'Nambiar', 'Divakar', 'divakar.nambiar@example.com', 'password123', '5432109876', '789 Street, City, State', 'HIJKLMN9012K');
+ INSERT INTO user_details values
+ (1,"123456789123","deep@gmail.com", "deepak","nikhare","9977887788","Ac78778787","pass","Verified","Pauni","abcd","441910","mh","SELLER");
+ INSERT INTO user_details values
+ (3,"223456789124","deep3@gmail.com", "deepak3","nikhare3","8877887766","BC78778788","pass3","Verified","Pauni","abcd","441910","mh","FARMER");
 
 
 -- products

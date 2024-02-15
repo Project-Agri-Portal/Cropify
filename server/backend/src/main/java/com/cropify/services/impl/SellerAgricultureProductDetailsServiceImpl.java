@@ -16,6 +16,7 @@ import com.cropify.dto.UserDetailsDTO;
 import com.cropify.entity.AgricultureProducts;
 import com.cropify.entity.SellerAgricultureProductDetails;
 import com.cropify.entity.UserDetails;
+import com.cropify.entity.enums.FarmProductsStatus;
 import com.cropify.services.SellerAgricultureProductDetailsService;
 
 @Service
@@ -81,9 +82,9 @@ public class SellerAgricultureProductDetailsServiceImpl implements SellerAgricul
 		int quantity = sapDto.getQuantity();
 		double price = sapDto.getPrice();
 		String description = sapDto.getDescription();
-//		String sellerProductStatus = sapDto.getSellerProductStatus();
+		FarmProductsStatus sellerProductStatus = sapDto.getSellerProductStatus();
 		
-		int rowsAffected = repository.updateSellerAgriucltureProductDetails(quantity, price, description, sapId);
+		int rowsAffected = repository.updateSellerAgriucltureProductDetails(quantity, price, description, sellerProductStatus, sapId);
 		return rowsAffected;
 	}
 	

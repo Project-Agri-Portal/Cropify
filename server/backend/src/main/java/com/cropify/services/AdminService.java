@@ -20,4 +20,18 @@ public interface AdminService {
 
 	// update
 //	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId);
+	
+	// Seller Count
+	public int countOfSellers();
+	
+	// Customer Count
+	public int countOfCustomers();
+		
+	// Farmer Count
+	public int countOfFarmers();
+	
+	public int farmProductCount();
+	public int agriProductCount();
+	public int machineCount();
+
 }

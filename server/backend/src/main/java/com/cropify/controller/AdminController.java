@@ -25,11 +25,11 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 public class AdminController {
 
 	@Autowired
-	AdminService adminService;
+	private AdminService adminService;
 
 	// POST
 	@PostMapping("/")
-	public ResponseEntity<AdminDTO> createAdmin(@RequestBody AdminDTO adminDto) {
+	public ResponseEntity<AdminDTO> createAdmin(@RequestBody @Valid AdminDTO adminDto) {
 		AdminDTO createdAdminDTO = this.adminService.addAdmin(adminDto);
 		return new ResponseEntity<>(createdAdminDTO, HttpStatus.CREATED);
 
@@ -59,6 +59,40 @@ public class AdminController {
 	@GetMapping("/")
 	public ResponseEntity<List<AdminDTO>> getAllAdmins() {
 		return ResponseEntity.ok(this.adminService.getAllAdmins());
+	}
+	
+	//---------------------- Count of Seller , Customer , Farmer ------------------------------------
+	
+	@GetMapping("/sellerCount")
+	public ResponseEntity<?> GetCountSeller(){
+		return ResponseEntity.ok(this.adminService.countOfSellers());
+	}
+	
+	@GetMapping("/farmerCount")
+	public ResponseEntity<?> GetCountFarmer(){
+		return ResponseEntity.ok(this.adminService.countOfFarmers());
+	}
+	
+	@GetMapping("/customerCount")
+	public ResponseEntity<?> GetCountCustomer(){
+		return ResponseEntity.ok(this.adminService.countOfCustomers());
+	}
+	
+	// ---------------------------- Count Of Farmer Products , agri products , machines -----------------------------
+	
+	@GetMapping("/agriProdCount")
+	public ResponseEntity<?> GetAgriProductCount(){
+		return ResponseEntity.ok(this.adminService.agriProductCount());
+	}
+	
+	@GetMapping("/farmerProdCount")
+	public ResponseEntity<?> GetFarmerProductCount(){
+		return ResponseEntity.ok(this.adminService.farmProductCount());
+	}
+	
+	@GetMapping("/machineCount")
+	public ResponseEntity<?> GetMachineCount(){
+		return ResponseEntity.ok(this.adminService.machineCount());
 	}
 
 }

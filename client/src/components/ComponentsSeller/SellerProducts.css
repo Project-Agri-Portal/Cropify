@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --main-bg-color: #46cf3c;
   --main-text-color: #009d63;
   --second-text-color: #bbbec5;
@@ -32,8 +32,8 @@
       #c2f5de,
       #67bc5c,
       #d4f8ea,
-      #14d952);
-}
+      #14d952); */
+/* } */
 
 /* #wrapper {
     overflow-x: hidden;
@@ -41,7 +41,7 @@
     background-size: cover;
   } */
 
-#sidebar-wrapper {
+/* #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
   -webkit-transition: margin 0.25s ease-out;
@@ -49,20 +49,20 @@
   -o-transition: margin 0.25s ease-out;
   transition: margin 0.25s ease-out;
 
-}
+} */
 
-#sidebar-wrapper .sidebar-heading {
-  padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
+/* #sidebar-wrapper .sidebar-heading { */
+  /* padding: 0.875rem 1.25rem; */
+  /* font-size: 1.2rem; */
   /* background:rgb(212, 164, 130); */
-}
+/* } */
 
-#sidebar-wrapper .list-group {
-  width: 15rem;
+/* #sidebar-wrapper .list-group { */
+  /* width: 15rem; */
   /* background: rgb(229, 178, 128); */
-  height: 800px;
-}
-
+  /* height: 800px; */
+/* } */
+/* 
 #page-content-wrapper {
   min-width: 100vw;
 }
@@ -85,9 +85,9 @@
   color: var(--main-text-color);
   font-weight: bold;
   border: none;
-}
+} */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;
   }
@@ -95,37 +95,36 @@
   #page-content-wrapper {
     min-width: 0;
     width: 100%;
-  }
+  } */
 
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
-
-  }
+  /* #wrapper.toggled #sidebar-wrapper { */
+    /* margin-left: -15rem; */
+  /* } */
 
   /* ------------------ */
   /* Add this CSS to your existing stylesheet or create a new one */
 
-  #sidebar-wrapper {
-    transition: all 0.3s;
-  }
+  /* #sidebar-wrapper { */
+    /* transition: all 0.3s; */
+  /* } */
 
-  #sidebar-wrapper.active {
-    width: 250px;
+  /* #sidebar-wrapper.active { */
+    /* width: 250px; */
     /* Adjust the width as needed */
-  }
+  /* } */
 
-  .list-group-item.active {
-    background-color: #f8f9fa;
+  /* .list-group-item.active { */
+    /* background-color: #f8f9fa; */
     /* Add your preferred active background color */
-    color: #000 !important;
+    /* color: #000 !important; */
     /* Add your preferred active text color */
-    border-right: 4px solid #007bff;
+    /* border-right: 4px solid #007bff; */
     /* Add your preferred active border color */
-  }
+  /* } */
 
   /* for Products */
   /* Add your custom styles for product list */
-  #product-list {
+  /* #product-list {
     padding: 20px;
   }
 
@@ -160,12 +159,12 @@
 
   .btn-primary:hover {
     background-color: #0056b3;
-  }
+  } */
 
   /* -------------------------------------------------------------------------------------------- */
   /* Products  list*/
 
-  body {
+  /* body {
     background-color: #eee;
   }
 
@@ -250,6 +249,6 @@
 
   .bg-soft-primary {
     background-color: rgba(59, 118, 225, .25) !important;
-  }
+  } */
 
-}
+/* } */

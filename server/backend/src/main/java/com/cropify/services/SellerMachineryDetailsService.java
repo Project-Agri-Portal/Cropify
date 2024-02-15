@@ -21,7 +21,8 @@ public interface SellerMachineryDetailsService {
 	Long addSellerMachineryDetails(Long id, SellerMachineryDetailsDTO smDto);
 	
 	// Update operations
-	SellerMachineryDetailsDTO updateSellerMachineryDetails(SellerMachineryDetailsDTO smDto, Long id);
+//	SellerMachineryDetailsDTO updateSellerMachineryDetails(SellerMachineryDetailsDTO smDto, Long id);
+	int updateSellerMachineryDetails(SellerMachineryDetailsDTO smDto, Long id);
 	
 	// Delete operations
 	void deleteSellerMachineryDetailsById(Long id);
