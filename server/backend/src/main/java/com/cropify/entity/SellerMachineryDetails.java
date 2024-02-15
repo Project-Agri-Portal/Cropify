@@ -55,13 +55,13 @@ public class SellerMachineryDetails {
 	// ------------ Constructors ------------------------
 	public SellerMachineryDetails() {}
 	
-	public SellerMachineryDetails(Long sellerMachineryId) {
-		this.sellerMachineryId = sellerMachineryId;
-	}
+	// public SellerMachineryDetails(Long sellerMachineryId) {
+	// 	this.sellerMachineryId = sellerMachineryId;
+	// }
 
-	public SellerMachineryDetails(Long sellerMachineryId) {
-		this.sellerMachineryId = sellerMachineryId;
-	}
+	// public SellerMachineryDetails(Long sellerMachineryId) {
+	// 	this.sellerMachineryId = sellerMachineryId;
+	// }
 
 	public SellerMachineryDetails(Long sellerMachineryId, Machinery machineryId, UserDetails sellerId, int quantity,
 			double price, String description, int availQuantity, String verified) {
