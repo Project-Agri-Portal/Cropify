@@ -1,5 +1,5 @@
 package com.cropify.entity.enums;
 
 public enum MachineType {
-	A,B,C,D
+	TRACTOR,PLOUGH,HARVESTOR,SEEDER,IRRIGATION_PUMP,CROP_SPRAYER,TILLER,THRESHER,CULTIVATOR,SEED_DRILL
 }
