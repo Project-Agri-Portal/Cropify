@@ -53,7 +53,7 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
 
     public String customeIdGenerationForMachineOrders(){
         int count = orderMachineDetailsRepository.findDistinctOrderIdForIdGeneration() + 1;
-        generatedId = "OM"+count;
+        generatedId = "om"+count;
         return generatedId;
     }
 
@@ -81,7 +81,7 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
             machineDetails.setTotalPrice(totalPrice);
             machineDetails.setOrderStatus("PLACED");
 
-            sellerMachineryDetailsService.modifyingSoldQuantity(cartMachineryDTO);
+            // sellerMachineryDetailsService.modifyingSoldQuantity(cartMachineryDTO);
 
             orderMachineDetailsRepository.save(machineDetails);
             // cartMachineryService.deleteCartMachineById(cartMachineryDTO.getCid());

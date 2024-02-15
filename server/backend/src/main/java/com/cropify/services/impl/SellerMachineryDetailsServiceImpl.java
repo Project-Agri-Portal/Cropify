@@ -49,25 +49,26 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 
 	@Override
 	public int modifyingSoldQuantity(CartMachineryDTO cartMachineryDTO) {
+		Long sid = cartMachineryDTO.getSellerId();
+		String mid = cartMachineryDTO.getMachineId();
 		SellerMachineryDetails sellerMachineryDetails = 
 								sellerMachineryDetailsRepository
-								.findBySellerIdAndMachineryId
-								(cartMachineryDTO.getSellerId(), 
-								cartMachineryDTO.getMachineId());
+								.findBySellerIdAndMachineId(sid, mid);
+								// (cartMachineryDTO.getSellerId(), 
+								// cartMachineryDTO.getMachineId());
+		
+								// sellerMachineryDetails.get
 
 		// System.out.println(cartMachineryDTO.getSellerId());
 		// System.out.println(cartMachineryDTO.getMachineId());
 		// int quantity = sellerMachineryDetails.getQuantity();
 
 		int availQuantity = sellerMachineryDetails.getAvailQuantity();
-		if(availQuantity== 0 || cartMachineryDTO.getQuantity() > availQuantity){
-			throw new RuntimeException("stock not available");
-		}else{
-			// sellerMachineryDetails.setAvailQuantity(availQuantity - cartMachineryDTO.getQuantity());
-			// sellerMachineryDetailsRepository.save(sellerMachineryDetails);
-			sellerMachineryDetailsRepository.updateAvailableMachineQuantity(availQuantity, cartMachineryDTO.getSellerId(), cartMachineryDTO.getMachineId());
-			return 1;
-		}
+
+		// sellerMachineryDetails.setAvailQuantity(availQuantity - cartMachineryDTO.getQuantity());
+		// sellerMachineryDetailsRepository.save(sellerMachineryDetails);
+		int rows = sellerMachineryDetailsRepository.updateAvailableMachineQuantity(availQuantity, sellerMachineryDetails.getSellerId().getId(), sellerMachineryDetails.getMachineryId().getMachineId());
+		return rows;
 	}
 
 	@Override

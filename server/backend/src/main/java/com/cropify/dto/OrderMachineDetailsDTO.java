@@ -24,20 +24,20 @@ public class OrderMachineDetailsDTO {
 	public Long getFarmerId() {
 		return farmerId;
 	}
-	public void setFarmerId(Long farmerId) {
-		this.farmerId = farmerId;
+	public void setFarmerId(UserDetailsDTO farmerId) {
+		this.farmerId = farmerId.getId();
 	}
 	public Long getSellerId() {
 		return sellerId;
 	}
-	public void setSellerId(Long sellerId) {
-		this.sellerId = sellerId;
+	public void setSellerId(UserDetailsDTO sellerId) {
+		this.sellerId = sellerId.getId();
 	}
 	public String getMachineId() {
 		return machineId;
 	}
-	public void setMachineId(String machineId) {
-		this.machineId = machineId;
+	public void setMachineId(MachineryDTO machineId) {
+		this.machineId = machineId.getMachineId();
 	}
 	public int getRentDuration() {
 		return rentDuration;
