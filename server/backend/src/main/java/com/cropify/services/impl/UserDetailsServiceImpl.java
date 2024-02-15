@@ -40,6 +40,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetailsDTO getUserById(Long userId) {
+		
 //		UserDetails user = userRepo.getReferenceById(userId);
 		UserDetails user = userRepo.findById(userId).orElseThrow(
 				() -> new ResourceNotFoundException(errorMessage.append(userId).toString()));

@@ -36,7 +36,7 @@ public class UserDetails {
 	@Column(name = "last_name", length = 30, nullable = false)
 	private String lastName;
 	
-	@Column(length = 50, nullable = false, unique = true)
+	@Column(length = 50, unique = true)
 	private String email;
 	
 	@Column(nullable = false)

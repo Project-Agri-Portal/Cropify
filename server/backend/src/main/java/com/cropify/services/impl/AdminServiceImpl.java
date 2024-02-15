@@ -65,13 +65,13 @@ public class AdminServiceImpl implements AdminService {
 	
 	// --------------------------------- Update Admin ------------------------------------------
 
-	@Override
-	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
-		Admin admin= this.adminRepository.findById(adminId).orElseThrow(()-> new ResourceNotFoundException("Admin Not Found"));
-		Admin savedadmin= this.adminRepository.save(admin);
+// 	@Override
+// 	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId) {
+// 		Admin admin= this.adminRepository.findById(adminId).orElseThrow(()-> new ResourceNotFoundException("Admin Not Found"));
+// 		Admin savedadmin= this.adminRepository.save(admin);
 
-		return this.modelMapper.map(savedadmin, AdminDTO.class);
-	}
+// 		return this.modelMapper.map(savedadmin, AdminDTO.class);
+// 	}
 	
 	// ------------------------------- Count OF Seller , Customers , Farmer --------------------------------------
 
@@ -112,10 +112,5 @@ public class AdminServiceImpl implements AdminService {
 		int count = adminRepository.machineCount();
 		return count;
 	}
-
-	
-	
-	
-
 
 }

@@ -19,8 +19,7 @@ public interface AdminService {
 	public List<AdminDTO> getAllAdmins();
 
 	// update
-	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId);
-	
+//	public AdminDTO updateAdmin(AdminDTO adminDto, Long adminId);
 	
 	// Seller Count
 	public int countOfSellers();
@@ -34,6 +33,5 @@ public interface AdminService {
 	public int farmProductCount();
 	public int agriProductCount();
 	public int machineCount();
-
 
 }

@@ -1,5 +1,6 @@
 package com.cropify.dto;
 
+
 import com.cropify.entity.enums.FarmProductType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;

@@ -1,5 +1,9 @@
 package com.cropify.entity.enums;
 
 public enum MachineType {
+<<<<<<< HEAD
 	TRACTOR,PLOUGH,HARVESTOR,SEEDER,IRRIGATION_PUMP,CROP_SPRAYER,TILLER,THRESHER,CULTIVATOR,SEED_DRILL
+=======
+	A,B,C,D, TYPE1, TYPE2, TYPE3
+>>>>>>> c8da693c02b00e2d3347724047c5aec94c49f269
 }

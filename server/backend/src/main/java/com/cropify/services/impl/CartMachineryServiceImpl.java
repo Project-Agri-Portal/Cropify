@@ -1,5 +1,9 @@
 package com.cropify.services.impl;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -35,8 +39,9 @@ public class CartMachineryServiceImpl implements CartMachineryService {
 		// it returns a proxy (a lightweight placeholder) for the entity.
 		UserDetails seller = userRepo.getReferenceById(cartMachineryDTO.getSellerId());
 		Machinery machine = machineRepo.getReferenceById(cartMachineryDTO.getMachineId());
-		CartMachinery cartMachinery = mapper.map(cartMachineryDTO, CartMachinery.class);
 		
+		CartMachinery cartMachinery = mapper.map(cartMachineryDTO, CartMachinery.class);
+
 		cartMachinery.setFarmerId(farmer);
 		cartMachinery.setSellerId(seller);
 		cartMachinery.setMachineId(machine);
@@ -45,5 +50,34 @@ public class CartMachineryServiceImpl implements CartMachineryService {
 
 		return savedCart.getCid();
 	}
-	
+
+	@Override
+	public List<CartMachineryDTO> getAllCartMachineByFarmerId(Long farmerId) {
+		List<CartMachinery> cartMachineries = cartMachineryRepository.findCartByFarmerId(farmerId);
+		List<CartMachineryDTO> cartMachineryDTOs = cartMachineries.stream()
+												   .map(cart -> mapper.
+												   map(cart, CartMachineryDTO.class))
+												   .collect(Collectors.toList());
+		return cartMachineryDTOs;
+	}
+
+	@Override
+	public Long deleteCartMachineById(Long cartId) {
+		cartMachineryRepository.deleteById(cartId);
+		return cartId;
+	}
+
+	@Override
+	public List<CartMachineryDTO> getAllCartMachine() {
+
+		List<CartMachinery> cartMachineries = cartMachineryRepository.findAll();
+		List<CartMachineryDTO> cartMachineryDTOs = cartMachineries.stream().map(cart -> mapper.map(cart, CartMachineryDTO.class)).collect(Collectors.toList());
+		return cartMachineryDTOs;
+	}
+
+	@Override
+	public CartMachineryDTO addMachineryIntoCart(CartMachineryDTO cartMachineryDTO) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'addMachineryIntoCart'");
+	}
 }
