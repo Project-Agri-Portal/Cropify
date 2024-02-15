@@ -1,8 +1,7 @@
 package com.cropify.controller;
 
-
+import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -17,7 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+// For image response 
+import static org.springframework.http.MediaType.IMAGE_GIF_VALUE;
+import static org.springframework.http.MediaType.IMAGE_JPEG_VALUE;
+import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 
 import com.cropify.customexception.ResourceNotFoundException;
 import com.cropify.dto.FarmProductsDTO;
@@ -36,12 +42,21 @@ public class FarmProductsController {
 	public ResponseEntity<List<FarmProductsDTO>> getAllFarmProducts() {
 		return ResponseEntity.ok(farmProductsService.getAllFarmProducts());
 	}
-
+	
 	@GetMapping("/{fpId}")
 	public ResponseEntity<FarmProductsDTO> getFarmProductById(
 			@PathVariable @NotNull String fpId) 
 	{
 		return ResponseEntity.ok(farmProductsService.getFarmProductById(fpId));
+	}
+	// ---- Image fetch operation ----
+	@GetMapping(value = "/image/{fpId}",
+			// These values below are imported from http package of springframework, check import list above
+			produces = { IMAGE_GIF_VALUE, IMAGE_JPEG_VALUE, IMAGE_PNG_VALUE })
+	public ResponseEntity<?> downloadImage(
+			@PathVariable @NotNull String fpId) throws IOException
+	{
+		return ResponseEntity.ok(farmProductsService.downloadImage(fpId));
 	}
 
 	// ------------- Post operation ------------------
@@ -50,6 +65,16 @@ public class FarmProductsController {
 			@RequestBody @Valid FarmProductsDTO farmProducts) {
 		String fpId = farmProductsService.addFarmProduct(farmProducts);
 		return ResponseEntity.status(HttpStatus.CREATED).body("Added farm product with ID = " + fpId);
+	}
+	// ---- Image adding operation ----
+	@PostMapping(value = "/image/{fpId}",
+			consumes = "multipart/form-data")	// this property is required only for swagger testing
+	public ResponseEntity<?> addImageFarmProduct(
+			@PathVariable @NotNull String fpId,
+			@RequestParam MultipartFile fpImage) throws IOException
+	{
+		String productId = farmProductsService.uploadImage(fpId, fpImage);
+		return ResponseEntity.status(HttpStatus.CREATED).body("Image added for farm product id = " + productId);
 	}
 
 	// ------------- Put operation ------------------

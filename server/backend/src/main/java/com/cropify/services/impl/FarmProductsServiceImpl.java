@@ -1,5 +1,6 @@
 package com.cropify.services.impl;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cropify.customexception.ResourceNotFoundException;
 import com.cropify.dao.FarmProductsRepository;
@@ -42,12 +44,29 @@ public class FarmProductsServiceImpl implements FarmProductsService {
 				() -> new ResourceNotFoundException("Product not found"));
 		return mapper.map(product, FarmProductsDTO.class);
 	}
+	// ---- get image ----
+	@Override
+	public byte[] downloadImage(String fpId) throws IOException
+	{
+		FarmProducts farmProduct = farmProductsRepository.findById(fpId).orElseThrow(
+				() -> new ResourceNotFoundException("Product not found"));
+		return farmProduct.getImgPath();
+	}
 
 	// ------------- Post operation ------------------
 	@Override
 	public String addFarmProduct(FarmProductsDTO farmProducts) {
 		FarmProducts savedFarmProduct = mapper.map(farmProducts, FarmProducts.class);
 		return farmProductsRepository.save(savedFarmProduct).getFarmProductId();
+	}
+	// ---- add image ----
+	@Override
+	public String uploadImage(String fpId, MultipartFile fpImage) throws IOException
+	{
+		FarmProducts farmProduct = farmProductsRepository.findById(fpId).orElseThrow(
+				() -> new ResourceNotFoundException("No farm product found"));
+		farmProduct.setImgPath(fpImage.getBytes());
+		return farmProduct.getFarmProductId();
 	}
 
 	// ------------- Put operation ------------------
