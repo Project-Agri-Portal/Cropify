@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.cropify.dao.MachineryRepository;
 import com.cropify.dao.OrderMachineDetailsRepository;
+import com.cropify.dao.SellerMachineryDetailsRepository;
 import com.cropify.dao.UserDetailsRepository;
 import com.cropify.dto.CartMachineryDTO;
 import com.cropify.entity.Machinery;
@@ -39,6 +40,9 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
     @Autowired
     private MachineryRepository machineryRepository;
 
+    @Autowired
+    private SellerMachineryDetailsRepository sellerMachineryDetailsRepository;
+
     private String generatedId;
 
     public String customeIdGenerationForMachineOrders(){
@@ -58,7 +62,7 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
             UserDetails seller = userDetailsRepository.getReferenceById(cartMachineryDTO.getSellerId());
             Machinery machinery = machineryRepository.getReferenceById(cartMachineryDTO.getMachineId());
 
-            machineDetails.setId(1L);
+            // machineDetails.setId(1L);
             machineDetails.setOrderId(generatedId);
             machineDetails.setFarmerId(farmer);
             machineDetails.setSellerId(seller);

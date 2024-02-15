@@ -1,7 +1,6 @@
 package com.cropify.dto;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 
 public class ErrorResponse {
@@ -9,7 +8,6 @@ public class ErrorResponse {
 	private LocalDateTime timeStamp;
 	public ErrorResponse() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public ErrorResponse(List<String> errorMessage, LocalDateTime timeStamp) {
 		super();

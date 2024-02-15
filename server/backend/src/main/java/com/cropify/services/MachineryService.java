@@ -3,7 +3,6 @@ package com.cropify.services;
 import java.util.List;
 
 import com.cropify.dto.MachineryDTO;
-import com.cropify.entity.Machinery;
 
 public interface MachineryService{
 	// Read operations

@@ -1,9 +1,5 @@
 package com.cropify.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,9 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class SellerMachineryDetails {
@@ -34,6 +27,9 @@ public class SellerMachineryDetails {
 	
 	@Column(nullable = false)
 	private int quantity;
+
+	@Column(name = "avail_quantity")
+	private int availQuantity;
 	
 	@Column(nullable = false)
 	private double price;
@@ -41,11 +37,8 @@ public class SellerMachineryDetails {
 	@Column
 	private String description;
 	
-	@Column(columnDefinition = "TINYINT", nullable = false)
-	private int isAvailable;
-	
-	@Column(columnDefinition = "TINYINT", nullable = false)
-	private int verified;
+	@Column(nullable = false)
+	private String verified;
 
 
 	/*
@@ -63,7 +56,7 @@ public class SellerMachineryDetails {
 	public SellerMachineryDetails() {}
 
 	public SellerMachineryDetails(Long sellerMachineryId, Machinery machineryId, UserDetails sellerId, int quantity,
-			double price, String description, int isAvailable, int verified) {
+			double price, String description, int availQuantity, String verified) {
 		super();
 		this.sellerMachineryId = sellerMachineryId;
 		this.machineryId = machineryId;
@@ -71,7 +64,7 @@ public class SellerMachineryDetails {
 		this.quantity = quantity;
 		this.price = price;
 		this.description = description;
-		this.isAvailable = isAvailable;
+		this.availQuantity = availQuantity;
 		this.verified = verified;
 	}
 
@@ -116,12 +109,12 @@ public class SellerMachineryDetails {
 		this.description = description;
 	}
 
-	public int isAvailable() {
-		return isAvailable;
+	public int getAvailQuantity() {
+		return availQuantity;
 	}
 
-	public void setAvailable(int isAvailable) {
-		this.isAvailable = isAvailable;
+	public void setAvailQuantity(int availQuantity) {
+		this.availQuantity = availQuantity;
 	}
 	
 	public Long getSellerMachineryId() {
@@ -132,11 +125,11 @@ public class SellerMachineryDetails {
 		this.sellerMachineryId = sellerMachineryId;
 	}
 	
-	public int isVerified() {
+	public String isVerified() {
 		return verified;
 	}
 
-	public void setVerified(int verified) {
+	public void setVerified(String verified) {
 		this.verified = verified;
 	}
 	/*	
