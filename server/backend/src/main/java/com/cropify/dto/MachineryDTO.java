@@ -2,9 +2,12 @@ package com.cropify.dto;
 
 
 import com.cropify.entity.enums.MachineType;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class MachineryDTO {
 	
+	@JsonProperty(access = Access.READ_ONLY)
 	private String machineId;
 	private String machineName;
 	private MachineType machineType;

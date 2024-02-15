@@ -1,15 +1,18 @@
 package com.cropify.services.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.cropify.customexception.ResourceNotFoundException;
 import com.cropify.dao.FarmProductsRepository;
+import com.cropify.dto.FarmProductsDTO;
 import com.cropify.entity.FarmProducts;
 import com.cropify.services.FarmProductsService;
 
@@ -19,40 +22,53 @@ public class FarmProductsServiceImpl implements FarmProductsService {
 	
 	@Autowired
 	private FarmProductsRepository farmProductsRepository;
+	@Autowired
+	private ModelMapper mapper;
 	
-	//working
+
+	// ------------- Get operation ------------------
 	@Override
-	public List<FarmProducts> getAllFarmProducts() {
-		return farmProductsRepository.findAll();
+	public List<FarmProductsDTO> getAllFarmProducts() {
+		List<FarmProductsDTO> list = farmProductsRepository.findAll()
+				.stream()
+				.map(product -> mapper.map(product, FarmProductsDTO.class))
+				.collect(Collectors.toList());
+		return list;
 	}
 
-
-	//not working
 	@Override
-	public String deleteFarmProduct(@NonNull String pid) {
-		farmProductsRepository.deleteById(pid);
-		return "farm product " + pid + " delete";
+	public FarmProductsDTO getFarmProductById(String fpId) {
+		FarmProducts product = farmProductsRepository.findById(fpId).orElseThrow(
+				() -> new ResourceNotFoundException("Product not found"));
+		return mapper.map(product, FarmProductsDTO.class);
 	}
 
-	//working
+	// ------------- Post operation ------------------
 	@Override
-	public FarmProducts fetchFarmProductDetails(String pid) {
-//		Optional<FarmProducts> optional = farmProductsRepository.findById(pid);
-//		return optional.orElseThrow(() -> new ResourceNotFoundException("emp id " + pid));
-		
-		return farmProductsRepository.findById(pid).orElseThrow(()-> new ResourceNotFoundException(pid));
+	public String addFarmProduct(FarmProductsDTO farmProducts) {
+		FarmProducts savedFarmProduct = mapper.map(farmProducts, FarmProducts.class);
+		return farmProductsRepository.save(savedFarmProduct).getFarmProductId();
 	}
 
-
+	// ------------- Put operation ------------------
 	@Override
-	public FarmProducts getFarmProductById(String pid) {
-		return farmProductsRepository.findByfarmProductId(pid).orElseThrow(() -> new RuntimeException("NotFound"));
+	public String updateFarmProduct(String fpId, FarmProductsDTO farmProductsDTO) {
+		boolean productExists = farmProductsRepository.existsById(fpId);
+		if (productExists) {
+			FarmProducts product = mapper.map(farmProductsDTO, FarmProducts.class);
+			FarmProducts savedProduct = farmProductsRepository.save(product);
+			return savedProduct.getFarmProductId();
+		}
+		return null;
 	}
 
-
-//	not working
+	// ------------- Delete operation ------------------
 	@Override
-	public FarmProducts addFarmProduct(FarmProducts farmProducts) {
-		return farmProductsRepository.save(farmProducts);
+	public void deleteFarmProduct(String pid) {
+		boolean productExists = farmProductsRepository.existsById(pid);
+		if (productExists)
+			farmProductsRepository.deleteById(pid);
+		else
+			throw new ResourceNotFoundException("Invalid resource ID");
 	}
 }

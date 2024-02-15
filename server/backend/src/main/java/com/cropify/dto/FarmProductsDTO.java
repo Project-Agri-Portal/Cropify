@@ -1,12 +1,28 @@
 package com.cropify.dto;
 
 import com.cropify.entity.enums.FarmProductType;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class FarmProductsDTO {
 	
+	@JsonProperty(access = Access.READ_ONLY)
 	private String farmProductId;
 	private String farmProductName;
 	private FarmProductType farmProductType;
+
+	// ------------------ Constructors ----------------------
+	public FarmProductsDTO() {}
+	public FarmProductsDTO(String farmProductId) {
+		super();
+		this.farmProductId = farmProductId;
+	}
+	public FarmProductsDTO(String farmProductId, String farmProductName, FarmProductType farmProductType) {
+		super();
+		this.farmProductId = farmProductId;
+		this.farmProductName = farmProductName;
+		this.farmProductType = farmProductType;
+	}
 
 	//-----------------------------Getter and Setters--------------------
 	/**
