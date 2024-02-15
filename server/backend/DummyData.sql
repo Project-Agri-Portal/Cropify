@@ -59,7 +59,6 @@ INSERT INTO machinery (machine_id, img_path, machine_name, machine_type) VALUES
 
 ---------------------------------------- user_details table -----------------------------------
 
-<<<<<<< HEAD
 INSERT INTO user_details (aadhar_no, email, first_name, last_name, mobile_no, pan_no, password, status, city, full_address, pincode, state, user_type) VALUES
 ('112233445566', 'amit.verma@example.com', 'Amit', 'Verma', '9876543211', 'ABCD123456', 'hashed_password', 'Active', 'Jaipur', '456, XYZ Street, ABC Colony', '302001', 'Rajasthan', 'FARMER'),
 ('223344556677', 'poonam.gupta@example.com', 'Poonam', 'Gupta', '8765432101', 'PQRS567890', 'hashed_password', 'Active', 'Lucknow', '789, LMN Street, PQR Colony', '226001', 'Uttar Pradesh', 'SELLER'),
@@ -67,7 +66,6 @@ INSERT INTO user_details (aadhar_no, email, first_name, last_name, mobile_no, pa
 ('445566778899', 'neha.yadav@example.com', 'Neha', 'Yadav', '6543210981', 'LMNO567890', 'hashed_password', 'Inactive', 'Ahmedabad', '202, PQR Street, WXY Colony', '380001', 'Gujarat', 'FARMER'),
 ('556677889900', 'raj.mishra@example.com', 'Raj', 'Mishra', '5432109872', 'UVWX123456', 'hashed_password', 'Active', 'Chandigarh', '303, ABC Street, XYZ Colony', '160001', 'Punjab', 'SELLER'),
 ('667788990011', 'ananya.singh@example.com', 'Ananya', 'Singh', '4321098765', 'PQRS123456', 'hashed_password', 'Active', 'Bhopal', '505, WXY Street, UVW Colony', '462001', 'Madhya Pradesh', 'SELLER');
-=======
 
 -- Agriculture product
 INSERT INTO AgricultureProducts (id, agriproductname, type)

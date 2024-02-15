@@ -26,12 +26,12 @@ public interface SellerMachineryDetailsRepository extends JpaRepository<SellerMa
 //	void deleteBySellerMachineryId(Long sellerMachineryId);
 	
 	@Modifying
-	@Query("update SellerMachineryDetails sm set sm.quantity=:quantity, sm.price=:price, sm.description=:description, sm.isAvailable=:isAvailable where sm.sellerMachineryId=:sellerMachineryId")
+	@Query("update SellerMachineryDetails sm set sm.quantity=:quantity, sm.price=:price, sm.description=:description, sm.availQuantity=:availQuantity where sm.sellerMachineryId=:sellerMachineryId")
 	int updateSellerMachineryDetails(
 			@Param("quantity") int quantity,
 			@Param("price") double price,
 			@Param("description") String description,
-			@Param("isAvailable") int isAvailable,
+			@Param("availQuantity") int availQuantity,
 			@Param("sellerMachineryId") Long sellerMachineryId);
 
 }
