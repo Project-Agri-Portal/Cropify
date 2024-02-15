@@ -25,9 +25,7 @@ import static org.springframework.http.MediaType.IMAGE_GIF_VALUE;
 import static org.springframework.http.MediaType.IMAGE_JPEG_VALUE;
 import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 
-import com.cropify.customexception.ResourceNotFoundException;
 import com.cropify.dto.FarmProductsDTO;
-import com.cropify.entity.FarmProducts;
 import com.cropify.services.FarmProductsService;
 
 @RestController
@@ -87,7 +85,7 @@ public class FarmProductsController {
 		if (productId != null)
 			return ResponseEntity.status(HttpStatus.CREATED).body("Updated farm product with ID = " + productId);
 		
-		return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Enter valid product ID");
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Enter valid product ID");
 	}
 
 	// ------------- Delete operation ------------------
