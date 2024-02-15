@@ -45,23 +45,23 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 		return list;
 	}
 
-	@Override
-	public int modifyingSoldQuantity(OrderMachineDetails orderMachineDetails) {
-		SellerMachineryDetails sellerMachineryDetails = 
-								sellerMachineryDetailsRepository
-								.findBySellerIdAndMachineryId
-								(orderMachineDetails.getSellerId().getId(), 
-								orderMachineDetails.getMachineId().getMachineId());
-		// int quantity = sellerMachineryDetails.getQuantity();
-		int availQuantity = orderMachineDetails.getQuantity();
-		if(availQuantity== 0 || orderMachineDetails.getQuantity() > availQuantity){
-			throw new RuntimeException("stock not available");
-		}else{
-			sellerMachineryDetails.setAvailQuantity(availQuantity-orderMachineDetails.getQuantity());
-			sellerMachineryDetailsRepository.save(sellerMachineryDetails);
-			return 1;
-		}
-	}
+//	@Override
+//	public int modifyingSoldQuantity(OrderMachineDetails orderMachineDetails) {
+//		SellerMachineryDetails sellerMachineryDetails = 
+//								sellerMachineryDetailsRepository
+//								.findBySellerIdAndMachineryId
+//								(orderMachineDetails.getSellerId().getId(), 
+//								orderMachineDetails.getMachineId().getMachineId());
+//		// int quantity = sellerMachineryDetails.getQuantity();
+//		int availQuantity = orderMachineDetails.getQuantity();
+//		if(availQuantity== 0 || orderMachineDetails.getQuantity() > availQuantity){
+//			throw new RuntimeException("stock not available");
+//		}else{
+//			sellerMachineryDetails.setAvailQuantity(availQuantity-orderMachineDetails.getQuantity());
+//			sellerMachineryDetailsRepository.save(sellerMachineryDetails);
+//			return 1;
+//		}
+//	}
 
 	@Override
 	public SellerMachineryDetailsDTO getSellerMachineryDetailsById(Long id) {
@@ -96,9 +96,9 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 		int quantity = smDto.getQuantity();
 		double price = smDto.getPrice();
 		String description = smDto.getDescription();
-		int isAvailable = smDto.getIsAvailable();
+		int availQuantity = smDto.getAvailQuantity();
 
-		int rowsAffected = repository.updateSellerMachineryDetails(quantity, price, description, isAvailable, smId);
+		int rowsAffected = repository.updateSellerMachineryDetails(quantity, price, description, availQuantity, smId);
 		return rowsAffected;
 	}
 

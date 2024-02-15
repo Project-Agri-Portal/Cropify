@@ -12,8 +12,8 @@ public class SellerMachineryDetailsDTO {
 	private int quantity;
 	private double price;
 	private String description;
-	private int isAvailable;
-	private int verified;
+	private int availQuantity;
+	private String verified;
 	
 	//-----------------------------Getter and Setters--------------------
 	public Long getSellerMachineryId() {
@@ -52,16 +52,17 @@ public class SellerMachineryDetailsDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getIsAvailable() {
-		return isAvailable;
+	public int getAvailQuantity() {
+		return availQuantity;
 	}
-	public void setIsAvailable(int isAvailable) {
-		this.isAvailable = isAvailable;
+	public void setAvailQuantity(int availQuantity) {
+		this.availQuantity = availQuantity;
 	}
-	public int getVerified() {
+	public String getVerified() {
 		return verified;
 	}
-	public void setVerified(int verified) {
+	public void setVerified(String verified) {
 		this.verified = verified;
 	}
+
 }

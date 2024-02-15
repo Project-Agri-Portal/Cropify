@@ -40,7 +40,6 @@ public class SellerMachineryDetails {
 	@Column(nullable = false)
 	private String verified;
 
-
 	/*
 	// ------------ Relationship Mapping ------------------------------
 	// Mapped with OrderMachineDetails table
@@ -72,6 +71,15 @@ public class SellerMachineryDetails {
 	}
 
 	//-----------------------------Getter and Setters--------------------
+
+	public Long getSellerMachineryId() {
+		return sellerMachineryId;
+	}
+
+	public void setSellerMachineryId(Long sellerMachineryId) {
+		this.sellerMachineryId = sellerMachineryId;
+	}
+
 	public Machinery getMachineryId() {
 		return machineryId;
 	}
@@ -96,6 +104,14 @@ public class SellerMachineryDetails {
 		this.quantity = quantity;
 	}
 
+	public int getAvailQuantity() {
+		return availQuantity;
+	}
+
+	public void setAvailQuantity(int availQuantity) {
+		this.availQuantity = availQuantity;
+	}
+
 	public double getPrice() {
 		return price;
 	}
@@ -112,29 +128,14 @@ public class SellerMachineryDetails {
 		this.description = description;
 	}
 
-	public int getAvailQuantity() {
-		return availQuantity;
-	}
-
-	public void setAvailQuantity(int availQuantity) {
-		this.availQuantity = availQuantity;
-	}
-	
-	public Long getSellerMachineryId() {
-		return sellerMachineryId;
-	}
-
-	public void setSellerMachineryId(Long sellerMachineryId) {
-		this.sellerMachineryId = sellerMachineryId;
-	}
-	
-	public String isVerified() {
+	public String getVerified() {
 		return verified;
 	}
 
 	public void setVerified(String verified) {
 		this.verified = verified;
 	}
+
 	/*	
 	 * Commented to remove the relationship with orders table
 		public List<OrderMachineDetails> getOrderMachineDetails() {

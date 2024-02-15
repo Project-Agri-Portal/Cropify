@@ -14,7 +14,7 @@ public interface SellerMachineryDetailsService {
 
 	// SellerMachineryDetails findSellerMachiery();
 
-	int modifyingSoldQuantity(OrderMachineDetails orderMachineDetails);
+//	int modifyingSoldQuantity(OrderMachineDetails orderMachineDetails);
 	
 	// Create operations
 	Long addSellerMachineryDetails(Long id, SellerMachineryDetailsDTO smDto);
