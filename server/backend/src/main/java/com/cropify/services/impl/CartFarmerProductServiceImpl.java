@@ -41,6 +41,11 @@ public class CartFarmerProductServiceImpl implements CartFarmerProductService{
         FarmProducts farmProducts = farmProductsRepository.findById(cartFarmProductDTO.getFarmProdId()).orElseThrow(() -> new ResourceNotFoundException("not found"));
 
         CartFarmProduct cartFarmProduct = mapper.map(cartFarmProductDTO, CartFarmProduct.class);
+
+        cartFarmProduct.setFarmerId(farmer);
+        cartFarmProduct.setCustomerId(customer);
+        cartFarmProduct.setFarmProdId(farmProducts);
+
         CartFarmProduct farmProduct  = cartFarmProductRepository.save(cartFarmProduct);
 
         return farmProduct.getCid();

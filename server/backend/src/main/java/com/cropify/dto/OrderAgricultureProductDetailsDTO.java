@@ -11,6 +11,7 @@ public class OrderAgricultureProductDetailsDTO {
 
 	@JsonProperty(access = Access.READ_ONLY)
 	private Long oid;
+	private String orderId;
 	private Long farmerId;
 	private Long sellerId;
 	private String agricultureProductId;
@@ -36,6 +37,14 @@ public class OrderAgricultureProductDetailsDTO {
 
 	public void setSellerId(Long sellerId) {
 		this.sellerId = sellerId;
+	}
+
+	public String getOrderId(){
+		return orderId;
+	}
+
+	public void setOrderId(String orderId){
+		this.orderId = orderId;
 	}
 
 	public String getAgricultureProductId() {

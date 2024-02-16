@@ -51,8 +51,8 @@ public class FarmerProductDetailsDTO {
 	/**
 	 * @param farmProductId the farmProductId to set
 	 */
-	public void setFarmProductId(String farmProductId) {
-		this.farmProductId = farmProductId;
+	public void setFarmProductId(FarmProducts farmProductId) {
+		this.farmProductId = farmProductId.getFarmProductId();
 	}
 	/**
 	 * @return the farmerId
@@ -63,8 +63,8 @@ public class FarmerProductDetailsDTO {
 	/**
 	 * @param farmerId the farmerId to set
 	 */
-	public void setFarmerId(Long farmerId) {
-		this.farmerId = farmerId;
+	public void setFarmerId(UserDetails farmerId) {
+		this.farmerId = farmerId.getId();
 	}
 	/**
 	 * @return the quantity

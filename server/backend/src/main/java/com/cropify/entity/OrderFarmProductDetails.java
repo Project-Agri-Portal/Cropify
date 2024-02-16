@@ -21,6 +21,9 @@ public class OrderFarmProductDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long oid;
 
+	@Column(name = "order_id", nullable = false)
+	private String orderId;
+
 	// Mapped with user_details for customer
 	@ManyToOne
 	@JoinColumn(name = "customer_id", nullable = false)
@@ -59,7 +62,7 @@ public class OrderFarmProductDetails {
 	
 	public OrderFarmProductDetails(UserDetails customerId, UserDetails farmerId, FarmProducts farmProdId,
 			LocalDate orderDate, LocalDate deliveryDate, int quantity, double totalPrice,
-			FarmOrderStatus farmOrderStatus) {
+			FarmOrderStatus farmOrderStatus, String orderId) {
 		super();
 		this.customerId = customerId;
 		this.farmerId = farmerId;
@@ -69,6 +72,7 @@ public class OrderFarmProductDetails {
 		this.quantity = quantity;
 		this.totalPrice = totalPrice;
 		this.farmOrderStatus = farmOrderStatus;
+		this.orderId = orderId;
 	}
 
 	// -----------------------------Getter and Setters--------------------
@@ -98,6 +102,14 @@ public class OrderFarmProductDetails {
 
 	public LocalDate getDeliveryDate() {
 		return deliveryDate;
+	}
+
+	public void setOrderId(String orderId){
+		this.orderId = orderId;
+	}
+	
+	public String getOrderId(){
+		return orderId;
 	}
 
 	public void setDeliveryDate(LocalDate deliveryDate) {
