@@ -1,35 +1,49 @@
-import { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import * as React from "react";
+import { Link, useHistory } from "react-router-dom";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./Register.css";
 import registerService from "../../../services/login.service";
-// import { Tabs, Tab } from "react-bootstrap";
-// import CustomerFields from "./CustomerFields/CustomerFields";
-// import FarmerFields from './FarmerFields/FarmerFields';
-// import SellerFields from './SellerFields/SellerFields';
+// ---- Material UI imports ----
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import { Link as MuLink } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function Register() {
-  const [bgColor, setBgColor] = useState("#bde3ff");
-  const [btnOnFocus, setBtnOnFocus] = useState("customer");
+  function Copyright(props) {
+    return (
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        align="center"
+        {...props}
+      >
+        {"Copyright © "}
+        <Link to="/" className="text-decoration-underline pe-auto">
+          Cropify
+        </Link>{" "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
+    );
+  }
 
+  const defaultTheme = createTheme();
   const history = useHistory();
-  // Method to change the color of the form div and the respective tab
-  // const ChangeBgColor = (key) => {
-  //   if (key === "customer") {
-  //     setBgColor("#bde3ff");
-  //     setBtnOnFocus("customer");
-  //   }
-  //   else if (key === "farmer") {
-  //     setBgColor("#aff4c6");
-  //     setBtnOnFocus("farmer");
-  //   }
-  //   else if (key === "seller") {
-  //     setBgColor("#ffc7c2");
-  //     setBtnOnFocus("seller");
-  //   }
-  // }
 
+  // ----- Registration operation -----
   const register = async (e) => {
     e.preventDefault();
 
@@ -48,12 +62,13 @@ function Register() {
         fullAddress: formData.get("fullAddress"),
       },
       userType: formData.get("userType"),
-      aadharNo: "111111111111",   // To change
-      panNo: "1111111111",        // To change
+      aadharNo: "111111111112", // To change
+      panNo: "1111111112", // To change
       status: "",
     };
 
-    await registerService.registerUser(userData)
+    await registerService
+      .registerUser(userData)
       .then((res) => {
         if (res.status === 201) {
           console.log(res.data);
@@ -67,160 +82,163 @@ function Register() {
 
   return (
     <>
-      <h1 className="my-5">User Sign Up</h1>
-      <div
-        className="w-50 rounded main-register-div"
-        style={{ backgroundColor: bgColor }}
-      >
-        <Form
-          className="text-start px-3 fs-5"
-          method="POST"
-          onSubmit={register}
-        >
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formUserFirstName">
-              <Form.Label>First Name</Form.Label>
-              <Form.Control
-                type="text"
-                name="firstName"
-                placeholder="Enter first name"
-              />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formUserLastName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                type="text"
-                name="lastName"
-                placeholder="Enter last name"
-              />
-            </Form.Group>
-          </Row>
-
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formUserEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                name="email"
-                placeholder="Enter email"
-              />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formUserPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
-            </Form.Group>
-          </Row>
-
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formUserMobile">
-              <Form.Label>Mobile</Form.Label>
-              <Form.Control
-                type="text"
-                name="mobileNo"
-              />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formUserType">
-              <Form.Label>Register as</Form.Label>
-              <Form.Check
-                inline
-                type="radio"
-                name="userType"
-                label="Customer"
-                value="CUSTOMER"
-              />
-              <Form.Check
-                inline
-                type="radio"
-                name="userType"
-                label="Farmer"
-                value="FARMER"
-              />
-              <Form.Check
-                inline
-                type="radio"
-                name="userType"
-                label="Seller"
-                value="SELLER"
-              />
-            </Form.Group>
-          </Row>
-
-          <Form.Group className="mb-3" controlId="formUserAddress1">
-            <Form.Label>Address</Form.Label>
-            <Form.Control name="fullAddress" placeholder="1234 Main St" />
-          </Form.Group>
-
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formUserCity">
-              <Form.Label>City</Form.Label>
-              <Form.Control name="city" />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formUserState">
-              <Form.Label>State</Form.Label>
-              <Form.Select name="state" defaultValue="Choose...">
-                <option>Choose...</option>
-                <option>Maharashtra</option>
-                <option>Gujarat</option>
-                <option>Rajasthan</option>
-              </Form.Select>
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formUserZip">
-              <Form.Label>Pincode</Form.Label>
-              <Form.Control
-                type="number"
-                name="pincode"
-                placeholder="eg: 440015"
-              />
-            </Form.Group>
-          </Row>
-
-          <center>
-            <Row className="w-25">
-              <Form.Group className="mb-3 text-start" id="formUserCheckbox">
-                <Form.Check type="checkbox" label="I am Customer" />
-              </Form.Group>
-
-              <Button variant="success" size="lg" type="submit">
+      <ThemeProvider theme={defaultTheme}>
+        <Container component="main" maxWidth="sm">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              User Registration
+            </Typography>
+            <Box component="form" noValidate onSubmit={register} sx={{ mt: 3 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    autoComplete="given-name"
+                    name="firstName"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    name="lastName"
+                    autoComplete="family-name"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="new-password"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControl>
+                    <FormLabel id="demo-row-radio-buttons-group-label">
+                      User Type
+                    </FormLabel>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-row-radio-buttons-group-label"
+                      name="userType"
+                    >
+                      <FormControlLabel
+                        value="CUSTOMER"
+                        control={<Radio />}
+                        label="Customer"
+                      />
+                      <FormControlLabel
+                        value="FARMER"
+                        control={<Radio />}
+                        label="Farmer"
+                      />
+                      <FormControlLabel
+                        value="SELLER"
+                        control={<Radio />}
+                        label="Seller"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="mobileNo"
+                    label="Mobile"
+                    name="mobileNo"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="city"
+                    label="City"
+                    name="city"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="state"
+                    label="State"
+                    name="state"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="pincode"
+                    label="Pincode"
+                    name="pincode"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="fullAddress"
+                    label="Full Address"
+                    name="fullAddress"
+                  />
+                </Grid>
+              </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
                 Register
               </Button>
-            </Row>
-          </center>
-        </Form>
-        {/* <Tabs
-          defaultActiveKey='customer'
-          id='login-tabs'
-          className='mb-4'
-          onSelect={(key) => { ChangeBgColor(key) }}
-          justify
-        > */}
-        {/* Customer tab and it's content */}
-        {/* <Tab eventKey='customer' title='Customer'
-            tabClassName={'customer-btn ' + (btnOnFocus === "customer" ? 'customer-active' : '')}>
-            <CustomerFields />
-          </Tab> */}
-
-        {/* Farmer tab and it's content */}
-        {/* <Tab eventKey='farmer' title='Farmer'
-            tabClassName={'farmer-btn ' + (btnOnFocus === "farmer" ? 'farmer-active' : '')}>
-            <FarmerFields />
-          </Tab> */}
-
-        {/* Seller tab and it's content */}
-        {/* <Tab eventKey='seller' title='Seller'
-            tabClassName={'seller-btn ' + (btnOnFocus === "seller" ? 'seller-active' : '')}>
-            <SellerFields />
-          </Tab>*/}
-        {/* </Tabs>   */}
-      </div>
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Link to="/login">
+                    <MuLink variant="body2">
+                      Already have an account? Sign in
+                    </MuLink>
+                  </Link>
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+          <Copyright sx={{ mt: 5 }} />
+        </Container>
+      </ThemeProvider>
     </>
   );
 }

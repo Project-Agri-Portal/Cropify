@@ -33,12 +33,12 @@ function App() {
           <Route path="/home" component={CommonHome} exact />
           <Route path="/home/customer" component={Shop} exact />
           <Route path="/home/farmer" component={FarmerHome} exact />
-          <Route path="/home/seller" component={Seller} exact />
+          <Route path="/home/seller" component={SellerProfile} exact />
           <Route path="/blog" component={BlogPage} exact />
           <Route path="/contact" component={Contact} exact />
           <Route path="/farmer/profile" component={FarmerProfile} exact />
           <Route path="/farmer/cropinfo" component={FarmerCrop} exact />
-          <Route path="/seller/profile" component={SellerProfile} exact />
+          <Route path="/seller/profile" component={Seller} exact />
           <Route path="/seller/profileEdit" component={SellerEdit} exact />
           <Route path="/seller/orderlist" component={OrderList} exact />
           <Route path="/seller/productlist" component={ProductList} exact />

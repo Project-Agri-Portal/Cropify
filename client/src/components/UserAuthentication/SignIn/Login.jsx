@@ -1,39 +1,53 @@
-import { useState, useEffect } from "react";
+import * as React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { InputGroup, Form, Tabs, Tab, Button } from "react-bootstrap";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "./Login.css";
-// import axios from "axios";
 import loginService from "../../../services/login.service";
+// ---- Material UI imports ----
+// import Alert from "@mui/material/Alert";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import { Link as MuLink } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function Login() {
-  const [bgColor, setBgColor] = useState("#bde3ff");
-  const [btnOnFocus, setBtnOnFocus] = useState("customer");
+  // const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
+  function Copyright(props) {
+    return (
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        align="center"
+        {...props}
+      >
+        {"Copyright © "}
+        <Link to="/" className="text-decoration-underline pe-auto">
+          Cropify
+        </Link>{" "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
+    );
+  }
+
+  const defaultTheme = createTheme();
   const history = useHistory();
   // ---------- Controlled Input operation --------------
   // const [email, setEmail] = useState();
   // const [password, setPassword] = useState();
   // const emailChange = ({target:{value}}) => setEmail(value);
   // const passwordChange = ({target:{value}}) => setPassword(value);
-
-  // -------------------------------------------------------------------------
-  // Method to change the color of the form div and respective tab that is clicked
-  // const ChangeBgColor = (key) => {
-  //   if (key === "customer") {
-  //     setBgColor("#bde3ff");
-  //     setBtnOnFocus("customer");
-  //   }
-  //   else if (key === "farmer") {
-  //     setBgColor("#aff4c6");
-  //     setBtnOnFocus("farmer");
-  //   }
-  //   else if (key === "seller") {
-  //     setBgColor("#ffc7c2");
-  //     setBtnOnFocus("seller");
-  //   }
-  // }
 
   // ---------- Login operation -------------------
   const userLogin = async (e) => {
@@ -42,7 +56,7 @@ function Login() {
 
     // loaded the form-data in a FormData object and stored the target entity
     const loginData = new FormData(e.target);
-    // console.log(loginData.get('email') + "-------" + loginData.get('password'));
+    console.log(loginData);
     const credentials = {
       email: loginData.get("email"),
       password: loginData.get("password"),
@@ -50,15 +64,21 @@ function Login() {
 
     // stored the required fields in an object and passed it to axios http method
     // using the imported file name 'backend'
-    await loginService.loginUser(credentials)
+    await loginService
+      .loginUser(credentials)
       .then((res) => {
         console.log(res.data);
         // storing the user type (customer, farmer, seller)
-        const userType = res.data['userType'] + "";
+        const userType = res.data["userType"] + "";
 
         // Redirecting to respective user type's home page on successfull login
         if (res.status === 200) {
-          localStorage.setItem('userId', res.data['id']);
+          // setIsLoggedIn(true);
+
+          loginData.get("remember") === "remember"
+            ? localStorage.setItem("userId", res.data["id"])
+            : sessionStorage.setItem("userId", res.data["id"]);
+
           history.replace("/home/" + userType.toLowerCase());
         }
       })
@@ -69,130 +89,91 @@ function Login() {
 
   return (
     <>
-      <h1 className="my-5">User Sign In</h1>
-      <div
-        className="w-50 rounded main-login-div"
-        style={{ backgroundColor: bgColor }}
-      >
-        <Form method="POST" onSubmit={userLogin}>
-          <Tabs
-            defaultActiveKey="customer"
-            id="login-tabs"
-            className="mb-5"
-            // onSelect={(key) => { ChangeBgColor(key) }}
-            justify
+      <ThemeProvider theme={defaultTheme}>
+        <Container component="main" maxWidth="xs">
+          {/* {isLoggedIn ? (
+            <Alert variant="outlined" severity="success">
+              Successfully logged in
+            </Alert>
+          ) : (
+            <Alert variant="outlined" severity="error">
+              Error while logging in
+            </Alert>
+          )} */}
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            {/* Customer tab and it's content */}
-            <Tab
-              eventKey="customer"
-              title="Customer"
-              tabClassName={
-                "customer-btn " +
-                (btnOnFocus === "customer" ? "customer-active" : "")
-              }
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              User Login
+            </Typography>
+            <Box
+              component="form"
+              onSubmit={userLogin}
+              noValidate
+              sx={{ mt: 1 }}
+              className="text-start"
             >
-              <InputGroup size="lg" className="mb-5 w-50">
-                <InputGroup.Text className="w-25" id="email">
-                  User Email
-                </InputGroup.Text>
-                <Form.Control
-                  type="text"
-                  name="email"
-                  aria-label="email"
-                  aria-describedby="email field"
-                />
-              </InputGroup>
-
-              <InputGroup size="lg" className="mb-5 w-50">
-                <InputGroup.Text className="w-25" id="password">
-                  Password
-                </InputGroup.Text>
-                <Form.Control
-                  type="password"
-                  name="password"
-                  aria-label="password"
-                  aria-describedby="password field"
-                />
-              </InputGroup>
-
-              <Button className="btn btn-dark btn-lg mb-3" type="submit">
-                Login
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+                name="remember"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
               </Button>
-
-              <p>
-                New Customer?{" "}
-                <Link to="/register" className="create-span">
-                  Create account
+              <Grid container>
+                {/* <Grid item xs>
+                <Link to="#" variant="body2">
+                  Forgot password?
                 </Link>
-              </p>
-            </Tab>
-
-            {/* Farmer tab and it's content */}
-            {/* <Tab eventKey='farmer' title='Farmer'
-            tabClassName={'farmer-btn ' + (btnOnFocus === "farmer" ? 'farmer-active' : '')}>
-            <InputGroup size='lg' className='mb-5 w-50'>
-              <InputGroup.Text className='w-25' id='username'>
-                Username
-              </InputGroup.Text>
-              <Form.Control
-                type='text'
-                aria-label='username'
-                aria-describedby='username field'
-              />
-            </InputGroup>
-
-            <InputGroup size='lg' className='mb-5 w-50'>
-              <InputGroup.Text className='w-25' id='password'>
-                Password
-              </InputGroup.Text>
-              <Form.Control
-                type='password'
-                aria-label='password'
-                aria-describedby='password field'
-              />
-            </InputGroup>
-
-            <button className='btn btn-dark btn-lg mb-3'>
-              <Link to="/home/farmer" className="text-decoration-none text-white">Login</Link>
-            </button>
-
-            <p>New Farmer? <Link to="/register" className='create-span'>Create account</Link></p>
-          </Tab> */}
-
-            {/* Seller tab and it's content */}
-            {/* <Tab eventKey='seller' title='Seller'
-            tabClassName={'seller-btn ' + (btnOnFocus === "seller" ? 'seller-active' : '')}>
-            <InputGroup size='lg' className='mb-5 w-50'>
-              <InputGroup.Text className='w-25' id='username'>
-                Username
-              </InputGroup.Text>
-              <Form.Control
-                type='text'
-                aria-label='username'
-                aria-describedby='username field'
-              />
-            </InputGroup>
-
-            <InputGroup size='lg' className='mb-5 w-50'>
-              <InputGroup.Text className='w-25' id='password'>
-                Password
-              </InputGroup.Text>
-              <Form.Control
-                type='password'
-                aria-label='password'
-                aria-describedby='password field'
-              />
-            </InputGroup>
-
-            <button className='btn btn-dark btn-lg mb-3'>
-              <Link to="/home/seller" className="text-decoration-none text-white">Login</Link>
-            </button>
-
-            <p>New Seller? <Link to="/register" className='create-span'>Create account</Link></p>
-          </Tab> */}
-          </Tabs>
-        </Form>
-      </div>
+              </Grid> */}
+                <Grid item>
+                  <Link to="/register">
+                    <MuLink variant="body2">
+                      {"Don't have an account? Sign Up"}
+                    </MuLink>
+                  </Link>
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+          <Copyright sx={{ mt: 8, mb: 4 }} />
+        </Container>
+      </ThemeProvider>
     </>
   );
 }
