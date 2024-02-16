@@ -35,7 +35,8 @@ public class CartMachineryServiceImpl implements CartMachineryService {
 
 	@Override
 	public Long addMachineryIntoCart(Long farmerId, CartMachineryDTO cartMachineryDTO) {
-		UserDetails farmer = userRepo.getReferenceById(farmerId);
+		UserDetails farmer = userRepo.getReferenceById(farmerId); // It retrieves a reference to a UserDetails entity
+		// it returns a proxy (a lightweight placeholder) for the entity.
 		UserDetails seller = userRepo.getReferenceById(cartMachineryDTO.getSellerId());
 		Machinery machine = machineRepo.getReferenceById(cartMachineryDTO.getMachineId());
 		
