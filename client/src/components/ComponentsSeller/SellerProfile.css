@@ -29,10 +29,10 @@
   overflow-x: hidden;
   background-image: linear-gradient(to right,
       hsla(0, 56%, 75%, 0.049),
-      #c2f5de,
-      #67bc5c,
+      #51c591,
+      #abdb84,
       #d4f8ea,
-      #14d952);
+      #dd785e);
 }
 
 /* #wrapper {
@@ -137,7 +137,7 @@
   }
 
   .profileDetail {
-    box-shadow: 0 1px 3px 0 rgba(182, 177, 177, 0.1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    box-shadow: 0 1px 3px 0 rgba(182, 177, 177, 0.1), 0 1px 2px 0 rgba(186, 207, 230, 0.06);
   }
 
   .profileDetail {
@@ -146,9 +146,9 @@
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: rgb(160, 157, 153);
+    background-color: rgb(201, 215, 233);
     background-clip: border-box;
-    border: 0 solid rgba(0, 0, 0, .125);
+    border: 0 solid rgba(218, 210, 210, 0.125);
     border-radius: .25rem;
   }
 

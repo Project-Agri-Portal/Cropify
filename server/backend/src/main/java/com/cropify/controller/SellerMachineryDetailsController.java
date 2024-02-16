@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cropify.dto.SellerMachineDTO;
 import com.cropify.dto.SellerMachineryDetailsDTO;
 import com.cropify.services.SellerMachineryDetailsService;
 
@@ -67,4 +68,16 @@ public class SellerMachineryDetailsController {
 		service.deleteSellerMachineryDetailsById(smId);
 		return ResponseEntity.status(HttpStatus.OK).body("Detalil deleted successfully");
 	}
+	
+	//method for SellerMachineDTO 
+	
+	
+	@GetMapping("/productlist/{userId}")
+	public ResponseEntity<List<SellerMachineDTO>> getAllMachineDetails(@PathVariable @NotNull Long userId){
+		List<SellerMachineDTO> dtos=service.getAllMachineIntoNewDTO(userId);
+		return ResponseEntity.status(HttpStatus.OK).body(dtos);
+	}
+	
+	
+
 }

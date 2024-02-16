@@ -1,5 +1,7 @@
 package com.cropify.services.impl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +15,7 @@ import com.cropify.dao.MachineryRepository;
 import com.cropify.dao.SellerMachineryDetailsRepository;
 import com.cropify.dao.UserDetailsRepository;
 import com.cropify.dto.CartMachineryDTO;
+import com.cropify.dto.SellerMachineDTO;
 import com.cropify.dto.SellerMachineryDetailsDTO;
 import com.cropify.entity.CartMachinery;
 import com.cropify.entity.Machinery;
@@ -27,6 +30,9 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 
 	@Autowired
 	private SellerMachineryDetailsRepository repository;
+	
+	@Autowired
+	private MachineryRepository machineryRepository;
 	@Autowired
 	private UserDetailsRepository sellerRepo;
 	@Autowired
@@ -119,4 +125,29 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 		else
 			throw new RuntimeException("seller machinery detail not found");
 	}
+	
+	//method for SellerMachineDTO
+
+		@Override
+		public List<SellerMachineDTO> getAllMachineIntoNewDTO(Long sellerId) {
+//			List<Machinery> machineries= machineryRepository.findAll();
+			List<SellerMachineryDetails> details= sellerMachineryDetailsRepository.getBySellerId(sellerId);
+			System.out.println(sellerId + " " + details.size());
+			List<SellerMachineDTO> sellerMachinedtos= new ArrayList<SellerMachineDTO>();
+			
+			for(SellerMachineryDetails machineries : details) {
+				Machinery machinery = machineRepo.findById(machineries.getMachineryId().getMachineId()).orElseThrow(()-> new ResourceNotFoundException("Machine not found"));
+				 
+				SellerMachineDTO dto= new SellerMachineDTO();
+				dto.setMachineId(machinery.getMachineId());
+				dto.setMachineName(machinery.getMachineName());
+				dto.setQuantity(machineries.getQuantity());
+				dto.setAvailQuantity(machineries.getAvailQuantity());
+				dto.setDescription(machineries.getDescription());
+				dto.setPrice(machineries.getPrice());
+				
+				sellerMachinedtos.add(dto);
+			}
+			return sellerMachinedtos;
+		}
 }

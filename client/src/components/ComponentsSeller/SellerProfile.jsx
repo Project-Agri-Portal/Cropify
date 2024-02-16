@@ -7,13 +7,12 @@ import { useEffect } from "react";
 
 function SellerProfile() {
 
-  const [sellerProfile, setSellerProfile] =useState();
+  const [sellerProfile, setSellerProfile] =useState([]);
 
-  const onload= async ()=>{
-    const userId=localStorage.getItem("userId")
+  const onload = async (userId) =>{
     await Seller.getSellerProfile(userId).then((result) => {
       setSellerProfile(result['data']);
-      console.log(result);
+      console.log(result['data']);
     }).catch((error)=>{
       console.log(error);
       console.log("in error");
@@ -22,7 +21,8 @@ function SellerProfile() {
   }
 
   useEffect(()=>{
-    onload();
+    const userId=localStorage.getItem("userId")
+    onload(userId);
   },[])
 
   return (
@@ -185,12 +185,12 @@ function SellerProfile() {
                           width="150"
                         />
                         <div className="mt-3">
-                          <h4>Seller Name</h4>
+                          <h4>{sellerProfile['firstName'] +"  " + sellerProfile['lastName']}</h4>
                           <p className="text-secondary mb-1">
-                            Farmer and Seller
+                          {sellerProfile['userType']}
                           </p>
                           <p className="text-muted font-size-sm">
-                            Umred,Nagpur,Maharastra
+                            Status : {sellerProfile['status']}
                           </p>
                           <button className="btn btn-primary">Likes</button>
                           <button className="btn btn-outline-primary">
@@ -335,10 +335,10 @@ function SellerProfile() {
                     <div className="profileDetail-body">
                       <div className="row">
                         <div className="col-sm-3">
-                          <h6 className="mb-0">Full Name</h6>
+                          <h6 className="mb-0">Your ID</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                          {/* {sellerProfile['firstName'] +"  " + sellerProfile['lastName']} */}
+                          {sellerProfile['id']}
                         </div>
                       </div>
                       <hr />
@@ -362,10 +362,10 @@ function SellerProfile() {
                       <hr />
                       <div className="row">
                         <div className="col-sm-3">
-                          <h6 className="mb-0">Mobile</h6>
+                          <h6 className="mb-0">Aadhar No</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                        {sellerProfile['mobileNo']}
+                        {sellerProfile['aadharNo']}
                         </div>
                       </div>
                       <hr />
@@ -374,7 +374,7 @@ function SellerProfile() {
                           <h6 className="mb-0">Address</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                        {/* {sellerProfile['userAddress']['city']} */}
+                        Address
                         </div>
                       </div>
                       <hr />

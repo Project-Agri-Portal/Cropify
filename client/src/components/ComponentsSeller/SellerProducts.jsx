@@ -241,10 +241,12 @@ function ProductList() {
                     <table className="table project-list-table table-nowrap align-middle table-borderless">
                       <thead>
                         <tr>
-                          <th scope="col">Product</th>
-                          <th scope="col">Quantity Remaining (in kg)</th>
-                          <th scope="col">Last Rating</th>
-                          <th scope="col">Price per kg</th>
+                          <th scope="col">Machine ID</th>
+                          <th scope="col">Machine Name</th>
+                          <th scope="col">Total Quantity</th>
+                          <th scope="col">Available Quantity</th>
+                          <th scope="col">Machine Price</th>
+                          <th scope="col">Machine Description</th>
                           <th scope="col" style={{ width: "200px;" }}>
                             Action
                           </th>
@@ -252,11 +254,13 @@ function ProductList() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Rice</td>
+                          <td>Machine</td>
                           <td>
                             <span>12</span>
                           </td>
                           <td>4.1/5</td>
+                          <td>40</td>
+                          <td>40</td>
                           <td>40</td>
                           <td>
                             <ul className="list-inline mb-0">
@@ -298,6 +302,8 @@ function ProductList() {
                           </td>
                           <td>3.8/5</td>
                           <td>27</td>
+                          <td>40</td>
+                          <td>40</td>
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
@@ -340,6 +346,8 @@ function ProductList() {
                           </td>
                           <td>4.6/5</td>
                           <td>70</td>
+                          <td>40</td>
+                          <td>40</td>
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
@@ -378,6 +386,8 @@ function ProductList() {
                           <td>
                             <span>56</span>
                           </td>
+                          <td>4.2/5</td>
+                          <td>100</td>
                           <td>4.2/5</td>
                           <td>100</td>
                           <td>
@@ -420,6 +430,8 @@ function ProductList() {
                           </td>
                           <td>2.5/5</td>
                           <td>350 per dozen</td>
+                          <td>4.2/5</td>
+                          <td>100</td>
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
@@ -458,6 +470,8 @@ function ProductList() {
                           </td>
                           <td>4.3/5</td>
                           <td>60</td>
+                          <td>4.2/5</td>
+                          <td>100</td>
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
@@ -498,6 +512,8 @@ function ProductList() {
                           </td>
                           <td>3.5/5</td>
                           <td>60 per dozen</td>
+                          <td>4.2/5</td>
+                          <td>100</td>
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
@@ -538,6 +554,8 @@ function ProductList() {
                           </td>
                           <td>4.0/5</td>
                           <td>80</td>
+                          <td>4.2/5</td>
+                          <td>100</td>
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
@@ -578,6 +596,8 @@ function ProductList() {
                           </td>
                           <td>4.5/5</td>
                           <td>40 per peace</td>
+                          <td>4.2/5</td>
+                          <td>100</td>
                           <td>
                             <ul className="list-inline mb-0">
                               <li className="list-inline-item">
