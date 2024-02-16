@@ -62,9 +62,9 @@ const AgricultureProduct = () => {
       {productList.map((product) => {
           return (
             <TableRow key={1} sx={{'&:last-child td, &:last-child th' : {border : 0}}}>
-          <TableCell className='text-center'>{product['farmProductId']}</TableCell>
-          <TableCell className='text-center'>{product['farmProductName']}</TableCell>
-          <TableCell className='text-center'>{product['farmProductType']}</TableCell>
+          <TableCell className='text-center'>{product['agriProductId']}</TableCell>
+          <TableCell className='text-center'>{product['agriProductName']}</TableCell>
+          <TableCell className='text-center'>{product['agriProductType']}</TableCell>
           <TableCell className='text-center'>
           <Stack direction="row" spacing={2} className='center d-flex justify-content-center'>
             <Button variant="outlined" startIcon={<DeleteIcon />}>

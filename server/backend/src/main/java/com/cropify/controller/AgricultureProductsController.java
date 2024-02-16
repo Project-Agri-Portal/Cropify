@@ -16,6 +16,7 @@ import static org.springframework.http.MediaType.IMAGE_JPEG_VALUE;
 import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ import com.cropify.services.AgricultureProductsService;
 
 @RestController
 @RequestMapping("/api/agriProducts")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AgricultureProductsController {
 	@Autowired
 	private AgricultureProductsService productService;
