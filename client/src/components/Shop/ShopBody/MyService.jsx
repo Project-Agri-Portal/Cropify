@@ -7,21 +7,21 @@ import "./MyService.css"
 
 const MyService = () =>{
     return(
-        <div class="container">
+        <div className="container">
           <div style={{height:"80px"}}></div>
-        <h2 class="text-center">Our Service</h2>
-        {/* <!-- <hr class="mx-auto mb-5 wb-25" /> --> */}
-        <hr class="hrteam" />
-        <div class="underline"></div>
+        <h2 className="text-center">Our Service</h2>
+        {/* <!-- <hr className="mx-auto mb-5 wb-25" /> --> */}
+        <hr className="hrteam" />
+        <div className="underline"></div>
         <br />
-        <div class="row mb-5">
-          <div class="col-12 col-sm-6 col-md-4 m-auto">
+        <div className="row mb-5">
+          <div className="col-12 col-sm-6 col-md-4 m-auto">
             {/* <!-- Card Start --> */}
-            <div class="card shadow cardid" id="serviceid">
-              <img src={Pulses} alt="" class="card-img-top" />
-              <div class="card-body">
-                <h3 class="text-center">Quality</h3>
-                <hr class="mx-auto w-75" />
+            <div className="card shadow cardid" id="serviceid">
+              <img src={Pulses} alt="" className="card-img-top" />
+              <div className="card-body">
+                <h3 className="text-center">Quality</h3>
+                <hr className="mx-auto w-75" />
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
                   repellendus totam esse.
@@ -30,18 +30,18 @@ const MyService = () =>{
             </div>
           </div>
 
-          <div class="col-12 col-sm-6 col-md-4 m-auto">
+          <div className="col-12 col-sm-6 col-md-4 m-auto">
             {/* <!-- Card Start --> */}
-            <div class="card shadow cardid" id="serviceid">
+            <div className="card shadow cardid" id="serviceid">
               <img
                 src={Delivery}
                 alt=""
-                class="card-img-top"
+                className="card-img-top"
                 id="imgService"
               />
-              <div class="card-body">
-                <h3 class="text-center">Free Delivery</h3>
-                <hr class="mx-auto w-75" />
+              <div className="card-body">
+                <h3 className="text-center">Free Delivery</h3>
+                <hr className="mx-auto w-75" />
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
                   repellendus totam esse.
@@ -50,13 +50,13 @@ const MyService = () =>{
             </div>
           </div>
 
-          <div class="col-12 col-sm-6 col-md-4 m-auto">
+          <div className="col-12 col-sm-6 col-md-4 m-auto">
             {/* <!-- Card Start --> */}
-            <div class="card shadow cardid" id="serviceid">
-              <img src={Healthy} alt="" class="card-img-top" />
-              <div class="card-body">
-                <h3 class="text-center">Healthy</h3>
-                <hr class="mx-auto w-75" />
+            <div className="card shadow cardid" id="serviceid">
+              <img src={Healthy} alt="" className="card-img-top" />
+              <div className="card-body">
+                <h3 className="text-center">Healthy</h3>
+                <hr className="mx-auto w-75" />
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
                   repellendus totam esse.

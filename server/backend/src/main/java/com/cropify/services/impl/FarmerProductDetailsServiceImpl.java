@@ -1,18 +1,23 @@
 package com.cropify.services.impl;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.mapping.Collection;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cropify.customexception.ResourceNotFoundException;
 import com.cropify.dao.FarmProductsRepository;
 import com.cropify.dao.FarmerProductDetailsRepository;
 import com.cropify.dao.UserDetailsRepository;
 import com.cropify.dto.FarmerProductDetailsDTO;
+import com.cropify.dto.ShopDTO;
 import com.cropify.entity.FarmProducts;
 import com.cropify.entity.FarmerProductDetails;
 import com.cropify.entity.UserDetails;
@@ -68,6 +73,38 @@ public class FarmerProductDetailsServiceImpl implements FarmerProductDetailsServ
   		FarmerProductDetails saveDetails = detailsRepository.save(details);
 		// return mapper.map(saveDetails, FarmerProductDetailsDTO.class);
 		return saveDetails.getFarmerProductDetailsId();
+	}
+
+	@Override
+	public List<ShopDTO> getAllList() {
+		List<FarmProducts> farmProducts = farmProductsRepository.findAll();
+		List<ShopDTO> shopDTOs = new ArrayList<>();
+		for(FarmProducts products : farmProducts){
+			List<FarmerProductDetails> farmerProductDetails = detailsRepository.getFarmerProductDetailsByProductId(products.getFarmProductId());
+			for(FarmerProductDetails productDetails : farmerProductDetails){
+				ShopDTO shopDTO = new ShopDTO();
+	// 			private Long farmerId;
+    // private String farmProdId ;
+    // private String farmProdName;
+    // private String description;
+    // private LocalDate expiryDate;
+    // private double price; 
+    // private int quantity;
+    // private String firstName;
+				shopDTO.setFarmProdId(productDetails.getFarmProductId().getFarmProductId());
+				shopDTO.setFarmerId(productDetails.getFarmerId().getId());
+				shopDTO.setFarmProdName(products.getFarmProductName());
+				shopDTO.setDescription(productDetails.getDescription());
+				shopDTO.setExpiryDate(productDetails.getExpiryDate());
+				shopDTO.setPrice(productDetails.getPrice());
+				shopDTO.setQuantity(productDetails.getQuantity());
+				UserDetails details = userDetailsRepository.findById(productDetails.getFarmerId().getId()).orElseThrow(() -> new RuntimeException());
+				shopDTO.setFirstName(details.getFirstName());
+				shopDTOs.add(shopDTO);
+			}
+		}
+		Collections.shuffle(shopDTOs);
+		return shopDTOs;
 	}
 	
 }
