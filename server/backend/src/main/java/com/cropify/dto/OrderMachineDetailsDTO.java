@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 public class OrderMachineDetailsDTO {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Long oid;
+	private String orderId;
 	private Long farmerId;
 	private Long sellerId;
 	private String machineId;
@@ -36,6 +37,15 @@ public class OrderMachineDetailsDTO {
 	public String getMachineId() {
 		return machineId;
 	}
+	
+	public String getOrderId(){
+		return orderId;
+	}
+
+	public void setOrderId(String orderId){
+		this.orderId = orderId;
+	}
+
 	public void setMachineId(MachineryDTO machineId) {
 		this.machineId = machineId.getMachineId();
 	}

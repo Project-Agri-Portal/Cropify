@@ -132,7 +132,7 @@ public class SellerMachineryDetails {
 		this.sellerMachineryId = sellerMachineryId;
 	}
 	
-	public String isVerified() {
+	public String getVerified() {
 		return verified;
 	}
 
