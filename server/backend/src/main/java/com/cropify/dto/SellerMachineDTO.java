@@ -4,6 +4,7 @@ import com.cropify.entity.enums.MachineType;
 
 public class SellerMachineDTO {
 
+	private Long sellerMachineDetailsId;
 	private String machineId;
 	private String machineName;
 	private int quantity;
@@ -16,9 +17,10 @@ public class SellerMachineDTO {
 	public SellerMachineDTO() {
 	}
 	
-	public SellerMachineDTO(String machineId, String machineName, int quantity, int availQuantity, double price,
-			String description) {
+	public SellerMachineDTO(Long sellerMachineDetailsId, String machineId, String machineName, int quantity,
+			int availQuantity, double price, String description) {
 		super();
+		this.sellerMachineDetailsId = sellerMachineDetailsId;
 		this.machineId = machineId;
 		this.machineName = machineName;
 		this.quantity = quantity;
@@ -26,6 +28,7 @@ public class SellerMachineDTO {
 		this.price = price;
 		this.description = description;
 	}
+	
 	public String getMachineId() {
 		return machineId;
 	}
@@ -62,6 +65,16 @@ public class SellerMachineDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public Long getSellerMachineDetailsId() {
+		return sellerMachineDetailsId;
+	}
+
+	public void setSellerMachineDetailsId(Long sellerMachineDetailsId) {
+		this.sellerMachineDetailsId = sellerMachineDetailsId;
+	}
+
+	
 	
 	
 	

@@ -146,6 +146,8 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 				dto.setDescription(machineries.getDescription());
 				dto.setPrice(machineries.getPrice());
 				
+				dto.setSellerMachineDetailsId(machineries.getSellerMachineryId());
+				
 				sellerMachinedtos.add(dto);
 			}
 			return sellerMachinedtos;

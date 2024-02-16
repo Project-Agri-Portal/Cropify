@@ -11,4 +11,13 @@ const getSellerProfile = (userId) =>{
     return app.get('users/'+userId);
 }
 
-export default {getSellerProfile};
+const getSellerMachinery = (userId) =>{
+    return app.get('sellerMachinery/productlist/'+userId);
+}
+
+const deleteSellerMachine = (sellerMachineId) =>{
+    return app.delete('sellerMachinery/'+sellerMachineId);
+}
+
+
+export default {getSellerProfile,getSellerMachinery,deleteSellerMachine};

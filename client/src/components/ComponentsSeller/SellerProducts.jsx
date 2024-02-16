@@ -1,8 +1,39 @@
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./SellerProducts.css";
+import SellerProducts from '../../services/seller.service';
+import { useState } from "react";
+import { useEffect } from "react";
 
 function ProductList() {
+
+  const [productList,setProductList] = useState([]);
+
+    const onload = (userId) => {
+    SellerProducts.getSellerMachinery(userId).then((result) => {
+      setProductList(result.data);
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+  const deleteProduct = (id) => {
+    SellerProducts.deleteSellerMachine(id).then((result)=>{
+      console.log(result);
+      const userId= localStorage.getItem('userId');
+      onload(userId);
+    }).catch((error)=>{
+      console.log(error);
+    })
+  }
+
+
+  useEffect(() => {
+    const userId= localStorage.getItem('userId');
+    onload(userId);
+  },[])
+
   return (
     <>
       <div className="d-flex" id="wrapper">
@@ -253,387 +284,56 @@ function ProductList() {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Machine</td>
-                          <td>
-                            <span>12</span>
-                          </td>
-                          <td>4.1/5</td>
-                          <td>40</td>
-                          <td>40</td>
-                          <td>40</td>
-                          <td>
-                            <ul className="list-inline mb-0">
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Edit"
-                                  className="px-2 text-primary"
-                                >
-                                  <i className="bx bx-pencil font-size-18"></i>
-                                </Link>
-                              </li>
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Delete"
-                                  className="px-2 text-danger"
-                                >
-                                  <i className="bx bx-trash-alt font-size-18"></i>
-                                </Link>
-                              </li>
-                              {/* <li className="list-inline-item dropdown">
-                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
-                                                        <div className="dropdown-menu dropdown-menu-end">
-                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
-                                                        </div>
-                                                    </li>  */}
-                            </ul>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Wheat</td>
-                          <td>
-                            <span>76</span>
-                          </td>
-                          <td>3.8/5</td>
-                          <td>27</td>
-                          <td>40</td>
-                          <td>40</td>
-                          <td>
-                            <ul className="list-inline mb-0">
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Edit"
-                                  className="px-2 text-primary"
-                                >
-                                  <i className="bx bx-pencil font-size-18"></i>
-                                </Link>
-                              </li>
 
+                        {productList.map((prod) => {
+                          return (
+                            <tr>
+                          <td>{prod['machineId']}</td>
+                          <td>
+                            <span>{prod['machineName']}</span>
+                          </td>
+                          <td>{prod['quantity']}</td>
+                          <td>{prod['availQuantity']}</td>
+                          <td>{prod['price']}</td>
+                          <td>{prod['description']}</td>
+                          <td>
+                            <ul className="list-inline mb-0">
                               <li className="list-inline-item">
                                 <Link
                                   to=""
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
+                                  title="Edit"
+                                  className="px-2 text-primary"
+                                >
+                                  <i className="bx bx-pencil font-size-18"></i>
+                                </Link>
+                              </li>
+                              <li className="list-inline-item">
+                                <Link
+                                  to="/seller/productlist"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="top"
                                   title="Delete"
                                   className="px-2 text-danger"
                                 >
-                                  <i className="bx bx-trash-alt font-size-18"></i>
+                                  <i className="bx bx-trash-alt font-size-18" onClick={() => { deleteProduct(prod['sellerMachineDetailsId'])}}></i>
                                 </Link>
                               </li>
-                              {/* <li className="list-inline-item dropdown">
-                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
-                                                        <div className="dropdown-menu dropdown-menu-end">
-                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
-                                                        </div>
-                                                    </li>  */}
                             </ul>
                           </td>
                         </tr>
-                        <tr>
-                          <td>Bajra</td>
+                          );
+                        })}
 
-                          <td>
-                            <span>60</span>
-                          </td>
-                          <td>4.6/5</td>
-                          <td>70</td>
-                          <td>40</td>
-                          <td>40</td>
-                          <td>
-                            <ul className="list-inline mb-0">
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Edit"
-                                  className="px-2 text-primary"
-                                >
-                                  <i className="bx bx-pencil font-size-18"></i>
-                                </Link>
-                              </li>
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Delete"
-                                  className="px-2 text-danger"
-                                >
-                                  <i className="bx bx-trash-alt font-size-18"></i>
-                                </Link>
-                              </li>
-                              {/* <!-- <li className="list-inline-item dropdown">
-                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
-                                                        <div className="dropdown-menu dropdown-menu-end">
-                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
-                                                        </div>
-                                                    </li> --> */}
-                            </ul>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Cotton</td>
-                          <td>
-                            <span>56</span>
-                          </td>
-                          <td>4.2/5</td>
-                          <td>100</td>
-                          <td>4.2/5</td>
-                          <td>100</td>
-                          <td>
-                            <ul className="list-inline mb-0">
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Edit"
-                                  className="px-2 text-primary"
-                                >
-                                  <i className="bx bx-pencil font-size-18"></i>
-                                </Link>
-                              </li>
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Delete"
-                                  className="px-2 text-danger"
-                                >
-                                  <i className="bx bx-trash-alt font-size-18"></i>
-                                </Link>
-                              </li>
-                              {/* <!-- <li className="list-inline-item dropdown">
-                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
-                                                        <div className="dropdown-menu dropdown-menu-end">
-                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
-                                                        </div>
-                                                    </li> --> */}
-                            </ul>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Mango</td>
-                          <td>
-                            <span>23.25</span>
-                          </td>
-                          <td>2.5/5</td>
-                          <td>350 per dozen</td>
-                          <td>4.2/5</td>
-                          <td>100</td>
-                          <td>
-                            <ul className="list-inline mb-0">
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Edit"
-                                  className="px-2 text-primary"
-                                >
-                                  <i className="bx bx-pencil font-size-18"></i>
-                                </Link>
-                              </li>
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Delete"
-                                  className="px-2 text-danger"
-                                >
-                                  <i className="bx bx-trash-alt font-size-18"></i>
-                                </Link>
-                              </li>
-                              {/* <!-- <li className="list-inline-item dropdown">
-                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
-                                                        <div className="dropdown-menu dropdown-menu-end"><Link className="dropdown-item" to="#">Edit</Link><Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Remove</Link></div>
-                                                    </li> --> */}
-                            </ul>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Ground Nuts</td>
-                          <td>
-                            <span>66</span>
-                          </td>
-                          <td>4.3/5</td>
-                          <td>60</td>
-                          <td>4.2/5</td>
-                          <td>100</td>
-                          <td>
-                            <ul className="list-inline mb-0">
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Edit"
-                                  className="px-2 text-primary"
-                                >
-                                  <i className="bx bx-pencil font-size-18"></i>
-                                </Link>
-                              </li>
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Delete"
-                                  className="px-2 text-danger"
-                                >
-                                  <i className="bx bx-trash-alt font-size-18"></i>
-                                </Link>
-                              </li>
-                              {/* <!-- <li className="list-inline-item dropdown">
-                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
-                                                        <div className="dropdown-menu dropdown-menu-end">
-                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
-                                                        </div>
-                                                    </li> --> */}
-                            </ul>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Banana</td>
-                          <td>
-                            <span>60.5</span>
-                          </td>
-                          <td>3.5/5</td>
-                          <td>60 per dozen</td>
-                          <td>4.2/5</td>
-                          <td>100</td>
-                          <td>
-                            <ul className="list-inline mb-0">
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Edit"
-                                  className="px-2 text-primary"
-                                >
-                                  <i className="bx bx-pencil font-size-18"></i>
-                                </Link>
-                              </li>
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Delete"
-                                  className="px-2 text-danger"
-                                >
-                                  <i className="bx bx-trash-alt font-size-18"></i>
-                                </Link>
-                              </li>
-                              {/* <!-- <li className="list-inline-item dropdown">
-                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
-                                                        <div className="dropdown-menu dropdown-menu-end">
-                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
-                                                        </div>
-                                                    </li> --> */}
-                            </ul>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Soyabean</td>
-                          <td>
-                            <span>45</span>
-                          </td>
-                          <td>4.0/5</td>
-                          <td>80</td>
-                          <td>4.2/5</td>
-                          <td>100</td>
-                          <td>
-                            <ul className="list-inline mb-0">
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Edit"
-                                  className="px-2 text-primary"
-                                >
-                                  <i className="bx bx-pencil font-size-18"></i>
-                                </Link>
-                              </li>
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Delete"
-                                  className="px-2 text-danger"
-                                >
-                                  <i className="bx bx-trash-alt font-size-18"></i>
-                                </Link>
-                              </li>
-                              {/* <!-- <li className="list-inline-item dropdown">
-                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
-                                                        <div className="dropdown-menu dropdown-menu-end">
-                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
-                                                        </div>
-                                                    </li> --> */}
-                            </ul>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Sugar Cane</td>
-                          <td>
-                            <span>33.75</span>
-                          </td>
-                          <td>4.5/5</td>
-                          <td>40 per peace</td>
-                          <td>4.2/5</td>
-                          <td>100</td>
-                          <td>
-                            <ul className="list-inline mb-0">
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Edit"
-                                  className="px-2 text-primary"
-                                >
-                                  <i className="bx bx-pencil font-size-18"></i>
-                                </Link>
-                              </li>
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Delete"
-                                  className="px-2 text-danger"
-                                >
-                                  <i className="bx bx-trash-alt font-size-18"></i>
-                                </Link>
-                              </li>
-                              {/* <!-- <li className="list-inline-item dropdown">
-                                                        <Link className="text-muted dropdown-toggle font-size-18 px-2" to="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i className="bx bx-dots-vertical-rounded"></i></Link>
-                                                        <div className="dropdown-menu dropdown-menu-end">
-                                                            <Link className="dropdown-item" to="#">Action</Link><Link className="dropdown-item" to="#">Another action</Link><Link className="dropdown-item" to="#">Something else here</Link>
-                                                        </div>
-                                                    </li> --> */}
-                            </ul>
-                          </td>
-                        </tr>
+                        
+
+
                       </tbody>
                     </table>
                   </div>
+
+
                 </div>
               </div>
             </div>
