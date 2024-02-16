@@ -19,6 +19,7 @@ function MainLayout() {
         <Header OpenSidebar={OpenSidebar}/>
         <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
         <Home />
+        {/* <ProductList></ProductList> */}
       </div>
     )
 }
