@@ -26,6 +26,7 @@ public class UserDetailsDTO {
 	private String panNo;
 	private String status;
 	
+	
 	// ---------------- Getter & Setter --------------------------
 	public Long getId() {
 		return id;

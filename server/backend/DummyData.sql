@@ -189,7 +189,7 @@ VALUES
   ('1', 'Wheat', 'CROP', 'wheat.jpg'),
   ('2', 'Corn', 'CROP', 'corn.jpg'),
   ('3', 'Tomato', 'VEGETABLE', 'tomato.jpg'),
-  ('4', 'Apple', 'FRUIT', 'apple.jpg');
+  ('4', 'Apple', 'FRUIT', 'apple.jpg'),
   ('5', 'Potato', 'VEGETABLE', 'potato.jpg'),
   ('6', 'Orange', 'FRUIT', 'orange.jpg'),
   ('7', 'Rice', 'CROP', 'rice.jpg'),
@@ -203,7 +203,7 @@ VALUES
     ('m1', 'Machine1', 'TYPE1', '/path/to/image1.jpg'),
     ('m2', 'Machine2', 'TYPE2', '/path/to/image2.jpg'),
     ('m3', 'Machine3', 'TYPE1', '/path/to/image3.jpg'),
-    ('m4', 'Machine4', 'TYPE3', '/path/to/image4.jpg');
+    ('m4', 'Machine4', 'TYPE3', '/path/to/image4.jpg'),
     ('m5', 'Machine5', 'TYPE2', '/path/to/image5.jpg'),
     ('m6', 'Machine6', 'TYPE1', '/path/to/image6.jpg'),
     ('m7', 'Machine7', 'TYPE3', '/path/to/image7.jpg'),
@@ -217,11 +217,10 @@ VALUES
     ('1', 'Lentils', 'PULSES', '/path/to/lentils.jpg'),
     ('2', 'Chickpeas', 'PULSES', '/path/to/chickpeas.jpg'),
     ('3', 'Black Gram', 'PULSES', '/path/to/blackgram.jpg'),
-    ('4', 'Green Gram', 'PULSES', '/path/to/greengram.jpg');
+    ('4', 'Green Gram', 'PULSES', '/path/to/greengram.jpg'),
     ('5', 'Pigeon Peas', 'PULSES', '/path/to/pigeonpeas.jpg'),
     ('6', 'Red Lentils', 'PULSES', '/path/to/redlentils.jpg'),
     ('7', 'Yellow Lentils', 'PULSES', '/path/to/yellowlentils.jpg'),
     ('8', 'Split Bengal Gram', 'PULSES', '/path/to/splitbengalgram.jpg'),
     ('9', 'Kidney Beans', 'PULSES', '/path/to/kidneybeans.jpg'),
     ('10', 'Black-eyed Peas', 'PULSES', '/path/to/blackeyedpeas.jpg');
->>>>>>> c8da693c02b00e2d3347724047c5aec94c49f269
