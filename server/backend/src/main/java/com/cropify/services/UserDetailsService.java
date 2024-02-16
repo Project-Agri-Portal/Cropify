@@ -1,6 +1,9 @@
 package com.cropify.services;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cropify.dto.UserDetailsDTO;
 
@@ -20,4 +23,10 @@ public interface UserDetailsService {
 	
 	// Delete operations
 	void deleteUser(Long userId);
+	
+	//Download image
+	byte[] downloadImage(Long userId) throws IOException;
+		
+	//Upload image
+	Long uploadImage(Long userId,MultipartFile userImage) throws IOException;
 }

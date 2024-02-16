@@ -1,119 +1,71 @@
---- Users data
- INSERT INTO user_details values
- (1,"123456789123","deep@gmail.com", "deepak","nikhare","9977887788","Ac78778787","pass","Verified","Pauni","abcd","441910","mh","SELLER");
- INSERT INTO user_details values
- (3,"223456789124","deep3@gmail.com", "deepak3","nikhare3","8877887766","BC78778788","pass3","Verified","Pauni","abcd","441910","mh","FARMER");
 
 
--- products
-INSERT INTO FarmProducts (farm_prod_id, farm_prod_name, farm_prod_type)
-VALUES
-(1, 'Tomato', 'P'),
-(2, 'Apple', 'q'),
-(3, 'Lentils', 'Pulse'),
-(4, 'Spinach', 'Vegetable'),
-(5, 'Banana', 'Fruit'),
-(6, 'Chickpeas', 'Pulse'),
-(7, 'Carrot', 'Vegetable'),
-(8, 'Orange', 'Fruit'),
-(9, 'Black-eyed Peas', 'Pulse'),
-(10, 'Cabbage', 'Vegetable'),
-(11, 'Grapes', 'Fruit'),
-(12, 'Green Gram', 'Pulse'),
-(13, 'Bell Pepper', 'Vegetable'),
-(14, 'Mango', 'Fruit'),
-(15, 'Red Lentils', 'Pulse'),
-(16, 'Cucumber', 'Vegetable'),
-(17, 'Pear', 'Fruit'),
-(18, 'Kidney Beans', 'Pulse'),
-(19, 'Broccoli', 'Vegetable'),
-(20, 'Pineapple', 'Fruit'),
-(21, 'Split Peas', 'Pulse'),
-(22, 'Zucchini', 'Vegetable'),
-(23, 'Watermelon', 'Fruit'),
-(24, 'Moong Beans', 'Pulse'),
-(25, 'Brussels Sprouts', 'Vegetable'),
-(26, 'Papaya', 'Fruit'),
-(27, 'Chickpea Flour', 'Pulse'),
-(28, 'Eggplant', 'Vegetable'),
-(29, 'Kiwi', 'Fruit'),
-(30, 'Masoor Dal', 'Pulse'),
-(31, 'Asparagus', 'Vegetable'),
-(32, 'Strawberry', 'Fruit'),
-(33, 'Black Gram', 'Pulse'),
-(34, 'Cauliflower', 'Vegetable'),
-(35, 'Blueberry', 'Fruit'),
-(36, 'Green Peas', 'Pulse'),
-(37, 'Bell Pepper', 'Vegetable'),
-(38, 'Pomegranate', 'Fruit'),
-(39, 'Yellow Lentils', 'Pulse'),
-(40, 'Potato', 'Vegetable'),
-(41, 'Mango', 'Fruit'),
-(42, 'Cowpeas', 'Pulse'),
-(43, 'Radish', 'Vegetable'),
-(44, 'Peach', 'Fruit'),
-(45, 'Black Beans', 'Pulse'),
-(46, 'Cabbage', 'Vegetable'),
-(47, 'Grapes', 'Fruit'),
-(48, 'Chickpeas', 'Pulse'),
-(49, 'Spinach', 'Vegetable'),
-(50, 'Apple', 'Fruit');
+-- ---------------------------------- admin table--------------------------------------------
+
+INSERT INTO admin (admin_mobile, admin_email, first_name, root_admin, join_date, last_name, admin_password) VALUES
+('1234567890', 'admin1@example.com', 'Aarav', 1, '2022-01-01', 'Patel', 'password123'),
+('9876543210', 'admin2@example.com', 'Aditi', 0, '2022-01-02', 'Sharma', 'admin@2022'),
+('5556667777', 'admin3@example.com', 'Aryan', 0, '2022-01-03', 'Verma', 'securePassword'),
+('9998887777', 'admin4@example.com', 'Avani', 0, '2022-01-04', 'Joshi', 'myAdminPass'),
+('7778889999', 'admin5@example.com', 'Dev', 1, '2022-01-05', 'Singh', 'passWord2022'),
+('4445556666', 'admin6@example.com', 'Esha', 0, '2022-01-06', 'Kumar', 'secretPass'),
+('2223334444', 'admin7@example.com', 'Kabir', 0, '2022-01-07', 'Mishra', 'admin123'),
+('6665554444', 'admin8@example.com', 'Ishika', 0, '2022-01-08', 'Gupta', '1234Secure'),
+('1112223333', 'admin9@example.com', 'Mihir', 0, '2022-01-09', 'Pandey', 'p@ssw0rd'),
+('8887776666', 'admin10@example.com', 'Riya', 1, '2022-01-10', 'Malhotra', 'dummyAdminPass');
+
+-------------------------------- agriculture_products table ------------------------------------
+
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_path) VALUES
+('AP001', 'NeemGuard', 'Insecticide', '/images/neemguard.jpg'),
+('AP002', 'BioShield', 'Biopesticide', '/images/bioshield.jpg'),
+('AP003', 'GreenShield', 'Herbicide', '/images/greenshield.jpg'),
+('AP004', 'CropVital', 'Fungicide', '/images/cropvital.jpg'),
+('AP005', 'TurmericGuard', 'Insecticide', '/images/turmericguard.jpg'),
+('AP006', 'OrganicShield', 'Biopesticide', '/images/organicshield.jpg'),
+('AP007', 'LeafSafe', 'Herbicide', '/images/leafsafe.jpg'),
+('AP008', 'MintFresh', 'Fungicide', '/images/mintfresh.jpg'),
+('AP009', 'RiceProtector', 'Insecticide', '/images/riceprotector.jpg'),
+('AP010', 'FruitDefender', 'Biopesticide', '/images/fruitdefender.jpg');
+
+--------------------------------- farm_products table -----------------------------
+
+INSERT INTO farm_products (farm_prod_id, farm_prod_name, farm_prod_type, img_path) VALUES
+('FP001', 'Basmati Rice', 'Grains', '/images/basmati_rice.jpg'),
+('FP002', 'Alphonso Mangoes', 'Fruits', '/images/alphonso_mangoes.jpg'),
+('FP003', 'Masoor Dal', 'Pulses', '/images/masoor_dal.jpg'),
+('FP004', 'Turmeric Powder', 'Spices', '/images/turmeric_powder.jpg'),
+('FP005', 'Desi Ghee', 'Dairy', '/images/desi_ghee.jpg'),
+('FP006', 'Kesar', 'Herbs', '/images/kesar.jpg'),
+('FP007', 'Darjeeling Tea', 'Beverages', '/images/darjeeling_tea.jpg'),
+('FP008', 'Papaya', 'Fruits', '/images/papaya.jpg'),
+('FP009', 'Mustard Oil', 'Edible Oils', '/images/mustard_oil.jpg'),
+('FP010', 'Jaggery', 'Sweeteners', '/images/jaggery.jpg');
+
+--------------------------------- machinery table -----------------------------------
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type) VALUES
+('M001', '/images/tractor.jpg', 'Kisan King Tractor', 'TRACTOR'),
+('M002', '/images/plough.jpg', 'Harit Kranti Plough', 'PLOUGH'),
+('M003', '/images/harvester.jpg', 'Krishi Sampada Harvester', 'HARVESTOR'),
+('M004', '/images/seeder.jpg', 'Beej Boy Seeder', 'SEEDER'),
+('M005', '/images/irrigation_pump.jpg', 'Jal Shakti Pump', 'IRRIGATION_PUMP'),
+('M006', '/images/crop_sprayer.jpg', 'Swasthya Khet Crop Sprayer', 'CROP_SPRAYER'),
+('M007', '/images/tiller.jpg', 'Krishi Sathi Tiller', 'TILLER'),
+('M008', '/images/thresher.jpg', 'Annapurna Thresher', 'THRESHER'),
+('M009', '/images/cultivator.jpg', 'Utkarsh Krishi Cultivator', 'CULTIVATOR'),
+('M010', '/images/seed_drill.jpg', 'Beej Express Seed Drill', 'SEED_DRILL');
 
 
--- Machine
-INSERT INTO Machinery (id, machinename, type)
-VALUES
-(1, 'Tractor', 'Farm Equipment'),
-(2, 'Harvester', 'Farm Equipment'),
-(3, 'Plow', 'Farm Equipment'),
-(4, 'Seeder', 'Farm Equipment'),
-(5, 'Cultivator', 'Farm Equipment'),
-(6, 'Sprayer', 'Farm Equipment'),
-(7, 'Tiller', 'Farm Equipment'),
-(8, 'Combine Harvester', 'Farm Equipment'),
-(9, 'Irrigation Pump', 'Farm Equipment'),
-(10, 'Fertilizer Spreader', 'Farm Equipment'),
-(11, 'Baler', 'Farm Equipment'),
-(12, 'Mower', 'Farm Equipment'),
-(13, 'Drip Irrigation System', 'Irrigation Equipment'),
-(14, 'Windrower', 'Farm Equipment'),
-(15, 'Rotary Tiller', 'Farm Equipment'),
-(16, 'Tractor Seeder', 'Farm Equipment'),
-(17, 'Backhoe Loader', 'Construction Equipment'),
-(18, 'Front Loader', 'Farm Equipment'),
-(19, 'Harrow', 'Farm Equipment'),
-(20, 'Manure Spreader', 'Farm Equipment'),
-(21, 'Thresher', 'Farm Equipment'),
-(22, 'Seeder Drill', 'Farm Equipment'),
-(23, 'Cotton Picker', 'Farm Equipment'),
-(24, 'Greenhouse Tractor', 'Farm Equipment'),
-(25, 'Subsoiler', 'Farm Equipment'),
-(26, 'Agricultural Drone', 'Precision Farming Equipment'),
-(27, 'Hoe', 'Farm Equipment'),
-(28, 'Mulcher', 'Farm Equipment'),
-(29, 'Sprinkler System', 'Irrigation Equipment'),
-(30, 'Rice Transplanter', 'Farm Equipment'),
-(31, 'Plastic Mulch Layer', 'Farm Equipment'),
-(32, 'Aerator', 'Farm Equipment'),
-(33, 'Seed Drill', 'Farm Equipment'),
-(34, 'Chaff Cutter', 'Farm Equipment'),
-(35, 'Hydroponic System', 'Precision Farming Equipment'),
-(36, 'Post Hole Digger', 'Farm Equipment'),
-(37, 'Garden Tractor', 'Farm Equipment'),
-(38, 'Fogging Machine', 'Farm Equipment'),
-(39, 'Electric Fence', 'Farm Equipment'),
-(40, 'Soil Moisture Sensor', 'Precision Farming Equipment'),
-(41, 'GPS Guidance System', 'Precision Farming Equipment'),
-(42, 'Silage Baler', 'Farm Equipment'),
-(43, 'Hedge Trimmer', 'Farm Equipment'),
-(44, 'Chisel Plow', 'Farm Equipment'),
-(45, 'Cane Harvester', 'Farm Equipment'),
-(46, 'Paddy Harvester', 'Farm Equipment'),
-(47, 'Farm Truck', 'Transportation Equipment'),
-(48, 'Cattle Feed Mixer', 'Farm Equipment'),
-(49, 'Farm Trailer', 'Transportation Equipment'),
-(50, 'Electric Pruner', 'Farm Equipment');
+---------------------------------------- user_details table -----------------------------------
 
+INSERT INTO user_details (aadhar_no, email, first_name, last_name, mobile_no, pan_no, password, status, city, full_address, pincode, state, user_type) VALUES
+('112233445566', 'amit.verma@example.com', 'Amit', 'Verma', '9876543211', 'ABCD123456', 'hashed_password', 'Active', 'Jaipur', '456, XYZ Street, ABC Colony', '302001', 'Rajasthan', 'FARMER'),
+('223344556677', 'poonam.gupta@example.com', 'Poonam', 'Gupta', '8765432101', 'PQRS567890', 'hashed_password', 'Active', 'Lucknow', '789, LMN Street, PQR Colony', '226001', 'Uttar Pradesh', 'SELLER'),
+('334455667788', 'mohan.sharma@example.com', 'Mohan', 'Sharma', '7654321090', 'WXYZ123456', 'hashed_password', 'Active', 'Hyderabad', '101, UVW Street, LMN Colony', '500001', 'Telangana', 'CUSTOMER'),
+('445566778899', 'neha.yadav@example.com', 'Neha', 'Yadav', '6543210981', 'LMNO567890', 'hashed_password', 'Inactive', 'Ahmedabad', '202, PQR Street, WXY Colony', '380001', 'Gujarat', 'FARMER'),
+('556677889900', 'raj.mishra@example.com', 'Raj', 'Mishra', '5432109872', 'UVWX123456', 'hashed_password', 'Active', 'Chandigarh', '303, ABC Street, XYZ Colony', '160001', 'Punjab', 'SELLER'),
+('667788990011', 'ananya.singh@example.com', 'Ananya', 'Singh', '4321098765', 'PQRS123456', 'hashed_password', 'Active', 'Bhopal', '505, WXY Street, UVW Colony', '462001', 'Madhya Pradesh', 'SELLER');
 
 -- Agriculture product
 INSERT INTO AgricultureProducts (id, agriproductname, type)
@@ -272,3 +224,4 @@ VALUES
     ('8', 'Split Bengal Gram', 'PULSES', '/path/to/splitbengalgram.jpg'),
     ('9', 'Kidney Beans', 'PULSES', '/path/to/kidneybeans.jpg'),
     ('10', 'Black-eyed Peas', 'PULSES', '/path/to/blackeyedpeas.jpg');
+>>>>>>> c8da693c02b00e2d3347724047c5aec94c49f269

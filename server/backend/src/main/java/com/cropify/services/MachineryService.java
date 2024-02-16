@@ -1,6 +1,10 @@
 package com.cropify.services;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cropify.dto.MachineryDTO;
 
@@ -14,4 +18,11 @@ public interface MachineryService{
 	
 	// Delete operations
 	public void deleteMachineById(String id);
+	
+	//Download image
+	byte[] downloadImage(String mId) throws IOException;
+	
+	//Upload image
+	String uploadImage(String mId,MultipartFile mImage) throws IOException;
 }
+
