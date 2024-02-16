@@ -4,6 +4,7 @@ import
   BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
  from 'react-icons/bs'
 import "./MainLayout.css";
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 function SideBar({openSidebarToggle, OpenSidebar}) {
   return (
@@ -22,9 +23,12 @@ function SideBar({openSidebarToggle, OpenSidebar}) {
                 </a>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
+                {/* <a href="">
                     <BsFillArchiveFill className='icon'/> Products
-                </a>
+                </a> */}
+                <Link to="/admin/products">
+                <BsFillArchiveFill className='icon'/> Products
+                </Link>
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
