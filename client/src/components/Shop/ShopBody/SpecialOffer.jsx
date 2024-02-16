@@ -49,7 +49,7 @@ const SpecialOffer = () => {
             <h2 style={{color: "rgb(51, 77, 13)"}}>Special Offer on Fruits!</h2>
             <p style={{color: "rgb(51, 77, 13)"}}>Hurry up! Limited time offer.</p>
             {/* <!-- Countdown Timer --> */}
-            <div id="countdown" onLoa className="countdown"></div>
+            <div id="countdown" onLoad={offer} className="countdown"></div>
           </div>
         </div>
       </div>

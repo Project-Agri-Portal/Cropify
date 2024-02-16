@@ -3,8 +3,16 @@ import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "./NavBar.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
+
+  const onLogout =() =>{
+    localStorage.removeItem('userId');
+    toast.warn("LogOut");
+  }
+
   return (
     <nav className="navbar navbar-expand-lg fixed-top">
       <div className="container-fluid">
@@ -69,6 +77,14 @@ const Navbar = () => {
                 </a> */}
                 <Link to="/blog" className="nav-link mx-lg-2">
                   Blog
+                </Link>
+              </li>
+              <li className="nav-item">
+                {/* <a className="nav-link mx-lg-2" href="#">
+                  Contact
+                </a> */}
+                <Link to="/" className="nav-link mx-lg-2">
+                  <a href="" onClick={onLogout}>Logout</a>
                 </Link>
               </li>
             </ul>
