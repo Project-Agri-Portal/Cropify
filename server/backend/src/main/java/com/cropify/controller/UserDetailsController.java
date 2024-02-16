@@ -1,5 +1,10 @@
 package com.cropify.controller;
 
+import static org.springframework.http.MediaType.IMAGE_GIF_VALUE;
+import static org.springframework.http.MediaType.IMAGE_JPEG_VALUE;
+import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
+
+import java.io.IOException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,14 +22,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.cropify.dto.LoginDTO;
 import com.cropify.dto.UserDetailsDTO;
 import com.cropify.services.UserDetailsService;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @Validated
 public class UserDetailsController {
 	@Autowired
@@ -52,6 +60,13 @@ public class UserDetailsController {
 		return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
 	}
 	
+	@PostMapping("/login")
+	public ResponseEntity<UserDetailsDTO> loginCustomer(
+			@RequestBody LoginDTO credentials)
+	{
+		return ResponseEntity.ok(userService.loginCustomer(credentials.getEmail(), credentials.getPassword()));
+	}
+	
 	// ------- UPDATE methods ----------------
 	@PutMapping("/{userId}")
 	public ResponseEntity<UserDetailsDTO> updateUser(
@@ -68,5 +83,23 @@ public class UserDetailsController {
 	{
 		userService.deleteUser(userId);
 		return ResponseEntity.status(HttpStatus.OK).body("User deleted");
+	}
+	
+	
+	// Image Operations ------------------------------------------------------
+
+	@PostMapping(value="/image/{userId}",
+			consumes = "multipart/form-data")
+	public ResponseEntity<?> uploadImageUser(@PathVariable @NotNull Long userId, 
+													@RequestParam MultipartFile userImage)throws IOException{
+		Long userId1=userService.uploadImage(userId, userImage);
+		return ResponseEntity.status(HttpStatus.CREATED).body("image Uploaded for user Id :"+userId1);
+	}
+	
+	
+	@GetMapping(value="/image/{userId}",
+			produces = { IMAGE_GIF_VALUE , IMAGE_JPEG_VALUE , IMAGE_PNG_VALUE })
+	public ResponseEntity<?> downloadImage(@PathVariable @NotNull Long userId) throws IOException{
+		return ResponseEntity.ok(userService.downloadImage(userId));
 	}
 }

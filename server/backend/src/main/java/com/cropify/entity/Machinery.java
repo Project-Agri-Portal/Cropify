@@ -11,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -40,8 +41,9 @@ public class Machinery implements Prefixable {
 	@Enumerated(EnumType.STRING)
 	private MachineType machineType;
 	
-	@Column
-	private String imgPath;
+	@Lob
+	@Column(columnDefinition = "mediumblob")
+	private byte[] imgPath;
 	
 	// ------------ Relationship Mapping ------------------------------
 //	@JsonIgnore
@@ -162,6 +164,14 @@ public class Machinery implements Prefixable {
 	@Override
 	public String getIdColName() {
 		return "machine_id";
+	}
+
+	public byte[] getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(byte[] imgPath) {
+		this.imgPath = imgPath;
 	}
 }
 

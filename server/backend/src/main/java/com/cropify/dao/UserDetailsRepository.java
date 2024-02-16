@@ -15,4 +15,6 @@ public interface UserDetailsRepository extends JpaRepository<UserDetails, Long>{
 //	
 //	// --- Delete a user by ID ---
 //	void deleteById(Long userId);
+	
+	Optional<UserDetails> findByEmailAndPassword(String email, String password);
 }
