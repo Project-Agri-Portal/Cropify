@@ -74,4 +74,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			throw new ResourceNotFoundException(errorMessage.append(userId).toString());
 	}
 
+	// --------------- Login Operation ----------------------
+	@Override
+	public UserDetailsDTO loginCustomer(String email, String password) {
+	
+		UserDetails user = userRepo.findByEmailAndPassword(email, password).orElseThrow(
+				() -> new ResourceNotFoundException("Invalid credentials"));
+		return mapper.map(user, UserDetailsDTO.class);
+	}
+
 }
