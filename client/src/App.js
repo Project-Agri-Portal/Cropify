@@ -22,6 +22,8 @@ import Cart from "./components/Shop/ShopBody/Cart.jsx"
 import Checkout from "./components/Shop/ShopBody/Checkout.jsx";
 import MainLayout from "./components/ComponentAdmin/MainLayout.jsx";
 import AdminProduct from "./components/ComponentAdmin/ProductList.jsx";
+import Machinery from "./components/ComponentAdmin/Machinery.jsx";
+import AgricultureProduct from "./components/ComponentAdmin/AgricultureProduct.jsx";
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
           <Route path="/shop/cart/checkout" component={Checkout} exact />
           <Route path="/admin" component={MainLayout} exact />
           <Route path="/admin/product" component={AdminProduct} exact />
+          <Route path="/admin/machinery" component={Machinery} exact />
+          <Route path="/admin/agriproduct" component={AgricultureProduct} exact />
 
 
           {/* <Route path="/shop/productdetails" component={SingleProductDetails} exact /> */}

@@ -31,4 +31,13 @@ const farmerCount = () => {
     return app.get("/farmerCount");
 }
 
-export default {agricultureProductCount, farmProductCount, machineryCount, sellerCount, customerCount, farmerCount};
+const getFarmProducts = () => {
+    return app.get("/machinery/");
+}
+
+export default {agricultureProductCount, 
+                farmProductCount, 
+                machineryCount, 
+                sellerCount, 
+                customerCount, 
+                farmerCount};
