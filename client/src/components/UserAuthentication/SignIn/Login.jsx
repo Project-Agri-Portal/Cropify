@@ -5,7 +5,7 @@ import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "./Login.css";
 // import axios from "axios";
-import backend from "../../../services/backend.service";
+import loginService from "../../../services/login.service";
 
 function Login() {
   const [bgColor, setBgColor] = useState("#bde3ff");
@@ -50,7 +50,7 @@ function Login() {
 
     // stored the required fields in an object and passed it to axios http method
     // using the imported file name 'backend'
-    await backend.loginCustomer(credentials)
+    await loginService.loginUser(credentials)
       .then((res) => {
         console.log(res.data);
         // storing the user type (customer, farmer, seller)
@@ -58,6 +58,7 @@ function Login() {
 
         // Redirecting to respective user type's home page on successfull login
         if (res.status === 200) {
+          localStorage.setItem('userId', res.data['id']);
           history.replace("/home/" + userType.toLowerCase());
         }
       })
