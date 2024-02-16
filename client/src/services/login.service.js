@@ -11,8 +11,12 @@ const getCustomer = () => {
     return app.get('/users/');
 }
 
-const loginCustomer = (credentials) => {
+const loginUser = (credentials) => {
     return app.post('/users/login', credentials);
 }
 
-export default { getCustomer, loginCustomer };
+const registerUser = (userData) => {
+    return app.post('/users/', userData);
+}
+
+export default { getCustomer, loginUser, registerUser };
