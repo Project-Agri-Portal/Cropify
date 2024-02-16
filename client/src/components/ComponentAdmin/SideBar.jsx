@@ -26,13 +26,13 @@ function SideBar({openSidebarToggle, OpenSidebar}) {
             <li className='sidebar-list-item'>
             <BsFillArchiveFill className='icon'/>
                 <Link to="/admin/product">
-                Machinery
+                 Farm Products
                 </Link>
             </li>
             <li className='sidebar-list-item'>
             <BsFillArchiveFill className='icon'/>
                 <Link to="/admin/machinery">
-                 Farm Product
+                 Machinery
                 </Link>
             </li>
             <li className='sidebar-list-item'>

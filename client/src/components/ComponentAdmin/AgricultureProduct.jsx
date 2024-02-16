@@ -4,6 +4,8 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import Header from './Header'
 import Sidebar from './SideBar'
+import Product from "../../services/agriproduct.service"
+import { useEffect } from 'react';
 import "./MainLayout.css";
 import { useState } from 'react';
 import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper} from '@mui/material';
@@ -15,55 +17,75 @@ import Stack from '@mui/material/Stack';
 const AgricultureProduct = () => {
 
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+  const [productList, setProductList] = useState([]);
 
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle)
   }
 
-  return (
+  const onload = async () => {
+    await Product.getAgriProducts()
+                      .then((result) => {
+                        setProductList(result['data'])
+                        console.log(result['data']);
+                      })
+                      .catch((error)=> {
+                        console.log(error);
+                      })
+  }
 
+  useEffect(() => {
+    onload();
+    console.log("use");
+  }, [])
+
+  return (
     <div className='grid-container'>
-        <Header OpenSidebar={OpenSidebar}/>
-        <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
-        {/* <Home /> */}
-        {/* <ProductList></ProductList> */}
-        <main className='main-container'>
-      <TableContainer component={Paper} sx={{ maxWidth: '100%' }}>
-        <Table aria-lable = 'smple table' sx={{ width: '100%' }}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Id</TableCell>
-            <TableCell>First Name</TableCell>
-            <TableCell>Last Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Delete</TableCell>
-            <TableCell>Edit</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow key={1} sx={{'&:last-child td, &:last-child th' : {border : 0}}}>
-            <TableCell>1</TableCell>
-            <TableCell>abc</TableCell>
-            <TableCell>abc</TableCell>
-            <TableCell>abc@gmail.com</TableCell>
-            <TableCell>
-            <Stack direction="row" spacing={2}>
-      <Button variant="outlined" startIcon={<DeleteIcon />}>
-        Delete
-      </Button>
-    </Stack>
-            </TableCell>
-            <TableCell>
-            <Button variant="contained" endIcon={<SendIcon />}>
-                Edit
+    <Header OpenSidebar={OpenSidebar}/>
+    <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
+    {/* <Home /> */}
+    {/* <ProductList></ProductList> */}
+    <main className='main-container'>
+  <TableContainer component={Paper} sx={{ maxWidth: '100%' }}>
+    <Table aria-lable = 'smple table' sx={{ width: '100%' }}>
+    <TableHead>
+      <TableRow>
+        <TableCell className='text-center'>Product Id</TableCell>
+        <TableCell className='text-center'>Product Name</TableCell>
+        <TableCell className='text-center'>Product Type</TableCell>
+        <TableCell className='text-center'>Delete Product</TableCell>
+        <TableCell className='text-center'>Edit Product</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+
+      {productList.map((product) => {
+          return (
+            <TableRow key={1} sx={{'&:last-child td, &:last-child th' : {border : 0}}}>
+          <TableCell className='text-center'>{product['farmProductId']}</TableCell>
+          <TableCell className='text-center'>{product['farmProductName']}</TableCell>
+          <TableCell className='text-center'>{product['farmProductType']}</TableCell>
+          <TableCell className='text-center'>
+          <Stack direction="row" spacing={2} className='center d-flex justify-content-center'>
+            <Button variant="outlined" startIcon={<DeleteIcon />}>
+              Delete
             </Button>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-        </Table>
-      </TableContainer>
-      </main>
-      </div>
+          </Stack>
+          </TableCell>
+          <TableCell className='text-center d-flex justify-content-center'>
+          <Button variant="contained" endIcon={<SendIcon />}>
+              Edit
+          </Button>
+          </TableCell>
+        </TableRow>
+          );
+      })};
+
+    </TableBody>
+    </Table>
+  </TableContainer>
+  </main>
+  </div>
   );
 };
 

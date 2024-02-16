@@ -1,9 +1,10 @@
 // ProductList.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import Header from './Header'
 import Sidebar from './SideBar'
+import Product from "../../services/machinery.service";
 import "./MainLayout.css";
 import { useState } from 'react';
 import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper} from '@mui/material';
@@ -15,10 +16,27 @@ import Stack from '@mui/material/Stack';
 const Machinery = () => {
 
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+  const [productList, setProductList] = useState([]);
 
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle)
   }
+
+  const onload = async () => {
+    await Product.getFarmProducts()
+                      .then((result) => {
+                        setProductList(result['data'])
+                        console.log(result['data']);
+                      })
+                      .catch((error)=> {
+                        console.log(error);
+                      })
+  }
+
+  useEffect(() => {
+    onload();
+    console.log("use");
+  }, [])
 
   return (
 
@@ -32,33 +50,37 @@ const Machinery = () => {
         <Table aria-lable = 'smple table' sx={{ width: '100%' }}>
         <TableHead>
           <TableRow>
-            <TableCell>Id</TableCell>
-            <TableCell>First Name</TableCell>
-            <TableCell>Last Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Delete</TableCell>
-            <TableCell>Edit</TableCell>
+            <TableCell className='text-center'>Machine Id</TableCell>
+            <TableCell className='text-center'>Machine Name</TableCell>
+            <TableCell className='text-center'>Machine Type</TableCell>
+            <TableCell className='text-center'>Delete Machine</TableCell>
+            <TableCell className='text-center'>Edit Machine</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow key={1} sx={{'&:last-child td, &:last-child th' : {border : 0}}}>
-            <TableCell>1</TableCell>
-            <TableCell>abc</TableCell>
-            <TableCell>abc</TableCell>
-            <TableCell>abc@gmail.com</TableCell>
-            <TableCell>
-            <Stack direction="row" spacing={2}>
-      <Button variant="outlined" startIcon={<DeleteIcon />}>
-        Delete
-      </Button>
-    </Stack>
-            </TableCell>
-            <TableCell>
-            <Button variant="contained" endIcon={<SendIcon />}>
-                Edit
-            </Button>
-            </TableCell>
-          </TableRow>
+
+          {productList.map((product) => {
+              return (
+                <TableRow key={1} sx={{'&:last-child td, &:last-child th' : {border : 0}}}>
+              <TableCell className='text-center'>{product['machineId']}</TableCell>
+              <TableCell className='text-center'>{product['machineName']}</TableCell>
+              <TableCell className='text-center'>{product['machineType']}</TableCell>
+              <TableCell className='text-center'>
+              <Stack direction="row" spacing={2} className='center d-flex justify-content-center'>
+                <Button variant="outlined" startIcon={<DeleteIcon />}>
+                  Delete
+                </Button>
+              </Stack>
+              </TableCell>
+              <TableCell className='text-center d-flex justify-content-center'>
+              <Button variant="contained" endIcon={<SendIcon />}>
+                  Edit
+              </Button>
+              </TableCell>
+            </TableRow>
+              );
+          })};
+
         </TableBody>
         </Table>
       </TableContainer>

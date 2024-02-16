@@ -1,10 +1,11 @@
 // ProductList.js
-import React, { useEffect } from 'react';
+import React from 'react';
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import Header from './Header'
-import Sidebar from './SideBar'
-import Product from "../../services/machinery.service";
+import Sidebar from './SideBar';
+import Product from "../../services/farmproduct.service"
+import { useEffect } from 'react';
 import "./MainLayout.css";
 import { useState } from 'react';
 import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper} from '@mui/material';
@@ -41,51 +42,51 @@ const ProductList = () => {
   return (
 
     <div className='grid-container'>
-        <Header OpenSidebar={OpenSidebar}/>
-        <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
-        {/* <Home /> */}
-        {/* <ProductList></ProductList> */}
-        <main className='main-container'>
-      <TableContainer component={Paper} sx={{ maxWidth: '100%' }}>
-        <Table aria-lable = 'smple table' sx={{ width: '100%' }}>
-        <TableHead>
-          <TableRow>
-            <TableCell className='text-center'>Machine Id</TableCell>
-            <TableCell className='text-center'>Machine Name</TableCell>
-            <TableCell className='text-center'>Machine Type</TableCell>
-            <TableCell className='text-center'>Delete Machine</TableCell>
-            <TableCell className='text-center'>Edit Machine</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+    <Header OpenSidebar={OpenSidebar}/>
+    <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
+    {/* <Home /> */}
+    {/* <ProductList></ProductList> */}
+    <main className='main-container'>
+  <TableContainer component={Paper} sx={{ maxWidth: '100%' }}>
+    <Table aria-lable = 'smple table' sx={{ width: '100%' }}>
+    <TableHead>
+      <TableRow>
+        <TableCell className='text-center'>Product Id</TableCell>
+        <TableCell className='text-center'>Product Name</TableCell>
+        <TableCell className='text-center'>Product Type</TableCell>
+        <TableCell className='text-center'>Delete Product</TableCell>
+        <TableCell className='text-center'>Edit Product</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
 
-          {productList.map((product) => {
-              return (
-                <TableRow key={1} sx={{'&:last-child td, &:last-child th' : {border : 0}}}>
-              <TableCell className='text-center'>{product['machineId']}</TableCell>
-              <TableCell className='text-center'>{product['machineName']}</TableCell>
-              <TableCell className='text-center'>{product['machineType']}</TableCell>
-              <TableCell className='text-center'>
-              <Stack direction="row" spacing={2} className='center d-flex justify-content-center'>
-                <Button variant="outlined" startIcon={<DeleteIcon />}>
-                  Delete
-                </Button>
-              </Stack>
-              </TableCell>
-              <TableCell className='text-center d-flex justify-content-center'>
-              <Button variant="contained" endIcon={<SendIcon />}>
-                  Edit
-              </Button>
-              </TableCell>
-            </TableRow>
-              );
-          })};
+      {productList.map((product) => {
+          return (
+            <TableRow key={1} sx={{'&:last-child td, &:last-child th' : {border : 0}}}>
+          <TableCell className='text-center'>{product['farmProductId']}</TableCell>
+          <TableCell className='text-center'>{product['farmProductName']}</TableCell>
+          <TableCell className='text-center'>{product['farmProductType']}</TableCell>
+          <TableCell className='text-center'>
+          <Stack direction="row" spacing={2} className='center d-flex justify-content-center'>
+            <Button variant="outlined" startIcon={<DeleteIcon />}>
+              Delete
+            </Button>
+          </Stack>
+          </TableCell>
+          <TableCell className='text-center d-flex justify-content-center'>
+          <Button variant="contained" endIcon={<SendIcon />}>
+              Edit
+          </Button>
+          </TableCell>
+        </TableRow>
+          );
+      })};
 
-        </TableBody>
-        </Table>
-      </TableContainer>
-      </main>
-      </div>
+    </TableBody>
+    </Table>
+  </TableContainer>
+  </main>
+  </div>
   );
 };
 
