@@ -8,11 +8,15 @@ const app = axios.create({
 });
 
 const getFarmProducts = () => {
-    return app.get('farmProducts/');
+    return app.get('farmproductdetails/join');
+}
+
+const getImg = (id) => {
+    return app.get('farmProducts/image/' + id)
 }
 
 const getFarmProductsDetails = () => {
     return app.get('farmproductdetails/all')
 }
 
-export default {getFarmProducts, getFarmProductsDetails};
+export default {getFarmProducts, getFarmProductsDetails, getImg};

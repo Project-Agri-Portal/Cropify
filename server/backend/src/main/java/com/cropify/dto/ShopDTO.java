@@ -20,4 +20,5 @@ public class ShopDTO {
     private double price; 
     private int quantity;
     private String firstName;
+    private byte[] img;
 }

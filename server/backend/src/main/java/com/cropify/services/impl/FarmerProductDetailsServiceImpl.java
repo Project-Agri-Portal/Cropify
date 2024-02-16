@@ -100,6 +100,7 @@ public class FarmerProductDetailsServiceImpl implements FarmerProductDetailsServ
 				shopDTO.setQuantity(productDetails.getQuantity());
 				UserDetails details = userDetailsRepository.findById(productDetails.getFarmerId().getId()).orElseThrow(() -> new RuntimeException());
 				shopDTO.setFirstName(details.getFirstName());
+				shopDTO.setImg(products.getImgPath());
 				shopDTOs.add(shopDTO);
 			}
 		}
