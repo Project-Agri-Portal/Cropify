@@ -95,4 +95,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return userDetails.getId();
 	}
 
+	// --------------- Login Operation ----------------------
+	@Override
+	public UserDetailsDTO loginCustomer(String email, String password) {
+	
+		UserDetails user = userRepo.findByEmailAndPassword(email, password).orElseThrow(
+				() -> new ResourceNotFoundException("Invalid credentials"));
+		return mapper.map(user, UserDetailsDTO.class);
+	}
+
 }

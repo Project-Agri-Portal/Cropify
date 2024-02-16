@@ -12,6 +12,9 @@ public interface UserDetailsService {
 	List<UserDetailsDTO> getAllUsers();
 	UserDetailsDTO getUserById(Long userId);
 	
+	// Login operation
+	UserDetailsDTO loginCustomer(String email, String password);
+	
 	// Create operations
 	UserDetailsDTO createUser(UserDetailsDTO userDto);
 	

@@ -26,12 +26,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cropify.dto.LoginDTO;
 import com.cropify.dto.UserDetailsDTO;
 import com.cropify.services.UserDetailsService;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @Validated
 public class UserDetailsController {
 	@Autowired
@@ -57,6 +58,13 @@ public class UserDetailsController {
 		UserDetailsDTO createdUserDto = userService.createUser(userDto);
 //		return ResponseEntity.status(HttpStatus.CREATED).body(createdUserDto);
 		return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<UserDetailsDTO> loginCustomer(
+			@RequestBody LoginDTO credentials)
+	{
+		return ResponseEntity.ok(userService.loginCustomer(credentials.getEmail(), credentials.getPassword()));
 	}
 	
 	// ------- UPDATE methods ----------------

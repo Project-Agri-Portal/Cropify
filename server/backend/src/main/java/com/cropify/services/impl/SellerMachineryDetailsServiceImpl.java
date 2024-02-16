@@ -104,9 +104,9 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 		int quantity = smDto.getQuantity();
 		double price = smDto.getPrice();
 		String description = smDto.getDescription();
-		int isAvailable = smDto.getAvailQuantity();
+		int availQuantity = smDto.getAvailQuantity();
 
-		int rowsAffected = repository.updateSellerMachineryDetails(quantity, price, description, isAvailable, smId);
+		int rowsAffected = repository.updateSellerMachineryDetails(quantity, price, description, availQuantity, smId);
 		return rowsAffected;
 	}
 

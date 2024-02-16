@@ -64,4 +64,5 @@ public class SellerMachineryDetailsDTO {
 	public void setVerified(String verified) {
 		this.verified = verified;
 	}
+
 }
