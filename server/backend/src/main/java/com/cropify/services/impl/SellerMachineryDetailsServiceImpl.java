@@ -12,7 +12,9 @@ import com.cropify.customexception.ResourceNotFoundException;
 import com.cropify.dao.MachineryRepository;
 import com.cropify.dao.SellerMachineryDetailsRepository;
 import com.cropify.dao.UserDetailsRepository;
+import com.cropify.dto.CartMachineryDTO;
 import com.cropify.dto.SellerMachineryDetailsDTO;
+import com.cropify.entity.CartMachinery;
 import com.cropify.entity.Machinery;
 import com.cropify.entity.OrderMachineDetails;
 import com.cropify.entity.SellerMachineryDetails;
@@ -45,23 +47,29 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 		return list;
 	}
 
-//	@Override
-//	public int modifyingSoldQuantity(OrderMachineDetails orderMachineDetails) {
-//		SellerMachineryDetails sellerMachineryDetails = 
-//								sellerMachineryDetailsRepository
-//								.findBySellerIdAndMachineryId
-//								(orderMachineDetails.getSellerId().getId(), 
-//								orderMachineDetails.getMachineId().getMachineId());
-//		// int quantity = sellerMachineryDetails.getQuantity();
-//		int availQuantity = orderMachineDetails.getQuantity();
-//		if(availQuantity== 0 || orderMachineDetails.getQuantity() > availQuantity){
-//			throw new RuntimeException("stock not available");
-//		}else{
-//			sellerMachineryDetails.setAvailQuantity(availQuantity-orderMachineDetails.getQuantity());
-//			sellerMachineryDetailsRepository.save(sellerMachineryDetails);
-//			return 1;
-//		}
-//	}
+	@Override
+	public int modifyingSoldQuantity(CartMachineryDTO cartMachineryDTO) {
+		Long sid = cartMachineryDTO.getSellerId();
+		String mid = cartMachineryDTO.getMachineId();
+		SellerMachineryDetails sellerMachineryDetails = 
+								sellerMachineryDetailsRepository
+								.findBySellerIdAndMachineId(sid, mid);
+								// (cartMachineryDTO.getSellerId(), 
+								// cartMachineryDTO.getMachineId());
+		
+								// sellerMachineryDetails.get
+
+		// System.out.println(cartMachineryDTO.getSellerId());
+		// System.out.println(cartMachineryDTO.getMachineId());
+		// int quantity = sellerMachineryDetails.getQuantity();
+
+		int availQuantity = sellerMachineryDetails.getAvailQuantity();
+
+		// sellerMachineryDetails.setAvailQuantity(availQuantity - cartMachineryDTO.getQuantity());
+		// sellerMachineryDetailsRepository.save(sellerMachineryDetails);
+		int rows = sellerMachineryDetailsRepository.updateAvailableMachineQuantity(availQuantity, sellerMachineryDetails.getSellerId().getId(), sellerMachineryDetails.getMachineryId().getMachineId());
+		return rows;
+	}
 
 	@Override
 	public SellerMachineryDetailsDTO getSellerMachineryDetailsById(Long id) {

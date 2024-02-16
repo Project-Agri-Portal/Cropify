@@ -10,6 +10,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cropify.customexception.ResourceNotFoundException;
+import com.cropify.dao.CartMachineryRepository;
 import com.cropify.dao.MachineryRepository;
 import com.cropify.dao.OrderMachineDetailsRepository;
 import com.cropify.dao.SellerMachineryDetailsRepository;
@@ -20,6 +22,7 @@ import com.cropify.entity.OrderMachineDetails;
 import com.cropify.entity.UserDetails;
 import com.cropify.services.CartMachineryService;
 import com.cropify.services.OrderMachineryDetailsService;
+import com.cropify.services.SellerMachineryDetailsService;
 
 @Service
 @Transactional
@@ -41,26 +44,29 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
     private MachineryRepository machineryRepository;
 
     @Autowired
-    private SellerMachineryDetailsRepository sellerMachineryDetailsRepository;
+    private SellerMachineryDetailsService sellerMachineryDetailsService;
+
+    @Autowired
+    private CartMachineryRepository cartMachineryRepository;
 
     private String generatedId;
 
     public String customeIdGenerationForMachineOrders(){
-        int count = orderMachineDetailsRepository.findDistinctOrderIdForIdGeneration();
-        generatedId = "OM"+count+1;
+        int count = orderMachineDetailsRepository.findDistinctOrderIdForIdGeneration() + 1;
+        generatedId = "om"+count;
         return generatedId;
     }
 
     public Long MachineCartToOrder(Long farmerId, Double totalPrice){
         List<CartMachineryDTO> farmerCart = cartMachineryService.getAllCartMachineByFarmerId(farmerId);
-        List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
+        // List<OrderMachineDetails> orderMachineDetails = new ArrayList<>();
         customeIdGenerationForMachineOrders();
 
         for(CartMachineryDTO cartMachineryDTO : farmerCart){
             OrderMachineDetails machineDetails = new OrderMachineDetails();
-            UserDetails farmer = userDetailsRepository.getReferenceById(farmerId);
-            UserDetails seller = userDetailsRepository.getReferenceById(cartMachineryDTO.getSellerId());
-            Machinery machinery = machineryRepository.getReferenceById(cartMachineryDTO.getMachineId());
+            UserDetails farmer = userDetailsRepository.findById(farmerId).orElseThrow(() -> new ResourceNotFoundException("user not found"));
+            UserDetails seller = userDetailsRepository.findById(cartMachineryDTO.getSellerId()).orElseThrow(() -> new ResourceNotFoundException("seller not found"));
+            Machinery machinery = machineryRepository.findById(cartMachineryDTO.getMachineId()).orElseThrow(() -> new ResourceNotFoundException("machine not found"));
 
             // machineDetails.setId(1L);
             machineDetails.setOrderId(generatedId);
@@ -75,8 +81,11 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
             machineDetails.setTotalPrice(totalPrice);
             machineDetails.setOrderStatus("PLACED");
 
+            // sellerMachineryDetailsService.modifyingSoldQuantity(cartMachineryDTO);
+
             orderMachineDetailsRepository.save(machineDetails);
-            cartMachineryService.deleteCartMachineById(cartMachineryDTO.getCid());
+            // cartMachineryService.deleteCartMachineById(cartMachineryDTO.getCid());
+            cartMachineryRepository.deleteById(cartMachineryDTO.getCid());
         }
 
         return farmerId;
