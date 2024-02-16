@@ -14,6 +14,7 @@ public interface FarmProductsService {
 	// Get operations
 	List<FarmProductsDTO> getAllFarmProducts();
 	FarmProductsDTO getFarmProductById(String pid);
+
 	// Get image operation
 	byte[] downloadImage(String fpId) throws IOException;
 	
