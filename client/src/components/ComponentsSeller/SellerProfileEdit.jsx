@@ -358,7 +358,7 @@ function SellerEdit() {
                             value="Update"
                             to="/seller/profile"
                           />*/}
-                           <Link to="/seller/profile" className="btn btn-primary">Update</Link>
+                           <Link to="/home/seller" className="btn btn-primary">Update</Link>
                         </div>
                       </div>
                     </div>

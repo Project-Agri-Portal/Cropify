@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "./Login.css";
 import loginService from "../../../services/login.service";
 // ---- Material UI imports ----
-// import Alert from "@mui/material/Alert";
+import Alert from "@mui/material/Alert";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -21,7 +21,31 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function Login() {
-  // const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [validCreds, setValidCreds] = React.useState(true);
+  const defaultTheme = createTheme();
+  const history = useHistory();
+
+  // Automatic user login if credentials are already stored in local or session storage
+  React.useEffect(() => {
+    async function storedCreds() {
+      let userId = "";
+      if (localStorage.getItem("userId")) {
+        userId = localStorage.getItem("userId");
+      } else if (sessionStorage.getItem("userId")) {
+        userId = sessionStorage.getItem("userId");
+      }
+      await loginService
+        .getCustomer(userId)
+        .then((res) => {
+          const userType = res.data["userType"];
+          history.replace("/home/" + userType.toLowerCase());
+        })
+        .catch();
+    }
+    if (localStorage.length || sessionStorage.length) {
+      storedCreds();
+    }
+  });
 
   function Copyright(props) {
     return (
@@ -41,8 +65,6 @@ function Login() {
     );
   }
 
-  const defaultTheme = createTheme();
-  const history = useHistory();
   // ---------- Controlled Input operation --------------
   // const [email, setEmail] = useState();
   // const [password, setPassword] = useState();
@@ -73,8 +95,7 @@ function Login() {
 
         // Redirecting to respective user type's home page on successfull login
         if (res.status === 200) {
-          // setIsLoggedIn(true);
-
+          // Store userid on checking the Remember Me checkbox
           loginData.get("remember") === "remember"
             ? localStorage.setItem("userId", res.data["id"])
             : sessionStorage.setItem("userId", res.data["id"]);
@@ -83,6 +104,7 @@ function Login() {
         }
       })
       .catch((err) => {
+        setValidCreds(false);
         console.log(err);
       });
   };
@@ -91,15 +113,6 @@ function Login() {
     <>
       <ThemeProvider theme={defaultTheme}>
         <Container component="main" maxWidth="xs">
-          {/* {isLoggedIn ? (
-            <Alert variant="outlined" severity="success">
-              Successfully logged in
-            </Alert>
-          ) : (
-            <Alert variant="outlined" severity="error">
-              Error while logging in
-            </Alert>
-          )} */}
           <CssBaseline />
           <Box
             sx={{
@@ -122,6 +135,12 @@ function Login() {
               sx={{ mt: 1 }}
               className="text-start"
             >
+              {!validCreds ? (
+                <Alert severity="error">Invalid Credentials</Alert>
+              ) : (
+                <></>
+              )}
+
               <TextField
                 margin="normal"
                 required
@@ -162,11 +181,15 @@ function Login() {
                 </Link>
               </Grid> */}
                 <Grid item>
-                  <Link to="/register">
-                    <MuLink variant="body2">
-                      {"Don't have an account? Sign Up"}
-                    </MuLink>
-                  </Link>
+                  <MuLink
+                    style={{ cursor: "pointer" }}
+                    variant="body2"
+                    onClick={() => {
+                      history.replace("/register");
+                    }}
+                  >
+                    {"Don't have an account? Sign Up"}
+                  </MuLink>
                 </Grid>
               </Grid>
             </Box>
