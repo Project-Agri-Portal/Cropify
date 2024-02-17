@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfigura
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cropify.dto.MachineryDTO;
+import com.cropify.dto.SellerMachineDTO;
 
 public interface MachineryService{
 	// Read operations
@@ -24,5 +25,7 @@ public interface MachineryService{
 	
 	//Upload image
 	String uploadImage(String mId,MultipartFile mImage) throws IOException;
+	
+	
 }
 
