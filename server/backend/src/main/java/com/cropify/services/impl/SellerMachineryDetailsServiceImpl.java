@@ -134,6 +134,7 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 			List<SellerMachineryDetails> details= sellerMachineryDetailsRepository.getBySellerId(sellerId);
 			System.out.println(sellerId + " " + details.size());
 			List<SellerMachineDTO> sellerMachinedtos= new ArrayList<SellerMachineDTO>();
+			int count=sellerMachineryDetailsRepository.getCountBySellerId(sellerId);
 			
 			for(SellerMachineryDetails machineries : details) {
 				Machinery machinery = machineRepo.findById(machineries.getMachineryId().getMachineId()).orElseThrow(()-> new ResourceNotFoundException("Machine not found"));
@@ -145,6 +146,7 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 				dto.setAvailQuantity(machineries.getAvailQuantity());
 				dto.setDescription(machineries.getDescription());
 				dto.setPrice(machineries.getPrice());
+				dto.setMachineCount(count);
 				
 				dto.setSellerMachineDetailsId(machineries.getSellerMachineryId());
 				

@@ -12,6 +12,16 @@ public class SellerMachineDTO {
 	private double price;
 	private String description;
 	
+
+	private int machineCount;
+	
+	public int getMachineCount() {
+		return machineCount;
+	}
+
+	public void setMachineCount(int machineCount) {
+		this.machineCount = machineCount;
+	}
 	
 	
 	public SellerMachineDTO() {

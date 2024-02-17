@@ -19,5 +19,9 @@ const deleteSellerMachine = (sellerMachineId) =>{
     return app.delete('sellerMachinery/'+sellerMachineId);
 }
 
+const getMachineryOrderList = (userId) =>{
+    return app.get('ordermachinerydetails/orderlist/'+userId)
+}
 
-export default {getSellerProfile,getSellerMachinery,deleteSellerMachine};
+
+export default {getSellerProfile,getSellerMachinery,deleteSellerMachine,getMachineryOrderList};
