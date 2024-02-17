@@ -56,6 +56,10 @@ public interface SellerMachineryDetailsRepository extends JpaRepository<SellerMa
 			);
 	
 	
+	@Query(value="select count(*) from seller_machinery_details where seller_id=:sellerId",nativeQuery = true)
+	int getCountBySellerId(
+			@Param ("sellerId") long sellerId
+			);
 	
 	
 	
