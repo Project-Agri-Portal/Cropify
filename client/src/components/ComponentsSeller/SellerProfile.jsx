@@ -1,9 +1,33 @@
 import { Link } from "react-router-dom/cjs/react-router-dom";
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./SellerProfile.css";
+import { useState } from "react";
+import Seller from '../../services/seller.service';
+import { useEffect } from "react";
 
 function SellerProfile() {
+
+  const [sellerProfile, setSellerProfile] =useState([]);
+
+  const onload = async (userId) =>{
+    await Seller.getSellerProfile(userId).then((result) => {
+      setSellerProfile(result['data']);
+      console.log(result['data']);
+    }).catch((error)=>{
+      console.log(error);
+      console.log("in error");
+      
+    })
+  }
+
+  useEffect(()=>{
+    const userId=localStorage.getItem("userId")
+    onload(userId);
+  },[])
+
   return (
+
+
     <>
       <div className="d-flex" id="wrapper">
         {/* <!-- Sidebar --> */}
@@ -151,8 +175,8 @@ function SellerProfile() {
             <div className="main-body">
               <div className="row gutters-sm">
                 <div className="col-md-4 mb-3">
-                  <div className="card">
-                    <div className="card-body">
+                  <div className="profileDetail">
+                    <div className="profileDetail-body">
                       <div className="d-flex flex-column align-items-center text-center">
                         <img
                           src="https://bootdey.com/img/Content/avatar/avatar7.png"
@@ -161,12 +185,12 @@ function SellerProfile() {
                           width="150"
                         />
                         <div className="mt-3">
-                          <h4>Seller Name</h4>
+                          <h4>{sellerProfile['firstName'] +"  " + sellerProfile['lastName']}</h4>
                           <p className="text-secondary mb-1">
-                            Farmer and Seller
+                          {sellerProfile['userType']}
                           </p>
                           <p className="text-muted font-size-sm">
-                            Umred,Nagpur,Maharastra
+                            Status : {sellerProfile['status']}
                           </p>
                           <button className="btn btn-primary">Likes</button>
                           <button className="btn btn-outline-primary">
@@ -181,7 +205,7 @@ function SellerProfile() {
                   {/* Links Facebook insta ans all  */}
 
                   <div
-                    className="card mt-3"
+                    className="profileDetail mt-3"
                     style={{ "background-color": "burlywood;" }}
                   >
                     <ul className="list-group list-group-flush">
@@ -307,14 +331,14 @@ function SellerProfile() {
                 {/* Profile Detail Name and all */}
 
                 <div className="col-md-8">
-                  <div className="card mb-3">
-                    <div className="card-body">
+                  <div className="profileDetail mb-3">
+                    <div className="profileDetail-body">
                       <div className="row">
                         <div className="col-sm-3">
-                          <h6 className="mb-0">Full Name</h6>
+                          <h6 className="mb-0">Your ID</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                          My full Name
+                          {sellerProfile['id']}
                         </div>
                       </div>
                       <hr />
@@ -323,7 +347,7 @@ function SellerProfile() {
                           <h6 className="mb-0">Email</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                          example@gmail.com
+                          {sellerProfile['email']}
                         </div>
                       </div>
                       <hr />
@@ -332,16 +356,16 @@ function SellerProfile() {
                           <h6 className="mb-0">Phone</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                          (239) 816-9029
+                        {sellerProfile['mobileNo']}
                         </div>
                       </div>
                       <hr />
                       <div className="row">
                         <div className="col-sm-3">
-                          <h6 className="mb-0">Mobile</h6>
+                          <h6 className="mb-0">Aadhar No</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                          (320) 380-4539
+                        {sellerProfile['aadharNo']}
                         </div>
                       </div>
                       <hr />
@@ -350,7 +374,7 @@ function SellerProfile() {
                           <h6 className="mb-0">Address</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                          Umred,Nagpur,Maharastra,India
+                        Address
                         </div>
                       </div>
                       <hr />
@@ -372,8 +396,8 @@ function SellerProfile() {
 
                   <div className="row gutters-sm">
                     <div className="col-sm-6 mb-3">
-                      <div className="card h-100">
-                        <div className="card-body">
+                      <div className="profileDetail h-100">
+                        <div className="profileDetail-body">
                           <h6 className="d-flex align-items-center mb-3">
                             <i className="material-icons text-info mr-2"></i>
                             Product Reviews
@@ -457,8 +481,8 @@ function SellerProfile() {
                       </div>
                     </div>
                     <div className="col-sm-6 mb-3">
-                      <div className="card h-100">
-                        <div className="card-body">
+                      <div className="profileDetail h-100">
+                        <div className="profileDetail-body">
                           <h6 className="d-flex align-items-center mb-3">
                             <i className="material-icons text-info mr-2"></i>
                             Stock Remaining
