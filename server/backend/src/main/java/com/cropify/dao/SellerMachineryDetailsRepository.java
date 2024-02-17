@@ -1,5 +1,7 @@
 package com.cropify.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -40,5 +42,22 @@ public interface SellerMachineryDetailsRepository extends JpaRepository<SellerMa
 			@Param("description") String description,
 			@Param("availQuantity") int availQuantity,
 			@Param("sellerMachineryId") Long sellerMachineryId);
+	
+	
+//	@Query(value="select * from seller_machinery_details where seller_id=:sellerId",nativeQuery = true)
+//	List<SellerMachineryDetails> getsellerMachineries(
+//			@Param("sellerId") 
+//			);
+	
+	
+	@Query(value="select * from seller_machinery_details where seller_id=:sellerId",nativeQuery = true)
+	List<SellerMachineryDetails> getBySellerId(
+			@Param ("sellerId") long sellerId
+			);
+	
+	
+	
+	
+	
 
 }

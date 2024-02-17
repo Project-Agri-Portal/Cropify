@@ -14,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cropify.customexception.ResourceNotFoundException;
 import com.cropify.dao.MachineryRepository;
 import com.cropify.dto.MachineryDTO;
+import com.cropify.dto.SellerMachineDTO;
 import com.cropify.entity.Machinery;
+import com.cropify.entity.SellerMachineryDetails;
 import com.cropify.services.MachineryService;
 
 @Service
@@ -77,5 +79,7 @@ public class MachineryServiceImpl implements MachineryService {
 		machine.setImgPath(mImage.getBytes());
 		return machine.getMachineId();
 	}
+	
+	
 	
 }

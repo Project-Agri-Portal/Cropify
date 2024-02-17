@@ -1,8 +1,39 @@
-import { Link } from "react-router-dom/cjs/react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./SellerProfile.css";
+import { useState } from "react";
+import Seller from "../../services/seller.service";
+import { useEffect } from "react";
 
 function SellerProfile() {
+  const history = useHistory();
+
+  // Loggin out user and clearing the storages
+  function logoutUser() {
+    localStorage.clear();
+    sessionStorage.clear();
+    history.replace("/");
+  }
+
+  const [sellerProfile, setSellerProfile] = useState([]);
+
+  const onload = async (userId) => {
+    await Seller.getSellerProfile(userId)
+      .then((result) => {
+        setSellerProfile(result["data"]);
+        console.log(result["data"]);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("in error");
+      });
+  };
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    onload(userId);
+  }, []);
+
   return (
     <>
       <div className="d-flex" id="wrapper">
@@ -11,9 +42,7 @@ function SellerProfile() {
         <div className="bg-white" id="sidebar-wrapper">
           <div className="sidebar-heading text-center py-4 border-bottom">
             <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
-              <i className="bx bxs-leaf"></i>
-              {" "}
-              Cropify
+              <i className="bx bxs-leaf"></i> Cropify
             </Link>
           </div>
           <div className="list-group list-group-flush my-3">
@@ -65,12 +94,14 @@ function SellerProfile() {
             >
               <i className="fas fa-map-marker-alt me-2"></i>Outlet
             </Link>
-            <Link
-              to="/"
+            <p
+              // to="/"
+              onClick={logoutUser}
+              style={{ cursor: "pointer" }}
               className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
             >
               <i className="fas fa-power-off me-2"></i>Logout
-            </Link>
+            </p>
           </div>
         </div>
 
@@ -151,8 +182,8 @@ function SellerProfile() {
             <div className="main-body">
               <div className="row gutters-sm">
                 <div className="col-md-4 mb-3">
-                  <div className="card">
-                    <div className="card-body">
+                  <div className="profileDetail">
+                    <div className="profileDetail-body">
                       <div className="d-flex flex-column align-items-center text-center">
                         <img
                           src="https://bootdey.com/img/Content/avatar/avatar7.png"
@@ -161,12 +192,16 @@ function SellerProfile() {
                           width="150"
                         />
                         <div className="mt-3">
-                          <h4>Seller Name</h4>
+                          <h4>
+                            {sellerProfile["firstName"] +
+                              "  " +
+                              sellerProfile["lastName"]}
+                          </h4>
                           <p className="text-secondary mb-1">
-                            Farmer and Seller
+                            {sellerProfile["userType"]}
                           </p>
                           <p className="text-muted font-size-sm">
-                            Umred,Nagpur,Maharastra
+                            Status : {sellerProfile["status"]}
                           </p>
                           <button className="btn btn-primary">Likes</button>
                           <button className="btn btn-outline-primary">
@@ -181,8 +216,8 @@ function SellerProfile() {
                   {/* Links Facebook insta ans all  */}
 
                   <div
-                    className="card mt-3"
-                    style={{ "background-color": "burlywood;" }}
+                    className="profileDetail mt-3"
+                    style={{ backgroundColor: "burlywood" }}
                   >
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -194,9 +229,9 @@ function SellerProfile() {
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             className="feather feather-globe mr-2 icon-inline"
                           >
                             <circle cx="12" cy="12" r="10"></circle>
@@ -218,9 +253,9 @@ function SellerProfile() {
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             className="feather feather-github mr-2 icon-inline"
                           >
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -238,9 +273,9 @@ function SellerProfile() {
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             className="feather feather-twitter mr-2 icon-inline text-info"
                           >
                             <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
@@ -258,9 +293,9 @@ function SellerProfile() {
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             className="feather feather-instagram mr-2 icon-inline text-danger"
                           >
                             <rect
@@ -287,9 +322,9 @@ function SellerProfile() {
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             className="feather feather-facebook mr-2 icon-inline text-primary"
                           >
                             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
@@ -307,14 +342,14 @@ function SellerProfile() {
                 {/* Profile Detail Name and all */}
 
                 <div className="col-md-8">
-                  <div className="card mb-3">
-                    <div className="card-body">
+                  <div className="profileDetail mb-3">
+                    <div className="profileDetail-body">
                       <div className="row">
                         <div className="col-sm-3">
-                          <h6 className="mb-0">Full Name</h6>
+                          <h6 className="mb-0">Your ID</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                          My full Name
+                          {sellerProfile["id"]}
                         </div>
                       </div>
                       <hr />
@@ -323,7 +358,7 @@ function SellerProfile() {
                           <h6 className="mb-0">Email</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                          example@gmail.com
+                          {sellerProfile["email"]}
                         </div>
                       </div>
                       <hr />
@@ -332,16 +367,16 @@ function SellerProfile() {
                           <h6 className="mb-0">Phone</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                          (239) 816-9029
+                          {sellerProfile["mobileNo"]}
                         </div>
                       </div>
                       <hr />
                       <div className="row">
                         <div className="col-sm-3">
-                          <h6 className="mb-0">Mobile</h6>
+                          <h6 className="mb-0">Aadhar No</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
-                          (320) 380-4539
+                          {sellerProfile["aadharNo"]}
                         </div>
                       </div>
                       <hr />
@@ -349,9 +384,7 @@ function SellerProfile() {
                         <div className="col-sm-3">
                           <h6 className="mb-0">Address</h6>
                         </div>
-                        <div className="col-sm-9 text-secondary">
-                          Umred,Nagpur,Maharastra,India
-                        </div>
+                        <div className="col-sm-9 text-secondary">Address</div>
                       </div>
                       <hr />
                       <div className="row">
@@ -372,8 +405,8 @@ function SellerProfile() {
 
                   <div className="row gutters-sm">
                     <div className="col-sm-6 mb-3">
-                      <div className="card h-100">
-                        <div className="card-body">
+                      <div className="profileDetail h-100">
+                        <div className="profileDetail-body">
                           <h6 className="d-flex align-items-center mb-3">
                             <i className="material-icons text-info mr-2"></i>
                             Product Reviews
@@ -457,8 +490,8 @@ function SellerProfile() {
                       </div>
                     </div>
                     <div className="col-sm-6 mb-3">
-                      <div className="card h-100">
-                        <div className="card-body">
+                      <div className="profileDetail h-100">
+                        <div className="profileDetail-body">
                           <h6 className="d-flex align-items-center mb-3">
                             <i className="material-icons text-info mr-2"></i>
                             Stock Remaining

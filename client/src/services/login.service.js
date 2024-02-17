@@ -7,8 +7,8 @@ const app = axios.create({
     }
 });
 
-const getCustomer = () => {
-    return app.get('/users/');
+const getCustomer = (userId) => {
+    return app.get(`/users/${userId}`);
 }
 
 const loginUser = (credentials) => {
@@ -19,4 +19,5 @@ const registerUser = (userData) => {
     return app.post('/users/', userData);
 }
 
-export default { getCustomer, loginUser, registerUser };
+const exportModule = { getCustomer, loginUser, registerUser }
+export default exportModule;
