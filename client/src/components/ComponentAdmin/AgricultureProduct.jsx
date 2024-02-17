@@ -5,6 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle"
 import Header from './Header'
 import Sidebar from './SideBar'
 import Product from "../../services/agriproduct.service"
+import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from 'react';
 import "./MainLayout.css";
 import { useState } from 'react';
@@ -33,6 +34,18 @@ const AgricultureProduct = () => {
                         console.log(error);
                       })
   }
+
+  const deleteProduct = (prodId) => {
+    Product.deleteAgriProduct(prodId)
+      .then((result) => {
+        console.log(result["data"]);
+        toast.success('Farm product delete')
+        onload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     onload();
@@ -67,7 +80,7 @@ const AgricultureProduct = () => {
           <TableCell className='text-center'>{product['agriProductType']}</TableCell>
           <TableCell className='text-center'>
           <Stack direction="row" spacing={2} className='center d-flex justify-content-center'>
-            <Button variant="outlined" startIcon={<DeleteIcon />}>
+            <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => {deleteProduct(product['agriProductId'])}}>
               Delete
             </Button>
           </Stack>
@@ -85,6 +98,7 @@ const AgricultureProduct = () => {
     </Table>
   </TableContainer>
   </main>
+  <ToastContainer></ToastContainer>
   </div>
   );
 };
