@@ -1,5 +1,5 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
-import logo from "../../../logo.svg";
+import logo from "../../../logo.png";
 import map from "../../../assets/Map.png";
 import Footer from "../../Shop/Common/Footer";
 

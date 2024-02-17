@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { Container, Navbar, Nav, Carousel } from "react-bootstrap";
-import logo from "../../logo.svg";
+import logo from "../../logo.png";
 import heroBg1 from "../../assets/hero-section-bg-2.jpg";
 import heroBg2 from "../../assets/hero-section-bg-3.jpg";
 import support from "../../assets/support.svg";
@@ -17,7 +17,7 @@ import Footer from "../Shop/Common/Footer";
 function CommonHome() {
   return (
     <>
-      <Navbar className="bg-warning-subtle">
+      <Navbar className="bg-success bg-opacity-75" sticky="top">
         <Container>
           <Navbar.Brand
             href="/home"
@@ -26,22 +26,22 @@ function CommonHome() {
             <img
               className="d-inline-block object-fit-cover"
               src={logo}
-              width="50"
-              height="50"
+              width="40"
+              height="40"
               alt="cropify logo"
             />
-            <span className="fs-3 text-black">CROPIFY</span>
+            <span className="fs-4 text-white">CROPIFY</span>
           </Navbar.Brand>
 
           {/* Login and Register links */}
           <Nav className="d-flex gap-3">
-            <Nav.Link href="/home/customer" className="nav-link fs-4">
+            <Nav.Link href="/home/customer" className="nav-link fs-5">
               Shop
             </Nav.Link>
-            <Nav.Link href="/login" className="nav-link fs-4">
+            <Nav.Link href="/login" className="nav-link fs-5">
               Login
             </Nav.Link>
-            <Nav.Link href="/register" className="nav-link fs-4">
+            <Nav.Link href="/register" className="nav-link fs-5">
               Register
             </Nav.Link>
           </Nav>

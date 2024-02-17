@@ -90,7 +90,7 @@
 
 
 
-import logo from "../../../logo.svg";
+import logo from "../../../logo.png";
 import { Container, Navbar, Nav, Tab, Tabs } from "react-bootstrap";
 import farmer from "../../../assets/farmer.png";
 import Footer from "../../Shop/Common/Footer";

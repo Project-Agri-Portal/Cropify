@@ -2,9 +2,13 @@ body {
     /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
     font-family: 'Rubik', sans-serif;
 }
+
+.nav-link {
+    color: #ffffff;
+}
 .nav-link:hover {
     text-decoration: underline;
-    color: black;
+    color: #48c711;
 }
 
 .main-hero-div {

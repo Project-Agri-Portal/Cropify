@@ -1,5 +1,5 @@
 import { Container, Navbar, Nav, Breadcrumb, ListGroup } from "react-bootstrap";
-import logo from "../../../logo.svg";
+import logo from "../../../logo.png";
 import wheat from "../../../assets/wheat.png";
 import Footer from "../../Shop/Common/Footer";
 

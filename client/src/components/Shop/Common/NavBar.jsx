@@ -14,9 +14,9 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg fixed-top">
+    <nav className="my-navbar navbar-expand-lg fixed-top">
       <div className="container-fluid">
-        <Link className={`navbar-brand me-auto`} to="/">
+        <Link className={`my-navbar-brand me-auto`} to="/">
           CROPIFY
         </Link>
         <div
@@ -94,11 +94,11 @@ const Navbar = () => {
           Profile
         </Link>
         <button
-          className="navbar-toggler pe-0 "
+          className="my-navbar-toggler pe-0 "
           type="button"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="my-navbar-toggler-icon"></span>
         </button>
       </div>
     </nav>
