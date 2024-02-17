@@ -1,6 +1,14 @@
+body {
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: 'Rubik', sans-serif;
+}
+
+.nav-link {
+    color: #ffffff;
+}
 .nav-link:hover {
     text-decoration: underline;
-    color: black;
+    color: #48c711;
 }
 
 .main-hero-div {
@@ -11,22 +19,53 @@
     width: 100%;
     height: 800px;
     object-fit: cover;
-    filter: brightness(75%);
+    filter: brightness(60%);
 }
 
 .hero-text {
     position: absolute;
-    left: 16%;
+    left: 10%;
     top: 16%;
     z-index: 2;
 }
 
-div.hero-text>h2 {
-    font-size: 128px;
+.hero-text>h1 {
+    font-size: 72px;
+    font-weight: 800;
     color: white;
-    text-shadow:
-        3px 3px 2px #000,
-        -3px 3px 2px #000,
-        -3px -3px 0 #000,
-        3px -3px 0 #000;
+}
+
+.features-section {
+    color: #4f4f4f;
+    height: 100vh;
+    padding: 2em 0;
+    background-color: #eafde2;
+}
+.justify-vertical {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.service-heading h4 {
+    color:#48c711;
+    font-weight: 400;
+}
+.service-heading h2 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+.service-item {
+    padding: 2rem 1.5rem 1rem;
+}
+.service-item img {
+    width: 80px;
+    height: 80px;
+    background-color: #48c711;
+    padding: .75rem;
+    border-radius: 50%;
+}
+.service-item h4 {
+    font-weight: 600;
 }

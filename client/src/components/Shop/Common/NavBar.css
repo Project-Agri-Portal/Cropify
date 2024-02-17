@@ -13,7 +13,7 @@ body {
   transition: 0.3s background-color;
 }
 
-.navbar {
+.my-navbar {
   background-color: #fff;
   height: 80px;
   margin: 20px;
@@ -21,7 +21,7 @@ body {
   padding: 0.5rem;
 }
 
-.navbar-brand {
+.my-navbar-brand {
   font-weight: 500;
   color: aqua;
   font-size: 24px;
@@ -38,32 +38,30 @@ body {
   transform: scale(1.1);
 }
 
-.navbar-togger {
+.my-navbar-toggler {
   border: none;
   font-size: 1.25rem;
 }
 
-.navbar-togger:focus,
+.my-navbar-toggler:focus,
 .btn-close:focus {
   box-shadow: none;
   outline: none;
 }
 
-.nav-link {
+/* .nav-link {
   color: rgba(138, 142, 115, 0.821);
   font-weight: 500;
-}
+} */
 
 @media (min-width: 991px) {
-  .nav-link:hover,
+  /* .nav-link:hover,
   .nav-link.active {
-    /* this active will change the color when click */
     color: black;
     font-weight: 600;
   }
 
   .nav-link.active {
-    /* this active will change the color when click */
     color: black;
     font-weight: 600;
   }
@@ -85,10 +83,10 @@ body {
   .nav-link:active::before {
     width: 100%;
     visibility: visible;
-  }
+  } */
 }
 
-.navbar-toggler-icon {
+.my-navbar-toggler-icon {
   margin-right: 12px;
 }
 
