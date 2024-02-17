@@ -7,7 +7,8 @@ import Footer from "../Common/Footer"
 import FarmProducts from "../../../services/shop.service"
 import { useHistory } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { toast } from "react-toastify"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductList = () => {
 
@@ -16,10 +17,17 @@ const ProductList = () => {
     const [quantities, setQuantities] = useState([]);
 
     const handleIncrement = (index) => {
+        const availableQuantity = farmProduct[index].quantity;
+      
         // Create a copy of the quantities array
         const newQuantities = [...quantities];
-        // Increment the quantity for the specific product
-        newQuantities[index] += 1;
+        
+        // Increment the quantity for the specific product, up to the available quantity
+        if(quantities[index] == availableQuantity){
+            toast.warn("Only " + availableQuantity + " available");
+        }
+        newQuantities[index] = Math.min(newQuantities[index] + 1, availableQuantity);
+        
         // Update the state
         setQuantities(newQuantities);
       };
@@ -29,6 +37,9 @@ const ProductList = () => {
         const newQuantities = [...quantities];
         // Ensure quantity doesn't go below 1
         newQuantities[index] = Math.max(newQuantities[index] - 1, 1);
+        if(quantities[index] < 1){
+            toast.warn("Only " + " " + " available");
+        }
         // Update the state
         setQuantities(newQuantities);
       };
@@ -39,7 +50,7 @@ const ProductList = () => {
                             setFarmProduct(result['data'])
                             console.log(result);
                             console.log(result['data']);
-                            toast.success("found")
+                            // toast.success("found")
                         })
                         .catch((error) => {
                             toast.warn("items")
@@ -60,7 +71,17 @@ const ProductList = () => {
     useEffect(() => {
         loadAllItems();
         console.log('hello use');
-        toast.success("shop")
+        toast.success("Healty Fruits Waiting for you 🤤")
+        // toast('🦄 welcome to Shop', {
+        //     position: "top-right",
+        //     autoClose: 5000,
+        //     hideProgressBar: false,
+        //     closeOnClick: true,
+        //     pauseOnHover: true,
+        //     draggable: true,
+        //     progress: undefined,
+        //     theme: "light",
+        //     });
     }, []);
 
     return (
@@ -107,6 +128,9 @@ const ProductList = () => {
         </div>
     </div>
     <Footer></Footer>
+    {/* <ToastContainer /> */}
+<ToastContainer />
+
     </>
     );
 };

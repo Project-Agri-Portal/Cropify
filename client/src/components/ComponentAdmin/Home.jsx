@@ -6,8 +6,70 @@ import
  { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
  from 'recharts';
 import "./MainLayout.css";
+import { useEffect, useState } from 'react';
+import count from "../../services/admin.service";
 
 function Home() {
+
+  const [agriProduct, setAgriProduct] = useState();
+  const [farmProduct, setFarmProduct] = useState();
+  const[machinery, setMachinery] = useState();
+  const[seller, setSeller] = useState();
+  const[customer, setCustomer] = useState();
+  const[farmer, setFarmer] = useState();
+  const[totalOrders, setTotalOrders] = useState();
+  const[totalSale, setTotalSale] = useState();
+
+  const onload = async () => {
+    await count.agricultureProductCount()
+              .then((result) => {
+                setAgriProduct(result['data'])
+                console.log(result);
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+    await count.farmProductCount()
+              .then((result) => {
+                setFarmProduct(result['data'])
+                console.log(result);
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+    await count.machineryCount()
+              .then((result) => {
+                setMachinery(result['data'])
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+    await count.sellerCount()
+              .then((result) => {
+                setSeller(result['data'])
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+    await count.customerCount()
+              .then((result) => {
+                setCustomer(result['data']);
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+    await count.farmerCount()
+              .then((result) => {
+                setFarmer(result['data']);
+              })
+              .catch((error) => {
+                console.log();
+              })
+  }
+
+  useEffect(() => {
+    onload();
+  }, [])
 
     const data = [
         {
@@ -62,24 +124,55 @@ function Home() {
         <div className='main-cards'>
             <div className='card card1'>
                 <div className='card-inner'>
-                    <h3>PRODUCTS</h3>
+                    <h3>Agriculture Product</h3>
                     <BsFillArchiveFill className='card_icon'/>
                 </div>
-                <h1>300</h1>
+                <h1>{agriProduct}</h1>
             </div>
             <div className='card card2'>
                 <div className='card-inner'>
-                    <h3>SELLERS</h3>
+                    <h3>Farm Product</h3>
+                    <BsFillArchiveFill className='card_icon'/>
+                </div>
+                <h1>{farmProduct}</h1>
+            </div>
+
+            <div className='card card3'>
+                <div className='card-inner'>
+                    <h3>Machinery</h3>
+                    <BsFillArchiveFill className='card_icon'/>
+                </div>
+                <h1>{machinery}</h1>
+            </div>
+
+
+            <div className='card card4'>
+                <div className='card-inner'>
+                    <h3>Seller</h3>
                     <BsFillGrid3X3GapFill className='card_icon'/>
                 </div>
-                <h1>12</h1>
+                <h1>{seller}</h1>
+            </div>
+            <div className='card card1'>
+                <div className='card-inner'>
+                    <h3>Customer</h3>
+                    <BsPeopleFill className='card_icon'/>
+                </div>
+                <h1>{customer}</h1>
+            </div>
+            <div className='card card2'>
+                <div className='card-inner'>
+                    <h3>Farmer</h3>
+                    <BsFillArchiveFill className='card_icon'/>
+                </div>
+                <h1>{farmer}</h1>
             </div>
             <div className='card card3'>
                 <div className='card-inner'>
-                    <h3>CUSTOMERS</h3>
-                    <BsPeopleFill className='card_icon'/>
+                    <h3>Total Orders</h3>
+                    <BsFillArchiveFill className='card_icon'/>
                 </div>
-                <h1>33</h1>
+                <h1>300</h1>
             </div>
             <div className='card card4'>
                 <div className='card-inner'>
