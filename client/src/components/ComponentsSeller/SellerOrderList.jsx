@@ -1,8 +1,30 @@
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./SellerOrderList.css";
+import MachineryOrderList from '../../services/seller.service';
+import { useState } from "react";
+import { useEffect } from "react";
 
 function OrderList() {
+
+
+  const [orderList,setOrderList] = useState([]);
+
+  const onload = (userId) =>{
+    MachineryOrderList.getMachineryOrderList(userId).then((result) =>{
+      setOrderList(result.data);
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+  useEffect(() => {
+    const userId= localStorage.getItem('userId');
+    onload(userId);
+  },[])
+
+
   return (
     <>
       <div className="d-flex" id="wrapper">
@@ -158,19 +180,26 @@ function OrderList() {
                       <th scope="col">Quantity</th>
                       <th scope="col">Duration</th>
                       <th scope="col"> Total Bill</th>
+                      <th scope="col"> Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Rice</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
-                      <td>200 Rs.</td>
+                    {orderList.map((orders) => {
+                      return (
+                        <tr>
+                          <td>{orders['orderId']}</td>
+                          <th scope="row">{orders['machineId']} </th>
+                         <td>{orders['farmerId']}</td>
+                         <td>{orders['orderDate']}</td>
+                         <td>{orders['deliveryDate']}</td>
+                         <td>{orders['quantity']}</td>
+                         <td>{orders['rentDuration']}</td>  
+                          <td>{orders['totalPrice']}</td>
+                          <td>{orders['orderStatus']}</td>
                     </tr>
+                      );
+                    })}
+                    
                     
                   </tbody>
                 </table>

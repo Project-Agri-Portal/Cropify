@@ -14,10 +14,12 @@ public interface OrderMachineDetailsRepository extends JpaRepository<OrderMachin
     @Query(value = "select count(distinct order_id) from order_machine_details", nativeQuery = true)
     public int findDistinctOrderIdForIdGeneration();
 
+    
+    
     // Order list of Machinery
 
     @Query(value = "select * from order_machine_details where seller_id=:sellerId", nativeQuery = true)
     public List<OrderMachineDetails> getByUserId(
-    		@Param("sellerId") long sellerId
+    		@Param ("sellerId") long sellerId
     		);
 }

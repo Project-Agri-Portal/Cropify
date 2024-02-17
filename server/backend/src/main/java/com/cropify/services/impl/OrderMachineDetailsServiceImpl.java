@@ -3,6 +3,7 @@ package com.cropify.services.impl;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -103,22 +104,29 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
 	public List<OrderMachineDetailsDTO> getTotalOrders(Long sellerId) {
 		List<OrderMachineDetails> details = orderMachineDetailsRepository.getByUserId(sellerId);
 		
-		List<OrderMachineDetailsDTO> detailsDTOs= new ArrayList<OrderMachineDetailsDTO>();
+		List<OrderMachineDetailsDTO> detailsDTOs = details
+				.stream()
+				.map(item -> mapper.map(item, OrderMachineDetailsDTO.class))
+				.collect(Collectors.toList());
+				
+				
 		
-		for(OrderMachineDetails details2: details) {
-			OrderMachineDetailsDTO detailsDTO= new OrderMachineDetailsDTO();
-			detailsDTO.setOrderId(details2.getOrderId());
-//			detailsDTO.setMachineId(details2.getMachineId());
-//			detailsDTO.setFarmerId(details2.getFarmerId());
-			detailsDTO.setOrderDate(details2.getOrderDate());
-			detailsDTO.setDeliveryDate(details2.getDeliveryDate());
-			detailsDTO.setQuantity(details2.getQuantity());
-			detailsDTO.setRentDuration(details2.getRentDuration());
-			detailsDTO.setTotalPrice(details2.getTotalPrice());
-			
-			detailsDTOs.add(detailsDTO);
-			
-		}
+//		List<OrderMachineDetailsDTO> detailsDTOs = new ArrayList<OrderMachineDetailsDTO>();
+//		
+//		for(OrderMachineDetails details2: details) {
+//			OrderMachineDetailsDTO detailsDTO= new OrderMachineDetailsDTO();
+//			detailsDTO.setOrderId(details2.getOrderId());
+////			detailsDTO.setMachineId(details2.getMachineId());
+////			detailsDTO.setFarmerId(details2.getFarmerId());
+//			detailsDTO.setOrderDate(details2.getOrderDate());
+//			detailsDTO.setDeliveryDate(details2.getDeliveryDate());
+//			detailsDTO.setQuantity(details2.getQuantity());
+//			detailsDTO.setRentDuration(details2.getRentDuration());
+//			detailsDTO.setTotalPrice(details2.getTotalPrice());
+//			
+//			detailsDTOs.add(detailsDTO);
+//			
+//		}
 		return detailsDTOs;
 	}
 
