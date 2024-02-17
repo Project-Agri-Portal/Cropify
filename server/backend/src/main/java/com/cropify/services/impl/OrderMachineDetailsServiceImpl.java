@@ -3,6 +3,7 @@ package com.cropify.services.impl;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -17,6 +18,7 @@ import com.cropify.dao.OrderMachineDetailsRepository;
 import com.cropify.dao.SellerMachineryDetailsRepository;
 import com.cropify.dao.UserDetailsRepository;
 import com.cropify.dto.CartMachineryDTO;
+import com.cropify.dto.OrderMachineDetailsDTO;
 import com.cropify.entity.Machinery;
 import com.cropify.entity.OrderMachineDetails;
 import com.cropify.entity.UserDetails;
@@ -48,6 +50,9 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
 
     @Autowired
     private CartMachineryRepository cartMachineryRepository;
+    
+    @Autowired
+    private OrderMachineDetailsRepository machineDetails;
 
     private String generatedId;
 
@@ -91,5 +96,38 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
         return farmerId;
 
     }
+
+    
+    // Order list of Machinery
+
+	@Override
+	public List<OrderMachineDetailsDTO> getTotalOrders(Long sellerId) {
+		List<OrderMachineDetails> details = orderMachineDetailsRepository.getByUserId(sellerId);
+		
+		List<OrderMachineDetailsDTO> detailsDTOs = details
+				.stream()
+				.map(item -> mapper.map(item, OrderMachineDetailsDTO.class))
+				.collect(Collectors.toList());
+				
+				
+		
+//		List<OrderMachineDetailsDTO> detailsDTOs = new ArrayList<OrderMachineDetailsDTO>();
+//		
+//		for(OrderMachineDetails details2: details) {
+//			OrderMachineDetailsDTO detailsDTO= new OrderMachineDetailsDTO();
+//			detailsDTO.setOrderId(details2.getOrderId());
+////			detailsDTO.setMachineId(details2.getMachineId());
+////			detailsDTO.setFarmerId(details2.getFarmerId());
+//			detailsDTO.setOrderDate(details2.getOrderDate());
+//			detailsDTO.setDeliveryDate(details2.getDeliveryDate());
+//			detailsDTO.setQuantity(details2.getQuantity());
+//			detailsDTO.setRentDuration(details2.getRentDuration());
+//			detailsDTO.setTotalPrice(details2.getTotalPrice());
+//			
+//			detailsDTOs.add(detailsDTO);
+//			
+//		}
+		return detailsDTOs;
+	}
 
 }

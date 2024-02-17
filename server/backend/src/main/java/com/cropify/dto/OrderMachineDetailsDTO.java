@@ -15,6 +15,7 @@ public class OrderMachineDetailsDTO {
 	private String machineId;
 	private int rentDuration;
 	private LocalDate orderDate;
+	private String orderStatus;
 
 	@Future
 	private LocalDate deliveryDate;
@@ -79,6 +80,13 @@ public class OrderMachineDetailsDTO {
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+	
 	
 	
 }
