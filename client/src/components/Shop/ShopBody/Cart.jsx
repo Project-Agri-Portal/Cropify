@@ -10,7 +10,7 @@ const Cart = () => {
     <>
     <NavBar></NavBar>
     <div style={{height:80}}></div>
-      <div className="container-fluid">
+      <div className="container-fluid main-div">
         <div className="row">
           <div className="col-md-10 col-11 mx-auto">
             <div className="row mt-5 gx-3">

@@ -1,3 +1,8 @@
+.team {
+  height: 100vh;
+  padding: 2em 0;
+}
+
 .team .member {
   position: relative;
   padding: 30px;
@@ -59,8 +64,8 @@
   margin: 10px;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   background-color: rgb(206, 212, 209);
   border-radius: 50px;
 }
@@ -74,13 +79,13 @@
 }
 
 .team-section {
-  padding: 60px 0;
+  padding: 2em 0;
   overflow: hidden;
 }
 
 .section-title {
   text-align: center;
-  padding-bottom: 30px;
+  /* padding-bottom: 30px; */
 }
 
 .hrteam {
