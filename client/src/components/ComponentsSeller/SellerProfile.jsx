@@ -5,6 +5,7 @@ import { useState } from "react";
 import Seller from "../../services/seller.service";
 import { useEffect } from "react";
 
+
 function SellerProfile() {
   const history = useHistory();
 
@@ -37,8 +38,8 @@ function SellerProfile() {
   return (
     <>
       <div className="d-flex" id="wrapper">
+       
         {/* <!-- Sidebar --> */}
-
         <div className="bg-white" id="sidebar-wrapper">
           <div id="sidebar">
           <div className="sidebar-heading text-center py-4 border-bottom">
@@ -180,7 +181,7 @@ function SellerProfile() {
 
           {/* <!-- Seller Profile Here--> */}
 
-          <div className="container">
+          <div className="container" style={{ color: "black"}}>
             <div className="main-body">
               <div className="row gutters-sm">
                 <div className="col-md-4 mb-3">
@@ -193,7 +194,7 @@ function SellerProfile() {
                           className="rounded-circle"
                           width="150"
                         />
-                        <div className="mt-3">
+                        <div className="mt-3" style={{ color: "black"}} >
                           <h4>
                             {sellerProfile["firstName"] +
                               "  " +
@@ -206,7 +207,8 @@ function SellerProfile() {
                             Status : {sellerProfile["status"]}
                           </p>
                           <button className="btn btn-primary">Likes</button>
-                          <button className="btn btn-outline-primary">
+                        {"  "}
+                          <button className="btn btn-primary">
                             Reviews
                           </button>
                         </div>

@@ -103,6 +103,7 @@ function ProductList() {
             </Link>
           </div>
         </div>
+
         {/* <!-- /#sidebar-wrapper --> */}
 
         {/* <!-- Page Content --> */}

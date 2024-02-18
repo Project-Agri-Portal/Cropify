@@ -27,8 +27,9 @@ function OrderList() {
 
   return (
     <>
+    
       <div className="d-flex" id="wrapper">
-        {/* <!-- Sidebar --> */}
+        {/* -- Sidebar  */}
         <div className="bg-white" id="sidebar-wrapper">
           <div className="sidebar-heading text-center py-4 border-bottom">
             <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
@@ -37,7 +38,7 @@ function OrderList() {
               Cropify
             </Link>
           </div>
-          <div className="list-group list-group-flush my-3">
+          <div className="list-group list-group-fluzsh my-3">
             <Link
               to="/home/seller"
               className="list-group-item list-group-item-action bg-transparent second-text active"
@@ -93,7 +94,7 @@ function OrderList() {
               <i className="fas fa-power-off me-2"></i>Logout
             </Link>
           </div>
-        </div>
+      </div>
         {/* <!-- /#sidebar-wrapper --> */}
 
         {/* <!-- Page Content --> */}
@@ -166,8 +167,8 @@ function OrderList() {
               <h5 className="fs-4 mb-3 " style={{ color: "black;" }}>
                 Current Orders
               </h5>
-              <div className="col">
-                <table className="table bg-white rounded shadow-sm  table-hover">
+              <div className="col" >
+                <table className="table bg-white rounded shadow-sm  table-hover table-dark table-striped">
                   <thead>
                     <tr>
                       <th scope="col" width="50">
