@@ -55,12 +55,13 @@ const Cart = () => {
     calculateTotal();
   }, [cart]);
 
+  const customer = parseInt(localStorage.getItem("userId"));
+
   return (
     <>
       <NavBar></NavBar>
 
       <div style={{ height: 80 }}></div>
-
       {cart.length == 0 ? (
         <>
           <div style={{ height: 200 }}></div>

@@ -4,6 +4,7 @@ import { Container, Navbar, Nav, Carousel } from "react-bootstrap";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "./NavBar.css";
+import Orders from "../ShopBody/Orders";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,94 +16,6 @@ const myNavbar = () => {
   };
 
   return (
-    // <nav className="my-navbar navbar-expand-lg fixed-top">
-    //   <div className="container-fluid">
-    //     <Link className={`my-navbar-brand me-auto`} to="/">
-    //       CROPIFY
-    //     </Link>
-    //     <div
-    //       className={`offcanvas offcanvas-end }`}
-    //       tabIndex="-1"
-    //       id="offcanvasNavbar"
-    //       aria-labelledby="offcanvasNavbarLabel"
-    //     >
-    //       <div className="offcanvas-header">
-    //         <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-    //           Logo
-    //         </h5>
-    //         <button
-    //           type="button"
-    //           className="btn-close"
-    //           aria-label="Close"
-    //         ></button>
-    //       </div>
-    //       <div className="offcanvas-body">
-    //         <ul className="navbar-nav justify-content-center flex-grow-1 pe-3">
-    //           <li className="nav-item">
-    //             {/* <a className="nav-link mx-lg-2 active" aria-current="page" href="#">
-    //               Home
-    //             </a> */}
-    //             <Link to="/home/customer" className="nav-link mx-lg-2 active">
-    //               Home
-    //             </Link>
-    //           </li>
-    //           <li className="nav-item">
-    //             <Link className="nav-link mx-lg-2" to="/shop/productsall">
-    //               Shop
-    //             </Link>
-    //           </li>
-    //           <li className="nav-item">
-    //             <Link className="nav-link mx-lg-2" to="shop/about">
-    //               About Us
-    //             </Link>
-    //           </li>
-    //           <li className="nav-item">
-    //             {/* <a className="nav-link mx-lg-2" href="#">
-    //               Contact
-    //             </a> */}
-    //             <Link to="/contact" className="nav-link mx-lg-2">
-    //               Contact
-    //             </Link>
-    //           </li>
-    //           <li className="nav-item">
-    //             {/* <a className="nav-link mx-lg-2" href="#">
-    //               Contact
-    //             </a> */}
-    //             <Link to="/shop/cart" className="nav-link mx-lg-2">
-    //               Cart
-    //             </Link>
-    //           </li>
-    //           <li className="nav-item">
-    //             {/* <a className="nav-link mx-lg-2" href="#">
-    //               Contact
-    //             </a> */}
-    //             <Link to="/blog" className="nav-link mx-lg-2">
-    //               Blog
-    //             </Link>
-    //           </li>
-    //           <li className="nav-item">
-    //             {/* <a className="nav-link mx-lg-2" href="#">
-    //               Contact
-    //             </a> */}
-    //             <Link to="/" className="nav-link mx-lg-2">
-    //               <a href="" onClick={onLogout}>Logout</a>
-    //             </Link>
-    //           </li>
-    //         </ul>
-    //       </div>
-    //     </div>
-    //     <Link to="/login" className="login-button">
-    //       Profile
-    //     </Link>
-    //     <button
-    //       className="my-navbar-toggler pe-0 "
-    //       type="button"
-    //       aria-label="Toggle navigation"
-    //     >
-    //       <span className="my-navbar-toggler-icon"></span>
-    //     </button>
-    //   </div>
-    // </nav>
     <Navbar className="bg-success bg-opacity-75" sticky="top">
       <Container>
         <Navbar.Brand href="/home" className="d-flex align-items-center gap-1">
@@ -124,14 +37,24 @@ const myNavbar = () => {
           <Nav.Link href="/shop/productsall" className="nav-link fs-5">
             Shops
           </Nav.Link>
+          <Nav.Link href="/shop/orders" className="nav-link fs-5">
+            Orders
+          </Nav.Link>
           <Nav.Link href="/shop/cart" className="nav-link fs-5">
             Cart
           </Nav.Link>
           <Nav.Link href="/contact" className="nav-link fs-5">
             Contact Us
           </Nav.Link>
+          <Nav.Link href="/home" className="nav-link fs-5" onClick={() => {onLogout()}}>
+            Logout
+          </Nav.Link>
+          <Nav.Link href="/shop/profile" className="nav-link fs-5">
+            Profile
+          </Nav.Link>
         </Nav>
       </Container>
+      <ToastContainer></ToastContainer>
     </Navbar>
   );
 };
