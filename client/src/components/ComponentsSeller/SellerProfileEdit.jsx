@@ -1,6 +1,7 @@
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./SellerProfile.css";
+import sidebar from "./sidebar";
 
 function SellerEdit() {
   return (

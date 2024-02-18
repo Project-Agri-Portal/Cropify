@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -28,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cropify.dto.LoginDTO;
 import com.cropify.dto.UserDetailsDTO;
+import com.cropify.entity.UserDetails;
 import com.cropify.services.UserDetailsService;
 
 @RestController
@@ -49,6 +51,11 @@ public class UserDetailsController {
 	public ResponseEntity<UserDetailsDTO> getUserById(@PathVariable @NotNull Long userId)
 	{
 		return ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(userId));
+	}
+
+	@GetMapping("/usertype/{userType}")
+	public ResponseEntity<List<UserDetailsDTO>> getUser(@PathVariable String userType){
+		return ResponseEntity.ok(userService.getUser(userType));
 	}
 	
 	// ------- POST methods ----------------
