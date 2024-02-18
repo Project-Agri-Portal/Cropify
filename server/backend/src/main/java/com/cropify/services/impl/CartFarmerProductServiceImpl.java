@@ -1,5 +1,8 @@
 package com.cropify.services.impl;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -12,6 +15,7 @@ import com.cropify.customexception.ResourceNotFoundException;
 import com.cropify.dao.CartFarmProductRepository;
 import com.cropify.dao.FarmProductsRepository;
 import com.cropify.dao.UserDetailsRepository;
+import com.cropify.dto.CartDTO;
 import com.cropify.dto.CartFarmProductDTO;
 import com.cropify.entity.CartFarmProduct;
 import com.cropify.entity.FarmProducts;
@@ -49,6 +53,37 @@ public class CartFarmerProductServiceImpl implements CartFarmerProductService{
         CartFarmProduct farmProduct  = cartFarmProductRepository.save(cartFarmProduct);
 
         return farmProduct.getCid();
+    }
+
+    @Override
+    public List<CartDTO> getAllCartById(Long customerId) {
+        List<Object[]> resultList = cartFarmProductRepository.findByCustomerId(customerId);
+        List<CartDTO> cartDTOs = new ArrayList<>();
+        for (Object[] result : resultList) {
+            CartFarmProduct cartFarmProduct = (CartFarmProduct) result[0];
+            FarmProducts farmProducts = (FarmProducts) result[1];
+
+            CartDTO cartDTO = new CartDTO();
+
+            cartDTO.setCid(cartFarmProduct.getCid());
+            cartDTO.setFarmProductName(farmProducts.getFarmProductName());
+            cartDTO.setQuantity(cartFarmProduct.getQuantity());
+            cartDTO.setTotalAmount(cartFarmProduct.getTotalAmount());
+            cartDTO.setCustomerId(customerId);
+            cartDTO.setFarmProductId(farmProducts.getFarmProductId());
+            cartDTO.setFarmerId(cartFarmProduct.getFarmerId().getId());
+            cartDTO.setDeliveryDate(LocalDateTime.now()
+                                                .plusHours(4).toLocalDate());
+            cartDTOs.add(cartDTO);
+
+        }
+        return cartDTOs;
+    }
+
+    @Override
+    public Long deleteCartById(Long cartId) {
+        cartFarmProductRepository.deleteById(cartId);
+        return cartId;
     }
 
 }

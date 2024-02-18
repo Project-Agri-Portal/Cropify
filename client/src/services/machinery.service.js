@@ -11,4 +11,8 @@ const getFarmProducts = () => {
     return app.get("/machinery/");
 }
 
-export default {getFarmProducts};
+const deleteMachinery = (machineId) => {
+    return app.delete('/machinery/' + machineId);
+}
+
+export default {getFarmProducts, deleteMachinery};

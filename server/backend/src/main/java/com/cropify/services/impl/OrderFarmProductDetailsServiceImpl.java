@@ -46,7 +46,7 @@ public class OrderFarmProductDetailsServiceImpl implements OrderFarmProductDetai
     }
 
     @Override
-    public String addFarmProductToCart(Long customerId, double totalPrice) {
+    public String addFarmProductToCart(Long customerId, Double totalPrice) {
         List<CartFarmProduct> cartFarmProducts = 
                                             cartFarmProductRepository
                                             .findCartProductByCustomerId(customerId);
