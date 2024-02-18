@@ -15,8 +15,12 @@ const showCart = (customerId) => {
     return app.get('cartfarmproduct/'+ customerId);
 }
 
-const deleteCart = (customerId) => {
-    return app.delete('cartfarmproduct/'+ customerId)
+const deleteCart = (cartId) => {
+    return app.delete('cartfarmproduct/'+ cartId)
 }
 
-export default {addToCart, showCart};
+const order = (customerId, totalPrice) => {
+    return app.post('orderfarmproductdetails/'+ customerId + '/' + totalPrice);
+}
+
+export default {addToCart, showCart,deleteCart,order};

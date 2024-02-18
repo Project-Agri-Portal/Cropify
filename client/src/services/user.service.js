@@ -15,4 +15,8 @@ const getFarmerList = (role) => {
     return app.get('/usertype/'+role);
 }
 
-export default {getSellerList, getFarmerList};
+const getCustomer = (customerId) => {
+    return app.get('/'+customerId);
+}
+
+export default {getSellerList, getFarmerList,getCustomer};

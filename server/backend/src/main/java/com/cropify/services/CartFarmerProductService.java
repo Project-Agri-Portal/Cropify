@@ -10,5 +10,7 @@ public interface CartFarmerProductService {
     Long addFarmerProductToCart(Long farmerId, CartFarmProductDTO cartFarmProductDTO);
 
     List<CartDTO> getAllCartById(Long customerId);
+
+    Long deleteCartById(Long cartId);
  
 }

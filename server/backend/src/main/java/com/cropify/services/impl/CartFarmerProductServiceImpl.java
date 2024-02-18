@@ -80,4 +80,10 @@ public class CartFarmerProductServiceImpl implements CartFarmerProductService{
         return cartDTOs;
     }
 
+    @Override
+    public Long deleteCartById(Long cartId) {
+        cartFarmProductRepository.deleteById(cartId);
+        return cartId;
+    }
+
 }

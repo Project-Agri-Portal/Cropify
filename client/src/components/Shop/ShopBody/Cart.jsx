@@ -3,6 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "./Cart.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import NavBar from "../Common/NavBar";
+import { ToastContainer, toast } from "react-toastify";
 import CartProduct from "../../../services/ordercart.service";
 import Orange from "../../../assets/ShopImages/orange.png";
 import { useEffect, useState } from "react";
@@ -26,8 +27,16 @@ const Cart = () => {
       });
   };
 
-  const deleteCart = (cartId, price) => {
+  const deleteCart = async (cartId, price) => {
     setTotal(total-price);
+    await CartProduct.deleteCart(cartId)
+                      .then((result) => {
+                        toast.warn("Product deleted")
+                        onload();
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                      })
   }
 
   const calculateTotal = () => {
@@ -103,7 +112,7 @@ const Cart = () => {
                               {/* <!-- //remover move and price --> */}
                               <div className="row">
                                 <div className="col-8 d-flex justify-content-between remove_wish">
-                                  <p onClick={() => {deleteCart(product[])}}>
+                                  <p onClick={() => {deleteCart(product['cid'], product['totalAmount'])}} className="delete_icon">
                                     <i className="fas fa-trash-alt delete_icon"></i>{" "}
                                     REMOVE ITEM
                                   </p>
@@ -156,7 +165,10 @@ const Cart = () => {
                   </button> */}
                     <Link
                       className="btn btn-primary text-uppercase"
-                      to="/shop/cart/checkout"
+                      to={{
+                        pathname: "/shop/cart/checkout",
+                        search: `?totalAmount=${total}`,
+                      }}
                     >
                       Checkout
                     </Link>
@@ -217,6 +229,7 @@ const Cart = () => {
           </div>
         </div>
       )}
+      <ToastContainer></ToastContainer>
     </>
   );
 };
