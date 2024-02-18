@@ -48,6 +48,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return userDto;
 	}
 
+	@Override
+	public List<UserDetailsDTO> getUser(String userType) {
+		List<UserDetails> userDetails = userRepo.findUser(userType.toUpperCase());
+		List<UserDetailsDTO> userDetailsDTOs = userDetails.stream().map((user) -> mapper.map(user, UserDetailsDTO.class)).collect(Collectors.toList());
+		return userDetailsDTOs;
+	}
+
 	// ---------------- Create operations ----------------
 	@Override
 	public UserDetailsDTO createUser(UserDetailsDTO userDto) {

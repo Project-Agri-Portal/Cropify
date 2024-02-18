@@ -1,11 +1,20 @@
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link,useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./SellerProducts.css";
 import SellerProducts from '../../services/seller.service';
 import { useState } from "react";
 import { useEffect } from "react";
 
 function ProductList() {
+
+  const history = useHistory();
+
+  // Loggin out user and clearing the storages
+  function logoutUser() {
+    localStorage.clear();
+    sessionStorage.clear();
+    history.replace("/");
+  }
 
   const [productList,setProductList] = useState([]);
 
@@ -39,6 +48,7 @@ function ProductList() {
       <div className="d-flex" id="wrapper">
         {/* <!-- Sidebar --> */}
         <div className="bg-white" id="sidebar-wrapper">
+        <div id="sidebar">
           <div className="sidebar-heading text-center py-4 border-bottom">
             <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
               <i className="bx bxs-leaf"></i>
@@ -102,6 +112,7 @@ function ProductList() {
               <i className="fas fa-power-off me-2"></i>Logout
             </Link>
           </div>
+          </div>
         </div>
 
         {/* <!-- /#sidebar-wrapper --> */}
@@ -158,7 +169,8 @@ function ProductList() {
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="#">
+                      <Link className="dropdown-item" to="#"
+                      onClick={logoutUser}>
                         Logout
                       </Link>
                     </li>

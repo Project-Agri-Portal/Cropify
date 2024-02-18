@@ -5,6 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle"
 import Header from './Header'
 import Sidebar from './SideBar'
 import Product from "../../services/machinery.service";
+import { ToastContainer, toast } from "react-toastify";
 import "./MainLayout.css";
 import { useState } from 'react';
 import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper} from '@mui/material';
@@ -32,6 +33,18 @@ const Machinery = () => {
                         console.log(error);
                       })
   }
+
+  const deleteMachine = (prodId) => {
+    Product.deleteMachinery(prodId)
+      .then((result) => {
+        console.log(result["data"]);
+        toast.success('Machinery product delete')
+        onload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     onload();
@@ -67,7 +80,7 @@ const Machinery = () => {
               <TableCell className='text-center'>{product['machineType']}</TableCell>
               <TableCell className='text-center'>
               <Stack direction="row" spacing={2} className='center d-flex justify-content-center'>
-                <Button variant="outlined" startIcon={<DeleteIcon />}>
+                <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => {deleteMachine(product['machineId'])}}>
                   Delete
                 </Button>
               </Stack>
@@ -85,6 +98,7 @@ const Machinery = () => {
         </Table>
       </TableContainer>
       </main>
+      <ToastContainer></ToastContainer>
       </div>
   );
 };

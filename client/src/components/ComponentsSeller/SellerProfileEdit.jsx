@@ -4,6 +4,7 @@ import "./SellerProfile.css";
 import { useState } from "react";
 import Seller from "../../services/seller.service";
 import { useEffect } from "react";
+import sidebar from "./sidebar";
 
 function SellerEdit() {
 
@@ -79,28 +80,28 @@ function SellerEdit() {
 
 
 
-  const updateData = async () => {
-    try {
-      const userId = localStorage.getItem("userId");
+  // const updateData = async () => {
+  //   try {
+  //     const userId = localStorage.getItem("userId");
 
-      await Seller.updateSellerProfile(userId, {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        mobileNo: mobileNo,
-        userAddress: {
-          city: city,
-          state: state,
-          pincode: pincode,
-        },
-      });
+  //     await Seller.updateSellerProfile(userId, {
+  //       firstName: firstName,
+  //       lastName: lastName,
+  //       email: email,
+  //       mobileNo: mobileNo,
+  //       userAddress: {
+  //         city: city,
+  //         state: state,
+  //         pincode: pincode,
+  //       },
+  //     });
 
-      // Redirect to the seller dashboard after successful update
-      // history.push("/home/seller");
-    } catch (error) {
-      console.log("Error updating profile:", error);
-    }
-  };
+  //     // Redirect to the seller dashboard after successful update
+  //     // history.push("/home/seller");
+  //   } catch (error) {
+  //     console.log("Error updating profile:", error);
+  //   }
+  // };
 
 
   useEffect(() => {
@@ -544,7 +545,7 @@ function SellerEdit() {
                             type="button"
                             className="btn btn-primary"
                             value="Update"
-                            onClick={updateData}
+                            // onClick={updateData}
                             to="/home/seller"
                           />
                            {/* <Link to="/home/seller" className="btn btn-primary"

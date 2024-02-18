@@ -3,9 +3,8 @@ import React from 'react';
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import Header from './Header'
-import Sidebar from './SideBar'
-import Product from "../../services/agriproduct.service"
-import { ToastContainer, toast } from "react-toastify";
+import Sidebar from './SideBar';
+import Product from "../../services/user.service"
 import { useEffect } from 'react';
 import "./MainLayout.css";
 import { useState } from 'react';
@@ -15,7 +14,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
 
-const AgricultureProduct = () => {
+const FarmerList = () => {
 
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
   const [productList, setProductList] = useState([]);
@@ -25,7 +24,7 @@ const AgricultureProduct = () => {
   }
 
   const onload = async () => {
-    await Product.getAgriProducts()
+    await Product.getFarmerList('Farmer')
                       .then((result) => {
                         setProductList(result['data'])
                         console.log(result['data']);
@@ -35,24 +34,13 @@ const AgricultureProduct = () => {
                       })
   }
 
-  const deleteProduct = (prodId) => {
-    Product.deleteAgriProduct(prodId)
-      .then((result) => {
-        console.log(result["data"]);
-        toast.success('Farm product delete')
-        onload();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   useEffect(() => {
     onload();
     console.log("use");
   }, [])
 
   return (
+
     <div className='grid-container'>
     <Header OpenSidebar={OpenSidebar}/>
     <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
@@ -63,11 +51,12 @@ const AgricultureProduct = () => {
     <Table aria-lable = 'smple table' sx={{ width: '100%' }}>
     <TableHead>
       <TableRow>
-        <TableCell className='text-center'>Product Id</TableCell>
-        <TableCell className='text-center'>Product Name</TableCell>
-        <TableCell className='text-center'>Product Type</TableCell>
-        <TableCell className='text-center'>Delete Product</TableCell>
-        <TableCell className='text-center'>Edit Product</TableCell>
+        <TableCell className='text-center'>Farmer Id</TableCell>
+        <TableCell className='text-center'>Farmer Name</TableCell>
+        <TableCell className='text-center'>Email</TableCell>
+        <TableCell className='text-center'>Mobile No</TableCell>
+        <TableCell className='text-center'>Status</TableCell>
+        <TableCell className='text-center'>Block</TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -75,20 +64,17 @@ const AgricultureProduct = () => {
       {productList.map((product) => {
           return (
             <TableRow key={1} sx={{'&:last-child td, &:last-child th' : {border : 0}}}>
-          <TableCell className='text-center'>{product['agriProductId']}</TableCell>
-          <TableCell className='text-center'>{product['agriProductName']}</TableCell>
-          <TableCell className='text-center'>{product['agriProductType']}</TableCell>
+          <TableCell className='text-center'>{product['id']}</TableCell>
+          <TableCell className='text-center'>{product['firstName']}</TableCell>
+          <TableCell className='text-center'>{product['email']}</TableCell>
+          <TableCell className='text-center'>{product['mobileNo']}</TableCell>
+          <TableCell className='text-center'>{product['status']}</TableCell>
           <TableCell className='text-center'>
-          <Stack direction="row" spacing={2} className='center d-flex justify-content-center'>
-            <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => {deleteProduct(product['agriProductId'])}}>
-              Delete
+          <Stack direction="row" spacing={2} className='center d-flex justify-content-center btn-danger'>
+            <Button variant="outlined" startIcon={<DeleteIcon />} style={{borderColor:'red', color:'red'}}>
+              Block Farmer
             </Button>
           </Stack>
-          </TableCell>
-          <TableCell className='text-center d-flex justify-content-center'>
-          <Button variant="contained" endIcon={<SendIcon />}>
-              Edit
-          </Button>
           </TableCell>
         </TableRow>
           );
@@ -98,9 +84,8 @@ const AgricultureProduct = () => {
     </Table>
   </TableContainer>
   </main>
-  <ToastContainer></ToastContainer>
   </div>
   );
 };
 
-export default AgricultureProduct;
+export default FarmerList;

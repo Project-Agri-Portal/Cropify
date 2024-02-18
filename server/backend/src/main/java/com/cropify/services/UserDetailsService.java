@@ -14,6 +14,8 @@ public interface UserDetailsService {
 	
 	// Login operation
 	UserDetailsDTO loginCustomer(String email, String password);
+
+	List<UserDetailsDTO> getUser(String userType);
 	
 	// Create operations
 	UserDetailsDTO createUser(UserDetailsDTO userDto);

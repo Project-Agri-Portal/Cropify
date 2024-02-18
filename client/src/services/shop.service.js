@@ -19,4 +19,8 @@ const getFarmProductsDetails = () => {
     return app.get('farmproductdetails/all')
 }
 
-export default {getFarmProducts, getFarmProductsDetails, getImg};
+const deleteFarmProduct = (productId) => {
+    app.delete('farmProducts/' + productId);
+}
+
+export default {getFarmProducts, getFarmProductsDetails, getImg, deleteFarmProduct};
