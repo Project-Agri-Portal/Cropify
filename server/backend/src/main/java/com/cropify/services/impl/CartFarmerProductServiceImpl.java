@@ -1,5 +1,7 @@
 package com.cropify.services.impl;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +72,8 @@ public class CartFarmerProductServiceImpl implements CartFarmerProductService{
             cartDTO.setCustomerId(customerId);
             cartDTO.setFarmProductId(farmProducts.getFarmProductId());
             cartDTO.setFarmerId(cartFarmProduct.getFarmerId().getId());
+            cartDTO.setDeliveryDate(LocalDateTime.now()
+                                                .plusHours(4).toLocalDate());
             cartDTOs.add(cartDTO);
 
         }

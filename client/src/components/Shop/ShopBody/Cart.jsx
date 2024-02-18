@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
+  const[deliveryDate, setDeliveryDate] = useState();
 
   const onload = async () => {
     const customer = parseInt(localStorage.getItem("userId"));
@@ -16,6 +18,7 @@ const Cart = () => {
       .then((result) => {
         console.log(result["data"]);
         setCart(result["data"]);
+        setDeliveryDate(result['data'][0]['deliveryDate']);
       })
       .catch((error) => {
         console.log("error");
@@ -23,9 +26,25 @@ const Cart = () => {
       });
   };
 
+  const deleteCart = (cartId, price) => {
+    setTotal(total-price);
+  }
+
+  const calculateTotal = () => {
+    let totalAmount = 0;
+    cart.forEach((product) => {
+      totalAmount += parseFloat(product.totalAmount);
+    });
+    setTotal(totalAmount);
+  };
+
   useEffect(() => {
     onload();
   }, []);
+
+  useEffect(() => {
+    calculateTotal();
+  }, [cart]);
 
   return (
     <>
@@ -84,14 +103,14 @@ const Cart = () => {
                               {/* <!-- //remover move and price --> */}
                               <div className="row">
                                 <div className="col-8 d-flex justify-content-between remove_wish">
-                                  <p>
+                                  <p onClick={() => {deleteCart(product[])}}>
                                     <i className="fas fa-trash-alt delete_icon"></i>{" "}
                                     REMOVE ITEM
                                   </p>
                                 </div>
                                 <div className="col-4 d-flex justify-content-end price_money">
                                   <h3>
-                                    $
+                                    ₹
                                     <span id="itemval">
                                       {product["totalAmount"]}
                                     </span>
@@ -116,20 +135,20 @@ const Cart = () => {
                     <div className="price_indiv d-flex justify-content-between">
                       <p>Product amount</p>
                       <p>
-                        $<span id="product_total_amt">0.00</span>
+                        ₹<span id="product_total_amt">{total}</span>
                       </p>
                     </div>
                     <div className="price_indiv d-flex justify-content-between">
                       <p>Shipping Charge</p>
                       <p>
-                        $<span id="shipping_charge">50.0</span>
+                        ₹<span id="shipping_charge">50.0</span>
                       </p>
                     </div>
                     <hr />
                     <div className="total-amt d-flex justify-content-between font-weight-bold">
                       <p>The total amount of (including VAT)</p>
                       <p>
-                        $<span id="total_cart_amt">0.00</span>
+                      ₹<span id="total_cart_amt">{total + 50}</span>
                       </p>
                     </div>
                     {/* <button className="btn btn-primary text-uppercase">
@@ -186,10 +205,10 @@ const Cart = () => {
                   </div>
 
                   {/* <!-- discount code ends --> */}
-                  <div classNameName="mt-3 shadow p-3 bg-white">
-                    <div classNameName="pt-4">
-                      <h5 className="mb-4">Expected delivery date</h5>
-                      <p>July 27th 2020 - July 29th 2020</p>
+                  <div className="mt-3 shadow p-3 bg-white">
+                    <div className="pt-4">
+                      <h5 className="mb-4">Expected delivery date : {deliveryDate}</h5>
+                      <p></p>
                     </div>
                   </div>
                 </div>

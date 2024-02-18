@@ -15,4 +15,8 @@ const showCart = (customerId) => {
     return app.get('cartfarmproduct/'+ customerId);
 }
 
+const deleteCart = (customerId) => {
+    return app.delete('cartfarmproduct/'+ customerId)
+}
+
 export default {addToCart, showCart};

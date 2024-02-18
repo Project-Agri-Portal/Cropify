@@ -1,5 +1,7 @@
 package com.cropify.dto;
 
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,4 +19,5 @@ public class CartDTO {
     private Long customerId;
     private String farmProductId;
     private Long farmerId;
+    private LocalDate deliveryDate;
 }
