@@ -1,8 +1,30 @@
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./SellerOrderList.css";
+import MachineryOrderList from '../../services/seller.service';
+import { useState } from "react";
+import { useEffect } from "react";
 
 function OrderList() {
+
+
+  const [orderList,setOrderList] = useState([]);
+
+  const onload = (userId) =>{
+    MachineryOrderList.getMachineryOrderList(userId).then((result) =>{
+      setOrderList(result.data);
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+  useEffect(() => {
+    const userId= localStorage.getItem('userId');
+    onload(userId);
+  },[])
+
+
   return (
     <>
       <div className="d-flex" id="wrapper">
@@ -82,7 +104,7 @@ function OrderList() {
                 className="fas fa-align-left primary-text fs-4 me-3"
                 id="menu-toggle"
               ></i>
-              <h2 className="fs-2 m-0">Order List</h2>
+              <h2 className="fs-2 m-0">Your Order List </h2>
             </div>
 
             <button
@@ -141,141 +163,60 @@ function OrderList() {
 
           <div className="container-fluid px-4">
             <div className="row my-5" style={{ opacity: "0.7;" }}>
-              <h3 className="fs-4 mb-3 " style={{ color: "black;" }}>
-                Recent Orders
-              </h3>
+              <h5 className="fs-4 mb-3 " style={{ color: "black;" }}>
+                Current Orders
+              </h5>
               <div className="col">
                 <table className="table bg-white rounded shadow-sm  table-hover">
                   <thead>
                     <tr>
                       <th scope="col" width="50">
-                        #
+                      Order Id
                       </th>
-                      <th scope="col">Product</th>
-                      <th scope="col">Customer</th>
-                      <th scope="col">City</th>
-                      <th scope="col">Quantity(in kgs)</th>
-                      <th scope="col">Price per kg</th>
-                      <th scope="col"> Total Price</th>
+                      <th scope="col">Machine Id</th>
+                      <th scope="col">Farmer Id</th>
+                      <th scope="col">Order Date</th>
+                      <th scope="col">Delivery Date</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Duration</th>
+                      <th scope="col"> Total Bill</th>
+                      <th scope="col"> Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Rice</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
+                    {orderList.map((orders) => {
+                      return (
+                        <tr>
+                          <td>{orders['orderId']}</td>
+                          <th scope="row">{orders['machineId']} </th>
+                         <td>{orders['farmerId']}</td>
+                         <td>{orders['orderDate']}</td>
+                         <td>{orders['deliveryDate']}</td>
+                         <td>{orders['quantity']}</td>
+                         <td>{orders['rentDuration']}</td>  
+                          <td>{orders['totalPrice']}</td>
+                          <td>{orders['orderStatus']}</td>
                     </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Wheat</td>
-                      <td>Harish</td>
-                      <td>Pune</td>
-                      <td>20</td>
-                      <td>27 Rs.</td>
-                      <td>540 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Bajra</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
-                    </tr>
-
-                    <tr>
-                      <th scope="row">7</th>
-                      <td>Rice</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">8</th>
-                      <td>Wheat</td>
-                      <td>Harish</td>
-                      <td>Pune</td>
-                      <td>5</td>
-                      <td>27 Rs.</td>
-                      <td>135 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">9</th>
-                      <td>Wheat</td>
-                      <td>Harish</td>
-                      <td>Pune</td>
-                      <td>5</td>
-                      <td>27 Rs.</td>
-                      <td>135 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">10</th>
-                      <td>Rice</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">11</th>
-                      <td>Wheat</td>
-                      <td>Harish</td>
-                      <td>Pune</td>
-                      <td>5</td>
-                      <td>27 Rs.</td>
-                      <td>135 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">10</th>
-                      <td>Rice</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">8</th>
-                      <td>Wheat</td>
-                      <td>Harish</td>
-                      <td>Pune</td>
-                      <td>5</td>
-                      <td>27 Rs.</td>
-                      <td>135 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>Rice</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
-                    </tr>
+                      );
+                    })}
+                    
+                    
                   </tbody>
                 </table>
               </div>
 
               <div className="row g-0 align-items-center pb-4">
                 <div className="col-sm-6">
-                  <div>
+                  {/* <div>
                     <p className="mb-sm-0">Showing 1 of 2</p>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="col-sm-6">
                   <div className="float-sm-end">
                     <ul className="pagination mb-sm-0">
-                      {/* <!-- <li className="page-item disabled">
+                       {/* <li className="page-item disabled">
                                         <Link to="#" className="page-link"><i className="mdi mdi-chevron-left"></i></Link>
-                                    </li> --> */}
+                                    </li> */}
                       <li className="page-item active">
                         <Link to="#" className="page-link">
                           1

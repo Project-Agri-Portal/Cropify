@@ -40,6 +40,7 @@ function SellerProfile() {
         {/* <!-- Sidebar --> */}
 
         <div className="bg-white" id="sidebar-wrapper">
+          <div id="sidebar">
           <div className="sidebar-heading text-center py-4 border-bottom">
             <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
               <i className="bx bxs-leaf"></i> Cropify
@@ -102,6 +103,7 @@ function SellerProfile() {
             >
               <i className="fas fa-power-off me-2"></i>Logout
             </p>
+            </div>
           </div>
         </div>
 
