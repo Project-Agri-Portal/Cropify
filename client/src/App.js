@@ -27,6 +27,10 @@ import AgricultureProduct from "./components/ComponentAdmin/AgricultureProduct.j
 import AdminSeller from "./components/ComponentAdmin/SellerList.jsx";
 import AdminFarmer from "./components/ComponentAdmin/FarmerList.jsx";
 import AddProductList from "./components/ComponentsSeller/AddProduct.jsx";
+import InformationPage from "./components/InformationPage/InformationPage.jsx";
+import MachineryPage from "./components/InformationPage/MachineryPage.jsx";
+import Orders from "./components/Shop/ShopBody/Orders.jsx";
+import AddProduct from "./components/ComponentAdmin/AddProduct.jsx";
 
 function App() {
   return (
@@ -37,6 +41,8 @@ function App() {
           <Route path="/login" component={Login} exact />
           <Route path="/register" component={Register} exact />
           <Route path="/home" component={CommonHome} exact />
+          <Route path="/home/information" component={InformationPage} exact />
+          <Route path="/home/information/machinery" component={MachineryPage} exact />
           <Route path="/home/customer" component={Shop} exact />
           <Route path="/home/farmer" component={FarmerHome} exact />
           <Route path="/home/seller" component={SellerProfile} exact />
@@ -53,6 +59,7 @@ function App() {
           <Route path="/shop/about" component={ShopAboutUs} exact />
           <Route path="/shop/productsall" component={ProductListAll} exact />
           <Route path="/shop/cart" component={Cart} exact />
+          <Route path="/shop/orders" component={Orders} exact />
           <Route path="/shop/cart/checkout" component={Checkout} exact />
           <Route path="/admin" component={MainLayout} exact />
           <Route path="/admin/product" component={AdminProduct} exact />
@@ -60,6 +67,7 @@ function App() {
           <Route path="/admin/agriproduct" component={AgricultureProduct} exact />
           <Route path="/admin/seller" component={AdminSeller} exact />
           <Route path="/admin/farmer" component={AdminFarmer} exact />
+          <Route path="/admin/addproduct" component={AddProduct} exact />
 
 
           {/* <Route path="/shop/productdetails" component={SingleProductDetails} exact /> */}

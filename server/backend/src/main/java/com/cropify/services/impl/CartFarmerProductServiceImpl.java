@@ -14,11 +14,13 @@ import org.springframework.stereotype.Service;
 import com.cropify.customexception.ResourceNotFoundException;
 import com.cropify.dao.CartFarmProductRepository;
 import com.cropify.dao.FarmProductsRepository;
+import com.cropify.dao.FarmerProductDetailsRepository;
 import com.cropify.dao.UserDetailsRepository;
 import com.cropify.dto.CartDTO;
 import com.cropify.dto.CartFarmProductDTO;
 import com.cropify.entity.CartFarmProduct;
 import com.cropify.entity.FarmProducts;
+import com.cropify.entity.FarmerProductDetails;
 import com.cropify.entity.UserDetails;
 import com.cropify.services.CartFarmerProductService;
 
@@ -36,6 +38,9 @@ public class CartFarmerProductServiceImpl implements CartFarmerProductService{
     private UserDetailsRepository userDetailsRepository;
 
     @Autowired
+    private FarmerProductDetailsRepository farmerProductDetailsRepository;
+
+    @Autowired
     private ModelMapper mapper;
 
     @Override
@@ -51,6 +56,11 @@ public class CartFarmerProductServiceImpl implements CartFarmerProductService{
         cartFarmProduct.setFarmProdId(farmProducts);
 
         CartFarmProduct farmProduct  = cartFarmProductRepository.save(cartFarmProduct);
+
+        // FarmerProductDetails farmerProductDetails = farmerProductDetailsRepository.findByFarmProductIdAndFarmerId(cartFarmProductDTO.getFarmProdId(), farmer.getId());
+        // int quantity = farmerProductDetails.getQuantity() - cartFarmProduct.getQuantity();
+        // farmerProductDetails.setQuantity(quantity);
+        farmerProductDetailsRepository.decreaseQuantity(cartFarmProductDTO.getFarmerId(), cartFarmProductDTO.getFarmProdId(), cartFarmProductDTO.getQuantity());
 
         return farmProduct.getCid();
     }
@@ -82,6 +92,8 @@ public class CartFarmerProductServiceImpl implements CartFarmerProductService{
 
     @Override
     public Long deleteCartById(Long cartId) {
+        CartFarmProduct cartFarmProduct = cartFarmProductRepository.findById(cartId).orElseThrow(() -> new RuntimeException("found"));
+        farmerProductDetailsRepository.increaseQuantity(cartFarmProduct.getFarmerId().getId(), cartFarmProduct.getFarmProdId().getFarmProductId(), cartFarmProduct.getQuantity());
         cartFarmProductRepository.deleteById(cartId);
         return cartId;
     }

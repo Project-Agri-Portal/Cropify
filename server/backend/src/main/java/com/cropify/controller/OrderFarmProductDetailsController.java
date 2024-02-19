@@ -1,13 +1,20 @@
 package com.cropify.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cropify.dto.OrderDTO;
+import com.cropify.dto.OrderFarmProductDetailsDTO;
 import com.cropify.services.OrderFarmProductDetailsService;
 
 @RestController
@@ -21,6 +28,17 @@ public class OrderFarmProductDetailsController {
     @PostMapping("/{customerId}/{totalPrice}")
     public String addCustomerProductToCart(@PathVariable("customerId") Long farmerId, @PathVariable("totalPrice") Double totalPrice){
         return orderFarmProductDetailsService.addFarmProductToCart(farmerId, totalPrice);
+    }
+
+    @GetMapping("/{customerId}")
+    public ResponseEntity<List<OrderDTO>> getOrderById(@PathVariable Long customerId){
+        // return orderFarmProductDetailsService.getOrder(customerId);
+        return ResponseEntity.ok(orderFarmProductDetailsService.getAllOrder(customerId));
+    }
+
+    @DeleteMapping("/{oid}")
+    public ResponseEntity<Long> deleteOrder(@PathVariable Long oid){
+        return ResponseEntity.ok(orderFarmProductDetailsService.deleteOrderById(oid));
     }
 
 }

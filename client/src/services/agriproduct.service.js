@@ -15,4 +15,8 @@ const deleteAgriProduct = (productId) => {
     return app.delete('agriProducts/' + productId);
 }
 
-export default {getAgriProducts, deleteAgriProduct};
+const addAgriProducts = (product) => {
+    return app.post("agriProducts/", product);
+}
+
+export default {getAgriProducts, deleteAgriProduct, addAgriProducts};

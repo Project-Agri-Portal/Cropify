@@ -23,4 +23,12 @@ const order = (customerId, totalPrice) => {
     return app.post('orderfarmproductdetails/'+ customerId + '/' + totalPrice);
 }
 
-export default {addToCart, showCart,deleteCart,order};
+const allOrder = (customerId) => {
+    return app.get('orderfarmproductdetails/' + customerId);
+}
+
+const deleteOrder = (cid) => {
+    return app.delete('orderfarmproductdetails/' + cid);
+}
+
+export default {addToCart, showCart,deleteCart,order, allOrder, deleteOrder};

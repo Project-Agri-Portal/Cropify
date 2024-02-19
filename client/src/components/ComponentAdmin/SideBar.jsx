@@ -55,7 +55,7 @@ function SideBar({openSidebarToggle, OpenSidebar}) {
             </li>
             <li className='sidebar-list-item'>
             <BsListCheck className='icon'/>
-                <Link>
+                <Link to="/admin/addproduct">
                 Add Product
                 </Link>
             </li>

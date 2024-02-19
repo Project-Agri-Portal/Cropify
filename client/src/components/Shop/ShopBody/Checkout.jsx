@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import "./Checkout.css"
 import Navbar from "../Common/NavBar";
 import Footer from "../Common/Footer";
+import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import UserDetails from "../../../services/user.service";
@@ -16,6 +17,8 @@ const Checkout = () => {
     const [city, setCity] = useState();
     const [pincode, setPincode] = useState();
     const [address, setAddress] = useState();
+
+    const history = useHistory();
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -43,6 +46,7 @@ const Checkout = () => {
                 .then((result) => {
                     toast.success("WOhooooooo Order on the way");
                     console.log(result);
+                    history.push('/shop/orders');
                 })
                 .catch((error) => {
                     console.log(error);

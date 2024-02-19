@@ -8,7 +8,7 @@ import "./Carousal.css"
 const Carousal = () => {
     return(
         <>
-        <div style={{height:"120px"}}></div>
+        <div style={{height:30}}></div>
         <div id="carouselExampleCaptions" className="carousel slide">
         <div className="carousel-indicators"></div>
         <div className="carousel-inner rounded-4">

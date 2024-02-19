@@ -35,9 +35,19 @@ const getFarmProducts = () => {
     return app.get("/machinery/");
 }
 
+const addFarmerProduct = () => {
+    
+}
+
+const addAgricultureProduct = () => {
+
+}
+
 export default {agricultureProductCount, 
                 farmProductCount, 
                 machineryCount, 
                 sellerCount, 
                 customerCount, 
-                farmerCount};
+                farmerCount,
+                getFarmProducts
+            };
