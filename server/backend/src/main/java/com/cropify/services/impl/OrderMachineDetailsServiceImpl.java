@@ -114,9 +114,8 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
     	orderMachineDetailsRepository.deleteById(oid);
     	return oid;
     }
-
-    
-    // Order list of Machinery
+	
+    // Order list of Machinery	
 	@Override
 	public List<OrderMachineDetailsDTO> getTotalOrders(Long sellerId) {
 		List<OrderMachineDetails> details = orderMachineDetailsRepository.getByUserId(sellerId);
@@ -128,7 +127,7 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
 				.collect(Collectors.toList());
 //			
 //		}
-		return detailsDTOs;
+		return detailsDTOs;	
 	}
 
 }

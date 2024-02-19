@@ -14,7 +14,7 @@ public class SellerMachineDTO {
 	
 
 	private int machineCount;
-	
+		
 	public int getMachineCount() {
 		return machineCount;
 	}

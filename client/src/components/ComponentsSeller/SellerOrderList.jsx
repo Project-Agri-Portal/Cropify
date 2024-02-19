@@ -5,7 +5,7 @@ import MachineryOrderList from "../../services/seller.service";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function OrderList() {
+function OrderList({userId}) {
   // const history = useHistory();
 
   // // Loggin out user and clearing the storages
@@ -29,14 +29,14 @@ function OrderList() {
   };
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
+    // const userId = localStorage.getItem("userId");
     onload(userId);
   }, []);
 
   const Orderdelete = async (oid) => {
     await MachineryOrderList.deleteOrder(oid)
       .then((result) => {
-        const userId = localStorage.getItem("userId");
+        // const userId = localStorage.getItem("userId");
         onload(userId);
         console.log(result);
       })

@@ -3,6 +3,7 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import logo from "../../logo.png";
 import FarmerHome from "../HomePage/FarmerHome/FarmerHome";
 import Footer from "../Shop/Common/Footer";
+import MainWeather from "./MainWeather";
 
 function InformationPage() {
   return (
@@ -48,7 +49,7 @@ function InformationPage() {
 
       <section className="my-5">
         <h1 className="my-5 text-body-secondary fw-semibold">Weather Index</h1>
-        {/* weather index logic here */}
+        <MainWeather></MainWeather>
       </section>
 
       <Footer></Footer>

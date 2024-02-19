@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cropify.dao.FarmerProductDetailsRepository;
 import com.cropify.dto.FarmerProductDetailsDTO;
+import com.cropify.dto.NewFarmProductDTO;
+import com.cropify.dto.SellerMachineDTO;
 import com.cropify.dto.ShopDTO;
 import com.cropify.services.FarmerProductDetailsService;
 
@@ -28,8 +31,8 @@ public class FarmerProductDetailsController {
 	@Autowired
 	private FarmerProductDetailsService detailsService;
 
-	@Autowired
-	private FarmerProductDetailsRepository detailsRepository;
+//	@Autowired
+//	private FarmerProductDetailsRepository detailsRepository;
 	
 	@GetMapping("/all")
 	public ResponseEntity<List<FarmerProductDetailsDTO>> getAllFarmProductDetails(){
@@ -46,4 +49,17 @@ public class FarmerProductDetailsController {
 		return ResponseEntity.ok(detailsService.getAllList());
 	}
 	
+	// -----------------
+	@GetMapping("/productlist/{userId}")
+	public ResponseEntity<List<NewFarmProductDTO>> getAllProductDetails(@PathVariable @NotNull Long userId){
+		List<NewFarmProductDTO> dtos=detailsService.getAllProductIntoNewDTO(userId);
+		return ResponseEntity.status(HttpStatus.OK).body(dtos);
+	}
+	
+	@DeleteMapping("/{fpId}")
+	public ResponseEntity<String> deleteFarmProductDetailsById(@PathVariable @NotNull Long fpId) 
+	{
+		detailsService.deleteFarmProductDetailsById(fpId);
+		return ResponseEntity.status(HttpStatus.OK).body("Detalil deleted successfully");
+	}
 }

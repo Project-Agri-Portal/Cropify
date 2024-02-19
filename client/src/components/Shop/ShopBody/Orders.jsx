@@ -15,7 +15,7 @@ const Orders = () => {
   const [deliveryDate, setDeliveryDate] = useState();
 
   const onload = async () => {
-    const customer = parseInt(localStorage.getItem("userId"));
+    const customer = parseInt(sessionStorage.getItem("userId"));
     await CartProduct.allOrder(customer)
       .then((result) => {
         setOrder(result["data"]);
@@ -28,7 +28,7 @@ const Orders = () => {
 
   const history = useHistory(); // Get access to the history object
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
+    const userId = sessionStorage.getItem("userId");
 
     // Check if userId is empty, and redirect to login if true
     if (!userId) {

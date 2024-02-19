@@ -17,9 +17,13 @@ import com.cropify.dao.FarmProductsRepository;
 import com.cropify.dao.FarmerProductDetailsRepository;
 import com.cropify.dao.UserDetailsRepository;
 import com.cropify.dto.FarmerProductDetailsDTO;
+import com.cropify.dto.NewFarmProductDTO;
+import com.cropify.dto.SellerMachineDTO;
 import com.cropify.dto.ShopDTO;
 import com.cropify.entity.FarmProducts;
 import com.cropify.entity.FarmerProductDetails;
+import com.cropify.entity.Machinery;
+import com.cropify.entity.SellerMachineryDetails;
 import com.cropify.entity.UserDetails;
 import com.cropify.services.FarmerProductDetailsService;
 
@@ -106,6 +110,41 @@ public class FarmerProductDetailsServiceImpl implements FarmerProductDetailsServ
 		}
 		Collections.shuffle(shopDTOs);
 		return shopDTOs;
+	}
+
+	@Override
+	public List<NewFarmProductDTO> getAllProductIntoNewDTO(Long farmerId) {
+		List<FarmerProductDetails> details= detailsRepository.getByFarmerId(farmerId);
+		System.out.println(farmerId + " " + details.size());
+		List<NewFarmProductDTO> newFarmProductDtos= new ArrayList<>();
+		int count=detailsRepository.getCountByFarmerId(farmerId);
+		
+		for(FarmerProductDetails products : details) {
+			FarmProducts product = farmProductsRepository.findById(products.getFarmProductId().getFarmProductId()).orElseThrow(
+					()-> new ResourceNotFoundException("Machine not found"));
+			
+			NewFarmProductDTO dto= new NewFarmProductDTO();
+			dto.setFarmProductId(product.getFarmProductId());
+			dto.setFarmProductName(product.getFarmProductName());
+			dto.setQuantity(products.getQuantity());
+			dto.setDescription(products.getDescription());
+			dto.setPrice(products.getPrice());
+			dto.setProductCount(count);
+			
+			dto.setFarmProductDetailsId(products.getFarmerProductDetailsId());
+			
+			newFarmProductDtos.add(dto);
+		}
+		return newFarmProductDtos;
+	}
+
+	@Override
+	public void deleteFarmProductDetailsById(Long fpdId) {
+		boolean detailExists = detailsRepository.existsById(fpdId);
+		if (detailExists)
+			detailsRepository.deleteById(fpdId);
+		else
+			throw new RuntimeException("seller machinery detail not found");
 	}
 	
 	

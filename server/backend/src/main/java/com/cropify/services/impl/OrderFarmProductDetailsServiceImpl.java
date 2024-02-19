@@ -4,10 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
 import org.hibernate.criterion.Order;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +21,11 @@ import com.cropify.dao.OrderFarmProductDetailsRepository;
 import com.cropify.dao.UserDetailsRepository;
 import com.cropify.dto.OrderDTO;
 import com.cropify.dto.OrderFarmProductDetailsDTO;
+import com.cropify.dto.OrderMachineDetailsDTO;
 import com.cropify.entity.CartFarmProduct;
 import com.cropify.entity.FarmProducts;
 import com.cropify.entity.OrderFarmProductDetails;
+import com.cropify.entity.OrderMachineDetails;
 import com.cropify.entity.UserDetails;
 import com.cropify.entity.enums.FarmOrderStatus;
 import com.cropify.entity.enums.FarmProductType;
@@ -45,6 +49,9 @@ public class OrderFarmProductDetailsServiceImpl implements OrderFarmProductDetai
 
     @Autowired
     private FarmerProductDetailsRepository farmerProductDetailsRepository;
+    
+    @Autowired
+    private ModelMapper mapper;
 
     private String customGeneratedId;
 
@@ -139,5 +146,17 @@ public class OrderFarmProductDetailsServiceImpl implements OrderFarmProductDetai
         orderFarmProductDetailsRepository.deleteById(cid);
         return cid;
     }
+
+	@Override
+	public List<OrderFarmProductDetailsDTO> getTotalOrders(Long farmerId) {
+		List<OrderFarmProductDetails> details = orderFarmProductDetailsRepository.getByUserId(farmerId);
+		
+		List<OrderFarmProductDetailsDTO> detailsDTOs = details
+				.stream()
+				.map(item -> mapper.map(item, OrderFarmProductDetailsDTO.class))
+				.collect(Collectors.toList());	
+
+		return detailsDTOs;	
+	}
 
 }
