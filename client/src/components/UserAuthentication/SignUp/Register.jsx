@@ -14,14 +14,20 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function Register() {
+  const [isCustomer, setIsCustomer] = React.useState(true);
+
+  function toggle(value) {
+    setIsCustomer(value);
+  }
+
   function Copyright(props) {
     return (
       <Typography
@@ -62,8 +68,8 @@ function Register() {
         fullAddress: formData.get("fullAddress"),
       },
       userType: formData.get("userType"),
-      aadharNo: "111111111112", // To change
-      panNo: "1111111112", // To change
+      aadharNo: formData.get("aadharNo"), // To change
+      panNo: formData.get("panNo"), // To change
       status: "",
     };
 
@@ -157,20 +163,46 @@ function Register() {
                         value="CUSTOMER"
                         control={<Radio />}
                         label="Customer"
+                        onClick={() => toggle(true)}
                       />
                       <FormControlLabel
                         value="FARMER"
                         control={<Radio />}
                         label="Farmer"
+                        onClick={() => toggle(false)}
                       />
                       <FormControlLabel
                         value="SELLER"
                         control={<Radio />}
                         label="Seller"
+                        onClick={() => toggle(false)}
                       />
                     </RadioGroup>
                   </FormControl>
                 </Grid>
+                {!isCustomer && (
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      fullWidth
+                      id="aadharNo"
+                      label="Aadhar Number"
+                      name="aadharNo"
+                    />
+                  </Grid>
+                )}
+                {!isCustomer && (
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      fullWidth
+                      id="panNo"
+                      label="PAN Card Number"
+                      name="panNo"
+                    />
+                  </Grid>
+                )}
+
                 <Grid item xs={12} sm={6}>
                   <TextField
                     required

@@ -58,6 +58,9 @@ public class FarmProducts implements Prefixable {
 	
 	//-----------------------------Constructors--------------------
 	public FarmProducts() {}
+	public FarmProducts(String farmProductId) {
+		this.farmProductId = farmProductId;
+	}
 	public FarmProducts(String farmProductId, String farmProductName, FarmProductType farmProductType) {
 		this.farmProductId = farmProductId;
 		this.farmProductName = farmProductName;
