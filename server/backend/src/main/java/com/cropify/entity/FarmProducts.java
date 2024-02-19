@@ -66,10 +66,6 @@ public class FarmProducts implements Prefixable {
 		this.farmProductName = farmProductName;
 		this.farmProductType = farmProductType;
 	}
-
-	public FarmProducts(String farmProductId) {
-		this.farmProductId = farmProductId;
-	}
 	
 	//-----------------------------Getter and Setters--------------------
 	public String getFarmProductId() {
