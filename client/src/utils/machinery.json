@@ -1,0 +1,99 @@
+{
+  "Tillage": [
+    {
+      "Tractor drawn disc harrow": {
+        "Function": "Breaking clods for granular soil structure and forming a fine seedbed for sowing.",
+        "Power Requirement": "35 - 60 hp tractor",
+        "Capacity": "7 - 8 acres/day",
+        "Approx. Cost": "Rs. 55,000/-"
+      }
+    },
+    {
+      "Offset disc harrow": {
+        "Function": "Throw soil outward and inward and preparation of fine seedbed where no soil remains uncut.",
+        "Power Requirement": "35 - 60 hp tractor",
+        "Capacity": "7 - 8 acres/day",
+        "Approx. Cost": "Rs. 52,000/-"
+      }
+    },
+    {
+      "Power harrow": {
+        "Function": "Clod crushing, fine tilth, levelling and seed bed for sowing.",
+        "Power Requirement": "35 - 60 hp tractor",
+        "Capacity": "9 - 10 acres/day",
+        "Approx. Cost": "Rs. 58,000/-"
+      }
+    },
+    {
+      "Rotavator": {
+        "Function": "Incorporation of green manure, crop residues and preparation of seed bed and pulverisation of soil.",
+        "Power Requirement": "35 hp tractor",
+        "Capacity": "7 - 8 acres/day",
+        "Approx. Cost": "Rs. 1,10,000/-"
+      }
+    }
+  ],
+  "Sowing": [
+    {
+      "Multicrop seed-cum-fertilizer drill": {
+        "Function": "Sowing of seeds and fertilizer application simultaneously in already prepared field.",
+        "Power Requirement": "35 hp tractor",
+        "Capacity": "10 - 12 acres/day",
+        "Approx. Cost": "Rs. 50,000/-"
+      },
+      "Zero tillage seed drill": {
+        "Function": "Seeding without tillage.",
+        "Power Requirement": "35 hp tractor",
+        "Capacity": "4 - 6 acres/day",
+        "Approx. Cost": "Rs. 28,000/-"
+      },
+      "Power operated post hole digger": {
+        "Function": "Digging holes for planting of saplings.",
+        "Power Requirement": "35 hp tractor",
+        "Capacity": "40 - 50 pits of 18inch diameter/hr",
+        "Approx. Cost": "Rs. 42,000/-"
+      }
+    }
+  ],
+  "Harvesting": [
+    {
+      "Self propelled reaper":{
+        "Function": "Harvesting of cereals, pulses and oilseed crops.",
+        "Power Requirement": "3.5 hp, petrol/kerosene engine",
+        "Capacity": "2.5 - 3.5 acres/hr",
+        "Approx. Cost": "Rs. 60,000/-"
+      }
+    },
+    {
+      "Tractor operated combine harvester":{
+        "Function": "Harvesting, threshing, cleaning and loading in one operation.",
+        "Power Requirement": "50 - 60 hp",
+        "Capacity": "1.9 m3",
+        "Approx. Cost": "Rs. 75,000 - 1,00,000"
+      }
+    }
+  ],
+  "Irrigation": [
+    {
+      "Drip System": {
+        "Requirements": "Black PVC pipelines for main line, sub lines, supply lines, laterals, emitters/micro tubes, centrifugal pump, fertilizer tank & filtration tank",
+        "Discharge Capacity": "2 - 10 litres/hr to a single plant",
+        "Approx. Cost": "Rs. 30,000 /acre"
+      }
+    },
+    {
+      "Sprinkler System": {
+        "Requirements": "pump, aluminium lateral lines, riser pipes, sprinkler heads",
+        "Discharge Capacity": "1000 lit/hr",
+        "Approx. Cost": "Rs. 25,000 /acre"
+      }
+    },
+    {
+      "Rain Gun": {
+        "Requirements": "Pump, aluminium lateral lines, riser pipes, sprinkler heads",
+        "Discharge Capacity": "2 - 15 lit/hr",
+        "Approx. Cost": "Rs. 7 - 10 thousand"
+      }
+    }
+  ]
+}
