@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+// import { Link, useHistory } from "react-router-dom";
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./SellerProfile.css";
 import { useState } from "react";
@@ -12,7 +12,7 @@ import Row from "react-bootstrap/Row";
 import { Button } from "react-bootstrap";
 
 function SellerProfile() {
-  const history = useHistory();
+  // const history = useHistory();
 
   // Loggin out user and clearing the storages
   // function logoutUser() {
@@ -78,9 +78,9 @@ function SellerProfile() {
 
   return (
     <>
-      <div className="d-flex" id="wrapper">
+      {/* <div className="d-flex" id="wrapper"> */}
         {/* <!-- Sidebar --> */}
-        <SellerSidebar />
+        {/* <SellerSidebar /> */}
 
         {/* <!-- /#sidebar-wrapper --> */}
         {/* ======================================================================================================== */}
@@ -541,7 +541,7 @@ function SellerProfile() {
           </div>
           {/* <!--  Seller Profile Here--> */}
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 }

@@ -33,6 +33,7 @@ import AddProduct from "./components/ComponentAdmin/AddProduct.jsx";
 import SellerSidebar from "./components/ComponentsSeller/sidebar.jsx";
 import UserProfile from "./components/Shop/ShopBody/UserProfile.jsx";
 import WeatherAPI from "./components/ComponentsFarmer/FarmerCrops/WeatherAPI.jsx";
+import SellerMainPage from "./components/ComponentsSeller/SellerMainPage.jsx";
 
 function App() {
   return (
@@ -48,7 +49,8 @@ function App() {
           <Route path="/home/customer" component={Shop} exact />
           <Route path="/home/farmer" component={FarmerHome} exact />
           <Route path="/home/farmer/weather" component={WeatherAPI} exact />
-          <Route path="/home/seller" component={SellerProfile} exact />
+          {/* <Route path="/home/seller" component={SellerProfile} exact /> */}
+          <Route path="/home/seller" component={SellerMainPage} exact />
           <Route path="/blog" component={BlogPage} exact />
           <Route path="/contact" component={Contact} exact />
           <Route path="/farmer/profile" component={FarmerProfile} exact />
