@@ -1,8 +1,8 @@
 :root {
-  --main-bg-color: #46cf3c;
+  /* --main-bg-color: #46cf3c;
   --main-text-color: #009d63;
   --second-text-color: #bbbec5;
-  --second-bg-color: #c1efde;
+  --second-bg-color: #c1efde; */
 }
 
 .primary-text {
@@ -27,6 +27,7 @@
 
 #wrapper {
   overflow-x: hidden;
+  scroll-behavior:unset;
   /* background-image: linear-gradient(to right,
       hsla(0, 56%, 75%, 0.049),
       #e3f0ea,
@@ -40,6 +41,8 @@
     background: url(wheat_cornfield_field_agriculture_cereals_epi_grain_cultures-713462.jpg!d)no-repeat ;
     background-size: cover;
   } */
+
+
 
 #sidebar-wrapper {
   min-height: 100vh;
@@ -65,7 +68,8 @@
   width: 15rem;
   /* background: rgb(229, 178, 128); */
   height: 800px;
-  background-color: grey;
+  max-height: fit-content;
+  /* background-color: grey; */
 }
 
 #page-content-wrapper {

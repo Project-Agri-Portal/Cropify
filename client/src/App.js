@@ -26,6 +26,7 @@ import Machinery from "./components/ComponentAdmin/Machinery.jsx";
 import AgricultureProduct from "./components/ComponentAdmin/AgricultureProduct.jsx";
 import AdminSeller from "./components/ComponentAdmin/SellerList.jsx";
 import AdminFarmer from "./components/ComponentAdmin/FarmerList.jsx";
+import AddProductList from "./components/ComponentsSeller/AddProduct.jsx";
 import InformationPage from "./components/InformationPage/InformationPage.jsx";
 import MachineryPage from "./components/InformationPage/MachineryPage.jsx";
 import Orders from "./components/Shop/ShopBody/Orders.jsx";
@@ -56,6 +57,8 @@ function App() {
           <Route path="/seller/profileEdit" component={SellerEdit} exact />
           <Route path="/seller/orderlist" component={OrderList} exact />
           <Route path="/seller/productlist" component={ProductList} exact />
+          <Route path="/seller/addproduct" component={AddProductList} exact />
+
           <Route path="/shop/about" component={ShopAboutUs} exact />
           <Route path="/shop/productsall" component={ProductListAll} exact />
           <Route path="/shop/cart" component={Cart} exact />
