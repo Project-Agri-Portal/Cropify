@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -22,5 +23,14 @@ public interface UserDetailsRepository extends JpaRepository<UserDetails, Long>{
 
 	@Query(value = "select * from user_details where user_type = :userType", nativeQuery = true)
 	List<UserDetails> findUser(@Param("userType") String userType);
+	
+	@Modifying
+	@Query("update UserDetails set firstName=:firstName, lastName=:lastName, mobileNo=:mobileNo, email=:email where id=:id")
+	int updateUserDetails(
+			@Param("firstName") String firstName,
+			@Param("lastName") String lastName,
+			@Param("mobileNo") String mobileNo,
+			@Param("email") String email,
+			@Param("id") Long id);
 
 }

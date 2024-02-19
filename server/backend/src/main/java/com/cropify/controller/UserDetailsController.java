@@ -76,12 +76,12 @@ public class UserDetailsController {
 	
 	// ------- UPDATE methods ----------------
 	@PutMapping("/{userId}")
-	public ResponseEntity<UserDetailsDTO> updateUser(
+	public ResponseEntity<?> updateUser(
 			@PathVariable @NotNull Long userId,
 			@RequestBody @Valid UserDetailsDTO userDto)
 	{
-		UserDetailsDTO updatedUserDto = userService.updateUser(userDto, userId);
-		return ResponseEntity.status(HttpStatus.CREATED).body(updatedUserDto);
+		int rows = userService.updateUser(userDto, userId);
+		return ResponseEntity.status(HttpStatus.CREATED).body(rows);
 	}
 	
 	// ------- DELETE methods ----------------

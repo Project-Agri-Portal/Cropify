@@ -65,14 +65,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	// ---------------- Update operations ----------------
 	@Override
-	public UserDetailsDTO updateUser(UserDetailsDTO userDto, Long userId) {
+	public int updateUser(UserDetailsDTO userDto, Long userId) {
 		UserDetails user = userRepo.findById(userId).orElseThrow(
 				() -> new ResourceNotFoundException(errorMessage.append(userId).toString()));
-		user = mapper.map(userDto, UserDetails.class);
-		UserDetails savedUser = userRepo.save(user);
-		return mapper.map(savedUser, UserDetailsDTO.class);
+		int rowsAffected = userRepo.updateUserDetails(userDto.getFirstName(), userDto.getLastName(), userDto.getMobileNo(), userDto.getEmail(), userId);
+		return rowsAffected;
 	}
-
+		
 	// ---------------- Delete operations ----------------
 	@Override
 	public void deleteUser(Long userId) {

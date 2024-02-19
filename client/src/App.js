@@ -12,7 +12,6 @@ import FarmerCrop from "./components/ComponentsFarmer/FarmerCrops/FarmerCrop";
 import Contact from "./components/Shop/ShopBody/Contact.jsx";
 import Seller from "./components/ComponentsSeller/Seller.jsx";
 import SellerProfile from "./components/ComponentsSeller/SellerProfile.jsx";
-import SellerEdit from "./components/ComponentsSeller/SellerProfileEdit.jsx";
 import OrderList from "./components/ComponentsSeller/SellerOrderList.jsx";
 import ProductList from "./components/ComponentsSeller/SellerProducts.jsx";
 import PageNotFound from "./components/NotFound/PageNotFound.jsx";
@@ -31,6 +30,7 @@ import InformationPage from "./components/InformationPage/InformationPage.jsx";
 import MachineryPage from "./components/InformationPage/MachineryPage.jsx";
 import Orders from "./components/Shop/ShopBody/Orders.jsx";
 import AddProduct from "./components/ComponentAdmin/AddProduct.jsx";
+import SellerSidebar from "./components/ComponentsSeller/sidebar.jsx";
 
 function App() {
   return (
@@ -50,11 +50,13 @@ function App() {
           <Route path="/contact" component={Contact} exact />
           <Route path="/farmer/profile" component={FarmerProfile} exact />
           <Route path="/farmer/cropinfo" component={FarmerCrop} exact />
-          <Route path="/seller/profile" component={Seller} exact />
-          <Route path="/seller/profileEdit" component={SellerEdit} exact />
+          {/* <Route path="/seller/profile" component={SellerProfile} exact /> */}
+          <Route path="/seller/dashboard" component={Seller} exact />
           <Route path="/seller/orderlist" component={OrderList} exact />
           <Route path="/seller/productlist" component={ProductList} exact />
           <Route path="/seller/addproduct" component={AddProductList} exact />
+
+          <Route path="/seller/sidebar" component={SellerSidebar} exact />
 
           <Route path="/shop/about" component={ShopAboutUs} exact />
           <Route path="/shop/productsall" component={ProductListAll} exact />
