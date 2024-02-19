@@ -5,7 +5,7 @@ import { useState } from "react";
 import sellerService from "../../services/seller.service";
 import { useEffect } from "react";
 // import logo from "../../logo.png";
-import SellerSidebar from "./sidebar";
+// import SellerSidebar from "./sidebar";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";

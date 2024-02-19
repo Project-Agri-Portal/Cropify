@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import "./Seller.css";
 import logo from "../../logo.png";
 // import Instructions from './Instructions.js'
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";

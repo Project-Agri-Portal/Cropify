@@ -4,19 +4,33 @@ import logo from "../../logo.png";
 // import SellerSidebar from "./sidebar";
 import "./SellerProfile.css";
 import SellerProfile from "./SellerProfile";
-import Seller from "./Seller";
+import Seller from "./Dashboard";
+import MachineList from "./SellerProducts";
+import OrderList from "./SellerOrderList";
+import AddMachine from "./AddMachine";
 
 const SellerMainPage = () => {
   const history = useHistory();
 
+  const [userId, setUserId] = React.useState();
+  React.useEffect(() => {
+    if (sessionStorage.getItem("userId")) {
+      setUserId(sessionStorage.getItem("userId"));
+    } else if (localStorage.getItem("userId")) {
+      setUserId(localStorage.getItem("userId"));
+    }
+  }, []);
+
   const [menu, setMenu] = React.useState({
     profile: true,
     dashboard: false,
+    machines: false,
+    orders: false,
+    addMachine: false
   });
-  const toggleMenu = () => {
+  const toggleMenu = (key) => {
     setMenu((prevMenu) => ({
-      profile: !prevMenu.profile,
-      dashboard: !prevMenu.dashboard,
+      ...Object.fromEntries(Object.entries(prevMenu).map(([k, v]) => [k, k === key]))
     }));
   };
   // const [dashboard, setDashboard] = React.useState(false);
@@ -44,50 +58,41 @@ const SellerMainPage = () => {
                 </Link>
               </div>
               <div className="text-start list-group list-group-flush my-3">
-                {/* <Link
-                  to="/home/seller"
-                  className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                >
-                  <i className="fas fa-user me-2"></i>My Profile
-                </Link> */}
                 <div
-                  onClick={toggleMenu}
+                  onClick={() => toggleMenu('profile')}
+                  style={{ cursor: "pointer" }}
                   className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                 >
                   <i className="fas fa-user me-2"></i>My Profile
                 </div>
-
-                {/* <Link
-                  to="/seller/dashboard"
-                  className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                >
-                  <i className="fas fa-tachometer-alt me-2"></i>Dashboard
-                </Link> */}
                 <div
-                  onClick={toggleMenu}
+                  onClick={() => toggleMenu('dashboard')}
+                  style={{ cursor: "pointer" }}
                   className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                 >
                   <i className="fas fa-tachometer-alt me-2"></i>Dashboard
                 </div>
-                <Link
-                  to="/seller/productlist"
+                <div
+                  onClick={() => toggleMenu('machines')}
+                  style={{ cursor: "pointer" }}
                   className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                 >
-                  <i className="fas fa-project-diagram me-2"></i>My Machines
-                </Link>
-                <Link
-                  to="/seller/orderlist"
+                  <i className="fas fa-tractor me-2"></i>My Machines
+                </div>
+                <div
+                  onClick={() => toggleMenu('orders')}
+                  style={{ cursor: "pointer" }}
                   className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                 >
                   <i className="fas fa-chart-line me-2"></i>Order List
-                </Link>
-
-                <Link
-                  to="/seller/addproduct"
+                </div>
+                <div
+                  onClick={() => toggleMenu('addMachine')}
+                  style={{ cursor: "pointer" }}
                   className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                 >
-                  <i className="fas fa-gift me-2"></i>Add New Machine
-                </Link>
+                  <i className="fas fa-plus me-2"></i>Add New Machine
+                </div>
 
                 <p
                   onClick={logoutUser}
@@ -99,10 +104,12 @@ const SellerMainPage = () => {
               </div>
             </div>
           </div>
-          {/* <SellerSidebar /> */}
-
-          {menu.profile && <SellerProfile />}
-          {menu.dashboard && <Seller />}
+          
+          {menu.profile && <SellerProfile userId={userId} />}
+          {menu.dashboard && <Seller userId={userId} />}
+          {menu.machines && <MachineList userId={userId} /> }
+          {menu.orders && <OrderList userId={userId} />}
+          {menu.addMachine && <AddMachine userId={userId} />}
         </div>
       </section>
     </>

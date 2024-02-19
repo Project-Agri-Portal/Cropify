@@ -1,6 +1,6 @@
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import "./Seller.css";
+import "./Dashboard.css";
 import {
   BsFillArchiveFill,
   BsFillGrid3X3GapFill,
