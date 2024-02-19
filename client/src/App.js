@@ -27,6 +27,7 @@ import AgricultureProduct from "./components/ComponentAdmin/AgricultureProduct.j
 import AdminSeller from "./components/ComponentAdmin/SellerList.jsx";
 import AdminFarmer from "./components/ComponentAdmin/FarmerList.jsx";
 import Orders from "./components/Shop/ShopBody/Orders.jsx";
+import AddProduct from "./components/ComponentAdmin/AddProduct.jsx";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           <Route path="/admin/agriproduct" component={AgricultureProduct} exact />
           <Route path="/admin/seller" component={AdminSeller} exact />
           <Route path="/admin/farmer" component={AdminFarmer} exact />
+          <Route path="/admin/addproduct" component={AddProduct} exact />
 
 
           {/* <Route path="/shop/productdetails" component={SingleProductDetails} exact /> */}

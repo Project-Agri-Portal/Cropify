@@ -18,6 +18,8 @@ const Checkout = () => {
     const [pincode, setPincode] = useState();
     const [address, setAddress] = useState();
 
+    const history = useHistory();
+
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const totalAmount = parseFloat(searchParams.get("totalAmount"));
@@ -40,16 +42,15 @@ const Checkout = () => {
 
     const order = async() => {
         const customer = parseInt(localStorage.getItem("userId"));
-        const history = useHistory();
         await Ordercart.order(customer, totalAmount)
                 .then((result) => {
                     toast.success("WOhooooooo Order on the way");
                     console.log(result);
+                    history.push('/shop/orders');
                 })
                 .catch((error) => {
                     console.log(error);
                 })
-                history.push('/shop/orders');
     }
 
     useEffect(() => {

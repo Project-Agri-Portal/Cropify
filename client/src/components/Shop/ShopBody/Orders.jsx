@@ -112,6 +112,7 @@ const Orders = () => {
         </>
       )}
       <ToastContainer></ToastContainer>
+      <div style={{ height: 120 }}></div>
       <Footer></Footer>
     </>
   );

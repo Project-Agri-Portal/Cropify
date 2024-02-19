@@ -15,4 +15,8 @@ const deleteMachinery = (machineId) => {
     return app.delete('/machinery/' + machineId);
 }
 
-export default {getFarmProducts, deleteMachinery};
+const addMachinery = (machinery) => {
+    return app.post('machinery/', machinery);
+}
+
+export default {getFarmProducts, deleteMachinery, addMachinery};
