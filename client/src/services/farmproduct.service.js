@@ -11,4 +11,8 @@ const getFarmProducts = () => {
     return app.get("farmProducts/");
 }
 
-export default {getFarmProducts};
+const addFarmProducts = (product) => {
+    return app.post("farmProducts/", product);
+}
+
+export default {getFarmProducts,addFarmProducts};
