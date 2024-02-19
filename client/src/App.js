@@ -5,10 +5,9 @@ import Login from "./components/UserAuthentication/SignIn/Login";
 import Register from "./components/UserAuthentication/SignUp/Register";
 import CommonHome from "./components/HomePage/CommonHome";
 import Shop from "./components/Shop/shop.jsx";
-import FarmerHome from "./components/HomePage/FarmerHome/FarmerHome";
 import BlogPage from "./components/ComponentsFarmer/FarmerBlog/BlogPage";
-import FarmerProfile from "./components/ComponentsFarmer/FarmerProfile/FarmerProfile";
-import FarmerCrop from "./components/ComponentsFarmer/FarmerCrops/FarmerCrop";
+// import FarmerProfile from "./components/ComponentsFarmer/FarmerProfile/FarmerProfile";
+// import FarmerCrop from "./components/ComponentsFarmer/FarmerCrops/FarmerCrop";
 import Contact from "./components/Shop/ShopBody/Contact.jsx";
 import SellerMainPage from "./components/ComponentsSeller/SellerMainPage.jsx";
 // import Seller from "./components/ComponentsSeller/Dashboard.jsx";
@@ -33,7 +32,8 @@ import MachineryPage from "./components/InformationPage/MachineryPage.jsx";
 import Orders from "./components/Shop/ShopBody/Orders.jsx";
 import AddProduct from "./components/ComponentAdmin/AddProduct.jsx";
 import UserProfile from "./components/Shop/ShopBody/UserProfile.jsx";
-import WeatherAPI from "./components/ComponentsFarmer/FarmerCrops/WeatherAPI.jsx";
+// import WeatherAPI from "./components/InformationPage/WeatherAPI.jsx";
+import FarmerMainPage from "./components/ComponentsFarmer/FarmerMainPage.jsx";
 
 function App() {
   return (
@@ -47,14 +47,14 @@ function App() {
           <Route path="/home/information" component={InformationPage} exact />
           <Route path="/home/information/machinery" component={MachineryPage} exact />
           <Route path="/home/customer" component={Shop} exact />
-          <Route path="/home/farmer" component={FarmerHome} exact />
-          <Route path="/home/farmer/weather" component={WeatherAPI} exact />
+          <Route path="/home/farmer" component={FarmerMainPage} exact />
+          {/* <Route path="/home/farmer/weather" component={WeatherAPI} exact /> */}
           {/* <Route path="/home/seller" component={SellerProfile} exact /> */}
           <Route path="/home/seller" component={SellerMainPage} exact />
           <Route path="/blog" component={BlogPage} exact />
           <Route path="/contact" component={Contact} exact />
-          <Route path="/farmer/profile" component={FarmerProfile} exact />
-          <Route path="/farmer/cropinfo" component={FarmerCrop} exact />
+          {/* <Route path="/farmer/profile" component={FarmerProfile} exact />
+          <Route path="/farmer/cropinfo" component={FarmerCrop} exact /> */}
           {/* <Route path="/seller/profile" component={SellerProfile} exact /> */}
           {/* <Route path="/seller/dashboard" component={Seller} exact />
           <Route path="/seller/orderlist" component={OrderList} exact />

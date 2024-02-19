@@ -1,17 +1,15 @@
 import React, { useState } from 'react'
 import "./WeatherAPI.css"
-import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+// import "../../../node_modules/bootstrap/"
 import "bootstrap/dist/js/bootstrap.bundle"
-import axios from 'axios'
-import Clear from "../../../../src/assets/WeacherAssets/clear.png"
-import Search from "../../../../src/assets/WeacherAssets/search.png"
-import Cloud from "../../../../src/assets/WeacherAssets/cloud.png"
-import Drizzeled from "../../../../src/assets/WeacherAssets/drizzle.png"
-import Rain from "../../../../src/assets/WeacherAssets/rain.png"
-import Snow from "../../../../src/assets/WeacherAssets/snow.png"
-import Wind from "../../../../src/assets/WeacherAssets/wind.png"
-import Humidity from "../../../../src/assets/WeacherAssets/humidity.png"
-
+import Clear from "../../assets/WeacherAssets/clear.png"
+import Search from "../../assets/WeacherAssets/search.png"
+import Cloud from "../../assets/WeacherAssets/cloud.png"
+import Drizzeled from "../../assets/WeacherAssets/drizzle.png"
+import Rain from "../../assets/WeacherAssets/rain.png"
+import Snow from "../../assets/WeacherAssets/snow.png"
+import Wind from "../../assets/WeacherAssets/wind.png"
+import Humidity from "../../assets/WeacherAssets/humidity.png"
 
 const WeatherAPI = () => {
 
@@ -76,13 +74,13 @@ const WeatherAPI = () => {
         </div>
         <div className='weather-img'>
             <img src={wicon} alt="" />
-            <div className='weather-temp'>24°c</div>
-            <div className='weather-location'>New York</div>
+            <div className='weather-temp'>-</div>
+            <div className='weather-location'>--</div>
             <div className='data-container'>
                 <div className='element'>
                     <img src={Humidity} alt=""  className='icon'/>
                     <div className='data'>
-                        <div className='humidity-percent'>64%</div>
+                        <div className='humidity-percent'>-</div>
                         <div className='text'>Humidity</div>
                     </div>
                 </div>
@@ -90,7 +88,7 @@ const WeatherAPI = () => {
                 <div className='element'>
                     <img src={Wind} alt=""  className='icon'/>
                     <div className='data'>
-                        <div className='wind-rate'>18 km/hr</div>
+                        <div className='wind-rate'>- km/hr</div>
                         <div className='text'>Wind Speed</div>
                     </div>
                 </div>

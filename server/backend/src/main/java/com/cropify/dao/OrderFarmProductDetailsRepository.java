@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.cropify.dto.OrderDTO;
 import com.cropify.entity.OrderFarmProductDetails;
+import com.cropify.entity.OrderMachineDetails;
 import com.cropify.entity.enums.FarmOrderStatus;
 
 public interface OrderFarmProductDetailsRepository extends JpaRepository<OrderFarmProductDetails, Long> {
@@ -24,6 +25,9 @@ public interface OrderFarmProductDetailsRepository extends JpaRepository<OrderFa
        "AND o.farmOrderStatus = 'PLACED'")
         List<Object[]> findByCustomerIdAndStatus(@Param("customerId") Long customerId);
 
-
+    @Query(value = "select * from order_farm_product_details where farmer_id=:farmerId", nativeQuery = true)
+    public List<OrderFarmProductDetails> getByUserId(
+    		@Param ("farmerId") Long farmerId
+    		);	
 }
 

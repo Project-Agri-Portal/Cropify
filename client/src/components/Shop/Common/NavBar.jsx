@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const myNavbar = () => {
   const onLogout = () => {
+    sessionStorage.removeItem("userId");
     localStorage.removeItem("userId");
     toast.warn("LogOut");
   };
@@ -46,7 +47,13 @@ const myNavbar = () => {
           <Nav.Link href="/contact" className="nav-link fs-5">
             Contact Us
           </Nav.Link>
-          <Nav.Link href="/home" className="nav-link fs-5" onClick={() => {onLogout()}}>
+          <Nav.Link
+            href="/home"
+            className="nav-link fs-5"
+            onClick={() => {
+              onLogout();
+            }}
+          >
             Logout
           </Nav.Link>
           <Nav.Link href="/shop/profile" className="nav-link fs-5">

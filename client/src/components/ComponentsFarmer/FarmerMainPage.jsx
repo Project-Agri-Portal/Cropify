@@ -1,15 +1,15 @@
 import * as React from "react";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import logo from "../../logo.png";
-// import SellerSidebar from "./sidebar";
-import "./SellerProfile.css";
-import SellerProfile from "./SellerProfile";
-import Dashboard from "./Dashboard";
-import MachineList from "./SellerProducts";
-import OrderList from "./SellerOrderList";
-import AddMachine from "./AddMachine";
+import "../ComponentsSeller/SellerProfile.css";
+import FarmerProfile from "./FarmerProfile/FarmerProfile";
+import FarmerDashboard from "./Dashboard";
+import FarmerProductList from "./FarmerProducts";
+import AddFarmProduct from "./AddProduct";
+import FarmerOrderList from "./FarmerOrderList";
 
-const SellerMainPage = () => {
+
+const FarmerMainPage = () => {
   const history = useHistory();
 
   const [userId, setUserId] = React.useState();
@@ -24,9 +24,9 @@ const SellerMainPage = () => {
   const [menu, setMenu] = React.useState({
     profile: true,
     dashboard: false,
-    machines: false,
+    products: false,
     orders: false,
-    addMachine: false,
+    addProduct: false,
   });
   const toggleMenu = (key) => {
     setMenu((prevMenu) => ({
@@ -75,11 +75,11 @@ const SellerMainPage = () => {
                   <i className="fas fa-tachometer-alt me-2"></i>Dashboard
                 </div>
                 <div
-                  onClick={() => toggleMenu("machines")}
+                  onClick={() => toggleMenu("products")}
                   style={{ cursor: "pointer" }}
                   className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                 >
-                  <i className="fas fa-tractor me-2"></i>My Machines
+                  <i className="fas fa-tractor me-2"></i>My Products
                 </div>
                 <div
                   onClick={() => toggleMenu("orders")}
@@ -89,11 +89,11 @@ const SellerMainPage = () => {
                   <i className="fas fa-chart-line me-2"></i>Order List
                 </div>
                 <div
-                  onClick={() => toggleMenu("addMachine")}
+                  onClick={() => toggleMenu("addProduct")}
                   style={{ cursor: "pointer" }}
                   className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                 >
-                  <i className="fas fa-plus me-2"></i>Add New Machine
+                  <i className="fas fa-plus me-2"></i>Add New Product
                 </div>
 
                 <p
@@ -107,15 +107,15 @@ const SellerMainPage = () => {
             </div>
           </div>
 
-          {menu.profile && <SellerProfile userId={userId} />}
-          {menu.dashboard && <Dashboard userId={userId} />}
-          {menu.machines && <MachineList userId={userId} />}
-          {menu.orders && <OrderList userId={userId} />}
-          {menu.addMachine && <AddMachine userId={userId} />}
+          {menu.profile && <FarmerProfile userId={userId} />}
+          {menu.dashboard && <FarmerDashboard userId={userId} />}
+          {menu.products && <FarmerProductList userId={userId} />}
+          {menu.orders && <FarmerOrderList userId={userId} />}
+          {menu.addProduct && <AddFarmProduct userId={userId} />}
         </div>
       </section>
     </>
   );
 };
 
-export default SellerMainPage;
+export default FarmerMainPage;
