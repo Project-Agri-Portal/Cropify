@@ -30,6 +30,7 @@ import InformationPage from "./components/InformationPage/InformationPage.jsx";
 import MachineryPage from "./components/InformationPage/MachineryPage.jsx";
 import Orders from "./components/Shop/ShopBody/Orders.jsx";
 import AddProduct from "./components/ComponentAdmin/AddProduct.jsx";
+import UserProfile from "./components/Shop/ShopBody/UserProfile.jsx";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
           <Route path="/shop/productsall" component={ProductListAll} exact />
           <Route path="/shop/cart" component={Cart} exact />
           <Route path="/shop/orders" component={Orders} exact />
+          <Route path="/shop/profile" component={UserProfile} exact />
           <Route path="/shop/cart/checkout" component={Checkout} exact />
           <Route path="/admin" component={MainLayout} exact />
           <Route path="/admin/product" component={AdminProduct} exact />
