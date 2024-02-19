@@ -73,6 +73,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return mapper.map(savedUser, UserDetailsDTO.class);
 	}
 
+	@Override
+	public void updateStatusById(Long id, String status) {
+		userRepo.updateStatusById(id, status);
+	}
+
 	// ---------------- Delete operations ----------------
 	@Override
 	public void deleteUser(Long userId) {

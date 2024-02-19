@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap/dist/js/bootstrap.bundle"
 import Orange from "../../../assets/ShopImages/orange.png"
 import Lemon from "../../../assets/ShopImages/lemon.png"
 import Pomogrenate from "../../../assets/ShopImages/Pom.png"

@@ -20,7 +20,7 @@ const getFarmProductsDetails = () => {
 }
 
 const deleteFarmProduct = (productId) => {
-    app.delete('farmProducts/' + productId);
+    return app.delete('farmProducts/' + productId);
 }
 
 export default {getFarmProducts, getFarmProductsDetails, getImg, deleteFarmProduct};
