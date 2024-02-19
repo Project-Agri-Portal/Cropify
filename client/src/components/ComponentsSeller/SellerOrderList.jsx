@@ -34,6 +34,19 @@ function OrderList() {
   },[])
 
 
+
+  const Orderdelete = async (oid) =>{
+    await MachineryOrderList.deleteOrder(oid).then((result) =>{
+      const userId= localStorage.getItem('userId');
+    onload(userId);
+      console.log(result);
+    }).catch((error) =>{
+      console.log(error);
+    })
+
+  }
+
+
   return (
     <>
     
@@ -203,7 +216,7 @@ function OrderList() {
                           <td>{orders['totalPrice']}</td>
                           <td>{orders['orderStatus']}</td>
                           <td>
-                          <button type="button" class="btn btn-danger">Cancel</button>
+                          <button type="button" class="btn btn-danger" onClick={()=>{Orderdelete(orders['oid'])}}>Cancel</button>
                           </td>
                     </tr>
                       );

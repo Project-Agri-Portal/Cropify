@@ -17,6 +17,8 @@ function ProductList() {
   }
 
 const [machineList,setMachineList] = useState([]);
+const [quantityList, setQuantityList] = useState({});
+
 
 const onload = () =>{
     Machines.getAllMachinery().then((result) => {
@@ -27,39 +29,22 @@ const onload = () =>{
         
     })
 }
-
-const [number,setNumber] = useState(0);
  
-const increase = () =>{
-    setNumber(number + 1);
+const increase = (machineId) =>{
+  setQuantityList((prevQuantityList) => ({
+    ...prevQuantityList,
+    [machineId]: (prevQuantityList[machineId] || 0) + 1,
+  }));
 }
 
-const decrease = () =>{
-    setNumber(number - 1);
+const decrease = (machineId) =>{
+  if (quantityList[machineId] > 0) {
+    setQuantityList((prevQuantityList) => ({
+      ...prevQuantityList,
+      [machineId]: prevQuantityList[machineId] - 1,
+    }));
+  }
 }
-
-
-
-//   const [productList,setProductList] = useState([]);
-
-//     const onload = (userId) => {
-//     SellerProducts.getSellerMachinery(userId).then((result) => {
-//       setProductList(result.data);
-//       console.log(result);
-//     }).catch((error) => {
-//       console.log(error);
-//     })
-//   }
-
-//   const deleteProduct = (id) => {
-//     SellerProducts.deleteSellerMachine(id).then((result)=>{
-//       console.log(result);
-//       const userId= localStorage.getItem('userId');
-//       onload(userId);
-//     }).catch((error)=>{
-//       console.log(error);
-//     })
-//   }
 
 
   useEffect(() => {
@@ -70,74 +55,6 @@ const decrease = () =>{
   return (
     <>
       <div className="d-flex" id="wrapper">
-        {/* <!-- Sidebar --> */}
-        {/* <div className="bg-white" id="sidebar-wrapper">
-        <div id="sidebar">
-          <div className="sidebar-heading text-center py-4 border-bottom">
-            <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
-              <i className="bx bxs-leaf"></i>
-              {" "}
-              Cropify
-            </Link>
-          </div>
-          <div className="list-group list-group-flush my-3">
-            <Link
-              to="/home/seller"
-              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-tachometer-alt me-2"></i>Dashboard
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text active"
-            >
-              <i className="fas fa-project-diagram me-2"></i>Products
-            </Link>
-            <Link
-              to="/seller/orderlist"
-              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-chart-line me-2"></i>Order List
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-paperclip me-2"></i>Available Stock
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-shopping-cart me-2"></i>Store Mng
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-gift me-2"></i>Products
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-comment-dots me-2"></i>Chat
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-map-marker-alt me-2"></i>Outlet
-            </Link>
-            <Link
-              to="/"
-              className="list-group-item list-group-item1 list-group-item-action bg-transparent text-danger fw-bold"
-            >
-              <i className="fas fa-power-off me-2"></i>Logout
-            </Link>
-          </div>
-          </div>
-        </div> */}
 
 <div className="bg-white" id="sidebar-wrapper">
           <div id="sidebar">
@@ -275,47 +192,6 @@ const decrease = () =>{
               </div>
               <div className="col-md-6">
                 <div className="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
-                  {/* <div>
-                    <ul className="nav nav-pills">
-                      <li className="nav-item">
-                        <Link
-                          aria-current="page"
-                          to="#"
-                          className="router-link-active router-link-exact-active nav-link active"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=""
-                          data-bs-original-title="List"
-                          aria-label="List"
-                        >
-                          <i className="bx bx-list-ul"></i>
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link
-                          to="#"
-                          className="nav-link"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=""
-                          data-bs-original-title="Grid"
-                          aria-label="Grid"
-                        >
-                          <i className="bx bx-grid-alt"></i>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div> */}
-                  {/* <div>
-                    <Link
-                      to="#"
-                      data-bs-toggle="modal"
-                      data-bs-target=".add-new"
-                      className="btn btn-primary"
-                    >
-                      <i className="bx bx-plus me-1"></i> Add New Machine
-                    </Link>
-                  </div> */}
                   
                 </div>
               </div>
@@ -342,6 +218,8 @@ const decrease = () =>{
                       <tbody>
 
                         {machineList.map((prod) => {
+                          const machineId = prod['machineId'];
+                          const quantity = quantityList[machineId] || 0;
                           return (
                             <tr>
                           <td>{prod['machineId']}</td>
@@ -352,9 +230,9 @@ const decrease = () =>{
                           
                           <td>
                             
-                               <button className="btn btn-outline-primary" onClick={increase}>+</button>
-                                   {" "} {number}{" "}
-                               <button className="btn btn-outline-primary" onClick={decrease}>-</button>
+                               <button className="btn btn-outline-primary" onClick={() => {increase(machineId)}}>+</button>
+                                   {" "} {quantity}{" "}
+                               <button className="btn btn-outline-primary" onClick={() => {decrease(machineId)}}>-</button>
        
                           </td>
                           <td>
@@ -375,40 +253,6 @@ const decrease = () =>{
                 </div>
               </div>
             </div>
-            {/* <div className="row g-0 align-items-center pb-4">
-              <div className="col-sm-6">
-                <div>
-                  <p className="mb-sm-0">Showing 1 of 2</p>
-                </div>
-              </div>
-              <div className="col-sm-6">
-                <div className="float-sm-end">
-                  <ul className="pagination mb-sm-0">
-                    <li className="page-item disabled">
-                      <Link to="#" className="page-link">
-                        <i className="mdi mdi-chevron-left"></i>
-                      </Link>
-                    </li>
-                    <li className="page-item active">
-                      <Link to="#" className="page-link">
-                        1
-                      </Link>
-                    </li>
-                    <li className="page-item">
-                      <Link to="#" className="page-link">
-                        2
-                      </Link>
-                    </li>
-                   
-                    <li className="page-item">
-                      <Link to="#" className="page-link">
-                        <i className="mdi mdi-chevron-right"></i>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div> */}
           </div>
 
           {/* <!-- Product List Here--> */}

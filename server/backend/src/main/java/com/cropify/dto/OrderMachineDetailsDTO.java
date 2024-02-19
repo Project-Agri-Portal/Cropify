@@ -6,6 +6,11 @@ import javax.validation.constraints.Future;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderMachineDetailsDTO {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Long oid;
@@ -85,6 +90,12 @@ public class OrderMachineDetailsDTO {
 	}
 	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
+	}
+	public Long getOid() {
+		return oid;
+	}
+	public void setOid(Long oid) {
+		this.oid = oid;
 	}
 	
 	

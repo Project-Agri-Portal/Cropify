@@ -27,9 +27,13 @@ const getMachineryOrderList = (userId) =>{
     return app.get('ordermachinerydetails/orderlist/'+userId)
 }
 
+const deleteOrder = (oid) =>{
+    return app.delete('ordermachinerydetails/'+oid)
+}
+
 const updateSellerProfile = (userData) => {
     return app.post('users/'+userData)
 }
 
 
-export default {getSellerProfile,getSellerMachinery,deleteSellerMachine,getMachineryOrderList,updateSellerProfile,getAllMachinery};
+export default {getSellerProfile,getSellerMachinery,deleteSellerMachine,getMachineryOrderList,updateSellerProfile,getAllMachinery,deleteOrder};
