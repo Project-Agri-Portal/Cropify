@@ -28,6 +28,7 @@ import AdminSeller from "./components/ComponentAdmin/SellerList.jsx";
 import AdminFarmer from "./components/ComponentAdmin/FarmerList.jsx";
 import InformationPage from "./components/InformationPage/InformationPage.jsx";
 import MachineryPage from "./components/InformationPage/MachineryPage.jsx";
+import Orders from "./components/Shop/ShopBody/Orders.jsx";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route path="/shop/about" component={ShopAboutUs} exact />
           <Route path="/shop/productsall" component={ProductListAll} exact />
           <Route path="/shop/cart" component={Cart} exact />
+          <Route path="/shop/orders" component={Orders} exact />
           <Route path="/shop/cart/checkout" component={Checkout} exact />
           <Route path="/admin" component={MainLayout} exact />
           <Route path="/admin/product" component={AdminProduct} exact />

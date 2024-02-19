@@ -3,6 +3,7 @@ package com.cropify.services;
 import java.util.List;
 
 import com.cropify.dto.FarmerProductDetailsDTO;
+import com.cropify.dto.OrderDTO;
 import com.cropify.dto.ShopDTO;
 
 public interface FarmerProductDetailsService {

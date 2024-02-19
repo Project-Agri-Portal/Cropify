@@ -93,8 +93,24 @@ const ProductList = () => {
     }
   };
 
-  const img = (id) => {
-    return FarmProducts.getImg(id);
+  const img = async (id) => {
+    try {
+      const response = await FarmProducts.getImg(id, { responseType: 'arraybuffer' });
+    const data = response.data;
+
+    // Convert binary data to base64 string
+    const base64String = btoa(
+      new Uint8Array(data).reduce((data, byte) => data + String.fromCharCode(byte), '')
+    );
+
+    // Create data URL
+    const imageUrl = `data:image/jpeg;base64,${base64String}`;
+    console.log(imageUrl);
+    return imageUrl;
+    } catch (error) {
+      console.error('Error fetching image:', error);
+      return ''; // Return a default image URL or handle the error as needed
+    }
   };
 
   useEffect(() => {
@@ -111,6 +127,7 @@ const ProductList = () => {
         <h1 className="text-center">Popular Products</h1>
         <div className="row row-cols-1 row-cols-md-3 g-4 py-5">
           {farmProduct.map((it, index) => {
+            const imageUrl = img(it['farmProdId']);
             return (
               <div className="col" key={index}>
                 <div
@@ -121,7 +138,7 @@ const ProductList = () => {
                   {/* height:100 */}
                   <div className="imgcon">
                     <img
-                      src={Orange}
+                      src={imageUrl}
                       className="card-img-top"
                       id="card-img-id"
                       alt="..."
