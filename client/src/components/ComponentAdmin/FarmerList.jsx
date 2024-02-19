@@ -5,6 +5,8 @@ import "bootstrap/dist/js/bootstrap.bundle"
 import Header from './Header'
 import Sidebar from './SideBar';
 import Product from "../../services/user.service"
+import { ToastContainer, toast } from "react-toastify";
+import VerifiedIcon from '@mui/icons-material/Verified';
 import { useEffect } from 'react';
 import "./MainLayout.css";
 import { useState } from 'react';
@@ -34,6 +36,18 @@ const FarmerList = () => {
                       })
   }
 
+  const updateStatus = (id, sta) => {
+    Product.updateStatus(id, sta)
+            .then((result) => {
+              console.log(result);
+              toast.success("Farmer " + id + " status Updated");
+              onload();
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+  }
+
   useEffect(() => {
     onload();
     console.log("use");
@@ -56,6 +70,7 @@ const FarmerList = () => {
         <TableCell className='text-center'>Email</TableCell>
         <TableCell className='text-center'>Mobile No</TableCell>
         <TableCell className='text-center'>Status</TableCell>
+        <TableCell className='text-center'>Verfiy</TableCell>
         <TableCell className='text-center'>Block</TableCell>
       </TableRow>
     </TableHead>
@@ -71,7 +86,14 @@ const FarmerList = () => {
           <TableCell className='text-center'>{product['status']}</TableCell>
           <TableCell className='text-center'>
           <Stack direction="row" spacing={2} className='center d-flex justify-content-center btn-danger'>
-            <Button variant="outlined" startIcon={<DeleteIcon />} style={{borderColor:'red', color:'red'}}>
+            <Button variant="outlined" startIcon={<VerifiedIcon />} style={{borderColor:'green', color:'green'}} onClick={() => {updateStatus(product['id'], "Verify")}}>
+              Verify Farmer
+            </Button>
+          </Stack>
+          </TableCell>
+          <TableCell className='text-center'>
+          <Stack direction="row" spacing={2} className='center d-flex justify-content-center btn-danger'>
+            <Button variant="outlined" startIcon={<DeleteIcon />} style={{borderColor:'red', color:'red'}} onClick={() => {updateStatus(product['id'], "block")}}>
               Block Farmer
             </Button>
           </Stack>
@@ -83,6 +105,7 @@ const FarmerList = () => {
     </TableBody>
     </Table>
   </TableContainer>
+  <ToastContainer></ToastContainer>
   </main>
   </div>
   );

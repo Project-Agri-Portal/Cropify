@@ -1,6 +1,8 @@
 // Import necessary React components and styles
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, NavLink, useHistory } from 'react-router-dom';
+import Navbar from "../Common/NavBar"
+import Footer from "../Common/Footer"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
@@ -24,10 +26,11 @@ const UserProfile = () => {
   };
 
   return (
+
+    <>
+    <Navbar></Navbar>
+    <div style={{height:50}}></div>
     <div className="container light-style flex-grow-1 container-p-y">
-        <h4 className="font-weight-bold py-3 mb-4">
-            Account settings
-        </h4>
         <div className="card overflow-hidden">
             <div className="row no-gutters row-bordered row-border-light">
                 <div className="col-md-3 pt-0">
@@ -266,6 +269,9 @@ const UserProfile = () => {
             <button type="button" className="btn btn-default">Cancel</button>
         </div>
     </div>
+    <div style={{height:50}}></div>
+    <Footer></Footer>
+    </>
   );
 };
 
