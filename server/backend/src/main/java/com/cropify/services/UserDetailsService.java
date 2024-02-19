@@ -23,7 +23,7 @@ public interface UserDetailsService {
 	void updateStatusById(Long id, String status);
 	
 	// Update operations
-	UserDetailsDTO updateUser(UserDetailsDTO userDto, Long userId);
+	int updateUser(UserDetailsDTO userDto, Long userId);
 	
 	// Delete operations
 	void deleteUser(Long userId);

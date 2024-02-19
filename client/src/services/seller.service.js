@@ -1,42 +1,51 @@
-import axios from 'axios';  // handle http request
+import axios from "axios"; // handle http request
 
-const app= axios.create({
-    baseURL: 'http://localhost:8080/api/',
-    headers: {
-        'content-type':'application/json'
-    }
+const app = axios.create({
+  baseURL: "http://localhost:8080/api/",
+  headers: {
+    "content-type": "application/json",
+  },
 });
 
-const getSellerProfile = (userId) =>{
-    return app.get('users/'+userId);
-}
+const getSellerProfile = (userId) => {
+  return app.get("users/" + userId);
+};
 
-const getSellerMachinery = (userId) =>{
-    return app.get('sellerMachinery/productlist/'+userId);
-}
+const getSellerMachinery = (userId) => {
+  return app.get("sellerMachinery/productlist/" + userId);
+};
 
-const getAllMachinery = () =>{
-    return app.get('machinery/')
-}
+const getAllMachinery = () => {
+  return app.get("machinery/");
+};
 
-const deleteSellerMachine = (sellerMachineId) =>{
-    return app.delete('sellerMachinery/'+sellerMachineId);
-}
+const deleteSellerMachine = (sellerMachineId) => {
+  return app.delete("sellerMachinery/" + sellerMachineId);
+};
 
-const getMachineryOrderList = (userId) =>{
-    return app.get('ordermachinerydetails/orderlist/'+userId)
-}
+const getMachineryOrderList = (userId) => {
+  return app.get("ordermachinerydetails/orderlist/" + userId);
+};
 
-const deleteOrder = (oid) =>{
-    return app.delete('ordermachinerydetails/'+oid)
-}
+const updateSellerProfile = (userId, updatedInfo) => {
+  return app.put("users/" + userId, updatedInfo);
+};
 
-const updateSellerProfile = (userData) => {
-    return app.post('users/'+userData)
-}
+const deleteOrder = (oid) => {
+  return app.delete("ordermachinerydetails/" + oid);
+};
 
-const addMachine = (userId,machinery) =>{
-    return app.post('sellerMachinery/'+userId,machinery)
-}
+const addMachine = (userId, machinery) => {
+  return app.post("sellerMachinery/" + userId, machinery);
+};
 
-export default {getSellerProfile,getSellerMachinery,deleteSellerMachine,getMachineryOrderList,updateSellerProfile,getAllMachinery,deleteOrder,addMachine};
+export default {
+  getSellerProfile,
+  getSellerMachinery,
+  deleteSellerMachine,
+  getMachineryOrderList,
+  updateSellerProfile,
+  getAllMachinery,
+  deleteOrder,
+  addMachine,
+};

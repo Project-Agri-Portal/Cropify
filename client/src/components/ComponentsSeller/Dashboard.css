@@ -1,3 +1,12 @@
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 60px;
+  height: 300px;
+}
+
+
 /* :root {
     --main-bg-color: #46cf3c;
     --main-text-color: #009d63;
@@ -36,13 +45,13 @@
       #14d952
     );
   } */
-  /* #wrapper {
+/* #wrapper {
     overflow-x: hidden;
     background: url(wheat_cornfield_field_agriculture_cereals_epi_grain_cultures-713462.jpg!d)no-repeat ;
     background-size: cover;
 
   } */
-  /* #wrapper{
+/* #wrapper{
     height: 100%;
   }
   #sidebar-wrapper {
@@ -54,20 +63,20 @@
     transition: margin 0.25s ease-out;
      
   } */
-  
-  /* #sidebar-wrapper .sidebar-heading { */
-    /* padding: 0.875rem 1.25rem; */
-    /* font-size: 1.2rem; */
-    /* background:rgb(212, 164, 130); */
-  /* } */
-  
-  /* #sidebar-wrapper .list-group { */
-    /* width: 15rem; */
-    /* background: rgb(229, 178, 128); */
-    /* height: 800px; */
-  /* } */
-  
-  /* #page-content-wrapper {
+
+/* #sidebar-wrapper .sidebar-heading { */
+/* padding: 0.875rem 1.25rem; */
+/* font-size: 1.2rem; */
+/* background:rgb(212, 164, 130); */
+/* } */
+
+/* #sidebar-wrapper .list-group { */
+/* width: 15rem; */
+/* background: rgb(229, 178, 128); */
+/* height: 800px; */
+/* } */
+
+/* #page-content-wrapper {
     min-width: 100vw;
   }
   
@@ -83,15 +92,15 @@
     border: none;
     padding: 20px 30px;
   } */
-  
-  /* .list-group-item.active {
+
+/* .list-group-item.active {
     background-color: transparent;
     color: var(--main-text-color);
     font-weight: bold;
     border: none;
   } */
-  
-  /* @media (min-width: 768px) {
+
+/* @media (min-width: 768px) {
     #sidebar-wrapper {
       margin-left: 0;
     }
@@ -106,36 +115,27 @@
       
     } */
 
-    /* Add this CSS to your existing stylesheet or create a new one */
+/* Add this CSS to your existing stylesheet or create a new one */
 
 /* #sidebar-wrapper {
     transition: all 0.3s;
   } */
-  
-  /* #sidebar-wrapper.active { */
-     /* Adjust the width as needed */
-     /* width: 250px; */
-  /* } */
-  
-  /* .list-group-item.active { */
-    /* Add your preferred active background color */
-    /* background-color: #f8f9fa;  */
-     /* Add your preferred active text color */
-     /* color: rgb(202, 196, 196)!important; */
-     /* Add your preferred active border color */
-     /* border-right: 4px solid #007bff;
+
+/* #sidebar-wrapper.active { */
+/* Adjust the width as needed */
+/* width: 250px; */
+/* } */
+
+/* .list-group-item.active { */
+/* Add your preferred active background color */
+/* background-color: #f8f9fa;  */
+/* Add your preferred active text color */
+/* color: rgb(202, 196, 196)!important; */
+/* Add your preferred active border color */
+/* border-right: 4px solid #007bff;
   } */
-  
-  /* } */
 
-  .charts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 60px;
-    height: 300px;
-  }
-
-  #sidebar {
+/* } */
+/* #sidebar {
   background-color: grey;
-  }
+  } */

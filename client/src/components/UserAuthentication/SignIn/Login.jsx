@@ -99,7 +99,8 @@ function Login() {
           loginData.get("remember") === "remember"
             ? localStorage.setItem("userId", res.data["id"])
             : sessionStorage.setItem("userId", res.data["id"]);
-
+            
+          sessionStorage.setItem("userId", res.data["id"]);
           history.replace("/home/" + userType.toLowerCase());
         }
       })

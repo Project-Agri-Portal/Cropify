@@ -10,11 +10,13 @@ import BlogPage from "./components/ComponentsFarmer/FarmerBlog/BlogPage";
 import FarmerProfile from "./components/ComponentsFarmer/FarmerProfile/FarmerProfile";
 import FarmerCrop from "./components/ComponentsFarmer/FarmerCrops/FarmerCrop";
 import Contact from "./components/Shop/ShopBody/Contact.jsx";
-import Seller from "./components/ComponentsSeller/Seller.jsx";
-import SellerProfile from "./components/ComponentsSeller/SellerProfile.jsx";
-import SellerEdit from "./components/ComponentsSeller/SellerProfileEdit.jsx";
-import OrderList from "./components/ComponentsSeller/SellerOrderList.jsx";
-import ProductList from "./components/ComponentsSeller/SellerProducts.jsx";
+import SellerMainPage from "./components/ComponentsSeller/SellerMainPage.jsx";
+// import Seller from "./components/ComponentsSeller/Dashboard.jsx";
+// import SellerProfile from "./components/ComponentsSeller/SellerProfile.jsx";
+// import OrderList from "./components/ComponentsSeller/SellerOrderList.jsx";
+// import ProductList from "./components/ComponentsSeller/SellerProducts.jsx";
+// import AddProductList from "./components/ComponentsSeller/AddProduct.jsx";
+// import SellerSidebar from "./components/ComponentsSeller/sidebar.jsx";
 import PageNotFound from "./components/NotFound/PageNotFound.jsx";
 import ShopAboutUs from "./components/Shop/ShopBody/AboutUs.jsx"
 import ProductListAll from "./components/Shop/ShopBody/ProductList.jsx"
@@ -26,7 +28,6 @@ import Machinery from "./components/ComponentAdmin/Machinery.jsx";
 import AgricultureProduct from "./components/ComponentAdmin/AgricultureProduct.jsx";
 import AdminSeller from "./components/ComponentAdmin/SellerList.jsx";
 import AdminFarmer from "./components/ComponentAdmin/FarmerList.jsx";
-import AddProductList from "./components/ComponentsSeller/AddProduct.jsx";
 import InformationPage from "./components/InformationPage/InformationPage.jsx";
 import MachineryPage from "./components/InformationPage/MachineryPage.jsx";
 import Orders from "./components/Shop/ShopBody/Orders.jsx";
@@ -48,16 +49,17 @@ function App() {
           <Route path="/home/customer" component={Shop} exact />
           <Route path="/home/farmer" component={FarmerHome} exact />
           <Route path="/home/farmer/weather" component={WeatherAPI} exact />
-          <Route path="/home/seller" component={SellerProfile} exact />
+          {/* <Route path="/home/seller" component={SellerProfile} exact /> */}
+          <Route path="/home/seller" component={SellerMainPage} exact />
           <Route path="/blog" component={BlogPage} exact />
           <Route path="/contact" component={Contact} exact />
           <Route path="/farmer/profile" component={FarmerProfile} exact />
           <Route path="/farmer/cropinfo" component={FarmerCrop} exact />
-          <Route path="/seller/profile" component={Seller} exact />
-          <Route path="/seller/profileEdit" component={SellerEdit} exact />
+          {/* <Route path="/seller/profile" component={SellerProfile} exact /> */}
+          {/* <Route path="/seller/dashboard" component={Seller} exact />
           <Route path="/seller/orderlist" component={OrderList} exact />
           <Route path="/seller/productlist" component={ProductList} exact />
-          <Route path="/seller/addproduct" component={AddProductList} exact />
+          <Route path="/seller/addproduct" component={AddProductList} exact /> */}
 
           <Route path="/shop/about" component={ShopAboutUs} exact />
           <Route path="/shop/productsall" component={ProductListAll} exact />
