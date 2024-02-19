@@ -27,8 +27,8 @@ const getMachineryOrderList = (userId) =>{
     return app.get('ordermachinerydetails/orderlist/'+userId)
 }
 
-const updateSellerProfile = (userId) => {
-    return app.post('users/'+userId)
+const updateSellerProfile = (userData) => {
+    return app.post('users/'+userData)
 }
 
 

@@ -38,75 +38,7 @@ function OrderList() {
     <>
     
       <div className="d-flex" id="wrapper">
-        {/* -- Sidebar  */}
-        {/* <div className="bg-white" id="sidebar-wrapper">
-        <div id="sidebar">
-          <div className="sidebar-heading text-center py-4 border-bottom">
-            <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
-              <i className="bx bxs-leaf"></i>
-              {" "}
-              Cropify
-            </Link>
-          </div>
-          <div className="list-group list-group-fluzsh my-3">
-            <Link
-              to="/home/seller"
-              className="list-group-item list-group-item-action bg-transparent second-text active"
-            >
-              <i className="fas fa-tachometer-alt me-2"></i>Dashboard
-            </Link>
-            <Link
-              to="/seller/productlist"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-project-diagram me-2"></i>Products
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-chart-line me-2"></i>Order List
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-paperclip me-2"></i>Available Stock
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-shopping-cart me-2"></i>Store Mng
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-gift me-2"></i>Products
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-comment-dots me-2"></i>Chat
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-map-marker-alt me-2"></i>Outlet
-            </Link>
-            <Link
-              to="/"
-              className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
-            >
-              <i className="fas fa-power-off me-2"
-            ></i>Logout
-            </Link>
-          </div>
-          </div>
-      </div> */}
+        
 
 
 <div className="bg-white" id="sidebar-wrapper">
@@ -240,7 +172,7 @@ function OrderList() {
                 Current Orders
               </h5>
               <div className="col" >
-                <table className="table bg-white rounded shadow-sm  table-hover table-dark table-striped">
+                <table className="table bg-white rounded shadow-sm  table-hover table-striped">
                   <thead>
                     <tr>
                       <th scope="col" width="50">
@@ -254,6 +186,7 @@ function OrderList() {
                       <th scope="col">Duration</th>
                       <th scope="col"> Total Bill</th>
                       <th scope="col"> Status</th>
+                      <th scope="col"> Cancel Order</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -269,6 +202,9 @@ function OrderList() {
                          <td>{orders['rentDuration']}</td>  
                           <td>{orders['totalPrice']}</td>
                           <td>{orders['orderStatus']}</td>
+                          <td>
+                          <button type="button" class="btn btn-danger">Cancel</button>
+                          </td>
                     </tr>
                       );
                     })}
