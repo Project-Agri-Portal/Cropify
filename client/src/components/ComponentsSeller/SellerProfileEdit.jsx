@@ -1,19 +1,159 @@
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link,useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./SellerProfile.css";
+import { useState } from "react";
+import Seller from "../../services/seller.service";
+import { useEffect } from "react";
 import sidebar from "./sidebar";
 
 function SellerEdit() {
+
+
+  const history = useHistory();
+
+  // Loggin out user and clearing the storages
+  function logoutUser() {
+    localStorage.clear();
+    sessionStorage.clear();
+    history.replace("/");
+  }
+ 
+
+
+
+  const [sellerProfile, setSellerProfile] = useState([]);
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [pincode, setPincode] = useState("");
+
+
+  const onload = async (userId) => {
+    await Seller.getSellerProfile(userId)
+      .then((result) => {
+        setSellerProfile(result["data"]);
+        setEmail(result["data"]['email'])
+        setFirstName(result["data"]['firstName'])
+        setLastName(result["data"]['lastName'])
+        setLastName(result["data"]['lastName'])
+        setMobileNo(result["data"]['mobileNo'])
+        setCity(result["data"]['userAddress']['city'])
+        setState(result["data"]['userAddress']['state'])
+        setPincode(result["data"]['userAddress']['pincode'])
+        console.log(result["data"]);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("in error");
+      });
+  };
+
+
+  
+
+  const firstNameChange = (e) => {
+    setFirstName(e.target.value)
+  }
+
+  const lastNameChange = (e) => {
+    setLastName(e.target.value)
+  }
+
+  const emailChange = (e) => {
+    setEmail(e.target.value)
+  }
+  
+
+  const mobileChange = (e) => {
+    setMobileNo(e.target.value)
+  }
+
+
+  
+  const cityChange = (e) => {
+    setCity(e.target.value)
+  }
+
+  const stateChange = (e) => {
+    setState(e.target.value)
+  }
+
+  const pincodeChange = (e) => {
+    setPincode(e.target.value)
+  }
+
+
+
+  // const updateData = async () => {
+  //   try {
+  //     const userId = localStorage.getItem("userId");
+
+  //     await Seller.updateSellerProfile(userId, {
+  //       firstName: firstName,
+  //       lastName: lastName,
+  //       email: email,
+  //       mobileNo: mobileNo,
+  //       userAddress: {
+  //         city: city,
+  //         state: state,
+  //         pincode: pincode,
+  //       },
+  //     });
+
+  //     // Redirect to the seller dashboard after successful update
+  //     // history.push("/home/seller");
+  //   } catch (error) {
+  //     console.log("Error updating profile:", error);
+  //   }
+  // };
+
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    onload(userId);
+  }, []);
+
+
+  // const updateData = async(req,res) => {
+  //   // const {userId,firstName,lastName,email,mobileNo,city,pincode,state} = req.body;
+  //   // console.log(result["data"]);
+  //   // await Seller.updateSellerProfile(userId).then
+  //   try{
+  //     await Seller.updateSellerProfile({userId},{
+  //       $set:{
+  //         firstName:firstName,
+  //         lastName:lastName,
+  //         email:email,
+  //         mobileNo:mobileNo,
+  //         city:city,
+  //         pincode:pincode,
+  //         state:state
+  //       }
+  //     })
+
+  //     return res.json({status:"ok",data:"update"})
+  //   } catch(error){
+  //     return res.json({status:"error",data:error})
+  //   }
+  // }
+
+
   return (
     <>
       <div className="d-flex" id="wrapper">
         {/* <!-- Sidebar --> */}
-        <div className="bg-white" id="sidebar-wrapper">
+        
+
+
+
+<div className="bg-white" id="sidebar-wrapper">
+          <div id="sidebar">
           <div className="sidebar-heading text-center py-4 border-bottom">
             <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
-              <i className="bx bxs-leaf"></i>
-              {" "}
-              Cropify
+              <i className="bx bxs-leaf"></i> Cropify
             </Link>
           </div>
           <div className="list-group list-group-flush my-3">
@@ -27,7 +167,7 @@ function SellerEdit() {
               to="/seller/productlist"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
-              <i className="fas fa-project-diagram me-2"></i>Products
+              <i className="fas fa-project-diagram me-2"></i>Machines
             </Link>
             <Link
               to="/seller/orderlist"
@@ -35,44 +175,26 @@ function SellerEdit() {
             >
               <i className="fas fa-chart-line me-2"></i>Order List
             </Link>
+            
             <Link
-              to="#"
+              to="/seller/addproduct"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
-              <i className="fas fa-paperclip me-2"></i>Available Stock
+              <i className="fas fa-gift me-2"></i>Add New Machine
             </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-shopping-cart me-2"></i>Store Mng
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-gift me-2"></i>Products
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-comment-dots me-2"></i>Chat
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-map-marker-alt me-2"></i>Outlet
-            </Link>
-            <Link
-              to="/"
+           
+            <p
+              // to="/"
+              onClick={logoutUser}
+              style={{ cursor: "pointer" }}
               className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
             >
               <i className="fas fa-power-off me-2"></i>Logout
-            </Link>
+            </p>
+            </div>
           </div>
         </div>
+
 
         {/* <!-- /#sidebar-wrapper --> */}
 
@@ -111,7 +233,7 @@ function SellerEdit() {
                     aria-expanded="false"
                     style={{ color: "rgb(11, 11, 10)" }}
                   >
-                    <i className="fas fa-user me-2"></i>Seller Name
+                    <i className="fas fa-user me-2"></i>{sellerProfile.firstName}   {sellerProfile.lastName}
                   </Link>
                   <ul
                     className="dropdown-menu"
@@ -154,15 +276,16 @@ function SellerEdit() {
                           width="150"
                         />
                         <div className="mt-3">
-                          <h4>Seller Name</h4>
+                          <h4>{sellerProfile['firstName']} {sellerProfile['lastName']}</h4>
                           <p className="text-secondary mb-1">
-                            Farmer and Seller
+                          {sellerProfile["userType"]}
                           </p>
                           <p className="text-muted font-size-sm">
-                            Umred,Nagpur,Maharastra
+                            {sellerProfile['status']}
                           </p>
-                          <button className="btn btn-primary">Likes</button>
-                          <button className="btn btn-outline-primary">
+                          <button className="btn btn-primary mr-4">Likes</button>
+                          {"  "}
+                          <button className="btn btn-primary ml-2">
                             Reviews
                           </button>
                         </div>
@@ -287,21 +410,41 @@ function SellerEdit() {
                     </ul>
                   </div>
                 </div>
+
+
                 <div className="col-lg-8">
                   <div className="card">
                     <div className="card-body">
                       <div className="row mb-3">
                         <div className="col-sm-3">
-                          <h6 className="mb-0">Full Name</h6>
+                          <h6 className="mb-2">First Name</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
                           <input
                             type="text"
                             className="form-control"
-                            value="Seller Name"
+                            value={firstName}
+                            onChange={firstNameChange}
                           />
                         </div>
                       </div>
+
+
+                      <div className="row mb-3">
+                        <div className="col-sm-3">
+                          <h6 className="mb-2">Last Name</h6>
+                        </div>
+                        <div className="col-sm-9 text-secondary">
+                          <input
+                            type="text"
+                            className="form-control"
+                            value={lastName}
+                            onChange={lastNameChange}
+                          />
+                        </div>
+                      </div>
+
+
                       <div className="row mb-3">
                         <div className="col-sm-3">
                           <h6 className="mb-0">Email</h6>
@@ -310,22 +453,16 @@ function SellerEdit() {
                           <input
                             type="text"
                             className="form-control"
-                            value="example@gmail.com"
+                            value={email}
+                            onChange={emailChange}
                           />
                         </div>
                       </div>
-                      <div className="row mb-3">
-                        <div className="col-sm-3">
-                          <h6 className="mb-0">Phone</h6>
-                        </div>
-                        <div className="col-sm-9 text-secondary">
-                          <input
-                            type="text"
-                            className="form-control"
-                            value="(239) 816-9029"
-                          />
-                        </div>
-                      </div>
+
+
+                     
+
+
                       <div className="row mb-3">
                         <div className="col-sm-3">
                           <h6 className="mb-0">Mobile</h6>
@@ -334,210 +471,84 @@ function SellerEdit() {
                           <input
                             type="text"
                             className="form-control"
-                            value="(320) 380-4539"
+                            value={mobileNo}
+                            onChange={mobileChange}
                           />
                         </div>
                       </div>
+
+
                       <div className="row mb-3">
                         <div className="col-sm-3">
-                          <h6 className="mb-0">Address</h6>
+                          <h6 className="mb-0">Pincode</h6>
                         </div>
                         <div className="col-sm-9 text-secondary">
                           <input
                             type="text"
                             className="form-control"
-                            value="Umred,Nagpur,Maharastra,India"
+                            value={pincode}
+                            onChange={pincodeChange}
                           />
                         </div>
                       </div>
+
+
+                      <div className="row mb-3">
+                        <div className="col-sm-3">
+                          <h6 className="mb-0">City</h6>
+                        </div>
+                        <div className="col-sm-9 text-secondary">
+                          <input
+                            type="text"
+                            className="form-control"
+                            value={city}
+                            onChange={cityChange}
+                          />
+                        </div>
+                      </div>
+
+
+
+                      <div className="row mb-3">
+                        <div className="col-sm-3">
+                          <h6 className="mb-0">State</h6>
+                        </div>
+                        <div className="col-sm-9 text-secondary">
+                          <input
+                            type="text"
+                            className="form-control"
+                            value={state}
+                            onChange={stateChange}
+                          />
+                        </div>
+                      </div>
+
+
+
+                      
+                      
+
                       <div className="row">
                         <div className="col-sm-3"></div>
                         <div className="col-sm-9 text-secondary">
-                          {/* <input
+                          <input
                             type="button"
                             className="btn btn-primary"
                             value="Update"
-                            to="/seller/profile"
-                          />*/}
-                           <Link to="/home/seller" className="btn btn-primary">Update</Link>
+                            // onClick={updateData}
+                            to="/home/seller"
+                          />
+                           {/* <Link to="/home/seller" className="btn btn-primary"
+                                                >Update</Link> */}
                         </div>
                       </div>
+
+
                     </div>
                   </div>
                   <br />
 
-                  <div className="row gutters-sm">
-                    <div className="col-sm-6 mb-3">
-                      <div className="card h-100">
-                        <div className="card-body">
-                          <h6 className="d-flex align-items-center mb-3">
-                            <i className="material-icons text-info mr-2"></i>
-                            Product Reviews
-                          </h6>
-                          <small>Wheat</small>
-                          <div
-                            className="progress mb-3"
-                            style={{ height: "5px" }}
-                          >
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "80%" }}
-                              aria-valuenow="80"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                          <small>Rice</small>
-                          <div
-                            className="progress mb-3"
-                            style={{ height: "5px" }}
-                          >
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "72%" }}
-                              aria-valuenow="72"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                          <small>Bajra</small>
-                          <div
-                            className="progress mb-3"
-                            style={{ height: "5px" }}
-                          >
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "89%" }}
-                              aria-valuenow="89"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                          <small>Makka</small>
-                          <div
-                            className="progress mb-3"
-                            style={{ height: "5px" }}
-                          >
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "55%" }}
-                              aria-valuenow="55"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                          <small>Fruits</small>
-                          <div
-                            className="progress mb-3"
-                            style={{ height: "5px" }}
-                          >
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "66%" }}
-                              aria-valuenow="66"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                          <div>
-                            <button className="btn btn-primary">
-                              View More
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-sm-6 mb-3">
-                      <div className="card h-100">
-                        <div className="card-body">
-                          <h6 className="d-flex align-items-center mb-3">
-                            <i className="material-icons text-info mr-2"></i>
-                            Stock Remaining
-                          </h6>
-                          <small>Wheat</small>
-                          <div
-                            className="progress mb-3"
-                            style={{ height: "5px" }}
-                          >
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "80%" }}
-                              aria-valuenow="80"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                          <small>Rice</small>
-                          <div
-                            className="progress mb-3"
-                            style={{ height: "5px" }}
-                          >
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "72%" }}
-                              aria-valuenow="72"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                          <small>Bajra</small>
-                          <div
-                            className="progress mb-3"
-                            style={{ height: "5px" }}
-                          >
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "89%" }}
-                              aria-valuenow="89"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                          <small>Makka</small>
-                          <div
-                            className="progress mb-3"
-                            style={{ height: "5px" }}
-                          >
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "55%" }}
-                              aria-valuenow="55"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                          <small>Fruits</small>
-                          <div
-                            className="progress mb-3"
-                            style={{ height: "5px" }}
-                          >
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "66%" }}
-                              aria-valuenow="66"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
-                          <div>
-                            <button className="btn btn-primary">
-                              View More
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>

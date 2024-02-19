@@ -1,13 +1,129 @@
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link,useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./Seller.css";
-import sidebar from "./sidebar.jsx";
+import 
+{ BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill}
+ from 'react-icons/bs'
+ import 
+ { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
+ from 'recharts';
+ 
+ 
 
 function Seller() {
+
+
+
+
+  const history = useHistory();
+
+  // Loggin out user and clearing the storages
+  function logoutUser() {
+    localStorage.clear();
+    sessionStorage.clear();
+    history.replace("/");
+  }
+
+
+
+
+
+  const data = [
+    {
+      name: 'Page A',
+      uv: 4000,
+      pv: 2400,
+      amt: 2400,
+    },
+    {
+      name: 'Page B',
+      uv: 3000,
+      pv: 1398,
+      amt: 2210,
+    },
+    {
+      name: 'Page C',
+      uv: 2000,
+      pv: 9800,
+      amt: 2290,
+    },
+    {
+      name: 'Page D',
+      uv: 2780,
+      pv: 3908,
+      amt: 2000,
+    },
+    {
+      name: 'Page E',
+      uv: 1890,
+      pv: 4800,
+      amt: 2181,
+    },
+    {
+      name: 'Page F',
+      uv: 2390,
+      pv: 3800,
+      amt: 2500,
+    },
+    {
+      name: 'Page G',
+      uv: 3490,
+      pv: 4300,
+      amt: 2100,
+    },
+  ];
+
   return (
     <div>
       <div className="d-flex" id="wrapper">
-        {/* <!-- Sidebar --> */}
+        
+<div className="bg-white" id="sidebar-wrapper">
+          <div id="sidebar">
+          <div className="sidebar-heading text-center py-4 border-bottom">
+            <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
+              <i className="bx bxs-leaf"></i> Cropify
+            </Link>
+          </div>
+          <div className="list-group list-group-flush my-3">
+            <Link
+              to="/home/seller"
+              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-tachometer-alt me-2"></i>Dashboard
+            </Link>
+            <Link
+              to="/seller/productlist"
+              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-project-diagram me-2"></i>My Machines
+            </Link>
+            <Link
+              to="/seller/orderlist"
+              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-chart-line me-2"></i>Order List
+            </Link>
+            
+            <Link
+              to="/seller/addproduct"
+              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-gift me-2"></i>Add New Machine
+            </Link>
+           
+            <p
+              // to="/"
+              onClick={logoutUser}
+              style={{ cursor: "pointer" }}
+              className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+            >
+              <i className="fas fa-power-off me-2"></i>Logout
+            </p>
+            </div>
+          </div>
+        </div>
+
+
     {/* <sidebar/> */}
         {/* <!-- /#sidebar-wrapper --> */}
 
@@ -125,129 +241,54 @@ function Seller() {
 
             {/* Dashboard Table */}
 
-            <div className="row my-5" style={{ opacity: "0.7" }}>
-              <h3 className="fs-4 mb-3 " style={{ color: "black" }}>
-                Recent Orders
-              </h3>
-              <div className="col">
-                <table className="table bg-white rounded shadow-sm  table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col" width="50">
-                        #
-                      </th>
-                      <th scope="col">Product</th>
-                      <th scope="col">Customer</th>
-                      <th scope="col">City</th>
-                      <th scope="col">Quantity(in kgs)</th>
-                      <th scope="col">Price per kg</th>
-                      <th scope="col"> Total Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Rice</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Wheat</td>
-                      <td>Harish</td>
-                      <td>Pune</td>
-                      <td>20</td>
-                      <td>27 Rs.</td>
-                      <td>540 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Bajra</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Wheat</td>
-                      <td>Harish</td>
-                      <td>Pune</td>
-                      <td>10</td>
-                      <td>27 Rs.</td>
-                      <td>270 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>Rice</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">6</th>
-                      <td>Jawar</td>
-                      <td>Amol</td>
-                      <td>Nagpur</td>
-                      <td>10</td>
-                      <td>37 Rs.</td>
-                      <td>370 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">7</th>
-                      <td>Rice</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">8</th>
-                      <td>Wheat</td>
-                      <td>Harish</td>
-                      <td>Pune</td>
-                      <td>5</td>
-                      <td>27 Rs.</td>
-                      <td>135 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">9</th>
-                      <td>Wheat</td>
-                      <td>Harish</td>
-                      <td>Pune</td>
-                      <td>5</td>
-                      <td>27 Rs.</td>
-                      <td>135 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">10</th>
-                      <td>Rice</td>
-                      <td>Kash</td>
-                      <td>Banglore</td>
-                      <td>5</td>
-                      <td>40 Rs.</td>
-                      <td>200 Rs.</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">11</th>
-                      <td>Wheat</td>
-                      <td>Harish</td>
-                      <td>Pune</td>
-                      <td>5</td>
-                      <td>27 Rs.</td>
-                      <td>135 Rs.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            
+
+<div className='charts'>
+            <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+            }}
+            >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="pv" fill="#8884d8" />
+                <Bar dataKey="uv" fill="#82ca9d" />
+                </BarChart>
+            </ResponsiveContainer>
+
+            <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                width={500}
+                height={300}
+                data={data}
+                margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                }}
+                >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                </LineChart>
+            </ResponsiveContainer>
+
+        </div>
 
             {/* Dashboard Table */}
           </div>

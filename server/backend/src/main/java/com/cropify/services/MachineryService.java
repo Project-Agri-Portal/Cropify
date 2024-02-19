@@ -26,6 +26,5 @@ public interface MachineryService{
 	//Upload image
 	String uploadImage(String mId,MultipartFile mImage) throws IOException;
 	
-	
 }
 

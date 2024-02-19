@@ -5,6 +5,7 @@ import { useState } from "react";
 import Seller from "../../services/seller.service";
 import { useEffect } from "react";
 
+
 function SellerProfile() {
   const history = useHistory();
 
@@ -37,8 +38,8 @@ function SellerProfile() {
   return (
     <>
       <div className="d-flex" id="wrapper">
+       
         {/* <!-- Sidebar --> */}
-
         <div className="bg-white" id="sidebar-wrapper">
           <div id="sidebar">
           <div className="sidebar-heading text-center py-4 border-bottom">
@@ -57,7 +58,7 @@ function SellerProfile() {
               to="/seller/productlist"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
-              <i className="fas fa-project-diagram me-2"></i>Products
+              <i className="fas fa-project-diagram me-2"></i>Machines
             </Link>
             <Link
               to="/seller/orderlist"
@@ -65,25 +66,14 @@ function SellerProfile() {
             >
               <i className="fas fa-chart-line me-2"></i>Order List
             </Link>
+            
             <Link
-              to="#"
+              to="/seller/addproduct"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
-              <i className="fas fa-paperclip me-2"></i>Available Stock
+              <i className="fas fa-gift me-2"></i>Add New Machine
             </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-shopping-cart me-2"></i>Store Mng
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-gift me-2"></i>Products
-            </Link>
-            <Link
+            {/* <Link
               to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
@@ -94,7 +84,7 @@ function SellerProfile() {
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-map-marker-alt me-2"></i>Outlet
-            </Link>
+            </Link> */}
             <p
               // to="/"
               onClick={logoutUser}
@@ -163,7 +153,8 @@ function SellerProfile() {
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="#">
+                      <Link className="dropdown-item" to="#"
+                       onClick={logoutUser}>
                         Logout
                       </Link>
                     </li>
@@ -180,7 +171,7 @@ function SellerProfile() {
 
           {/* <!-- Seller Profile Here--> */}
 
-          <div className="container">
+          <div className="container" style={{ color: "black"}}>
             <div className="main-body">
               <div className="row gutters-sm">
                 <div className="col-md-4 mb-3">
@@ -193,7 +184,7 @@ function SellerProfile() {
                           className="rounded-circle"
                           width="150"
                         />
-                        <div className="mt-3">
+                        <div className="mt-3" style={{ color: "black"}} >
                           <h4>
                             {sellerProfile["firstName"] +
                               "  " +
@@ -206,7 +197,8 @@ function SellerProfile() {
                             Status : {sellerProfile["status"]}
                           </p>
                           <button className="btn btn-primary">Likes</button>
-                          <button className="btn btn-outline-primary">
+                        {"  "}
+                          <button className="btn btn-primary">
                             Reviews
                           </button>
                         </div>

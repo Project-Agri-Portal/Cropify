@@ -1,11 +1,20 @@
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link,useHistory} from "react-router-dom/cjs/react-router-dom.min";
 import "./SellerOrderList.css";
 import MachineryOrderList from '../../services/seller.service';
 import { useState } from "react";
 import { useEffect } from "react";
 
 function OrderList() {
+
+  const history = useHistory();
+
+  // Loggin out user and clearing the storages
+  function logoutUser() {
+    localStorage.clear();
+    sessionStorage.clear();
+    history.replace("/");
+  }
 
 
   const [orderList,setOrderList] = useState([]);
@@ -27,9 +36,11 @@ function OrderList() {
 
   return (
     <>
+    
       <div className="d-flex" id="wrapper">
-        {/* <!-- Sidebar --> */}
-        <div className="bg-white" id="sidebar-wrapper">
+        {/* -- Sidebar  */}
+        {/* <div className="bg-white" id="sidebar-wrapper">
+        <div id="sidebar">
           <div className="sidebar-heading text-center py-4 border-bottom">
             <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
               <i className="bx bxs-leaf"></i>
@@ -37,7 +48,7 @@ function OrderList() {
               Cropify
             </Link>
           </div>
-          <div className="list-group list-group-flush my-3">
+          <div className="list-group list-group-fluzsh my-3">
             <Link
               to="/home/seller"
               className="list-group-item list-group-item-action bg-transparent second-text active"
@@ -90,10 +101,71 @@ function OrderList() {
               to="/"
               className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
             >
-              <i className="fas fa-power-off me-2"></i>Logout
+              <i className="fas fa-power-off me-2"
+            ></i>Logout
             </Link>
           </div>
+          </div>
+      </div> */}
+
+
+<div className="bg-white" id="sidebar-wrapper">
+          <div id="sidebar">
+          <div className="sidebar-heading text-center py-4 border-bottom">
+            <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
+              <i className="bx bxs-leaf"></i> Cropify
+            </Link>
+          </div>
+          <div className="list-group list-group-flush my-3">
+            <Link
+              to="/home/seller"
+              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-tachometer-alt me-2"></i>Dashboard
+            </Link>
+            <Link
+              to="/seller/productlist"
+              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-project-diagram me-2"></i>Machines
+            </Link>
+            <Link
+              to="/seller/orderlist"
+              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-chart-line me-2"></i>Order List
+            </Link>
+            
+            <Link
+              to="/seller/addproduct"
+              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-gift me-2"></i>Add New Machine
+            </Link>
+            {/* <Link
+              to="#"
+              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-comment-dots me-2"></i>Chat
+            </Link>
+            <Link
+              to="#"
+              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-map-marker-alt me-2"></i>Outlet
+            </Link> */}
+            <p
+              // to="/"
+              onClick={logoutUser}
+              style={{ cursor: "pointer" }}
+              className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+            >
+              <i className="fas fa-power-off me-2"></i>Logout
+            </p>
+            </div>
+          </div>
         </div>
+
         {/* <!-- /#sidebar-wrapper --> */}
 
         {/* <!-- Page Content --> */}
@@ -151,7 +223,8 @@ function OrderList() {
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="#">
+                      <Link className="dropdown-item" to="#"
+                      onClick={logoutUser}>
                         Logout
                       </Link>
                     </li>
@@ -166,8 +239,8 @@ function OrderList() {
               <h5 className="fs-4 mb-3 " style={{ color: "black;" }}>
                 Current Orders
               </h5>
-              <div className="col">
-                <table className="table bg-white rounded shadow-sm  table-hover">
+              <div className="col" >
+                <table className="table bg-white rounded shadow-sm  table-hover table-dark table-striped">
                   <thead>
                     <tr>
                       <th scope="col" width="50">
@@ -205,18 +278,14 @@ function OrderList() {
                 </table>
               </div>
 
-              <div className="row g-0 align-items-center pb-4">
+              {/* <div className="row g-0 align-items-center pb-4">
                 <div className="col-sm-6">
-                  {/* <div>
-                    <p className="mb-sm-0">Showing 1 of 2</p>
-                  </div> */}
+                  
                 </div>
                 <div className="col-sm-6">
                   <div className="float-sm-end">
                     <ul className="pagination mb-sm-0">
-                       {/* <li className="page-item disabled">
-                                        <Link to="#" className="page-link"><i className="mdi mdi-chevron-left"></i></Link>
-                                    </li> */}
+                      
                       <li className="page-item active">
                         <Link to="#" className="page-link">
                           1
@@ -242,13 +311,11 @@ function OrderList() {
                           5
                         </Link>
                       </li>
-                      {/* <!-- <li className="page-item">
-                                        <Link to="#" className="page-link"><i className="mdi mdi-chevron-right"></i></Link>
-                                    </li> --> */}
+                      
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
