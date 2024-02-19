@@ -4,9 +4,9 @@ import wheat from "../../../assets/wheat.png";
 import Footer from "../../Shop/Common/Footer";
 
 function FarmerCrop() {
-  const alertClicked = () => {
-    alert("You clicked the third ListGroupItem");
-  };
+  // const alertClicked = () => {
+  //   alert("You clicked the third ListGroupItem");
+  // };
 
   return (
     <>
@@ -68,7 +68,7 @@ function FarmerCrop() {
                 <ListGroup.Item action href="#link2">
                   Link 2
                 </ListGroup.Item>
-                <ListGroup.Item action href="#link3" onClick={alertClicked}>
+                <ListGroup.Item action href="#link3">
                   Link 3
                 </ListGroup.Item>
                 <ListGroup.Item action href="#link4">
