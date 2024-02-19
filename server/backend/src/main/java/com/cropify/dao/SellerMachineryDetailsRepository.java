@@ -73,5 +73,7 @@ public interface SellerMachineryDetailsRepository extends JpaRepository<SellerMa
 	
 	
 	
+	
+	
 
 }

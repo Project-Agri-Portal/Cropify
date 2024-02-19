@@ -18,6 +18,9 @@ function ProductList() {
 
 const [machineList,setMachineList] = useState([]);
 const [quantityList, setQuantityList] = useState({});
+const [priceList, setPriceList] = useState({});
+const [descriptionList, setDescriptionList] = useState({});
+
 
 
 const onload = () =>{
@@ -45,6 +48,52 @@ const decrease = (machineId) =>{
     }));
   }
 }
+
+
+const handlePriceChange = (machineId, event) => {
+  const newPrice = event.target.value;
+  setPriceList((prevPriceList) => ({
+    ...prevPriceList,
+    [machineId]: newPrice,
+  }));
+}
+
+
+const handleDescriptionChange = (machineId, event) => {
+  const newDescription = event.target.value;
+  setDescriptionList((prevDescriptionList) => ({
+    ...prevDescriptionList,
+    [machineId]: newDescription,
+  }));
+}
+
+
+const add = (machineryId) =>{
+
+  const userId= parseInt(localStorage.getItem('userId'));
+
+  const machine = {
+    machineryId:machineryId,
+    sellerId: userId,
+    quantity:quantityList[machineryId],
+    price: priceList[machineryId],
+    description:descriptionList[machineryId],
+    availQuantity:quantityList[machineryId],
+    verified:""
+  }
+
+  console.log(machine);
+
+  Machines.addMachine(userId,machine).then((result) => {
+    console.log(result);
+  }).catch((error) =>{
+    console.log(error);
+    
+  })
+
+}
+
+
 
 
   useEffect(() => {
@@ -206,13 +255,13 @@ const decrease = (machineId) =>{
                           <th scope="col">Machine ID</th>
                           <th scope="col">Machine Name</th>
                           <th scope="col">Machine Type</th>
-                          {/* <th scope="col">Available Quantity</th> */}
-                          {/* <th scope="col">Machine Price</th> */}
-                          {/* <th scope="col">Machine Description</th> */}
                           <th scope="col" style={{ width: "200px;" }}>
-                            Action
+                            Set Quantity
                           </th>
-                          <th></th>
+                          <th scope="col">Machine Price</th>
+                          <th scope="col">Description</th>
+                          <th>Action</th>
+                          
                         </tr>
                       </thead>
                       <tbody>
@@ -220,6 +269,8 @@ const decrease = (machineId) =>{
                         {machineList.map((prod) => {
                           const machineId = prod['machineId'];
                           const quantity = quantityList[machineId] || 0;
+                          const price = priceList[machineId] || 0;
+                          const description = descriptionList[machineId] || '';
                           return (
                             <tr>
                           <td>{prod['machineId']}</td>
@@ -230,13 +281,30 @@ const decrease = (machineId) =>{
                           
                           <td>
                             
-                               <button className="btn btn-outline-primary" onClick={() => {increase(machineId)}}>+</button>
-                                   {" "} {quantity}{" "}
+                              
+                                   
                                <button className="btn btn-outline-primary" onClick={() => {decrease(machineId)}}>-</button>
+                               {" "} {quantity}{" "}
+                               <button className="btn btn-outline-primary" onClick={() => {increase(machineId)}}>+</button>
        
                           </td>
+                          
                           <td>
-                              <button className="btn btn-primary">Add</button>
+                            <input type="number"
+                             value={price}
+                             onChange={(event) => { handlePriceChange(machineId, event) }}
+                            />
+                          </td>
+                          <td>
+                          <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Description here" required
+                           value={description}
+                           onChange={(event) => { handleDescriptionChange(machineId, event) }}
+                          ></textarea>
+                          </td>
+                          <td>
+                              <button className="btn btn-primary"
+                              onClick={() => { add(prod['machineId']) }}
+                              >Add</button>
                           </td>
                         </tr>
                           );

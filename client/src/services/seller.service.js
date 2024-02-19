@@ -35,5 +35,8 @@ const updateSellerProfile = (userData) => {
     return app.post('users/'+userData)
 }
 
+const addMachine = (userId,machinery) =>{
+    return app.post('sellerMachinery/'+userId,machinery)
+}
 
-export default {getSellerProfile,getSellerMachinery,deleteSellerMachine,getMachineryOrderList,updateSellerProfile,getAllMachinery,deleteOrder};
+export default {getSellerProfile,getSellerMachinery,deleteSellerMachine,getMachineryOrderList,updateSellerProfile,getAllMachinery,deleteOrder,addMachine};
