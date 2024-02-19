@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.cropify.entity.Machinery;
 import com.cropify.entity.SellerMachineryDetails;
+import com.cropify.entity.UserDetails;
 
 public interface SellerMachineryDetailsRepository extends JpaRepository<SellerMachineryDetails, Long>{
 
@@ -60,6 +62,16 @@ public interface SellerMachineryDetailsRepository extends JpaRepository<SellerMa
 	int getCountBySellerId(
 			@Param ("sellerId") long sellerId
 			);
+	
+	@Modifying
+    @Query("UPDATE SellerMachineryDetails s SET s.quantity = s.quantity + :quantity WHERE s.sellerId = :sellerId AND s.machineryId = :machineryId")
+    void updateQuantityBySellerAndMachinery(
+        @Param("quantity") int quantity,
+        @Param("sellerId") UserDetails sellerId,
+        @Param("machineryId") Machinery machineryId
+    );
+	
+	
 	
 	
 	

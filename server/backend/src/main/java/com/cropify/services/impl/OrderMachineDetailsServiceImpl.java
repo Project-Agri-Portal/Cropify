@@ -35,6 +35,9 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
 
     @Autowired
     private ModelMapper mapper;
+    
+    @Autowired
+    private SellerMachineryDetailsRepository sellerMachineryDetailsRepository;
 
     @Autowired
     private CartMachineryService cartMachineryService;
@@ -96,35 +99,33 @@ public class OrderMachineDetailsServiceImpl implements OrderMachineryDetailsServ
         return farmerId;
 
     }
+    
+    @Override
+    public Long deleteOrderByOID(Long oid) {
+    	OrderMachineDetails orderMachineDetails = orderMachineDetailsRepository.findById(oid).orElseThrow(() -> new RuntimeException("Found"));
+    	
+    	UserDetails sellerId = userDetailsRepository.findById(orderMachineDetails.getSellerId().getId()).orElseThrow();
+    	Machinery machinery = machineryRepository.findById(orderMachineDetails.getMachineId().getMachineId()).orElseThrow();
+    	
+    	sellerMachineryDetailsRepository.updateQuantityBySellerAndMachinery
+    									(orderMachineDetails.getQuantity(),
+    									sellerId
+    									, machinery);
+    	orderMachineDetailsRepository.deleteById(oid);
+    	return oid;
+    }
 
     
     // Order list of Machinery
-
 	@Override
 	public List<OrderMachineDetailsDTO> getTotalOrders(Long sellerId) {
 		List<OrderMachineDetails> details = orderMachineDetailsRepository.getByUserId(sellerId);
+//		List<OrderMachineDetails> details = orderMachineDetailsRepository.findBySellerId(sellerId);
 		
 		List<OrderMachineDetailsDTO> detailsDTOs = details
 				.stream()
 				.map(item -> mapper.map(item, OrderMachineDetailsDTO.class))
 				.collect(Collectors.toList());
-				
-				
-		
-//		List<OrderMachineDetailsDTO> detailsDTOs = new ArrayList<OrderMachineDetailsDTO>();
-//		
-//		for(OrderMachineDetails details2: details) {
-//			OrderMachineDetailsDTO detailsDTO= new OrderMachineDetailsDTO();
-//			detailsDTO.setOrderId(details2.getOrderId());
-////			detailsDTO.setMachineId(details2.getMachineId());
-////			detailsDTO.setFarmerId(details2.getFarmerId());
-//			detailsDTO.setOrderDate(details2.getOrderDate());
-//			detailsDTO.setDeliveryDate(details2.getDeliveryDate());
-//			detailsDTO.setQuantity(details2.getQuantity());
-//			detailsDTO.setRentDuration(details2.getRentDuration());
-//			detailsDTO.setTotalPrice(details2.getTotalPrice());
-//			
-//			detailsDTOs.add(detailsDTO);
 //			
 //		}
 		return detailsDTOs;

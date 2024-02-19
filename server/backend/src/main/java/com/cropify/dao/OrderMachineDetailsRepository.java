@@ -22,4 +22,7 @@ public interface OrderMachineDetailsRepository extends JpaRepository<OrderMachin
     public List<OrderMachineDetails> getByUserId(
     		@Param ("sellerId") long sellerId
     		);
+    
+    @Query("SELECT om FROM OrderMachineDetails om WHERE om.sellerId.id = :sellerId")
+    List<OrderMachineDetails> findBySellerId(@Param("sellerId") Long sellerId);
 }

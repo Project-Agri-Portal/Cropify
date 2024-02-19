@@ -37,6 +37,8 @@ function ProductList() {
     })
   }
 
+  
+
 
   useEffect(() => {
     const userId= localStorage.getItem('userId');
@@ -84,18 +86,6 @@ function ProductList() {
             >
               <i className="fas fa-gift me-2"></i>Add New Machine
             </Link>
-            {/* <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-comment-dots me-2"></i>Chat
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-map-marker-alt me-2"></i>Outlet
-            </Link> */}
             <p
               // to="/"
               onClick={logoutUser}
@@ -241,34 +231,6 @@ function ProductList() {
                       <i className="bx bx-plus me-1"></i> Add New Products
                     </Link>
                   </div>
-                  {/* <div className="dropdown">
-                    <Link
-                      className="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle"
-                      to="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      <i className="bx bx-dots-horizontal-rounded"></i>
-                    </Link>
-                    <ul className="dropdown-menu dropdown-menu-end">
-                      <li>
-                        <Link className="dropdown-item" to="SellerProfile.html">
-                          Go To Profile
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="#">
-                          Settings
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="#">
-                          Log Out
-                        </Link>
-                      </li>
-                    </ul>
-                  </div> */}
                 </div>
               </div>
             </div>
