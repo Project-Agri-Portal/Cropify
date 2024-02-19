@@ -83,6 +83,12 @@ public class UserDetailsController {
 		int rows = userService.updateUser(userDto, userId);
 		return ResponseEntity.status(HttpStatus.CREATED).body(rows);
 	}
+
+	@PutMapping("/{id}/{status}")
+	public ResponseEntity<String> updateStatus(@PathVariable Long id, @PathVariable String status){
+		userService.updateStatusById(id, status);
+		return ResponseEntity.ok("update");
+	}
 	
 	// ------- DELETE methods ----------------
 	@DeleteMapping("/{userId}")

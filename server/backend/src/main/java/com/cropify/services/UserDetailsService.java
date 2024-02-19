@@ -19,6 +19,8 @@ public interface UserDetailsService {
 	
 	// Create operations
 	UserDetailsDTO createUser(UserDetailsDTO userDto);
+
+	void updateStatusById(Long id, String status);
 	
 	// Update operations
 	int updateUser(UserDetailsDTO userDto, Long userId);

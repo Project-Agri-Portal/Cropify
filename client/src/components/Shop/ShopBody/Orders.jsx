@@ -2,6 +2,7 @@ import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "./Cart.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 import NavBar from "../Common/NavBar";
 import Footer from "../Common/Footer";
 import { ToastContainer, toast } from "react-toastify";
@@ -25,9 +26,17 @@ const Orders = () => {
       });
   };
 
+  const history = useHistory(); // Get access to the history object
   useEffect(() => {
-    onload();
-  }, []);
+    const userId = localStorage.getItem("userId");
+
+    // Check if userId is empty, and redirect to login if true
+    if (!userId) {
+      history.push("/login"); // Redirect to the login page
+    } else {
+      onload();
+    }
+  }, [history]);
 
   const deleteOrder = async (orderId, price, name) => {
     setTotal(total - price);

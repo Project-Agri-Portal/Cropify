@@ -31,6 +31,8 @@ import MachineryPage from "./components/InformationPage/MachineryPage.jsx";
 import Orders from "./components/Shop/ShopBody/Orders.jsx";
 import AddProduct from "./components/ComponentAdmin/AddProduct.jsx";
 import SellerSidebar from "./components/ComponentsSeller/sidebar.jsx";
+import UserProfile from "./components/Shop/ShopBody/UserProfile.jsx";
+import WeatherAPI from "./components/ComponentsFarmer/FarmerCrops/WeatherAPI.jsx";
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function App() {
           <Route path="/home/information/machinery" component={MachineryPage} exact />
           <Route path="/home/customer" component={Shop} exact />
           <Route path="/home/farmer" component={FarmerHome} exact />
+          <Route path="/home/farmer/weather" component={WeatherAPI} exact />
           <Route path="/home/seller" component={SellerProfile} exact />
           <Route path="/blog" component={BlogPage} exact />
           <Route path="/contact" component={Contact} exact />
@@ -62,6 +65,7 @@ function App() {
           <Route path="/shop/productsall" component={ProductListAll} exact />
           <Route path="/shop/cart" component={Cart} exact />
           <Route path="/shop/orders" component={Orders} exact />
+          <Route path="/shop/profile" component={UserProfile} exact />
           <Route path="/shop/cart/checkout" component={Checkout} exact />
           <Route path="/admin" component={MainLayout} exact />
           <Route path="/admin/product" component={AdminProduct} exact />

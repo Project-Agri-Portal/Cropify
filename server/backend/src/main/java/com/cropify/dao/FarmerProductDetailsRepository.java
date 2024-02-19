@@ -21,7 +21,7 @@ public interface FarmerProductDetailsRepository extends JpaRepository<FarmerProd
     void decreaseQuantity(@Param("farmerId") Long farmerId, @Param("farmProductId") String farmProductId, @Param("decreaseQuantity") int decreaseQuantity);
 
     @Modifying
-@Query("UPDATE FarmerProductDetails SET quantity = quantity + :increaseQuantity WHERE farmerId.id = :farmerId AND farmProductId.farmProductId = :farmProductId")
-void increaseQuantity(@Param("farmerId") Long farmerId, @Param("farmProductId") String farmProductId, @Param("increaseQuantity") int increaseQuantity);
+    @Query("UPDATE FarmerProductDetails SET quantity = quantity + :increaseQuantity WHERE farmerId.id = :farmerId AND farmProductId.farmProductId = :farmProductId")
+    void increaseQuantity(@Param("farmerId") Long farmerId, @Param("farmProductId") String farmProductId, @Param("increaseQuantity") int increaseQuantity);
 
 }

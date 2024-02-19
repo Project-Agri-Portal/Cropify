@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import "./Welcome.css"
+import UserProfile from './UserProfile';
 
 const Welcome = () => {
     return(

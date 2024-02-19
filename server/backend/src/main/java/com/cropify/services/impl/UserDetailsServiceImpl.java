@@ -71,7 +71,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		int rowsAffected = userRepo.updateUserDetails(userDto.getFirstName(), userDto.getLastName(), userDto.getMobileNo(), userDto.getEmail(), userId);
 		return rowsAffected;
 	}
-		
+
+	@Override
+	public void updateStatusById(Long id, String status) {
+		userRepo.updateStatusById(id, status);
+	}
 	// ---------------- Delete operations ----------------
 	@Override
 	public void deleteUser(Long userId) {

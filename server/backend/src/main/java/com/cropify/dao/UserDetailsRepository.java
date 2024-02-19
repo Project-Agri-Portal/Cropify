@@ -33,4 +33,8 @@ public interface UserDetailsRepository extends JpaRepository<UserDetails, Long>{
 			@Param("email") String email,
 			@Param("id") Long id);
 
+	@Modifying
+    @Query("UPDATE UserDetails u SET u.status = :newStatus WHERE u.id = :userId")
+    void updateStatusById(@Param("userId") Long userId, @Param("newStatus") String newStatus);
+
 }
