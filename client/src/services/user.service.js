@@ -19,4 +19,8 @@ const getCustomer = (customerId) => {
     return app.get('/'+customerId);
 }
 
-export default {getSellerList, getFarmerList,getCustomer};
+const updateStatus = (id, status) => {
+    return app.put("/"+id+"/"+status);
+}
+
+export default {getSellerList, getFarmerList,getCustomer, updateStatus};

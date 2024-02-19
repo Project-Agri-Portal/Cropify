@@ -4,9 +4,15 @@ import
   BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
  from 'react-icons/bs'
 import "./MainLayout.css";
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function SideBar({openSidebarToggle, OpenSidebar}) {
+
+    const history = useHistory();
+    const handleLogout = () => {
+      history.push('/login');
+    };
+    
   return (
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
         <div className='sidebar-title'>
@@ -59,10 +65,11 @@ function SideBar({openSidebarToggle, OpenSidebar}) {
                 Add Product
                 </Link>
             </li>
-            <li className='sidebar-list-item'>
-                <a href="">
+            <li className='sidebar-list-item' onClick={() => {handleLogout()}}>
                 <BsListCheck className='icon'/> Log Out
-                </a>
+                <Link to="/admin/addproduct" >
+                Log Out
+                </Link>
             </li>
         </ul>
     </aside>

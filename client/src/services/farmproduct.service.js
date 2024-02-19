@@ -15,4 +15,8 @@ const addFarmProducts = (product) => {
     return app.post("farmProducts/", product);
 }
 
+const getImage = (imgId) => {
+    return app.get('farmProducts/image/'+imgId);
+}
+
 export default {getFarmProducts,addFarmProducts};
