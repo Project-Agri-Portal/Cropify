@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import "./Checkout.css"
 import Navbar from "../Common/NavBar";
 import Footer from "../Common/Footer";
+import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import UserDetails from "../../../services/user.service";
@@ -39,6 +40,7 @@ const Checkout = () => {
 
     const order = async() => {
         const customer = parseInt(localStorage.getItem("userId"));
+        const history = useHistory();
         await Ordercart.order(customer, totalAmount)
                 .then((result) => {
                     toast.success("WOhooooooo Order on the way");
@@ -47,6 +49,7 @@ const Checkout = () => {
                 .catch((error) => {
                     console.log(error);
                 })
+                history.push('/shop/orders');
     }
 
     useEffect(() => {
