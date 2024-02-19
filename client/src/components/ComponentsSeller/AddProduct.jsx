@@ -1,7 +1,7 @@
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Link,useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./SellerProducts.css";
-import SellerProducts from '../../services/seller.service';
+import Machines from '../../services/seller.service';
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -16,40 +16,128 @@ function ProductList() {
     history.replace("/");
   }
 
-  const [productList,setProductList] = useState([]);
+const [machineList,setMachineList] = useState([]);
 
-    const onload = (userId) => {
-    SellerProducts.getSellerMachinery(userId).then((result) => {
-      setProductList(result.data);
-      console.log(result);
+const onload = () =>{
+    Machines.getAllMachinery().then((result) => {
+        setMachineList(result.data);
+        console.log(result);
     }).catch((error) => {
-      console.log(error);
+        console.log(error);
+        
     })
-  }
+}
 
-  const deleteProduct = (id) => {
-    SellerProducts.deleteSellerMachine(id).then((result)=>{
-      console.log(result);
-      const userId= localStorage.getItem('userId');
-      onload(userId);
-    }).catch((error)=>{
-      console.log(error);
-    })
-  }
+const [number,setNumber] = useState(0);
+ 
+const increase = () =>{
+    setNumber(number + 1);
+}
+
+const decrease = () =>{
+    setNumber(number - 1);
+}
+
+
+
+//   const [productList,setProductList] = useState([]);
+
+//     const onload = (userId) => {
+//     SellerProducts.getSellerMachinery(userId).then((result) => {
+//       setProductList(result.data);
+//       console.log(result);
+//     }).catch((error) => {
+//       console.log(error);
+//     })
+//   }
+
+//   const deleteProduct = (id) => {
+//     SellerProducts.deleteSellerMachine(id).then((result)=>{
+//       console.log(result);
+//       const userId= localStorage.getItem('userId');
+//       onload(userId);
+//     }).catch((error)=>{
+//       console.log(error);
+//     })
+//   }
 
 
   useEffect(() => {
-    const userId= localStorage.getItem('userId');
-    onload(userId);
+    
+    onload();
   },[])
 
   return (
     <>
       <div className="d-flex" id="wrapper">
         {/* <!-- Sidebar --> */}
-        
-
-
+        {/* <div className="bg-white" id="sidebar-wrapper">
+        <div id="sidebar">
+          <div className="sidebar-heading text-center py-4 border-bottom">
+            <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
+              <i className="bx bxs-leaf"></i>
+              {" "}
+              Cropify
+            </Link>
+          </div>
+          <div className="list-group list-group-flush my-3">
+            <Link
+              to="/home/seller"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-tachometer-alt me-2"></i>Dashboard
+            </Link>
+            <Link
+              to="#"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text active"
+            >
+              <i className="fas fa-project-diagram me-2"></i>Products
+            </Link>
+            <Link
+              to="/seller/orderlist"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-chart-line me-2"></i>Order List
+            </Link>
+            <Link
+              to="#"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-paperclip me-2"></i>Available Stock
+            </Link>
+            <Link
+              to="#"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-shopping-cart me-2"></i>Store Mng
+            </Link>
+            <Link
+              to="#"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-gift me-2"></i>Products
+            </Link>
+            <Link
+              to="#"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-comment-dots me-2"></i>Chat
+            </Link>
+            <Link
+              to="#"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent second-text fw-bold"
+            >
+              <i className="fas fa-map-marker-alt me-2"></i>Outlet
+            </Link>
+            <Link
+              to="/"
+              className="list-group-item list-group-item1 list-group-item-action bg-transparent text-danger fw-bold"
+            >
+              <i className="fas fa-power-off me-2"></i>Logout
+            </Link>
+          </div>
+          </div>
+        </div> */}
 
 <div className="bg-white" id="sidebar-wrapper">
           <div id="sidebar">
@@ -69,7 +157,7 @@ function ProductList() {
               to="/seller/productlist"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
-              <i className="fas fa-project-diagram me-2"></i>Machines
+              <i className="fas fa-project-diagram me-2"></i> My Machines
             </Link>
             <Link
               to="/seller/orderlist"
@@ -84,20 +172,9 @@ function ProductList() {
             >
               <i className="fas fa-gift me-2"></i>Add New Machine
             </Link>
-            {/* <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-comment-dots me-2"></i>Chat
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-map-marker-alt me-2"></i>Outlet
-            </Link> */}
+           
             <p
-              // to="/"
+              
               onClick={logoutUser}
               style={{ cursor: "pointer" }}
               className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
@@ -107,7 +184,6 @@ function ProductList() {
             </div>
           </div>
         </div>
-
 
         {/* <!-- /#sidebar-wrapper --> */}
 
@@ -146,7 +222,7 @@ function ProductList() {
                     aria-expanded="false"
                     style={{ color: "rgb(11, 11, 10)" }}
                   >
-                    <i className="fas fa-user me-2"></i>
+                    <i className="fas fa-user me-2"></i>Seller Name
                   </Link>
                   <ul
                     className="dropdown-menu"
@@ -189,18 +265,17 @@ function ProductList() {
           />
 
           <div className="container">
-            <div className="row align-items-center">
-              <div className="col-md-6">
+            <div className="row align-item-left">
+              <div className="col-md-6 ">
                 <div className="mb-3">
-                  <h5 className="card-title">
-                    My Products To sell
-                    <span className="text-muted fw-normal ms-2">(10)</span>
+                  <h5 className="card-title" style={{color:"black"}}>
+                    Add Machinery
                   </h5>
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
-                  <div>
+                  {/* <div>
                     <ul className="nav nav-pills">
                       <li className="nav-item">
                         <Link
@@ -230,45 +305,18 @@ function ProductList() {
                         </Link>
                       </li>
                     </ul>
-                  </div>
-                  <div>
+                  </div> */}
+                  {/* <div>
                     <Link
                       to="#"
                       data-bs-toggle="modal"
                       data-bs-target=".add-new"
                       className="btn btn-primary"
                     >
-                      <i className="bx bx-plus me-1"></i> Add New Products
+                      <i className="bx bx-plus me-1"></i> Add New Machine
                     </Link>
-                  </div>
-                  {/* <div className="dropdown">
-                    <Link
-                      className="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle"
-                      to="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      <i className="bx bx-dots-horizontal-rounded"></i>
-                    </Link>
-                    <ul className="dropdown-menu dropdown-menu-end">
-                      <li>
-                        <Link className="dropdown-item" to="SellerProfile.html">
-                          Go To Profile
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="#">
-                          Settings
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="#">
-                          Log Out
-                        </Link>
-                      </li>
-                    </ul>
                   </div> */}
+                  
                 </div>
               </div>
             </div>
@@ -276,58 +324,41 @@ function ProductList() {
               <div className="col-lg-12">
                 <div className="">
                   <div className="table-responsive">
-                    <table className="table project-list-table table-nowrap align-middle table-borderless">
+                    <table className="table project-list-table table-nowrap align-middle table-borderless table-striped">
                       <thead>
                         <tr>
                           <th scope="col">Machine ID</th>
                           <th scope="col">Machine Name</th>
-                          <th scope="col">Total Quantity</th>
-                          <th scope="col">Available Quantity</th>
-                          <th scope="col">Machine Price</th>
-                          <th scope="col">Machine Description</th>
+                          <th scope="col">Machine Type</th>
+                          {/* <th scope="col">Available Quantity</th> */}
+                          {/* <th scope="col">Machine Price</th> */}
+                          {/* <th scope="col">Machine Description</th> */}
                           <th scope="col" style={{ width: "200px;" }}>
                             Action
                           </th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
 
-                        {productList.map((prod) => {
+                        {machineList.map((prod) => {
                           return (
                             <tr>
                           <td>{prod['machineId']}</td>
                           <td>
                             <span>{prod['machineName']}</span>
                           </td>
-                          <td>{prod['quantity']}</td>
-                          <td>{prod['availQuantity']}</td>
-                          <td>{prod['price']}</td>
-                          <td>{prod['description']}</td>
+                          <td>{prod['machineType']}</td>
+                          
                           <td>
-                            <ul className="list-inline mb-0">
-                              <li className="list-inline-item">
-                                <Link
-                                  to=""
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Edit"
-                                  className="px-2 text-primary"
-                                >
-                                  <i className="bx bx-pencil font-size-18"></i>
-                                </Link>
-                              </li>
-                              <li className="list-inline-item">
-                                <Link
-                                  to="/seller/productlist"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  title="Delete"
-                                  className="px-2 text-danger"
-                                >
-                                  <i className="bx bx-trash-alt font-size-18" onClick={() => { deleteProduct(prod['sellerMachineDetailsId'])}}></i>
-                                </Link>
-                              </li>
-                            </ul>
+                            
+                               <button className="btn btn-outline-primary" onClick={increase}>+</button>
+                                   {" "} {number}{" "}
+                               <button className="btn btn-outline-primary" onClick={decrease}>-</button>
+       
+                          </td>
+                          <td>
+                              <button className="btn btn-primary">Add</button>
                           </td>
                         </tr>
                           );
@@ -344,13 +375,13 @@ function ProductList() {
                 </div>
               </div>
             </div>
-            <div className="row g-0 align-items-center pb-4">
-              {/* <div className="col-sm-6">
+            {/* <div className="row g-0 align-items-center pb-4">
+              <div className="col-sm-6">
                 <div>
                   <p className="mb-sm-0">Showing 1 of 2</p>
                 </div>
-              </div> */}
-              {/* <div className="col-sm-6">
+              </div>
+              <div className="col-sm-6">
                 <div className="float-sm-end">
                   <ul className="pagination mb-sm-0">
                     <li className="page-item disabled">
@@ -368,7 +399,7 @@ function ProductList() {
                         2
                       </Link>
                     </li>
-                
+                   
                     <li className="page-item">
                       <Link to="#" className="page-link">
                         <i className="mdi mdi-chevron-right"></i>
@@ -376,8 +407,8 @@ function ProductList() {
                     </li>
                   </ul>
                 </div>
-              </div> */}
-            </div>
+              </div>
+            </div> */}
           </div>
 
           {/* <!-- Product List Here--> */}

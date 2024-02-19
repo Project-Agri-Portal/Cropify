@@ -15,6 +15,10 @@ const getSellerMachinery = (userId) =>{
     return app.get('sellerMachinery/productlist/'+userId);
 }
 
+const getAllMachinery = () =>{
+    return app.get('machinery/')
+}
+
 const deleteSellerMachine = (sellerMachineId) =>{
     return app.delete('sellerMachinery/'+sellerMachineId);
 }
@@ -23,5 +27,9 @@ const getMachineryOrderList = (userId) =>{
     return app.get('ordermachinerydetails/orderlist/'+userId)
 }
 
+const updateSellerProfile = (userId) => {
+    return app.post('users/'+userId)
+}
 
-export default {getSellerProfile,getSellerMachinery,deleteSellerMachine,getMachineryOrderList};
+
+export default {getSellerProfile,getSellerMachinery,deleteSellerMachine,getMachineryOrderList,updateSellerProfile,getAllMachinery};
