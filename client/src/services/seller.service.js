@@ -31,6 +31,14 @@ const updateSellerProfile = (userId, updatedInfo) => {
   return app.put("users/" + userId, updatedInfo);
 };
 
+const deleteOrder = (oid) => {
+  return app.delete("ordermachinerydetails/" + oid);
+};
+
+const addMachine = (userId, machinery) => {
+  return app.post("sellerMachinery/" + userId, machinery);
+};
+
 export default {
   getSellerProfile,
   getSellerMachinery,
@@ -38,4 +46,6 @@ export default {
   getMachineryOrderList,
   updateSellerProfile,
   getAllMachinery,
+  deleteOrder,
+  addMachine,
 };

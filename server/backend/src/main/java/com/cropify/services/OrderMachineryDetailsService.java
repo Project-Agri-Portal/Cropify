@@ -15,5 +15,7 @@ public interface OrderMachineryDetailsService {
     // Order list of Machinery
     List<OrderMachineDetailsDTO> getTotalOrders(Long sellerId);
     
+    Long deleteOrderByOID(Long oid);
+    
     
 } 
