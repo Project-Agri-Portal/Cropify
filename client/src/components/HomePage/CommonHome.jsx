@@ -38,6 +38,9 @@ function CommonHome() {
             <Nav.Link href="/home/customer" className="nav-link fs-5">
               Shop
             </Nav.Link>
+            <Nav.Link href="/home/information" className="nav-link fs-5">
+              Information
+            </Nav.Link>
             <Nav.Link href="/login" className="nav-link fs-5">
               Login
             </Nav.Link>
