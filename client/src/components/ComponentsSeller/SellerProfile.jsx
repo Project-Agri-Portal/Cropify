@@ -58,7 +58,7 @@ function SellerProfile() {
               to="/seller/productlist"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
-              <i className="fas fa-project-diagram me-2"></i>Products
+              <i className="fas fa-project-diagram me-2"></i>Machines
             </Link>
             <Link
               to="/seller/orderlist"
@@ -66,25 +66,14 @@ function SellerProfile() {
             >
               <i className="fas fa-chart-line me-2"></i>Order List
             </Link>
+            
             <Link
-              to="#"
+              to="/seller/addproduct"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
-              <i className="fas fa-paperclip me-2"></i>Available Stock
+              <i className="fas fa-gift me-2"></i>Add New Machine
             </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-shopping-cart me-2"></i>Store Mng
-            </Link>
-            <Link
-              to="#"
-              className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i className="fas fa-gift me-2"></i>Products
-            </Link>
-            <Link
+            {/* <Link
               to="#"
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
@@ -95,7 +84,7 @@ function SellerProfile() {
               className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
               <i className="fas fa-map-marker-alt me-2"></i>Outlet
-            </Link>
+            </Link> */}
             <p
               // to="/"
               onClick={logoutUser}
