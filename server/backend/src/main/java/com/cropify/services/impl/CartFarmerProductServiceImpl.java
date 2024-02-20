@@ -45,7 +45,7 @@ public class CartFarmerProductServiceImpl implements CartFarmerProductService{
 
     @Override
     public Long addFarmerProductToCart(Long farmerId, CartFarmProductDTO cartFarmProductDTO) {
-        UserDetails farmer = userDetailsRepository.findById(farmerId).orElseThrow(() -> new ResourceNotFoundException("not found"));
+        UserDetails farmer = userDetailsRepository.findById(cartFarmProductDTO.getFarmerId()).orElseThrow(() -> new ResourceNotFoundException("not found"));
         UserDetails customer = userDetailsRepository.findById(cartFarmProductDTO.getCustomerId()).orElseThrow(() -> new ResourceNotFoundException("not found"));
         FarmProducts farmProducts = farmProductsRepository.findById(cartFarmProductDTO.getFarmProdId()).orElseThrow(() -> new ResourceNotFoundException("not found"));
 

@@ -137,7 +137,7 @@ const ProductList = () => {
                   {/* height:100 */}
                   <div className="imgcon">
                     <img
-                      src={imageUrl}
+                      src="../../../assets/ShopImages/orange.png"
                       className="card-img-top"
                       id="card-img-id"
                       alt="..."
@@ -183,8 +183,6 @@ const ProductList = () => {
         </div>
       </div>
       <Footer></Footer>
-      {/* <ToastContainer /> */}
-      <ToastContainer />
     </>
   );
 };
