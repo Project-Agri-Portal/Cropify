@@ -98,55 +98,6 @@ function AddMachine({ userId }) {
 
   return (
     <>
-      {/* <div className="d-flex" id="wrapper"> */}
-      {/* <div className="bg-white" id="sidebar-wrapper">
-          <div id="sidebar">
-            <div className="sidebar-heading text-center py-4 border-bottom">
-              <Link to="/" className="primary-text fs-4 fw-bold text-uppercase">
-                <i className="bx bxs-leaf"></i> Cropify
-              </Link>
-            </div>
-            <div className="list-group list-group-flush my-3">
-              <Link
-                to="/home/seller"
-                className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-              >
-                <i className="fas fa-tachometer-alt me-2"></i>Dashboard
-              </Link>
-              <Link
-                to="/seller/productlist"
-                className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-              >
-                <i className="fas fa-project-diagram me-2"></i> My Machines
-              </Link>
-              <Link
-                to="/seller/orderlist"
-                className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-              >
-                <i className="fas fa-chart-line me-2"></i>Order List
-              </Link>
-
-              <Link
-                to="/seller/addproduct"
-                className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-              >
-                <i className="fas fa-gift me-2"></i>Add New Machine
-              </Link>
-
-              <p
-                onClick={logoutUser}
-                style={{ cursor: "pointer" }}
-                className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
-              >
-                <i className="fas fa-power-off me-2"></i>Logout
-              </p>
-            </div>
-          </div>
-        </div> */}
-
-      {/* <!-- /#sidebar-wrapper --> */}
-
-      {/* <!-- Page Content --> */}
       <div id="page-content-wrapper">
         {addedProduct === "true" && (
           <Alert variant="filled" severity="success">
@@ -285,13 +236,7 @@ function AddMachine({ userId }) {
             </div>
           </div>
         </div>
-
-        {/* <!-- Product List Here--> */}
       </div>
-
-      {/* </div> */}
-      {/* <!-- /#page-content-wrapper --> */}
-      {/* </div> */}
     </>
   );
 }
