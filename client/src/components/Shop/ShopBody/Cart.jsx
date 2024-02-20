@@ -231,7 +231,7 @@ const Cart = () => {
           </div>
         </div>
       )}
-      <ToastContainer></ToastContainer>
+      {/* <ToastContainer></ToastContainer> */}
       <div style={{height:100}}></div>
       <Footer></Footer>
     </>
