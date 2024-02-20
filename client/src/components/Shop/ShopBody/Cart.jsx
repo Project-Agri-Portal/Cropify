@@ -3,6 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "./Cart.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import NavBar from "../Common/NavBar";
+import Footer from "../Common/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import CartProduct from "../../../services/ordercart.service";
 import Orange from "../../../assets/ShopImages/orange.png";
@@ -231,6 +232,8 @@ const Cart = () => {
         </div>
       )}
       <ToastContainer></ToastContainer>
+      <div style={{height:100}}></div>
+      <Footer></Footer>
     </>
   );
 };

@@ -66,7 +66,7 @@ function SideBar({openSidebarToggle, OpenSidebar}) {
                 </Link>
             </li>
             <li className='sidebar-list-item' onClick={() => {handleLogout()}}>
-                <BsListCheck className='icon'/> Log Out
+                <BsListCheck className='icon'/>
                 <Link to="/admin/addproduct" >
                 Log Out
                 </Link>
