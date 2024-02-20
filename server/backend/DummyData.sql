@@ -45,16 +45,16 @@ INSERT INTO farm_products (farm_prod_id, farm_prod_name, farm_prod_type, img_pat
 --------------------------------- machinery table -----------------------------------
 
 INSERT INTO machinery (machine_id, img_path, machine_name, machine_type) VALUES
-('M001', '/images/tractor.jpg', 'Kisan King Tractor', 'TRACTOR'),
-('M002', '/images/plough.jpg', 'Harit Kranti Plough', 'PLOUGH'),
-('M003', '/images/harvester.jpg', 'Krishi Sampada Harvester', 'HARVESTOR'),
-('M004', '/images/seeder.jpg', 'Beej Boy Seeder', 'SEEDER'),
-('M005', '/images/irrigation_pump.jpg', 'Jal Shakti Pump', 'IRRIGATION_PUMP'),
-('M006', '/images/crop_sprayer.jpg', 'Swasthya Khet Crop Sprayer', 'CROP_SPRAYER'),
-('M007', '/images/tiller.jpg', 'Krishi Sathi Tiller', 'TILLER'),
-('M008', '/images/thresher.jpg', 'Annapurna Thresher', 'THRESHER'),
-('M009', '/images/cultivator.jpg', 'Utkarsh Krishi Cultivator', 'CULTIVATOR'),
-('M010', '/images/seed_drill.jpg', 'Beej Express Seed Drill', 'SEED_DRILL');
+('m1', '/images/tractor.jpg', 'Kisan King Tractor', 'TRACTOR'),
+('m2', '/images/plough.jpg', 'Harit Kranti Plough', 'PLOUGH'),
+('m3', '/images/harvester.jpg', 'Krishi Sampada Harvester', 'HARVESTOR'),
+('m4', '/images/seeder.jpg', 'Beej Boy Seeder', 'SEEDER'),
+('m5', '/images/irrigation_pump.jpg', 'Jal Shakti Pump', 'IRRIGATION_PUMP'),
+('m6', '/images/crop_sprayer.jpg', 'Swasthya Khet Crop Sprayer', 'CROP_SPRAYER'),
+('m7', '/images/tiller.jpg', 'Krishi Sathi Tiller', 'TILLER'),
+('m8', '/images/thresher.jpg', 'Annapurna Thresher', 'THRESHER'),
+('m9', '/images/cultivator.jpg', 'Utkarsh Krishi Cultivator', 'CULTIVATOR'),
+('m10', '/images/seed_drill.jpg', 'Beej Express Seed Drill', 'SEED_DRILL');
 
 
 ---------------------------------------- user_details table -----------------------------------

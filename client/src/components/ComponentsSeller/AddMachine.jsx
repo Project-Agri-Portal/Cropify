@@ -2,10 +2,11 @@
 // import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./SellerProducts.css";
 import Machines from "../../services/seller.service";
+import Alert from "@mui/material/Alert";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function AddMachine({userId}) {
+function AddMachine({ userId }) {
   // const history = useHistory();
 
   // // Loggin out user and clearing the storages
@@ -14,6 +15,7 @@ function AddMachine({userId}) {
   //   sessionStorage.clear();
   //   history.replace("/");
   // }
+  const [addedProduct, setAddedProduct] = useState("");
 
   const [machineList, setMachineList] = useState([]);
   const [quantityList, setQuantityList] = useState({});
@@ -25,6 +27,7 @@ function AddMachine({userId}) {
       .then((result) => {
         setMachineList(result.data);
         console.log(result);
+        setAddedProduct("");
       })
       .catch((error) => {
         console.log(error);
@@ -81,9 +84,11 @@ function AddMachine({userId}) {
     Machines.addMachine(userId, machine)
       .then((result) => {
         console.log(result);
+        setAddedProduct("true");
       })
       .catch((error) => {
         console.log(error);
+        setAddedProduct("false");
       });
   };
 
@@ -143,6 +148,16 @@ function AddMachine({userId}) {
 
       {/* <!-- Page Content --> */}
       <div id="page-content-wrapper">
+        {addedProduct === "true" && (
+          <Alert variant="filled" severity="success">
+            Product added
+          </Alert>
+        )}
+        {addedProduct === "false" && (
+          <Alert variant="filled" severity="error">
+            Error while adding product
+          </Alert>
+        )}
         <nav className="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
           <div className="d-flex align-items-center">
             <i className="fas fa-project-diagram me-2"></i>
