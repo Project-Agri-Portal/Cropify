@@ -67,7 +67,7 @@ const ProductList = () => {
   };
 
   const addToCart = async (price, farmerId, farmProductId, count) => {
-    const customer = parseInt(localStorage.getItem('userId'));
+    const customer = parseInt(sessionStorage.getItem('userId'));
     const id = parseInt(farmerId);
     if(!isNaN(customer)){
         const totalPrice = count*price;

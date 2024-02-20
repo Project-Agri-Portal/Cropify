@@ -15,7 +15,7 @@ const Cart = () => {
   const[deliveryDate, setDeliveryDate] = useState();
 
   const onload = async () => {
-    const customer = parseInt(localStorage.getItem("userId"));
+    const customer = parseInt(sessionStorage.getItem("userId"));
     await CartProduct.showCart(customer)
       .then((result) => {
         console.log(result["data"]);
@@ -56,7 +56,7 @@ const Cart = () => {
     calculateTotal();
   }, [cart]);
 
-  const customer = parseInt(localStorage.getItem("userId"));
+  const customer = parseInt(sessionStorage.getItem("userId"));
 
   return (
     <>

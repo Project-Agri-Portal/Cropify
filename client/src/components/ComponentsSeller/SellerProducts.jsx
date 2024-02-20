@@ -1,19 +1,11 @@
 // import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import "./SellerProducts.css";
+// import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+// import "./SellerProducts.css";
 import SellerProducts from "../../services/seller.service";
 import { useState } from "react";
 import { useEffect } from "react";
 
 function MachineList({ userId }) {
-  // const history = useHistory();
-
-  // // Loggin out user and clearing the storages
-  // function logoutUser() {
-  //   localStorage.clear();
-  //   sessionStorage.clear();
-  //   history.replace("/");
-  // }
 
   const [productList, setProductList] = useState([]);
 

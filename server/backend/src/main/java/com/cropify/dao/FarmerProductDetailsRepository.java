@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.cropify.entity.FarmerProductDetails;
+import com.cropify.entity.SellerMachineryDetails;
 
 public interface FarmerProductDetailsRepository extends JpaRepository<FarmerProductDetails, Long> {	
 
@@ -24,4 +25,14 @@ public interface FarmerProductDetailsRepository extends JpaRepository<FarmerProd
     @Query("UPDATE FarmerProductDetails SET quantity = quantity + :increaseQuantity WHERE farmerId.id = :farmerId AND farmProductId.farmProductId = :farmProductId")
     void increaseQuantity(@Param("farmerId") Long farmerId, @Param("farmProductId") String farmProductId, @Param("increaseQuantity") int increaseQuantity);
 
+    //-------------------------
+    @Query(value="select * from farmer_product_details where farmer_id=:farmerId",nativeQuery = true)
+	List<FarmerProductDetails> getByFarmerId(
+			@Param ("farmerId") long farmerId
+			);	
+    
+    @Query(value="select count(*) from farmer_product_details where farmer_id=:farmerId",nativeQuery = true)
+	int getCountByFarmerId(
+			@Param ("farmerId") long farmerId
+			);
 }
