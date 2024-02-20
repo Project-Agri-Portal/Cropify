@@ -71,6 +71,9 @@ public interface SellerMachineryDetailsRepository extends JpaRepository<SellerMa
         @Param("machineryId") Machinery machineryId
     );
 	
+	@Query("SELECT smd, m FROM SellerMachineryDetails smd JOIN Machinery m ON smd.machineryId = m WHERE smd.machineryId.machineId = m.machineId")
+    List<Object[]> findCombinedDetailsByMachineId();
+	
 	
 	
 	

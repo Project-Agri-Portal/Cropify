@@ -3,6 +3,9 @@ package com.cropify.dto;
 import java.time.LocalDate;
 
 import javax.validation.constraints.Future;
+
+import com.cropify.entity.FarmProducts;
+import com.cropify.entity.UserDetails;
 import com.cropify.entity.enums.FarmOrderStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -15,6 +18,14 @@ public class OrderFarmProductDetailsDTO {
 	private String orderId;
 	private Long customerId;
 	private Long farmerId;
+	public Long getOid() {
+		return oid;
+	}
+
+	public void setOid(Long oid) {
+		this.oid = oid;
+	}
+
 	private String farmProdId;
 	private LocalDate orderDate;
 	
@@ -29,16 +40,16 @@ public class OrderFarmProductDetailsDTO {
 		return customerId;
 	}
 
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
+	public void setCustomerId(UserDetails customerId) {
+		this.customerId = customerId.getId();
 	}
 
 	public Long getFarmerId() {
 		return farmerId;
 	}
 
-	public void setFarmerId(Long farmerId) {
-		this.farmerId = farmerId;
+	public void setFarmerId(UserDetails farmerId) {
+		this.farmerId = farmerId.getId();
 	}
 
 	public String getFarmProdId() {
@@ -53,8 +64,8 @@ public class OrderFarmProductDetailsDTO {
 		this.orderId = orderId;
 	}
 
-	public void setFarmProdId(String farmProdId) {
-		this.farmProdId = farmProdId;
+	public void setFarmProdId(FarmProducts farmProdId) {
+		this.farmProdId = farmProdId.getFarmProductId();
 	}
 
 	public LocalDate getOrderDate() {

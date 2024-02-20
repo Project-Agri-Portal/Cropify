@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import com.cropify.dto.OrderDTO;
 import com.cropify.entity.OrderFarmProductDetails;
 import com.cropify.entity.OrderMachineDetails;
+import com.cropify.entity.UserDetails;
 import com.cropify.entity.enums.FarmOrderStatus;
 
 public interface OrderFarmProductDetailsRepository extends JpaRepository<OrderFarmProductDetails, Long> {
@@ -29,5 +30,8 @@ public interface OrderFarmProductDetailsRepository extends JpaRepository<OrderFa
     public List<OrderFarmProductDetails> getByUserId(
     		@Param ("farmerId") Long farmerId
     		);	
+    
+    @Query("SELECT ofpd FROM OrderFarmProductDetails ofpd WHERE ofpd.farmerId = :farmerId")
+    List<OrderFarmProductDetails> findAllByFarmerId(@Param("farmerId") UserDetails farmerId);
 }
 

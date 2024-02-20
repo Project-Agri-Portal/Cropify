@@ -32,7 +32,7 @@ const addFarmProduct = (userId, farmProduct) => {
 };
 
 const getFarmerOrderList = (userId) => {
-    return app.get("orderfarmproductdetails/orderlist/" + userId);
+    return app.get("orderfarmproductdetails/orderbyfarmerid/" + userId);
 };
 
 const deleteOrder = (oid) => {
