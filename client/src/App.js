@@ -17,12 +17,15 @@ import Machinery from "./components/ComponentAdmin/Machinery.jsx";
 import AgricultureProduct from "./components/ComponentAdmin/AgricultureProduct.jsx";
 import AdminSeller from "./components/ComponentAdmin/SellerList.jsx";
 import AdminFarmer from "./components/ComponentAdmin/FarmerList.jsx";
-import InformationPage from "./components/InformationPage/InformationPage.jsx";
-import MachineryPage from "./components/InformationPage/MachineryPage.jsx";
 import Orders from "./components/Shop/ShopBody/Orders.jsx";
 import AddProduct from "./components/ComponentAdmin/AddProduct.jsx";
 import UserProfile from "./components/Shop/ShopBody/UserProfile.jsx";
 import FarmerMainPage from "./components/ComponentsFarmer/FarmerMainPage.jsx";
+import InformationPage from "./components/InformationPage/InformationPage.jsx";
+import MachineryPage from "./components/InformationPage/MachineryPage.jsx";
+import CropsPage from "./components/InformationPage/CropsPage.jsx";
+import FruitsPage from "./components/InformationPage/FruitsPage.jsx";
+import VegetablesPage from "./components/InformationPage/VegetablesPage.jsx";
 
 function App() {
   return (
@@ -35,6 +38,9 @@ function App() {
           <Route path="/home" component={CommonHome} exact />
           <Route path="/home/information" component={InformationPage} exact />
           <Route path="/home/information/machinery" component={MachineryPage} exact />
+          <Route path="/home/information/crops" component={CropsPage} exact />
+          <Route path="/home/information/fruits" component={FruitsPage} exact />
+          <Route path="/home/information/vegetables" component={VegetablesPage} exact />
           <Route path="/home/customer" component={Shop} exact />
           <Route path="/home/farmer" component={FarmerMainPage} exact />
           <Route path="/home/seller" component={SellerMainPage} exact />

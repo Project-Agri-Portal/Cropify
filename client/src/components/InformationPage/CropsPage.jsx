@@ -8,19 +8,17 @@ import {
   Navbar,
   Nav,
 } from "react-bootstrap";
-import util from "../../utils/machinery.json";
+import util from "../../utils/crops.json";
 import logo from "../../logo.png";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-function MachineryPage() {
+function CropsPage() {
   return (
     <>
       <Navbar className="bg-success bg-opacity-75" sticky="top">
         <Container>
           <Link to="/">
-            <Navbar.Brand
-              className="d-flex align-items-center gap-1"
-            >
+            <Navbar.Brand className="d-flex align-items-center gap-1">
               <img
                 className="d-inline-block object-fit-cover"
                 src={logo}
@@ -37,7 +35,11 @@ function MachineryPage() {
             <Nav.Link as={Link} to="/home/customer" className="nav-link fs-5">
               Shop
             </Nav.Link>
-            <Nav.Link as={Link} to="/home/information" className="nav-link fs-5">
+            <Nav.Link
+              as={Link}
+              to="/home/information"
+              className="nav-link fs-5"
+            >
               Information
             </Nav.Link>
             <Nav.Link as={Link} to="/login" className="nav-link fs-5">
@@ -51,10 +53,10 @@ function MachineryPage() {
       </Navbar>
 
       <section className="container my-5">
-        <Tab.Container id="machinery-list" defaultActiveKey="#tillage">
+        <Tab.Container id="crops-list" defaultActiveKey="#wheat">
           <Row>
             <Col sm={4}>
-              <ListGroup defaultActiveKey="#tillage">
+              <ListGroup defaultActiveKey="#wheat">
                 {Object.entries(util).map(([key]) => {
                   return (
                     <ListGroup.Item
@@ -74,19 +76,14 @@ function MachineryPage() {
                 {Object.entries(util).map(([key, value]) => {
                   return (
                     <Tab.Pane eventKey={"#" + key.toLowerCase()} key={key}>
-                      {value.map((machine) => {
-                        return Object.entries(machine).map(([key, value]) => {
+                      {value.map((crop) => {
+                        return Object.entries(crop).map(([key, value]) => {
                           return (
                             <div key={key}>
                               <h3 className="text-secondary">{key}</h3>
-                              {Object.entries(value).map(([dKey, dValue]) => {
-                                return (
-                                  <p key={dKey} className="text-dark">
-                                    <span className="fw-bold">{dKey}:</span>{" "}
-                                    {dValue}
-                                  </p>
-                                );
-                              })}
+                              <p key={key} className="text-dark">
+                                {value}
+                              </p>
                               <hr />
                             </div>
                           );
@@ -104,4 +101,4 @@ function MachineryPage() {
   );
 }
 
-export default MachineryPage;
+export default CropsPage;
