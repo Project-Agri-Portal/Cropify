@@ -1,5 +1,3 @@
-import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle";
 import "./Cart.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import NavBar from "../Common/NavBar";
@@ -12,7 +10,7 @@ import { useEffect, useState } from "react";
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
-  const[deliveryDate, setDeliveryDate] = useState();
+  const [deliveryDate, setDeliveryDate] = useState();
 
   const onload = async () => {
     const customer = parseInt(sessionStorage.getItem("userId"));
@@ -20,7 +18,7 @@ const Cart = () => {
       .then((result) => {
         console.log(result["data"]);
         setCart(result["data"]);
-        setDeliveryDate(result['data'][0]['deliveryDate']);
+        setDeliveryDate(result["data"][0]["deliveryDate"]);
       })
       .catch((error) => {
         console.log("error");
@@ -29,16 +27,16 @@ const Cart = () => {
   };
 
   const deleteCart = async (cartId, price) => {
-    setTotal(total-price);
+    setTotal(total - price);
     await CartProduct.deleteCart(cartId)
-                      .then((result) => {
-                        toast.warn("Product deleted")
-                        onload();
-                      })
-                      .catch((error) => {
-                        console.log(error);
-                      })
-  }
+      .then((result) => {
+        toast.warn("Product deleted");
+        onload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const calculateTotal = () => {
     let totalAmount = 0;
@@ -56,14 +54,14 @@ const Cart = () => {
     calculateTotal();
   }, [cart]);
 
-  const customer = parseInt(sessionStorage.getItem("userId"));
+  // const customer = parseInt(sessionStorage.getItem("userId"));
 
   return (
     <>
       <NavBar></NavBar>
 
       <div style={{ height: 80 }}></div>
-      {cart.length == 0 ? (
+      {cart.length === 0 ? (
         <>
           <div style={{ height: 200 }}></div>
           <h1>Your cart is empty.</h1>
@@ -115,7 +113,15 @@ const Cart = () => {
                               {/* <!-- //remover move and price --> */}
                               <div className="row">
                                 <div className="col-8 d-flex justify-content-between remove_wish">
-                                  <p onClick={() => {deleteCart(product['cid'], product['totalAmount'])}} className="delete_icon">
+                                  <p
+                                    onClick={() => {
+                                      deleteCart(
+                                        product["cid"],
+                                        product["totalAmount"]
+                                      );
+                                    }}
+                                    className="delete_icon"
+                                  >
                                     <i className="fas fa-trash-alt delete_icon"></i>{" "}
                                     REMOVE ITEM
                                   </p>
@@ -160,7 +166,7 @@ const Cart = () => {
                     <div className="total-amt d-flex justify-content-between font-weight-bold">
                       <p>The total amount of (including VAT)</p>
                       <p>
-                      ₹<span id="total_cart_amt">{total + 50}</span>
+                        ₹<span id="total_cart_amt">{total + 50}</span>
                       </p>
                     </div>
                     {/* <button className="btn btn-primary text-uppercase">
@@ -222,7 +228,9 @@ const Cart = () => {
                   {/* <!-- discount code ends --> */}
                   <div className="mt-3 shadow p-3 bg-white">
                     <div className="pt-4">
-                      <h5 className="mb-4">Expected delivery date : {deliveryDate}</h5>
+                      <h5 className="mb-4">
+                        Expected delivery date : {deliveryDate}
+                      </h5>
                       <p></p>
                     </div>
                   </div>

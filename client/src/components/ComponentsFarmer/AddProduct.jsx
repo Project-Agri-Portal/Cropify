@@ -1,18 +1,23 @@
 import farmerService from "../../services/farmer.service";
+import Alert from "@mui/material/Alert";
 import { useState } from "react";
 import { useEffect } from "react";
 
 function AddFarmProduct({ userId }) {
+  const [addedProduct, setAddedProduct] = useState("");
+
   const [productList, setProductList] = useState([]);
   const [quantityList, setQuantityList] = useState({});
   const [priceList, setPriceList] = useState({});
   const [descriptionList, setDescriptionList] = useState({});
 
   const onload = () => {
-    farmerService.getAllFarmProducts()
+    farmerService
+      .getAllFarmProducts()
       .then((result) => {
         setProductList(result.data);
         console.log(result);
+        setAddedProduct("");
       })
       .catch((error) => {
         console.log(error);
@@ -61,17 +66,20 @@ function AddFarmProduct({ userId }) {
       verified: "",
       harvestDate: "2024-02-19",
       expiryDate: "2024-02-29",
-      farmProductStatus: "FRESH"
+      farmProductStatus: "FRESH",
     };
 
     console.log(farmProduct);
 
-    farmerService.addFarmProduct(userId, farmProduct)
+    farmerService
+      .addFarmProduct(userId, farmProduct)
       .then((result) => {
         console.log(result);
+        setAddedProduct("true");
       })
       .catch((error) => {
         console.log(error);
+        setAddedProduct("false");
       });
   };
 
@@ -83,6 +91,16 @@ function AddFarmProduct({ userId }) {
     <>
       {/* <!-- Page Content --> */}
       <div id="page-content-wrapper">
+        {addedProduct === "true" && (
+          <Alert variant="filled" severity="success">
+            Product added
+          </Alert>
+        )}
+        {addedProduct === "false" && (
+          <Alert variant="filled" severity="error">
+            Error while adding product
+          </Alert>
+        )}
         <nav className="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
           <div className="d-flex align-items-center">
             <i className="fas fa-plus me-2"></i>
@@ -140,7 +158,8 @@ function AddFarmProduct({ userId }) {
                         const farmProductId = prod["farmProductId"];
                         const quantity = quantityList[farmProductId] || 0;
                         const price = priceList[farmProductId] || 0;
-                        const description = descriptionList[farmProductId] || "";
+                        const description =
+                          descriptionList[farmProductId] || "";
                         return (
                           <tr>
                             <td>{prod["farmProductId"]}</td>

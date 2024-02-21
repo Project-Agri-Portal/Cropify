@@ -149,12 +149,18 @@ public class OrderFarmProductDetailsServiceImpl implements OrderFarmProductDetai
 
 	@Override
 	public List<OrderFarmProductDetailsDTO> getTotalOrders(Long farmerId) {
-		List<OrderFarmProductDetails> details = orderFarmProductDetailsRepository.getByUserId(farmerId);
+//		List<OrderFarmProductDetails> details = orderFarmProductDetailsRepository.getByUserId(farmerId);
+//		System.out.println("------------------------");
+		
+		UserDetails farmer = userDetailsRepository.findById(farmerId).orElseThrow();
+		
+		List<OrderFarmProductDetails> details = orderFarmProductDetailsRepository.findAllByFarmerId(farmer);
 		
 		List<OrderFarmProductDetailsDTO> detailsDTOs = details
 				.stream()
 				.map(item -> mapper.map(item, OrderFarmProductDetailsDTO.class))
 				.collect(Collectors.toList());	
+		System.out.println(detailsDTOs);
 
 		return detailsDTOs;	
 	}

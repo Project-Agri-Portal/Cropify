@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import UserDetails from "../../../services/user.service";
 import Ordercart from "../../../services/ordercart.service";
+import logo from "../../../logo.png";
 
 const Checkout = () => {
   const [customer, setCustomer] = useState([]);
@@ -40,16 +41,45 @@ const Checkout = () => {
   };
 
   const order = async () => {
-    const customer = parseInt(sessionStorage.getItem("userId"));
-    await Ordercart.order(customer, totalAmount)
-      .then((result) => {
-        toast.success("WOhooooooo Order on the way");
-        console.log(result);
-        history.replace("/shop/orders");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // ----- Razorpay API integration --------
+    let options = {
+      key: "rzp_test_DTHIoyHREKEq5i",
+      amount: totalAmount*100,
+      currency: "INR",
+      name: "Cropify Shop",
+      description: "Farm products purchase",
+      image: logo,
+      handler: () => {
+        // alert("Payment Successful");
+        processOrder();
+      },
+      theme: { color: "#c4242d" },
+    };
+
+    let rzp = new window.Razorpay(options);
+    rzp.open();
+    // ----------------------------
+    // const customer = parseInt(sessionStorage.getItem("userId"));
+    // await Ordercart.order(customer, totalAmount)
+    //   .then((result) => {
+    //     toast.success("WOhooooooo Order on the way");
+    //     console.log(result);
+    //     history.replace("/shop/orders");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+  };
+  const processOrder = async () => {
+    try {
+      const customer = parseInt(sessionStorage.getItem("userId"));
+      const result = await Ordercart.order(customer, totalAmount);
+      toast.success("Order placed");
+      console.log(result);
+      history.replace("/shop/orders");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

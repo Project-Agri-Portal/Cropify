@@ -100,7 +100,7 @@ const ProductList = () => {
   useEffect(() => {
     loadAllItems();
     console.log("hello use");
-    toast.success("Healty Fruits Waiting for you 🤤");
+    // toast.success("Healty Fruits Waiting for you 🤤");
   }, []);
 
   return (
@@ -108,7 +108,7 @@ const ProductList = () => {
       <Navbar></Navbar>
 
       <div className="container py-5">
-        <h1 className="text-center">Popular Products</h1>
+        <h1 className="text-center text-secondary">Popular Products</h1>
         <div className="row row-cols-1 row-cols-md-3 g-4 py-5">
           {farmProduct.map((it, index) => {
             // const imageUrl = img(it['farmProdId']);

@@ -87,14 +87,6 @@ public class FarmerProductDetailsServiceImpl implements FarmerProductDetailsServ
 			List<FarmerProductDetails> farmerProductDetails = detailsRepository.getFarmerProductDetailsByProductId(products.getFarmProductId());
 			for(FarmerProductDetails productDetails : farmerProductDetails){
 				ShopDTO shopDTO = new ShopDTO();
-	// 			private Long farmerId;
-    // private String farmProdId ;
-    // private String farmProdName;
-    // private String description;
-    // private LocalDate expiryDate;
-    // private double price; 
-    // private int quantity;
-    // private String firstName;
 				shopDTO.setFarmProdId(productDetails.getFarmProductId().getFarmProductId());
 				shopDTO.setFarmerId(productDetails.getFarmerId().getId());
 				shopDTO.setFarmProdName(products.getFarmProductName());

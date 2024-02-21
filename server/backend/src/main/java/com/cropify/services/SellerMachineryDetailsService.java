@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cropify.dto.CartMachineryDTO;
 import com.cropify.dto.SellerMachineDTO;
+import com.cropify.dto.SellerMachineryDTO;
 import com.cropify.dto.SellerMachineryDetailsDTO;
 import com.cropify.entity.CartMachinery;
 import com.cropify.entity.OrderMachineDetails;
@@ -31,4 +32,7 @@ public interface SellerMachineryDetailsService {
 	//method for SellerMachineDTO 
 	
 	List<SellerMachineDTO> getAllMachineIntoNewDTO(Long sellerId);
+	
+	List<SellerMachineryDTO> getAllMachine();
+	
 }
