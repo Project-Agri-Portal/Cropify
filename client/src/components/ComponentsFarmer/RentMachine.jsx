@@ -1,62 +1,107 @@
-import farmerService from "../../services/farmer.service";
+// import farmerService from "../../services/farmer.service";
+import logo from "../../logo.png";
 import { useState } from "react";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import Machinery from "../../services/machinery.service";
+import sellerService from "../../services/seller.service";
 
 function RentMachine({ userId }) {
-    const [productList, setProductList] = useState([]);
-    const [quantityList, setQuantityList] = useState({});
-    const [priceList, setPriceList] = useState({});
-  
-    const onload = () => {
-      Machinery.allMachine()
-        .then((result) => {
-          setProductList(result.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-  
-    const increase = (sellerMachineId, availQuantity) => {
-      setQuantityList((prevQuantityList) => {
-        const currentQuantity = prevQuantityList[sellerMachineId] || 0;
-  
-        // Check if increasing the quantity exceeds the available quantity
-        if (currentQuantity < availQuantity) {
-          return {
-            ...prevQuantityList,
-            [sellerMachineId]: currentQuantity + 1,
-          };
-        }
-        toast.warn("only " + availQuantity + " available");
-        return prevQuantityList;
-      });
-    };
-  
-    const decrease = (sellerMachineId) => {
-      setQuantityList((prevQuantityList) => {
-        const currentQuantity = prevQuantityList[sellerMachineId] || 0;
-  
-        // Check if decreasing the quantity is greater than 0
-        if (currentQuantity > 0) {
-          return {
-            ...prevQuantityList,
-            [sellerMachineId]: currentQuantity - 1,
-          };
-        }
-        return prevQuantityList;
-      });
+  const [productList, setProductList] = useState([]);
+  const [quantityList, setQuantityList] = useState({});
+  const [sellerName, setSellerName] = useState([]);
+  // const [priceList, setPriceList] = useState({});
+
+  const increase = (sellerMachineId, availQuantity) => {
+    setQuantityList((prevQuantityList) => {
+      const currentQuantity = prevQuantityList[sellerMachineId] || 0;
+
+      // Check if increasing the quantity exceeds the available quantity
+      if (currentQuantity < availQuantity) {
+        return {
+          ...prevQuantityList,
+          [sellerMachineId]: currentQuantity + 1,
+        };
+      }
+      toast.warn("only " + availQuantity + " available");
+      return prevQuantityList;
+    });
+  };
+
+  const decrease = (sellerMachineId) => {
+    setQuantityList((prevQuantityList) => {
+      const currentQuantity = prevQuantityList[sellerMachineId] || 0;
+
+      // Check if decreasing the quantity is greater than 0
+      if (currentQuantity > 0) {
+        return {
+          ...prevQuantityList,
+          [sellerMachineId]: currentQuantity - 1,
+        };
+      }
+      return prevQuantityList;
+    });
+  };
+
+  const order = (mPrice, mQuantity) => {
+    let options = {
+      key: "rzp_test_DTHIoyHREKEq5i",
+      amount: mPrice * mQuantity * 100,
+      currency: "INR",
+      name: "Cropify Machinery Rentals",
+      description: "Renting a agricultural machinery",
+      image: logo,
+      handler: () => {
+        // alert("Payment Successful");
+        toast.success("Rent order successful");
+      },
+      theme: { color: "#6c904c" },
     };
 
-    const order = () => {
-        toast.success("Machine order")
-    }
-  
-    useEffect(() => {
-      onload();
-    }, []);
+    let rzp = new window.Razorpay(options);
+    rzp.open();
+  };
+
+  useEffect(() => {
+    // onload();
+    const onload = async () => {
+      // Machinery.allMachine()
+      //   .then((result) => {
+      //     setProductList(result.data);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+      try {
+        const result = await Machinery.allMachine();
+        const productListData = result.data;
+        setProductList(productListData);
+        // setProductList(result.data);
+
+        const pArray = await Promise.all(
+          productListData.map(async (product) => {
+            try {
+              const result = await sellerService.getSellerProfile(
+                product["sellerId"]
+              );
+              return result.data["firstName"] + " " + result.data["lastName"];
+            } catch (error) {
+              console.log("Error fetching seller profile:", error);
+              return null;
+            }
+          })
+        );
+
+        setSellerName(pArray.filter((name) => name !== null));
+        console.log(sellerName);
+        console.log(pArray);
+      } catch (error) {
+        console.log("Error fetching machinery:", error);
+      }
+    };
+
+    onload();
+  }, []);
 
   return (
     <>
@@ -73,14 +118,14 @@ function RentMachine({ userId }) {
         <link
           rel="stylesheet"
           to="SellerProducts.css"
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
         />
         <link
           rel="stylesheet"
           to="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
           integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc="
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         />
 
         <div className="container">
@@ -103,11 +148,11 @@ function RentMachine({ userId }) {
                   <table className="table project-list-table table-nowrap align-middle table-borderless table-striped">
                     <thead>
                       <tr>
-                        <th scope="col">Seller ID</th>
-                        <th scope="col">Machine ID</th>
+                        <th scope="col">Seller Name</th>
+                        {/* <th scope="col">Machine ID</th> */}
                         <th scope="col">Machine Name</th>
-                        <th scope="col">Machine Type Type</th>
-                        <th scope="col" style={{ width: "200px;" }}>
+                        <th scope="col">Machine Type</th>
+                        <th scope="col" style={{ width: "200px" }}>
                           Set Quantity
                         </th>
                         <th scope="col">Avail Quantity</th>
@@ -116,55 +161,56 @@ function RentMachine({ userId }) {
                       </tr>
                     </thead>
                     <tbody>
-        {productList.map((prod) => {
-          const sellerMachineId = prod['sellerMachineId'];
-          const quantity = quantityList[sellerMachineId] || 1;
-          const availQuantity = prod['availQuantity'];
-          const price = prod['price'];
+                      {productList.map((prod, index) => {
+                        const sellerMachineId = prod["sellerMachineId"];
+                        const quantity = quantityList[sellerMachineId] || 1;
+                        const availQuantity = prod["availQuantity"];
+                        const price = prod["price"];
 
-          return (
-            <tr key={sellerMachineId}>
-              <td>{prod['sellerId']}</td>
-              <td>{prod['machineId']}</td>
-              <td>
-                <span>{prod['machineName']}</span>
-              </td>
-              <td>{prod['machineType']}</td>
-              <td>
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={() => {
-                    decrease(sellerMachineId);
-                  }}
-                >
-                  -
-                </button>{" "}
-                {quantity}{" "}
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={() => {
-                    increase(sellerMachineId, availQuantity);
-                  }}
-                >
-                  +
-                </button>
-              </td>
-              <td>{availQuantity}</td>
-              <td>{price}</td>
-              <td>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => {
-                      order();
-                  }}
-                >
-                  Add
-                </button>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
+                        return (
+                          <tr key={sellerMachineId}>
+                            {/* <td>{prod["sellerId"]}</td> */}
+                            <td>{sellerName[index]}</td>
+                            {/* <td>{prod["mahineId"]}</td> */}
+                            <td>
+                              <span>{prod["machineName"]}</span>
+                            </td>
+                            <td>{prod["machineType"]}</td>
+                            <td>
+                              <button
+                                className="btn btn-outline-primary"
+                                onClick={() => {
+                                  decrease(sellerMachineId);
+                                }}
+                              >
+                                -
+                              </button>{" "}
+                              {quantity}{" "}
+                              <button
+                                className="btn btn-outline-primary"
+                                onClick={() => {
+                                  increase(sellerMachineId, availQuantity);
+                                }}
+                              >
+                                +
+                              </button>
+                            </td>
+                            <td>{availQuantity}</td>
+                            <td>{price}</td>
+                            <td>
+                              <button
+                                className="btn btn-primary"
+                                onClick={() => {
+                                  order(price, quantity);
+                                }}
+                              >
+                                Add
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
                   </table>
                 </div>
               </div>
