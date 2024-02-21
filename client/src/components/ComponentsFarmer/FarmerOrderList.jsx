@@ -58,12 +58,13 @@ function FarmerOrderList({ userId }) {
                     <th scope="col" width="50">
                       Order Id
                     </th>
+                    
+                    <th scope="col">Common OID</th>
                     <th scope="col">Product Id</th>
                     <th scope="col">Customer Id</th>
                     <th scope="col">Order Date</th>
                     <th scope="col">Delivery Date</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Duration</th>
                     <th scope="col">Total Bill</th>
                     <th scope="col">Status</th>
                     <th scope="col">Cancel Order</th>
@@ -73,13 +74,13 @@ function FarmerOrderList({ userId }) {
                   {orderList.map((orders) => {
                     return (
                       <tr>
+                        <td>{orders["oid"]}</td>
                         <td>{orders["orderId"]}</td>
                         <th scope="row">{orders["farmProdId"]} </th>
                         <td>{orders["customerId"]}</td>
                         <td>{orders["orderDate"]}</td>
                         <td>{orders["deliveryDate"]}</td>
                         <td>{orders["quantity"]}</td>
-                        <td>{orders["rentDuration"]}</td>
                         <td>{orders["totalPrice"]}</td>
                         <td>{orders["farmOrderStatus"]}</td>
                         <td>
