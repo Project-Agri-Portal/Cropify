@@ -44,7 +44,7 @@ const Checkout = () => {
     // ----- Razorpay API integration --------
     let options = {
       key: "rzp_test_DTHIoyHREKEq5i",
-      amount: totalAmount,
+      amount: totalAmount*100,
       currency: "INR",
       name: "Cropify Shop",
       description: "Farm products purchase",

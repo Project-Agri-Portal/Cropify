@@ -8,15 +8,15 @@ const app = axios.create({
 });
 
 const getCustomer = (userId) => {
-    return app.get(`/users/${userId}`);
+    return app.get(`users/${userId}`);
 }
 
 const loginUser = (credentials) => {
-    return app.post('/users/login', credentials);
+    return app.post('users/login', credentials);
 }
 
 const registerUser = (userData) => {
-    return app.post('/users/', userData);
+    return app.post('users/', userData);
 }
 
 const exportModule = { getCustomer, loginUser, registerUser }

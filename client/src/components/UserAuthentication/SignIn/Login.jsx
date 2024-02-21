@@ -28,23 +28,23 @@ function Login() {
   // Automatic user login if credentials are already stored in local or session storage
   React.useEffect(() => {
     async function storedCreds() {
-      let userId = "";
-      if (localStorage.getItem("userId")) {
-        userId = localStorage.getItem("userId");
-      } else if (sessionStorage.getItem("userId")) {
-        userId = sessionStorage.getItem("userId");
+      const userId =
+        localStorage.getItem("userId") || sessionStorage.getItem("userId");
+
+      if (userId) {
+        await loginService
+          .getCustomer(userId)
+          .then((res) => {
+            console.log(res.data);
+            const userType = res.data["userType"];
+            history.replace("/home/" + userType.toLowerCase());
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
-      await loginService
-        .getCustomer(userId)
-        .then((res) => {
-          const userType = res.data["userType"];
-          history.replace("/home/" + userType.toLowerCase());
-        })
-        .catch();
     }
-    if (localStorage.length || sessionStorage.length) {
-      storedCreds();
-    }
+    storedCreds();
   });
 
   function Copyright(props) {
@@ -99,7 +99,7 @@ function Login() {
           loginData.get("remember") === "remember"
             ? localStorage.setItem("userId", res.data["id"])
             : sessionStorage.setItem("userId", res.data["id"]);
-            
+
           sessionStorage.setItem("userId", res.data["id"]);
           history.replace("/home/" + userType.toLowerCase());
         }
