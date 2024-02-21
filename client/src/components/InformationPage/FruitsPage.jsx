@@ -8,11 +8,11 @@ import {
   Navbar,
   Nav,
 } from "react-bootstrap";
-import util from "../../utils/machinery.json";
+import util from "../../utils/fruits.json";
 import logo from "../../logo.png";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-function MachineryPage() {
+function FruitsPage() {
   return (
     <>
       <Navbar className="bg-success bg-opacity-75" sticky="top">
@@ -51,10 +51,10 @@ function MachineryPage() {
       </Navbar>
 
       <section className="container my-5">
-        <Tab.Container id="machinery-list" defaultActiveKey="#tillage">
+        <Tab.Container id="fruits-list" defaultActiveKey="#mango">
           <Row>
             <Col sm={4}>
-              <ListGroup defaultActiveKey="#tillage">
+              <ListGroup defaultActiveKey="#mango">
                 {Object.entries(util).map(([key]) => {
                   return (
                     <ListGroup.Item
@@ -71,22 +71,17 @@ function MachineryPage() {
 
             <Col sm={8}>
               <Tab.Content className="text-start">
-                {Object.entries(util).map(([key, value]) => {
+              {Object.entries(util).map(([key, value]) => {
                   return (
                     <Tab.Pane eventKey={"#" + key.toLowerCase()} key={key}>
-                      {value.map((machine) => {
-                        return Object.entries(machine).map(([key, value]) => {
+                      {value.map((crop) => {
+                        return Object.entries(crop).map(([key, value]) => {
                           return (
                             <div key={key}>
                               <h3 className="text-secondary">{key}</h3>
-                              {Object.entries(value).map(([dKey, dValue]) => {
-                                return (
-                                  <p key={dKey} className="text-dark">
-                                    <span className="fw-bold">{dKey}:</span>{" "}
-                                    {dValue}
-                                  </p>
-                                );
-                              })}
+                              <p key={key} className="text-dark">
+                                {value}
+                              </p>
                               <hr />
                             </div>
                           );
@@ -104,4 +99,4 @@ function MachineryPage() {
   );
 }
 
-export default MachineryPage;
+export default FruitsPage;

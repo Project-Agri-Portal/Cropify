@@ -67,34 +67,33 @@ const ProductList = () => {
   };
 
   const addToCart = async (price, farmerId, farmProductId, count) => {
-    const customer = parseInt(sessionStorage.getItem('userId'));
+    const customer = parseInt(sessionStorage.getItem("userId"));
     const id = parseInt(farmerId);
-    if(!isNaN(customer)){
-        const totalPrice = count*price;
-        const cart = {
-            farmProdId: farmProductId,
-            farmerId: id,
-            customerId: customer,
-            quantity: count,
-            totalAmount: totalPrice
-        }
+    if (!isNaN(customer)) {
+      const totalPrice = count * price;
+      const cart = {
+        farmProdId: farmProductId,
+        farmerId: id,
+        customerId: customer,
+        quantity: count,
+        totalAmount: totalPrice,
+      };
 
-        await Cart.addToCart(customer, cart)
-            .then((result) => {
-                // console.log(result['data']);
-                toast.success("Successfully Added to cart");
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
-    else{
-        toast.warn("please login");
+      await Cart.addToCart(customer, cart)
+        .then((result) => {
+          // console.log(result['data']);
+          toast.success("Successfully Added to cart");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      toast.warn("please login");
     }
   };
 
   const img = async (id) => {
-      // return require('../../../avin-cp-OlXUUQedQyM-unsplash.jpg')
+    // return require('../../../avin-cp-OlXUUQedQyM-unsplash.jpg')
   };
 
   useEffect(() => {
@@ -112,7 +111,7 @@ const ProductList = () => {
         <div className="row row-cols-1 row-cols-md-3 g-4 py-5">
           {farmProduct.map((it, index) => {
             // const imageUrl = img(it['farmProdId']);
-            const imgUrl = it['path'];
+            const imgUrl = it["path"];
             return (
               <div className="col" key={index}>
                 <div
@@ -159,7 +158,18 @@ const ProductList = () => {
                         +
                       </button>
                     </div>
-                    <button className="btn btn-primary" id="btnid" onClick={() => {addToCart(it['price'], it['farmerId'], it['farmProdId'], quantities[index])}}>
+                    <button
+                      className="btn btn-primary"
+                      id="btnid"
+                      onClick={() => {
+                        addToCart(
+                          it["price"],
+                          it["farmerId"],
+                          it["farmProdId"],
+                          quantities[index]
+                        );
+                      }}
+                    >
                       Add to Cart
                     </button>
                   </div>

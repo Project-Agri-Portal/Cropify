@@ -68,7 +68,7 @@ const Cart = () => {
         </>
       ) : (
         <div className="container-fluid main-div">
-          <div className="row">
+          <div className="row m-0">
             <div className="col-md-10 col-11 mx-auto">
               <div className="row mt-5 gx-3">
                 {/* <!-- left side div --> */}
@@ -79,7 +79,7 @@ const Cart = () => {
                   >
                     <div className="row">
                       {cart.map((product) => {
-                      const imgUrl = product['path']
+                        const imgUrl = product["path"];
                         return (
                           <>
                             {/* <!-- cart images div --> */}
@@ -93,10 +93,10 @@ const Cart = () => {
 
                             {/* <!-- cart product details --> */}
                             <div className="col-md-7 col-11 mx-auto px-4 mt-2">
-                              <div className="row">
+                              <div className="row text-start">
                                 {/* <!-- product name  --> */}
-                                <div className="col-6 card-title">
-                                  <h2 className="mb-4 text-center">
+                                <div className="col-6 card-title text-start">
+                                  <h2 className="mb-4 fw-bold">
                                     {product["farmProductName"]}
                                   </h2>
                                   {product["quantity"] && (
@@ -211,7 +211,7 @@ const Cart = () => {
                               placeholder="Enter the discount code"
                             />
                             <small id="error_trw" className="text-dark mt-3">
-                              code is thapa
+                              code is unavailable
                             </small>
                           </div>
                           <button
@@ -241,7 +241,7 @@ const Cart = () => {
         </div>
       )}
       {/* <ToastContainer></ToastContainer> */}
-      <div style={{height:100}}></div>
+      <div style={{ height: 100 }}></div>
       <Footer></Footer>
     </>
   );

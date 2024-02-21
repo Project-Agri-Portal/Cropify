@@ -20,9 +20,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { toast } from "react-toastify";
+import CircularProgress from "@mui/material/CircularProgress";
+
 
 function Register() {
   const [isCustomer, setIsCustomer] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
 
   function toggle(value) {
     setIsCustomer(value);
@@ -52,6 +56,7 @@ function Register() {
   // ----- Registration operation -----
   const register = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData(e.target);
     console.log(formData);
@@ -77,17 +82,41 @@ function Register() {
       .registerUser(userData)
       .then((res) => {
         if (res.status === 201) {
-          console.log(res.data);
+          // console.log(res.data);
+          toast.success("Registered successfully");
           history.replace("/login");
         }
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   return (
     <>
+      {/* for circular progress bar */}
+      {loading && (
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999, // Ensure the spinner is on top
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      )}
+
       <ThemeProvider theme={defaultTheme}>
         <Container component="main" maxWidth="sm">
           <CssBaseline />

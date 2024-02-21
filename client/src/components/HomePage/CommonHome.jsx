@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as React from "react";
 import { Container, Navbar, Nav, Carousel } from "react-bootstrap";
 import logo from "../../logo.png";
@@ -17,32 +17,31 @@ function CommonHome() {
     <>
       <Navbar className="bg-success bg-opacity-75" sticky="top">
         <Container>
-          <Navbar.Brand
-            href="/home"
-            className="d-flex align-items-center gap-1"
-          >
-            <img
-              className="d-inline-block object-fit-cover"
-              src={logo}
-              width="40"
-              height="40"
-              alt="cropify logo"
-            />
-            <span className="fs-4 text-white">CROPIFY</span>
-          </Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand className="d-flex align-items-center gap-1">
+              <img
+                className="d-inline-block object-fit-cover"
+                src={logo}
+                width="40"
+                height="40"
+                alt="cropify logo"
+              />
+              <span className="fs-4 text-white">CROPIFY</span>
+            </Navbar.Brand>
+          </Link>
 
           {/* Login and Register links */}
           <Nav className="d-flex gap-3">
-            <Nav.Link href="/home/customer" className="nav-link fs-5">
+            <Nav.Link as={Link} to="/home/customer" className="nav-link fs-5">
               Shop
             </Nav.Link>
-            <Nav.Link href="/home/information" className="nav-link fs-5">
+            <Nav.Link as={Link} to="/home/information" className="nav-link fs-5">
               Information
             </Nav.Link>
-            <Nav.Link href="/login" className="nav-link fs-5">
+            <Nav.Link as={Link} to="/login" className="nav-link fs-5">
               Login
             </Nav.Link>
-            <Nav.Link href="/register" className="nav-link fs-5">
+            <Nav.Link as={Link} to="/register" className="nav-link fs-5">
               Register
             </Nav.Link>
           </Nav>

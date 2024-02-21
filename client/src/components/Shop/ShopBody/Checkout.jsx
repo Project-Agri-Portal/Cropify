@@ -199,19 +199,6 @@ const Checkout = () => {
                     </div>
                   </div>
                   <div className="w-100"></div>
-                  <div className="col-md-12">
-                    <div className="form-group mt-4">
-                      <div className="radio">
-                        {/* <label className="mr-3"><input type="radio" name="optradio"/> Create an Account? </label> */}
-                        <label>
-                          Ship to a different address {}
-                          <a href="" className="address-link">
-                            Click here
-                          </a>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </form>
             </div>
