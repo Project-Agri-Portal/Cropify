@@ -34,7 +34,6 @@ function SideBar({ openSidebarToggle, OpenSidebar }) {
         </span>
       </div>
 
-<<<<<<< HEAD
         <ul className='sidebar-list'>
             <li className='sidebar-list-item'>
             <BsGrid1X2Fill className='icon'/> 
@@ -85,7 +84,6 @@ function SideBar({ openSidebarToggle, OpenSidebar }) {
                 </Link>
             </li>
         </ul>
-=======
       <ul className="text-start sidebar-list">
         <li className="sidebar-list-item">
           <BsGrid1X2Fill className="icon" />
@@ -125,7 +123,6 @@ function SideBar({ openSidebarToggle, OpenSidebar }) {
           <Link to="/admin/addproduct">Log Out</Link>
         </li>
       </ul>
->>>>>>> db269b5cd03e4ec3330212d5847a90dd3256d46e
     </aside>
   );
 }
