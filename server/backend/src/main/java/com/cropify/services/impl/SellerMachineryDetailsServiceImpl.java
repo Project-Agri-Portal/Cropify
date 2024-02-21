@@ -16,6 +16,7 @@ import com.cropify.dao.SellerMachineryDetailsRepository;
 import com.cropify.dao.UserDetailsRepository;
 import com.cropify.dto.CartMachineryDTO;
 import com.cropify.dto.SellerMachineDTO;
+import com.cropify.dto.SellerMachineryDTO;
 import com.cropify.dto.SellerMachineryDetailsDTO;
 import com.cropify.entity.CartMachinery;
 import com.cropify.entity.Machinery;
@@ -153,5 +154,29 @@ public class SellerMachineryDetailsServiceImpl implements SellerMachineryDetails
 				sellerMachinedtos.add(dto);
 			}
 			return sellerMachinedtos;
+		}
+		
+		@Override
+		public List<SellerMachineryDTO> getAllMachine() {
+			List<Object[]> list = sellerMachineryDetailsRepository.findCombinedDetailsByMachineId();
+			List<SellerMachineryDTO> machineryDTOs = new ArrayList<>();
+			for (Object[] result : list) {
+			    SellerMachineryDetails sellerMachineryDetails = (SellerMachineryDetails) result[0];
+			    Machinery machinery = (Machinery) result[1];
+			    SellerMachineryDTO machineryDTO = new SellerMachineryDTO();
+			    
+			    machineryDTO.setMahineId(machinery.getMachineId());
+			    machineryDTO.setMachineName(machinery.getMachineName());
+			    machineryDTO.setMachineType(machinery.getMachineType().toString());
+			    machineryDTO.setSellerMachineId(sellerMachineryDetails.getSellerMachineryId());
+			    machineryDTO.setAvailQuantity(sellerMachineryDetails.getAvailQuantity());
+			    machineryDTO.setDescription(sellerMachineryDetails.getDescription());
+			    machineryDTO.setPrice(sellerMachineryDetails.getPrice());
+			    machineryDTO.setQuantity(sellerMachineryDetails.getQuantity());
+			    machineryDTO.setVerify(sellerMachineryDetails.getVerified());
+			    machineryDTO.setSellerId(sellerMachineryDetails.getSellerId().getId());
+			    machineryDTOs.add(machineryDTO);
+			}
+			return machineryDTOs;
 		}
 }

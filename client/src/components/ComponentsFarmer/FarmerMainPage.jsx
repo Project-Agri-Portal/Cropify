@@ -7,6 +7,7 @@ import FarmerDashboard from "./Dashboard";
 import FarmerProductList from "./FarmerProducts";
 import AddFarmProduct from "./AddProduct";
 import FarmerOrderList from "./FarmerOrderList";
+import RentMachine from "./RentMachine";
 
 
 const FarmerMainPage = () => {
@@ -27,6 +28,7 @@ const FarmerMainPage = () => {
     products: false,
     orders: false,
     addProduct: false,
+    rentMachine : false
   });
   const toggleMenu = (key) => {
     setMenu((prevMenu) => ({
@@ -95,6 +97,13 @@ const FarmerMainPage = () => {
                 >
                   <i className="fas fa-plus me-2"></i>Add New Product
                 </div>
+                <div
+                  onClick={() => toggleMenu("rentMachine")}
+                  style={{ cursor: "pointer" }}
+                  className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                >
+                  <i className="fas fa-tractor me-2"></i>Rent Machine
+                </div>
 
                 <p
                   onClick={logoutUser}
@@ -112,6 +121,7 @@ const FarmerMainPage = () => {
           {menu.products && <FarmerProductList userId={userId} />}
           {menu.orders && <FarmerOrderList userId={userId} />}
           {menu.addProduct && <AddFarmProduct userId={userId} />}
+          {menu.rentMachine && <RentMachine userId={userId} />}
         </div>
       </section>
     </>

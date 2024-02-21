@@ -51,4 +51,9 @@ public class OrderFarmProductDetailsController {
     	List<OrderFarmProductDetailsDTO> detailsDTOs= orderFarmProductDetailsService.getTotalOrders(userId);
     	return ResponseEntity.status(HttpStatus.OK).body(detailsDTOs);
     }
+    
+    @GetMapping("/orderbyfarmerid/{farmerId}")
+    public ResponseEntity<List<OrderFarmProductDetailsDTO>> getOrdered(@PathVariable Long farmerId){
+    	return ResponseEntity.ok(orderFarmProductDetailsService.getTotalOrders(farmerId));
+    }
 }

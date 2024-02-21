@@ -19,4 +19,8 @@ const addMachinery = (machinery) => {
     return app.post('machinery/', machinery);
 }
 
-export default {getFarmProducts, deleteMachinery, addMachinery};
+const allMachine = () => {
+    return app.get("sellerMachinery/join");
+}
+
+export default {getFarmProducts, deleteMachinery, addMachinery, allMachine};
