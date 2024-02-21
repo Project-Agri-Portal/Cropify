@@ -2,6 +2,8 @@ package com.cropify.dto;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +23,5 @@ public class ShopDTO {
     private int quantity;
     private String firstName;
     private byte[] img;
+	private String path;
 }

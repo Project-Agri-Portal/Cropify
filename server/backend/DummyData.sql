@@ -224,3 +224,203 @@ VALUES
     ('8', 'Split Bengal Gram', 'PULSES', '/path/to/splitbengalgram.jpg'),
     ('9', 'Kidney Beans', 'PULSES', '/path/to/kidneybeans.jpg'),
     ('10', 'Black-eyed Peas', 'PULSES', '/path/to/blackeyedpeas.jpg');
+
+
+
+-- ------------------------------------------------
+-- final
+-- ---------------------------------
+    -- Insert fruits data
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Apple', 'FRUIT', 'http://localhost:3000/static/media/apple-1834639_1280.681aafd5ece88c5a242a.jpg');
+
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Banana', 'FRUIT', 'http://localhost:3000/static/media/banana-1504956_1280.a7ad278afdcc7a73da93.png');
+
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Orange', 'FRUIT', 'http://localhost:3000/static/media/orange.6d3082675e43880374c7.png');
+
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Grapes', 'FRUIT', 'http://localhost:3000/static/media/vines-1747224_1280.d336d6bb00fdb086e521.jpg');
+
+-- Insert vegetables data
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Carrot', 'VEGETABLE', 'http://localhost:3000/static/media/product-7.b174025881dfbb6ef585.jpg');
+
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Spinach', 'VEGETABLE', 'http://localhost:3000/static/media/vegetables-7413568_1280.da9b5b5d90f440f4a29d.jpg');
+
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Tomato', 'VEGETABLE', 'http://localhost:3000/static/media/product-5.5a5380de12781f487246.jpg');
+
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Cucumber', 'VEGETABLE', 'http://localhost:3000/static/media/cucumbers-1799262_1280.7a34679ae961c188f3b2.jpg');
+
+-- Insert pulses data
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Lentils', 'PULSES', 'http://localhost:3000/static/media/lentils-628468_1280.bc7ee5b70cdd3cb86b73.jpg');
+
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Chickpeas', 'PULSES', 'http://localhost:3000/static/media/chickpeas-3663027_1280.03386c03ae0b267103ef.jpg');
+
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Black Beans', 'PULSES', 'http://localhost:3000/static/media/coffee-6796427_1280.72f7d9e497512349a6c7.jpg');
+
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Green Peas', 'PULSES', 'http://localhost:3000/static/media/pea-1205679_1280.d33a6a3a99a97f22b3d2.jpg');
+
+-- Insert more data
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Pineapple', 'FRUIT', 'http://localhost:3000/static/media/pineapple-5108775_1280.3d2effb69a08e30909e5.jpg');
+
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Broccoli', 'VEGETABLE', 'c:\Users\Win 10 Pc\Downloads\broccoli-1450274_1280.png');
+
+INSERT INTO farm_products (farm_prod_name, farm_prod_type, img_path)
+VALUES ('Kidney Beans', 'PULSES', 'http://localhost:3000/static/media/red-2313107_1280.3abe9c79cd27ae7ed4f3.jpg');
+
+
+-- -----------------------------------------------------------
+-- Insert machinery data
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (1, '/images/tractor.jpg', 'John Deere Tractor', 'TRACTOR');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (2, '/images/plough.jpg', 'Heavy Duty Plough', 'PLOUGH');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (3, '/images/harvestor.jpg', 'Combine Harvestor', 'HARVESTOR');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (4, '/images/seeder.jpg', 'Precision Seeder', 'SEEDER');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (5, '/images/irrigation_pump.jpg', 'High-Flow Irrigation Pump', 'IRRIGATION_PUMP');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (6, '/images/crop_sprayer.jpg', 'Automatic Crop Sprayer', 'CROP_SPRAYER');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (7, '/images/tiller.jpg', 'Rotary Tiller', 'TILLER');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (8, '/images/thresher.jpg', 'Grain Thresher', 'THRESHER');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (9, '/images/cultivator.jpg', 'Disc Cultivator', 'CULTIVATOR');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (10, '/images/seed_drill.jpg', 'Precision Seed Drill', 'SEED_DRILL');
+
+-- Add more machinery data
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (11, '/images/tractor2.jpg', 'Massey Ferguson Tractor', 'TRACTOR');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (12, '/images/harvestor2.jpg', 'New Holland Combine Harvestor', 'HARVESTOR');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (13, '/images/cultivator2.jpg', 'Spring Tine Cultivator', 'CULTIVATOR');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (14, '/images/tiller2.jpg', 'Power Tiller', 'TILLER');
+
+INSERT INTO machinery (machine_id, img_path, machine_name, machine_type)
+VALUES (15, '/images/seeder2.jpg', 'Air Seeder', 'SEEDER');
+
+-- ---------------------------------------------------
+-- Insert agriculture products data
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_path)
+VALUES (1, 'InsectAway', 'PESTICIDE', '/images/insect_away.jpg');
+
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_path)
+VALUES (2, 'BioGrowth', 'FERTILIZER', '/images/bio_growth.jpg');
+
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_path)
+VALUES (3, 'WeedGuard', 'PESTICIDE', '/images/weed_guard.jpg');
+
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_path)
+VALUES (4, 'NutriBoost', 'FERTILIZER', '/images/nutri_boost.jpg');
+
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_path)
+VALUES (5, 'BugShield', 'PESTICIDE', '/images/bug_shield.jpg');
+
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_path)
+VALUES (6, 'GreenGro', 'FERTILIZER', '/images/green_gro.jpg');
+
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_path)
+VALUES (7, 'MightyGrow', 'FERTILIZER', '/images/mighty_grow.jpg');
+
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_path)
+VALUES (8, 'PestMaster', 'PESTICIDE', '/images/pest_master.jpg');
+
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_path)
+VALUES (9, 'OrganicBlend', 'FERTILIZER', '/images/organic_blend.jpg');
+
+INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, img_path)
+VALUES (10, 'SafeGuard', 'PESTICIDE', '/images/safe_guard.jpg');
+
+-- ----------------------------------------------------------
+
+-- Insert user details data with Indian names
+-- Insert user details data with Indian names (modified)
+INSERT INTO user_details (aadhar_no, email, first_name, last_name, mobile_no, pan_no, password, status, city, full_address, pincode, state, user_type, img_path)
+VALUES 
+('123456789012', 'aarav.kumar@example.com', 'Aarav', 'Kumar', '9876543210', 'ABCDE1234F', 'hashedpassword', 'ACTIVE', 'Delhi', '123, Main Street', '110001', 'Delhi', 'CUSTOMER', '/images/customer1.jpg'),
+
+('987654321098', 'ananya.singh@example.com', 'Ananya', 'Singh', '8765432109', 'XYZW3210P', 'hashedpassword', 'ACTIVE', 'Mumbai', '456, Garden Street', '400001', 'Maharashtra', 'FARMER', '/images/farmer2.jpg'),
+
+('654321098765', 'amit.patel@example.com', 'Amit', 'Patel', '7654321098', 'PQRS5678H', 'hashedpassword', 'ACTIVE', 'Ahmedabad', '789, Market Street', '380001', 'Gujarat', 'SELLER', '/images/seller3.jpg'),
+
+('321098765432', 'aditi.sharma@example.com', 'Aditi', 'Sharma', '6543210987', 'MNOB1234Z', 'hashedpassword', 'ACTIVE', 'Jaipur', '101, Palace Road', '302001', 'Rajasthan', 'ADMIN', '/images/admin4.jpg');
+
+-- Insert user details data with Indian names (modified, continued)
+INSERT INTO user_details (aadhar_no, email, first_name, last_name, mobile_no, pan_no, password, status, city, full_address, pincode, state, user_type, img_path)
+VALUES 
+('987654321011', 'divya.agarwal@example.com', 'Divya', 'Agarwal', '8765432101', 'WXYZ1234G', 'hashedpassword', 'ACTIVE', 'Hyderabad', '102, Hill Street', '500001', 'Telangana', 'CUSTOMER', '/images/customer51.jpg'),
+
+('654321098762', 'rajat.srivastava@example.com', 'Rajat', 'Srivastava', '7654321098', 'MNOP5678J', 'hashedpassword', 'ACTIVE', 'Patna', '703, River Lane', '800001', 'Bihar', 'FARMER', '/images/farmer52.jpg'),
+
+('321098765413', 'piyush.goyal@example.com', 'Piyush', 'Goyal', '6543210983', 'RSTU4321L', 'hashedpassword', 'ACTIVE', 'Chandigarh', '201, Sky Street', '160001', 'Punjab', 'SELLER', '/images/seller53.jpg'),
+
+('654321098764', 'radhika.verma@example.com', 'Radhika', 'Verma', '8767432109', 'LMNO4321M', 'hashedpassword', 'ACTIVE', 'Bhopal', '405, Valley Road', '462001', 'Madhya Pradesh', 'ADMIN', '/images/admin54.jpg');
+
+-- Insert user details data with Indian names (modified, continued)
+INSERT INTO user_details (aadhar_no, email, first_name, last_name, mobile_no, pan_no, password, status, city, full_address, pincode, state, user_type, img_path)
+VALUES 
+('487654321012', 'neha.gupta@example.com', 'Neha', 'Gupta', '8465432101', 'GHIJ1234K', 'hashedpassword', 'ACTIVE', 'Jaipur', '302, Sunshine Avenue', '302001', 'Rajasthan', 'CUSTOMER', '/images/customer101.jpg'),
+
+('754321098765', 'anand.shukla@example.com', 'Anand', 'Shukla', '7656321098', 'QRST5678L', 'hashedpassword', 'ACTIVE', 'Kolkata', '502, Green Gardens', '700001', 'West Bengal', 'FARMER', '/images/farmer102.jpg'),
+
+('324098765432', 'rashmi.yadav@example.com', 'Rashmi', 'Yadav', '6543210917', 'UVWX4321M', 'hashedpassword', 'ACTIVE', 'Lucknow', '102, Star Street', '226001', 'Uttar Pradesh', 'SELLER', '/images/seller103.jpg'),
+
+('654301098765', 'arjun.mishra@example.com', 'Arjun', 'Mishra', '8765432106', 'WXYZ4321N', 'hashedpassword', 'ACTIVE', 'Delhi', '405, Moon Lane', '110001', 'Delhi NCR', 'ADMIN', '/images/admin104.jpg');
+
+-- Insert user details data with Indian names (modified, continued)
+INSERT INTO user_details (aadhar_no, email, first_name, last_name, mobile_no, pan_no, password, status, city, full_address, pincode, state, user_type, img_path)
+VALUES 
+('654321098760', 'shivani.patel@example.com', 'Shivani', 'Patel', '8765432105', 'LMNOKP', 'hashedpassword', 'ACTIVE', 'Mumbai', '304, Beach Street', '400002', 'Maharashtra', 'CUSTOMER', '/images/customer105.jpg'),
+
+('321098765431', 'rohan.kumar@example.com', 'Rohan', 'Kumar', '7654321099', 'MNOBDE', 'hashedpassword', 'ACTIVE', 'Delhi', '501, Main Boulevard', '110002', 'Delhi NCR', 'FARMER', '/images/farmer106.jpg'),
+
+('987654321015', 'tanvi.gupta@example.com', 'Tanvi', 'Gupta', '6543210982', 'GHIJKL', 'hashedpassword', 'ACTIVE', 'Bangalore', '202, Tech Lane', '560002', 'Karnataka', 'SELLER', '/images/seller107.jpg'),
+
+('654321098761', 'rohit.sharma@example.com', 'Rohit', 'Sharma', '8765432108', 'STUVWX', 'hashedpassword', 'ACTIVE', 'Chennai', '601, Garden Road', '600002', 'Tamil Nadu', 'ADMIN', '/images/admin108.jpg'),
+
+('321098765418', 'tanya.mishra@example.com', 'Tanya', 'Mishra', '6543210981', 'RSTUVW', 'hashedpassword', 'ACTIVE', 'Hyderabad', '405, Hill View', '500002', 'Telangana', 'CUSTOMER', '/images/customer109.jpg'),
+
+('654311098761', 'surya.yadav@example.com', 'Surya', 'Yadav', '8795432104', 'XYZABC', 'hashedpassword', 'ACTIVE', 'Lucknow', '203, Sky View', '226002', 'Uttar Pradesh', 'FARMER', '/images/farmer110.jpg'),
+
+('321098765435', 'piya.choudhary@example.com', 'Piya', 'Choudhary', '6543210980', 'UVWXYZ', 'hashedpassword', 'ACTIVE', 'Jaipur', '303, Market Lane', '302002', 'Rajasthan', 'SELLER', '/images/seller111.jpg'),;
+
+
+-- Insert new user details data with Indian names and email in the name
+INSERT INTO user_details (aadhar_no, email, first_name, last_name, mobile_no, pan_no, password, status, city, full_address, pincode, state, user_type, img_path)
+VALUES 
+('111122223333', 'amitabh.kumar@example.com', 'Amitabh', 'Kumar', '9876143210', 'ABCDE1234G', 'hashedpassword', 'ACTIVE', 'Delhi', '456, New Street', '110002', 'Delhi', 'CUSTOMER', '/images/newuser1.jpg'),
+
+('444455556666', 'deepika.singh@example.com', 'Deepika', 'Singh', '8765482109', 'XYZW3210Q', 'hashedpassword', 'ACTIVE', 'Mumbai', '789, Fresh Street', '400002', 'Maharashtra', 'FARMER', '/images/newuser2.jpg'),
+
+('777788889999', 'rajesh.patel@example.com', 'Rajesh', 'Patel', '1654321098', 'PQRS5678I', 'hashedpassword', 'ACTIVE', 'Ahmedabad', '101, Modern Road', '380002', 'Gujarat', 'SELLER', '/images/newuser3.jpg'),
+
+('999988877777', 'sunita.sharma@example.com', 'Sunita', 'Sharma', '6743210987', 'MNOB1234Y', 'hashedpassword', 'ACTIVE', 'Lucknow', '202, Innovate Street', '226003', 'Uttar Pradesh', 'ADMIN', '/images/newuser4.jpg');

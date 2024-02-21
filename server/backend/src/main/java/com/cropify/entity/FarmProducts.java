@@ -42,6 +42,9 @@ public class FarmProducts implements Prefixable {
 	@Lob
 	@Column(columnDefinition = "mediumblob")
 	private byte[] imgPath;
+
+	@Column(name = "path")
+	private String path;
 	
 	// ------------ Relationship Mapping ------------------------------
 	@JsonIgnore
@@ -61,10 +64,11 @@ public class FarmProducts implements Prefixable {
 	public FarmProducts(String farmProductId) {
 		this.farmProductId = farmProductId;
 	}
-	public FarmProducts(String farmProductId, String farmProductName, FarmProductType farmProductType) {
+	public FarmProducts(String farmProductId, String farmProductName, FarmProductType farmProductType, String path) {
 		this.farmProductId = farmProductId;
 		this.farmProductName = farmProductName;
 		this.farmProductType = farmProductType;
+		this.path = path;
 	}
 	
 	//-----------------------------Getter and Setters--------------------
@@ -74,6 +78,13 @@ public class FarmProducts implements Prefixable {
 
 	public void setFarmProductId(String farmProductId) {
 		this.farmProductId = farmProductId;
+	}
+
+	public void setPath(String path){
+		this.path = path;
+	}
+	public String getPath(){
+		return this.path;
 	}
 
 	public String getFarmProductName() {

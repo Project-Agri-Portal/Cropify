@@ -81,12 +81,13 @@ const Cart = () => {
                   >
                     <div className="row">
                       {cart.map((product) => {
+                      const imgUrl = product['path']
                         return (
                           <>
                             {/* <!-- cart images div --> */}
                             <div className="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img">
                               <img
-                                src={Orange}
+                                src={imgUrl}
                                 className="img-fluid"
                                 alt="cart img"
                               />
