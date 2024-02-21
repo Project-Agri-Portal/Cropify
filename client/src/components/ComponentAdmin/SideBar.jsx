@@ -17,7 +17,7 @@ import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 function SideBar({ openSidebarToggle, OpenSidebar }) {
   const history = useHistory();
   const handleLogout = () => {
-    history.push("/login");
+    history.replace("/");
   };
 
   return (

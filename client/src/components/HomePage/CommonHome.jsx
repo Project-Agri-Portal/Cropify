@@ -1,5 +1,5 @@
+// import { Link } from "react-router-dom";
 import * as React from "react";
-import { Link } from "react-router-dom";
 import { Container, Navbar, Nav, Carousel } from "react-bootstrap";
 import logo from "../../logo.png";
 import heroBg1 from "../../assets/hero-section-bg-2.jpg";
@@ -8,8 +8,6 @@ import support from "../../assets/support.svg";
 import vegetable from "../../assets/vegetable.svg";
 import freshFood from "../../assets/fresh-food.svg";
 import organic from "../../assets/organic-product.svg";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "./CommonHome.css";
 import TeamSection from "../Shop/ShopBody/TeamSection";
 import Footer from "../Shop/Common/Footer";
@@ -73,58 +71,74 @@ function CommonHome() {
       <section className="features-section">
         <div className="container">
           <div className="row">
-            <div class="col-12">
-              <div class="row justify-vertical">
-                <div class="col-12 col-lg-4">
-                  <div class="service-heading">
+            <div className="col-12">
+              <div className="row justify-vertical">
+                <div className="col-12 col-lg-4">
+                  <div className="service-heading">
                     <h4>Our Features</h4>
-                    <h2>We Provide Our Best Services</h2>
-                    <p class="text-muted">
-                      Replacing a maintains the amount of lines. When replacing
-                      a selection. help agencies to define their new business
-                      objectives and then create.
+                    <h2>We Provide Best Services</h2>
+                    <p className="text-muted">
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Omnis, eum corporis tenetur, asperiores, magni autem
+                      commodi id assumenda sit itaque odio consequuntur.
                     </p>
                   </div>
                 </div>
-                <div class="col-12 col-lg-8">
-                  <div class="row text-start">
-                    <div class="col-12 col-md-6 col-lg-6 my-3">
-                      <div class="service-item">
-                        <img class="my-2" src={vegetable} alt="Image" />
-                        <h4 class="my-3">Vegetable Care</h4>
-                        <p class="text-muted">
-                          Replacing a maintains the amount of lines. When
-                          replacing a selection.
+                <div className="col-12 col-lg-8">
+                  <div className="row text-start">
+                    <div className="col-12 col-md-6 col-lg-6 my-3">
+                      <div className="service-item">
+                        <img
+                          className="my-2"
+                          src={vegetable}
+                          alt="veggie logo"
+                        />
+                        <h4 className="my-3">Vegetable Care</h4>
+                        <p className="text-muted">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Obcaecati recusandae ab quo rerum nemo, eaque
+                          deleniti consequatur ducimus.
                         </p>
                       </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-6 my-3">
-                      <div class="service-item">
-                        <img class="my-2" src={freshFood} alt="Image" />
-                        <h4 class="my-3">Fresh Food</h4>
-                        <p class="text-muted">
-                          Replacing a maintains the amount of lines. When
-                          replacing a selection.
+                    <div className="col-12 col-md-6 col-lg-6 my-3">
+                      <div className="service-item">
+                        <img className="my-2" src={freshFood} alt="food logo" />
+                        <h4 className="my-3">Fresh Food</h4>
+                        <p className="text-muted">
+                          Lorem ipsum, dolor sit amet consectetur adipisicing
+                          elit. In ullam totam temporibus quasi repellendus ab
+                          dolor libero ipsam esse et.
                         </p>
                       </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-6 my-3">
-                      <div class="service-item">
-                        <img class="my-2" src={organic} alt="Image" />
-                        <h4 class="my-3">Organic Products</h4>
-                        <p class="text-muted">
-                          Replacing a maintains the amount of lines. When
-                          replacing a selection.
+                    <div className="col-12 col-md-6 col-lg-6 my-3">
+                      <div className="service-item">
+                        <img
+                          className="my-2"
+                          src={organic}
+                          alt="organic logo"
+                        />
+                        <h4 className="my-3">Organic Products</h4>
+                        <p className="text-muted">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing
+                          elit. Rem dignissimos aspernatur dolorem labore
+                          consequatur culpa aperiam minima.
                         </p>
                       </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-6 my-3">
-                      <div class="service-item">
-                        <img class="my-2" src={support} alt="Image" />
-                        <h4 class="my-3">24x7 Support</h4>
-                        <p class="text-muted">
-                          Replacing a maintains the amount of lines. When
-                          replacing a selection.
+                    <div className="col-12 col-md-6 col-lg-6 my-3">
+                      <div className="service-item">
+                        <img
+                          className="my-2"
+                          src={support}
+                          alt="support logo"
+                        />
+                        <h4 className="my-3">24x7 Support</h4>
+                        <p className="text-muted">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Id, tempore assumenda dolor accusamus
+                          voluptates, rem eligendi numquam dicta.
                         </p>
                       </div>
                     </div>
