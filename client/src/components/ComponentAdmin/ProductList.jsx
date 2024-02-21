@@ -44,6 +44,7 @@ const ProductList = () => {
   };
 
   const deleteProduct = (prodId) => {
+    console.log(prodId);
     FarmProduct.deleteFarmProduct(prodId)
       .then((result) => {
         console.log(result["data"]);
@@ -51,6 +52,7 @@ const ProductList = () => {
         onload();
       })
       .catch((error) => {
+        toast.warn(" is Selled by many Farmer you Cannot delete it")
         console.log(error);
       });
   };

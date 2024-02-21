@@ -1,6 +1,7 @@
 import "./Cart.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import NavBar from "../Common/NavBar";
+import Footer from "../Common/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import CartProduct from "../../../services/ordercart.service";
 import Orange from "../../../assets/ShopImages/orange.png";
@@ -78,12 +79,13 @@ const Cart = () => {
                   >
                     <div className="row">
                       {cart.map((product) => {
+                      const imgUrl = product['path']
                         return (
                           <>
                             {/* <!-- cart images div --> */}
                             <div className="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img">
                               <img
-                                src={Orange}
+                                src={imgUrl}
                                 className="img-fluid"
                                 alt="cart img"
                               />
@@ -238,7 +240,9 @@ const Cart = () => {
           </div>
         </div>
       )}
-      <ToastContainer></ToastContainer>
+      {/* <ToastContainer></ToastContainer> */}
+      <div style={{height:100}}></div>
+      <Footer></Footer>
     </>
   );
 };

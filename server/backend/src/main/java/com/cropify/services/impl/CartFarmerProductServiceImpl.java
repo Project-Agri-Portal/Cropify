@@ -84,6 +84,8 @@ public class CartFarmerProductServiceImpl implements CartFarmerProductService{
             cartDTO.setFarmerId(cartFarmProduct.getFarmerId().getId());
             cartDTO.setDeliveryDate(LocalDateTime.now()
                                                 .plusHours(4).toLocalDate());
+            cartDTO.setPath(farmProducts.getPath());
+            
             cartDTOs.add(cartDTO);
 
         }

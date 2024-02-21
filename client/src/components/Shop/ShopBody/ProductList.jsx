@@ -1,6 +1,6 @@
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
-import Orange from "../../../assets/ShopImages/orange.png";
+import Orange from "../../../assets/FRUITS/lentils-628468_1280.jpg";
 import "./ProductList.css";
 import Navbar from "../Common/NavBar";
 import Footer from "../Common/Footer";
@@ -94,22 +94,7 @@ const ProductList = () => {
   };
 
   const img = async (id) => {
-    try {
-      const response = await FarmProducts.getImg(id, { responseType: 'arraybuffer' });
-      const data = response.data;
-  
-      // Convert binary data to base64 string
-      const base64String = btoa(
-        new Uint8Array(data).reduce((data, byte) => data + String.fromCharCode(byte), '')
-      );
-  
-      // Create data URL
-      const imageUrl = `data:image/png;base64,${base64String}`;
-      return imageUrl;
-    } catch (error) {
-      console.error('Error fetching image:', error);
-      return ''; // Return a default image URL or handle the error as needed
-    }
+      // return require('../../../avin-cp-OlXUUQedQyM-unsplash.jpg')
   };
 
   useEffect(() => {
@@ -126,7 +111,8 @@ const ProductList = () => {
         <h1 className="text-center text-secondary">Popular Products</h1>
         <div className="row row-cols-1 row-cols-md-3 g-4 py-5">
           {farmProduct.map((it, index) => {
-            const imageUrl = img(it['farmProdId']);
+            // const imageUrl = img(it['farmProdId']);
+            const imgUrl = it['path'];
             return (
               <div className="col" key={index}>
                 <div
@@ -137,7 +123,8 @@ const ProductList = () => {
                   {/* height:100 */}
                   <div className="imgcon">
                     <img
-                      src={imageUrl}
+                      src={imgUrl}
+                      // src={Orange}
                       className="card-img-top"
                       id="card-img-id"
                       alt="..."
@@ -183,8 +170,6 @@ const ProductList = () => {
         </div>
       </div>
       <Footer></Footer>
-      {/* <ToastContainer /> */}
-      <ToastContainer />
     </>
   );
 };

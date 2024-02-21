@@ -1,0 +1,91 @@
+{
+    "Wheat": [
+        {
+            "Land Preparation": "Plough, level, and harrow the land, ensuring thorough soil preparation. Break soil clods and incorporate organic matter for improved fertility."
+        },
+        {
+            "Seeding and Irrigation": "Sow wheat seeds at recommended depth and spacing. Provide sufficient irrigation during tillering and flowering stages for optimal growth."
+        },
+        {
+            "Fertilization": "Apply nitrogen, phosphorus, and potassium fertilizers based on soil nutrient levels. Split nitrogen application to promote even crop development."
+        },
+        {
+            "Pest and Disease Management": "Monitor for pests like aphids and diseases such as rust. Use recommended pesticides and fungicides as needed."
+        }
+    ],
+
+    "Rice": [
+        {
+            "Land Preparation": "Level the field and create puddles to suppress weed growth. Manage water levels effectively for flooded conditions."
+        },
+        {
+            "Seeding and Transplanting": "Direct seed or transplant rice seedlings according to cultivation method. Maintain proper water depth throughout various growth stages."
+        },
+        {
+            "Fertilization": "Apply nitrogen, phosphorus, and potassium fertilizers based on soil test results. Adjust fertilizer application to meet the crop's nutrient requirements."
+        },
+        {
+            "Weed Control": "Implement herbicides or manual weeding strategies for effective weed control. Adopt integrated weed management practices."
+        }
+    ],
+
+    "Maize (Corn)": [
+        {
+            "Land Preparation": "Plough and harrow the field to create a fine seedbed. Ensure adequate drainage to prevent waterlogging."
+        },
+        {
+            "Seeding and Crop Rotation": "Plant maize seeds at recommended depth and spacing. Rotate maize with other crops to manage pests and diseases effectively."
+        },
+        {
+            "Fertilization": "Apply nitrogen, phosphorus, and potassium fertilizers based on soil nutrient levels. Consider side-dressing nitrogen during the growing season."
+        },
+        {
+            "Harvesting": "Harvest maize when kernels are fully developed, and moisture content is optimal. Use recommended harvesting equipment for maximum yield."
+        }
+    ],
+
+    "Soybeans": [
+        {
+            "Land Preparation": "Prepare a well-drained seedbed and ensure proper soil fertility. Consider inoculating seeds with rhizobia for nitrogen fixation."
+        },
+        {
+            "Seeding and Growth Stages": "Plant soybean seeds at the recommended depth. Pay attention to growth stages for timely management practices such as pest control and irrigation."
+        },
+        {
+            "Fertilization": "Apply balanced fertilizers, paying attention to the crop's nitrogen needs. Consider foliar feeding during critical growth stages."
+        },
+        {
+            "Harvesting": "Harvest soybeans when pods are fully developed, and seeds are mature. Use appropriate harvesting equipment to minimize losses."
+        }
+    ],
+
+    "Potatoes": [
+        {
+            "Land Preparation": "Loosen soil to a good depth and remove stones. Incorporate well-rotted organic matter for improved soil structure and water retention."
+        },
+        {
+            "Planting and Hilling": "Plant potato tubers in furrows or beds and hill soil around plants during the growing season. This encourages tuber development and prevents greening."
+        },
+        {
+            "Fertilization": "Apply a balanced fertilizer with a higher potassium content for improved tuber quality. Monitor soil nutrient levels and adjust fertilizer application accordingly."
+        },
+        {
+            "Harvesting": "Harvest potatoes when the tops have died back, and the skins are set. Carefully dig up tubers to avoid damage during harvesting."
+        }
+    ],
+
+    "Cotton": [
+        {
+            "Land Preparation": "Prepare a well-drained seedbed, and ensure soil is free of debris and clods. Incorporate organic matter for moisture retention and nutrient availability."
+        },
+        {
+            "Planting and Growth": "Plant cotton seeds at recommended spacing and depth. Monitor plant growth for timely irrigation and pest control, especially during flowering."
+        },
+        {
+            "Fertilization": "Apply nitrogen, phosphorus, and potassium fertilizers based on soil test results. Supplement with micronutrients as needed for optimal cotton fiber development."
+        },
+        {
+            "Harvesting": "Harvest cotton when bolls have matured, and fibers are fully developed. Use mechanical harvesters for efficiency and to minimize fiber damage."
+        }
+    ]
+}

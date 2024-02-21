@@ -11,6 +11,7 @@ public class FarmProductsDTO {
 	private String farmProductId;
 	private String farmProductName;
 	private FarmProductType farmProductType;
+	private String path;
 
 	// ------------------ Constructors ----------------------
 	public FarmProductsDTO() {}
@@ -18,11 +19,12 @@ public class FarmProductsDTO {
 		super();
 		this.farmProductId = farmProductId;
 	}
-	public FarmProductsDTO(String farmProductId, String farmProductName, FarmProductType farmProductType) {
+	public FarmProductsDTO(String farmProductId, String farmProductName, FarmProductType farmProductType, String path) {
 		super();
 		this.farmProductId = farmProductId;
 		this.farmProductName = farmProductName;
 		this.farmProductType = farmProductType;
+		this.path = path;
 	}
 
 	//-----------------------------Getter and Setters--------------------
@@ -31,6 +33,12 @@ public class FarmProductsDTO {
 	 */
 	public String getFarmProductId() {
 		return farmProductId;
+	}
+	public void setPath(String path){
+		this.path = path;
+	}
+	public String getPath(){
+		return this.path;
 	}
 
 	/**
