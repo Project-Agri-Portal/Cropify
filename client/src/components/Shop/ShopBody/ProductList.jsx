@@ -115,7 +115,7 @@ const ProductList = () => {
   useEffect(() => {
     loadAllItems();
     console.log("hello use");
-    toast.success("Healty Fruits Waiting for you 🤤");
+    // toast.success("Healty Fruits Waiting for you 🤤");
   }, []);
 
   return (

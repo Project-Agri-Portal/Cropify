@@ -5,8 +5,8 @@ import { useEffect } from "react";
 function FarmerOrderList({ userId }) {
   const [orderList, setOrderList] = useState([]);
 
-  const onload = (userId) => {
-    farmerService.getFarmerOrderList(userId)
+  const onload = async (userId) => {
+    await farmerService.getFarmerOrderList(userId)
       .then((result) => {
         setOrderList(result.data);
         console.log("farm order");

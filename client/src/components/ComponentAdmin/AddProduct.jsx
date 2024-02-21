@@ -30,10 +30,10 @@ function AddProduct() {
       productCategory,
     });
 
-    if(productCategory == "farmerProduct"){
+    if(productCategory === "farmerProduct"){
         const product = {
             farmProductName: productName,
-            farmProductType: productType,
+            farmProductType: productType.toUpperCase(),
         }
         FarmProduct.addFarmProducts(product)
                     .then((result) => {
@@ -44,11 +44,11 @@ function AddProduct() {
                         console.log(error);
                     })
     }
-    else if(productCategory == "machine"){
+    else if(productCategory === "machine"){
         console.log("in machinery");
         const product = {
             machineName: productName,
-            machineType: productType,
+            machineType: productType.toUpperCase(),
         }
         Machinery.addMachinery(product)
             .then((result) => {
@@ -62,7 +62,7 @@ function AddProduct() {
     else{
         const product = {
             agriProductName: productName,
-            agriProductType: productType,
+            agriProductType: productType.toUpperCase(),
         }
         AgriProduct.addAgriProducts(product)
                     .then((result) => {

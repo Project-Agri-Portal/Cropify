@@ -1,8 +1,18 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Card from "react-bootstrap/Card";
-import fruits from "../../../assets/InfoImages/card-fruits.webp";
+import Fruits from "../../../assets/InfoImages/card-fruits.webp";
+import Vegetables from "../../../assets/InfoImages/card-vegetables.webp";
+import Crops from "../../../assets/InfoImages/card-crops.jpg";
+import Machinery from "../../../assets/InfoImages/card-machinery.jpg";
 
 const cardTitles = ["Crops", "Fruits", "Vegetables", "Machinery"];
+const cardImages = {
+  Crops: Crops,
+  Fruits: Fruits,
+  Vegetables: Vegetables,
+  Machinery: Machinery
+};
+
 function FarmerHome() {
   const history = useHistory();
 
@@ -19,7 +29,7 @@ function FarmerHome() {
             style={{ width: "18rem" }}
             key={index}
           >
-            <Card.Img variant="top" src={fruits} alt={title} />
+            <Card.Img variant="top" src={cardImages[title]} alt={title} />
             <Card.Body>
               <Card.Title className="text-success-emphasis fs-4 fw-semibold">
                 {title}
