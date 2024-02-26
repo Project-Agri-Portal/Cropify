@@ -31,16 +31,16 @@ INSERT INTO agriculture_products (agri_prod_id, agri_prod_name, agri_prod_type, 
 --------------------------------- farm_products table -----------------------------
 
 INSERT INTO farm_products (farm_prod_id, farm_prod_name, farm_prod_type, img_path) VALUES
-('FP001', 'Basmati Rice', 'Grains', '/images/basmati_rice.jpg'),
-('FP002', 'Alphonso Mangoes', 'Fruits', '/images/alphonso_mangoes.jpg'),
-('FP003', 'Masoor Dal', 'Pulses', '/images/masoor_dal.jpg'),
-('FP004', 'Turmeric Powder', 'Spices', '/images/turmeric_powder.jpg'),
-('FP005', 'Desi Ghee', 'Dairy', '/images/desi_ghee.jpg'),
-('FP006', 'Kesar', 'Herbs', '/images/kesar.jpg'),
-('FP007', 'Darjeeling Tea', 'Beverages', '/images/darjeeling_tea.jpg'),
-('FP008', 'Papaya', 'Fruits', '/images/papaya.jpg'),
-('FP009', 'Mustard Oil', 'Edible Oils', '/images/mustard_oil.jpg'),
-('FP010', 'Jaggery', 'Sweeteners', '/images/jaggery.jpg');
+('f1', 'Rice', 'CROPS', '/images/rice.jpg'),
+('f2', 'Apple', 'FRUIT', '/images/apple.jpg'),
+('f3', 'Wheat', 'CROPS', '/images/wheat.jpg'),
+('f4', 'Ladyfinger', 'VEGETABLE', '/images/ladyfinger.jpg'),
+('f5', 'Mango', 'FRUIT', '/images/mango.jpg'),
+('f6', 'Carrot', 'VEGETABLE', '/images/carrot.jpg'),
+('f7', 'Potato', 'VEGETABLE', '/images/potato.jpg'),
+('f8', 'Papaya', 'FRUIT', '/images/papaya.jpg'),
+('f9', 'Maize', 'CROPS', '/images/maize.jpg'),
+('f10', 'Sugarcane', 'CROPS', '/images/sugarcane.jpg');
 
 --------------------------------- machinery table -----------------------------------
 

@@ -48,11 +48,11 @@ const ProductList = () => {
     FarmProduct.deleteFarmProduct(prodId)
       .then((result) => {
         console.log(result["data"]);
-        toast.success('Farm product delete')
+        toast.success("Farm product delete");
         onload();
       })
       .catch((error) => {
-        toast.warn(" is Selled by many Farmer you Cannot delete it")
+        toast.warn(" is Selled by many Farmer you Cannot delete it");
         console.log(error);
       });
   };
@@ -73,7 +73,7 @@ const ProductList = () => {
       {/* <ProductList></ProductList> */}
       <main className="main-container">
         <TableContainer component={Paper} sx={{ maxWidth: "100%" }}>
-          <Table aria-lable="smple table" sx={{ width: "100%" }}>
+          <Table aria-label="smple table" sx={{ width: "100%" }}>
             <TableHead>
               <TableRow>
                 <TableCell className="text-center">Product Id</TableCell>
@@ -124,7 +124,6 @@ const ProductList = () => {
                   </TableRow>
                 );
               })}
-              ;
             </TableBody>
           </Table>
         </TableContainer>
