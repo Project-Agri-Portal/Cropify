@@ -1,6 +1,6 @@
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
-import Orange from "../../../assets/FRUITS/lentils-628468_1280.jpg";
+import Orange from "../../../assets/FRUITS/orange.png"
 import "./ProductList.css";
 import Navbar from "../Common/NavBar";
 import Footer from "../Common/Footer";
@@ -123,8 +123,8 @@ const ProductList = () => {
                   {/* height:100 */}
                   <div className="imgcon">
                     <img
-                      src={imgUrl}
-                      // src={Orange}
+                      // src={imgUrl}
+                      src={Orange}
                       className="card-img-top"
                       id="card-img-id"
                       alt="..."

@@ -84,45 +84,6 @@ function SideBar({ openSidebarToggle, OpenSidebar }) {
                 </Link>
             </li>
         </ul>
-      <ul className="text-start sidebar-list">
-        <li className="sidebar-list-item">
-          <BsGrid1X2Fill className="icon" />
-          <Link to={"/admin"}>Dashboard</Link>
-        </li>
-        <li className="sidebar-list-item">
-          <BsFillArchiveFill className="icon" />
-          <Link to="/admin/product">Farm Products</Link>
-        </li>
-        <li className="sidebar-list-item">
-          <BsFillArchiveFill className="icon" />
-          <Link to="/admin/machinery">Machinery</Link>
-        </li>
-        <li className="sidebar-list-item">
-          <BsFillArchiveFill className="icon" />
-          <Link to="/admin/agriproduct">Agriculture Product</Link>
-        </li>
-        <li className="sidebar-list-item">
-          <BsFillGrid3X3GapFill className="icon" />
-          <Link to="/admin/seller">Seller</Link>
-        </li>
-        <li className="sidebar-list-item">
-          <BsPeopleFill className="icon" />
-          <Link to="/admin/farmer">Farmer</Link>
-        </li>
-        <li className="sidebar-list-item">
-          <BsListCheck className="icon" />
-          <Link to="/admin/addproduct">Add Product</Link>
-        </li>
-        <li
-          className="sidebar-list-item"
-          onClick={() => {
-            handleLogout();
-          }}
-        >
-          <BsBoxArrowLeft className="icon" />
-          <Link to="/admin/addproduct">Log Out</Link>
-        </li>
-      </ul>
     </aside>
   );
 }
