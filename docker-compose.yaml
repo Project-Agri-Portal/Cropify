@@ -1,0 +1,40 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"  
+    environment:
+      - REACT_APP_BACKEND_URL=http://backend:8080  
+    networks:
+      - mynetwork
+
+  backend:
+    build:
+      context: ./server/backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/cropify?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    restart: always
+    networks:
+      - mynetwork
+
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "5306:3306"  
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
